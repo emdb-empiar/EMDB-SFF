@@ -21,23 +21,45 @@
     </xs:element>
     <xs:complexType name="segmentType">
         <xs:sequence>
-            <xs:element name="biologicalAnnotation" type="xs:string" minOccurs="0"/>
+            <xs:element name="biologicalAnnotation" minOccurs="0">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="description"/>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="externalReferences">
+                            <xs:annotation>
+                                <xs:documentation/>
+                            </xs:annotation>
+                            <xs:complexType>
+                                <xs:simpleContent>
+                                    <xs:extension base="xs:token">
+                                        <xs:attribute name="type" use="required">
+                                            <xs:simpleType>
+                                                <xs:restriction base="xs:token">
+                                                  <xs:enumeration value="uniprotkb"/>
+                                                  <xs:enumeration value="uniparc"/>
+                                                  <xs:whiteSpace value="collapse"/>
+                                                  <xs:enumeration value="interpro"/>
+                                                  <xs:enumeration value="go"/>
+                                                </xs:restriction>
+                                            </xs:simpleType>
+                                        </xs:attribute>
+                                    </xs:extension>
+                                </xs:simpleContent>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="numberOfCopies" type="xs:positiveInteger" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>Number of copies of the basic structure (complex or macromolecule). For example it could be '7' for the upper ring of GroEL</xs:documentation>
+                </xs:annotation>
+            </xs:element>
             <xs:element name="complexesAndMacromolecules" type="macromoleculesAndComplexesType"
                 minOccurs="0">
                 <xs:annotation>
-                    <xs:documentation>Internal for EMDB archive</xs:documentation>
+                    <xs:documentation>EMDB internal use</xs:documentation>
                 </xs:annotation>
-            </xs:element>
-            <xs:element name="annotationLink" maxOccurs="unbounded" minOccurs="0">
-                <xs:annotation>
-                    <xs:documentation>Needs to be defined in detail</xs:documentation>
-                </xs:annotation>
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element name="link" type="xs:anyURI"/>
-                        <xs:element name="identifier" type="xs:token"/>
-                    </xs:sequence>
-                </xs:complexType>
             </xs:element>
             <xs:choice>
                 <xs:element name="runLengthEncoding" type="runLengthEncodingType"/>
@@ -61,10 +83,118 @@
                         </xs:sequence>
                     </xs:complexType>
                 </xs:element>
+                <xs:element name="shapePrimitive">
+                    <xs:complexType>
+                        <xs:choice>
+                            <xs:element name="cuboid">
+                                <xs:annotation>
+                                    <xs:documentation>3D rectangle</xs:documentation>
+                                </xs:annotation>
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="origin">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element name="x"/>
+                                                  <xs:element name="y"/>
+                                                  <xs:element name="z"/>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                        <xs:element name="dimensions">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element name="x"/>
+                                                  <xs:element name="y"/>
+                                                  <xs:element name="z"/>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                        <xs:element name="viewVectorRotation">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element name="x"/>
+                                                  <xs:element name="y"/>
+                                                  <xs:element name="z"/>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="ellipsoid">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="origin">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element name="x"/>
+                                                  <xs:element name="y"/>
+                                                  <xs:element name="z"/>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                        <xs:element name="axes">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element name="x"/>
+                                                  <xs:element name="y"/>
+                                                  <xs:element name="z"/>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                        <xs:element name="viewVectorRotation">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element name="x"/>
+                                                  <xs:element name="y"/>
+                                                  <xs:element name="z"/>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="cylinder">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="origin">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element name="x"/>
+                                                  <xs:element name="y"/>
+                                                  <xs:element name="z"/>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                        <xs:element name="dimensions">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element name="height"/>
+                                                  <xs:element name="diameter"/>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                        <xs:element name="viewVectorRotation">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element name="x"/>
+                                                  <xs:element name="y"/>
+                                                  <xs:element name="z"/>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="pyramid"/>
+                        </xs:choice>
+                    </xs:complexType>
+                </xs:element>
             </xs:choice>
         </xs:sequence>
         <xs:attribute name="id" type="xs:positiveInteger" use="required"/>
-        <xs:attribute name="parentSegmentID" type="xs:nonNegativeInteger">
+        <xs:attribute name="parentID" type="xs:nonNegativeInteger" use="required">
             <xs:annotation>
                 <xs:documentation>For the root segment: parentSegmentID = 0</xs:documentation>
             </xs:annotation>
@@ -75,10 +205,20 @@
             <xs:documentation>Depending on the problem, one can either reference the sample on the macromolecule level or the complex level. </xs:documentation>
         </xs:annotation>
         <xs:sequence>
-            <xs:choice maxOccurs="unbounded">
-                <xs:element name="macromoleculeID" type="xs:positiveInteger"/>
-                <xs:element name="complexID" type="xs:positiveInteger"/>
-            </xs:choice>
+            <xs:element name="macromolecule" minOccurs="0">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="id" type="xs:positiveInteger" maxOccurs="unbounded"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="complex" minOccurs="0">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="id" type="xs:positiveInteger" maxOccurs="unbounded"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
         </xs:sequence>
     </xs:complexType>
     <xs:complexType name="runLengthEncodingType">
