@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+    targetNamespace="http://pdbe.org/empiarSFF" xmlns="http://pdbe.org/empiarSFF">
     <xs:element name="segmentation">
         <xs:annotation>
             <xs:documentation>Link to assembly or component id.</xs:documentation>
@@ -17,6 +18,14 @@
                 </xs:element>
                 <xs:element minOccurs="0" name="details" type="xs:string"/>
             </xs:sequence>
+            <xs:attribute fixed="0.2" name="schemaVersion" type="xs:token">
+                <xs:annotation>
+                    <xs:documentation>Version History
+0.2, 2015/3/15, Ardan Patwardhan:
+1) Added support for color
+2) Added support for triangle representation of segment - this is in support of Amira segmentations</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
         </xs:complexType>
     </xs:element>
     <xs:complexType name="segmentType">
@@ -61,6 +70,7 @@
                     <xs:documentation>EMDB internal use</xs:documentation>
                 </xs:annotation>
             </xs:element>
+            <xs:element minOccurs="0" name="color" type="colorType"/>
             <xs:choice>
                 <xs:element name="runLengthEncoding" type="runLengthEncodingType"/>
                 <xs:element name="segmentLink">
@@ -191,6 +201,7 @@
                         </xs:choice>
                     </xs:complexType>
                 </xs:element>
+                <xs:element name="triangulatedSurface" type="triangulatedSurfaceType"/>
             </xs:choice>
         </xs:sequence>
         <xs:attribute name="id" type="xs:positiveInteger" use="required"/>
@@ -258,5 +269,60 @@
             <xs:element minOccurs="0" name="version" type="xs:token"/>
             <xs:element minOccurs="0" name="processingDetails" type="xs:string"/>
         </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="vertexType">
+        <xs:sequence>
+            <xs:element name="x" type="xs:float"/>
+            <xs:element name="y" type="xs:float"/>
+            <xs:element name="z" type="xs:float"/>
+        </xs:sequence>
+        <xs:attribute name="vertexID" type="xs:positiveInteger"/>
+    </xs:complexType>
+    <xs:complexType name="vertexListType">
+        <xs:sequence maxOccurs="unbounded" minOccurs="0">
+            <xs:element name="vertex" type="vertexType"/>
+        </xs:sequence>
+        <xs:attribute name="numVertices" type="xs:nonNegativeInteger"/>
+    </xs:complexType>
+    <xs:complexType name="triangleType">
+        <xs:sequence>
+            <xs:element name="vertex1" type="xs:positiveInteger"/>
+            <xs:element name="vertex2" type="xs:positiveInteger"/>
+            <xs:element name="vertex3" type="xs:positiveInteger"/>
+        </xs:sequence>
+        <xs:attribute name="triangleID" type="xs:positiveInteger"/>
+    </xs:complexType>
+    <xs:complexType name="triangleListType">
+        <xs:sequence maxOccurs="unbounded" minOccurs="0">
+            <xs:element name="triangle" type="triangleType"/>
+        </xs:sequence>
+        <xs:attribute name="numTriangles" type="xs:nonNegativeInteger"/>
+    </xs:complexType>
+    <xs:complexType name="triangulatedSurfaceType">
+        <xs:sequence>
+            <xs:element name="vertices" type="vertexListType"/>
+            <xs:element name="triangles" type="triangleListType"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="rgbType">
+        <xs:sequence>
+            <xs:element name="red" type="xs:float"/>
+            <xs:element name="green" type="xs:float"/>
+            <xs:element name="blue" type="xs:float"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="hsvType">
+        <xs:sequence>
+            <xs:element name="hue" type="xs:float"/>
+            <xs:element name="saturation" type="xs:float"/>
+            <xs:element name="value" type="xs:float"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="colorType">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="rgb" type="rgbType"/>
+            <xs:element minOccurs="0" name="hsv" type="hsvType"/>
+        </xs:sequence>
+        <xs:attribute name="name" type="xs:token" use="optional"/>
     </xs:complexType>
 </xs:schema>
