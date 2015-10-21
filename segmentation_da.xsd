@@ -27,7 +27,7 @@
 1) Added support for color
 2) Added support for triangle representation of segment - this is in support of Amira segmentations
 
-0.3, 2015/10/21
+0.3, 2015/10/21, Paul Korir:
 1) Added voxelTransform
 2) Added filePath for segmentLinks to HDF5 (Segger) segmentations
 3) Added segmentObjects with contours and meshes for IMOD
