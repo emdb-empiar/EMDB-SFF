@@ -9,6 +9,8 @@
             <xs:sequence>
                 <xs:element name="name" type="xs:string"/>
                 <xs:element minOccurs="0" name="software" type="softwareType"/>
+                <xs:element name="voxelTransform" type="transformationMatrix"/>
+                <xs:element name="filePath" type="xs:string"/>
                 <xs:element name="segmentList">
                     <xs:complexType>
                         <xs:sequence>
@@ -18,12 +20,18 @@
                 </xs:element>
                 <xs:element minOccurs="0" name="details" type="xs:string"/>
             </xs:sequence>
-            <xs:attribute fixed="0.2" name="schemaVersion" type="xs:token">
+            <xs:attribute fixed="0.3" name="schemaVersion" type="xs:token">
                 <xs:annotation>
                     <xs:documentation>Version History
 0.2, 2015/3/15, Ardan Patwardhan:
 1) Added support for color
-2) Added support for triangle representation of segment - this is in support of Amira segmentations</xs:documentation>
+2) Added support for triangle representation of segment - this is in support of Amira segmentations
+
+0.3, 2015/10/21
+1) Added voxelTransform
+2) Added filePath for segmentLinks to HDF5 (Segger) segmentations
+3) Added segmentObjects with contours and meshes for IMOD
+					</xs:documentation>
                 </xs:annotation>
             </xs:attribute>
         </xs:complexType>
@@ -202,6 +210,36 @@
                     </xs:complexType>
                 </xs:element>
                 <xs:element name="triangulatedSurface" type="triangulatedSurfaceType"/>
+                <xs:element name="segmentObject" minOccurs="1" maxOccurs="unbounded">
+                    <xs:annotation>
+                        <xs:documentation>IMOD models store segmentations as contours with optional
+                            meshes. This is a rudimentary implementation excluding other parameters
+                            (flags, time and surf).
+                        </xs:documentation>
+                    </xs:annotation>
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="contour" minOccurs="1" maxOccurs="unbounded">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="point" type="floatVectorType"
+                                            maxOccurs="unbounded"/>
+                                    </xs:sequence>
+                                    <xs:attribute name="id" type="xs:nonNegativeInteger"/>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="mesh" minOccurs="0" maxOccurs="unbounded">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="meshPoint" type="meshPointType"
+                                            maxOccurs="unbounded"/>
+                                    </xs:sequence>
+                                    <xs:attribute name="id" type="xs:nonNegativeInteger"/>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
             </xs:choice>
         </xs:sequence>
         <xs:attribute name="id" type="xs:positiveInteger" use="required"/>
@@ -324,5 +362,39 @@
             <xs:element minOccurs="0" name="hsv" type="hsvType"/>
         </xs:sequence>
         <xs:attribute name="name" type="xs:token" use="optional"/>
+    </xs:complexType>
+    <xs:complexType name="transformationMatrix">
+        <xs:annotation>
+            <xs:documentation>data is a space-separated sequence of numbers to be converted to
+                floats. The number of items in 'data' is equivalent to the product of 'rows' and
+                'cols'.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="rows" type="xs:positiveInteger"/>
+            <xs:element name="cols" type="xs:positiveInteger"/>
+            <xs:element name="data" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="meshPointType">
+        <xs:annotation>
+            <xs:documentation>A mesh is a sequence of triangles</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="point" type="floatVectorType" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute name="index" type="xs:nonNegativeInteger"/>
+        <xs:attribute name="designation">
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="vertex"/>
+                    <xs:enumeration value="normal"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+    </xs:complexType>
+    <xs:complexType name="floatVectorType">
+        <xs:attribute name="x" type="xs:float"/>
+        <xs:attribute name="y" type="xs:float"/>
+        <xs:attribute name="z" type="xs:float"/>
     </xs:complexType>
 </xs:schema>
