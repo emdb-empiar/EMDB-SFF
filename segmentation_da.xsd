@@ -31,6 +31,9 @@
 1) Added voxelTransform
 2) Added filePath for segmentLinks to HDF5 (Segger) segmentations
 3) Added segmentObjects with contours and meshes for IMOD
+
+0.4, 2015/11/04, Paul Korir:
+1) Added alpha for rgb color (transparency)
 					</xs:documentation>
                 </xs:annotation>
             </xs:attribute>
@@ -347,6 +350,7 @@
             <xs:element name="red" type="xs:float"/>
             <xs:element name="green" type="xs:float"/>
             <xs:element name="blue" type="xs:float"/>
+            <xs:element name="alpha" type="xs:float"/>
         </xs:sequence>
     </xs:complexType>
     <xs:complexType name="hsvType">
