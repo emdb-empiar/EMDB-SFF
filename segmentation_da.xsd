@@ -20,7 +20,7 @@
                 </xs:element>
                 <xs:element minOccurs="0" name="details" type="xs:string"/>
             </xs:sequence>
-            <xs:attribute fixed="0.3" name="schemaVersion" type="xs:token">
+            <xs:attribute fixed="0.4" name="schemaVersion" type="xs:token">
                 <xs:annotation>
                     <xs:documentation>Version History
 0.2, 2015/3/15, Ardan Patwardhan:
