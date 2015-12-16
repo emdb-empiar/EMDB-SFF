@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
     targetNamespace="http://pdbe.org/empiarSFF" xmlns="http://pdbe.org/empiarSFF">
+    
+    <!-- BEGIN MAIN STRUCTURE -->
+    
     <xs:element name="segmentation">
         <xs:annotation>
             <xs:documentation>Link to assembly or component id.</xs:documentation>
@@ -8,47 +11,98 @@
         <xs:complexType>
             <xs:sequence>
                 <xs:element name="name" type="xs:string"/>
-                <xs:element minOccurs="0" name="software" type="softwareType"/>
-                <xs:element name="voxelTransform" type="transformationMatrix"/>
-                <xs:element name="filePath" type="xs:string"/>
-                <xs:element name="segmentList">
+                <xs:element name="software" type="softwareType" minOccurs="0"/>
+                <xs:element name="transforms">
                     <xs:complexType>
                         <xs:sequence>
-                            <xs:element maxOccurs="unbounded" name="segment" type="segmentType"/>
+                            <xs:element name="transformationMatrix" type="transformationMatrixType"
+                                minOccurs="0" maxOccurs="unbounded"/>
                         </xs:sequence>
                     </xs:complexType>
                 </xs:element>
-                <xs:element minOccurs="0" name="details" type="xs:string"/>
+                <xs:element name="filePath" type="xs:token"/>
+                <xs:element name="segmentList">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="segment" type="segmentType" maxOccurs="unbounded"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="details" type="xs:string" minOccurs="0"/>
             </xs:sequence>
-            <xs:attribute fixed="0.4" name="schemaVersion" type="xs:token">
+            <xs:attribute name="schemaVersion" type="xs:token" fixed="0.5">
                 <xs:annotation>
-                    <xs:documentation>Version History
-0.2, 2015/3/15, Ardan Patwardhan:
-1) Added support for color
-2) Added support for triangle representation of segment - this is in support of Amira segmentations
-
-0.3, 2015/10/21, Paul Korir:
-1) Added voxelTransform
-2) Added filePath for segmentLinks to HDF5 (Segger) segmentations
-3) Added segmentObjects with contours and meshes for IMOD
-
-0.4, 2015/11/04, Paul Korir:
-1) Added alpha for rgb color (transparency)
-					</xs:documentation>
+                    <xs:documentation>
+                        <![CDATA[
+                        Version History 
+                        0.2, 2015/3/15, Ardan Patwardhan: 
+                        1) Added support for color 
+                        2) Added support for triangle representation of segment - this is in support of Amira segmentations 
+                        
+                        0.3, 2015/10/21, Paul Korir: 
+                        1) Added voxelTransform 
+                        2) Added filePath for segmentLinks to HDF5 (Segger) segmentations 
+                        3) Added segmentObjects with contours and meshes for IMOD 
+                        
+                        0.4, 2015/11/04, Paul Korir: 
+                        1) Added alpha for rgb color (transparency) 
+                        
+                        0.5, 2015/12/14, Paul Korir: 
+                        1) Removed 'voxelTransform'
+                        2) Moved 'numberOfCopies' as 'numberOfInstances' to  be a sequence element within 'biologicalAnnotation'
+                        3) Made 'color' a choice between 'name' (X11/HTML4 sRGB colour space names) and 'rgba'
+                        4) Added a 'transform' element, which is a possibly empty list of transformation matrices referenced within the document by a non-negative identifier
+                        5) Renamed 'segmentLink' to 'voxelSegmentation' and added a 'transformID' element
+                        6) Renamed 'color' element to 'colour' and 'colorType' to 'colourType'
+                        7) Structured 'shapePrimitive' to a list of 'shapePrimitive' (substitution group for 'ellipsoid', 'cuboid', 'pyramid', 'cylinder')
+                        8) Identified and labeled deprecated data types
+                        9) Renamed shapePrimitive 'pyramid' to 'cone' and added tentative definition
+                        10) Removed 'origin' and 'viewVectorRotation' elements from shape primitives (cuboid, ellipsoid, cone, cylinder) and replaced with 'transformID' element
+                        11) Renamed references to 'triangles' to 'polygons' e.g. 'triangleListType' now 'polygonListType'
+                        ]]>
+                    </xs:documentation>
                 </xs:annotation>
             </xs:attribute>
         </xs:complexType>
     </xs:element>
+    
+    <!-- END MAIN STRUCTURE -->
+
+
+    <!-- BEGIN REFERENCED TYPES (in order of reference) -->
+
+    <!-- softwareType -->
+    <xs:complexType name="softwareType">
+        <xs:sequence>
+            <xs:element name="name" type="xs:token"/>
+            <xs:element name="version" type="xs:token" minOccurs="0"/>
+            <xs:element name="processingDetails" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- transformationMatrixType -->
+    <xs:complexType name="transformationMatrixType">
+        <xs:annotation>
+            <xs:documentation>data is a space-separated sequence of numbers to be converted to
+                floats. The number of items in 'data' is equivalent to the product of 'rows' and
+                'cols'.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="rows" type="xs:positiveInteger"/>
+            <xs:element name="cols" type="xs:positiveInteger"/>
+            <xs:element name="data" type="xs:string"/>
+        </xs:sequence>
+        <xs:attribute name="transformID" type="xs:nonNegativeInteger"/>
+    </xs:complexType>
+
+    <!-- segmentType -->
     <xs:complexType name="segmentType">
         <xs:sequence>
             <xs:element name="biologicalAnnotation" minOccurs="0">
                 <xs:complexType>
                     <xs:sequence>
-                        <xs:element minOccurs="0" name="description"/>
-                        <xs:element maxOccurs="unbounded" minOccurs="0" name="externalReferences">
-                            <xs:annotation>
-                                <xs:documentation/>
-                            </xs:annotation>
+                        <xs:element name="description" minOccurs="0"/>
+                        <xs:element name="externalReferences" minOccurs="0" maxOccurs="unbounded">
                             <xs:complexType>
                                 <xs:simpleContent>
                                     <xs:extension base="xs:token">
@@ -67,13 +121,15 @@
                                 </xs:simpleContent>
                             </xs:complexType>
                         </xs:element>
+                        <xs:element name="numberOfInstances" type="xs:positiveInteger" minOccurs="0">
+                            <xs:annotation>
+                                <xs:documentation>Number of instances present of the basic structure
+                                    (complex or macromolecule). For example it could be '7' for the
+                                    upper ring of GroEL</xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
                     </xs:sequence>
                 </xs:complexType>
-            </xs:element>
-            <xs:element name="numberOfCopies" type="xs:positiveInteger" minOccurs="0">
-                <xs:annotation>
-                    <xs:documentation>Number of copies of the basic structure (complex or macromolecule). For example it could be '7' for the upper ring of GroEL</xs:documentation>
-                </xs:annotation>
             </xs:element>
             <xs:element name="complexesAndMacromolecules" type="macromoleculesAndComplexesType"
                 minOccurs="0">
@@ -81,169 +137,52 @@
                     <xs:documentation>EMDB internal use</xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element minOccurs="0" name="color" type="colorType"/>
-            <xs:choice>
-                <xs:element name="runLengthEncoding" type="runLengthEncodingType"/>
-                <xs:element name="segmentLink">
+            <xs:element name="colour" type="colourType" minOccurs="0"/>
+            <xs:sequence>
+                <xs:element name="voxelSegmentation" minOccurs="0">
                     <xs:annotation>
-                        <xs:documentation>Are the CCP4 format masks going to be allowed? If so, we could represent the information of the mask (mapType) here.</xs:documentation>
+                        <xs:documentation>Are the CCP4 format masks going to be allowed? If so, we
+                            could represent the information of the mask (mapType)
+                            here.</xs:documentation>
                     </xs:annotation>
                     <xs:complexType>
                         <xs:sequence>
                             <xs:element name="file" type="xs:token"/>
-                            <xs:element minOccurs="0" name="objectPath" type="xs:token">
+                            <xs:element name="objectPath" type="xs:token" minOccurs="0">
                                 <xs:annotation>
-                                    <xs:documentation>This is particularly relevant if all the segments are stored in one file, like in HDF5</xs:documentation>
+                                    <xs:documentation> This is particularly relevant if all the
+                                        segments are stored in one file, like in HDF5.
+                                    </xs:documentation>
                                 </xs:annotation>
                             </xs:element>
-                            <xs:element minOccurs="0" name="contourLevel" type="xs:float">
+                            <xs:element name="contourLevel" type="xs:float" minOccurs="0">
                                 <xs:annotation>
-                                    <xs:documentation>Should be specified if map is non-binary</xs:documentation>
+                                    <xs:documentation> Should be specified if map is non-binary
+                                    </xs:documentation>
                                 </xs:annotation>
                             </xs:element>
+                            <xs:element name="transformID" type="xs:nonNegativeInteger"
+                                minOccurs="0"/>
                         </xs:sequence>
                     </xs:complexType>
                 </xs:element>
-                <xs:element name="shapePrimitive">
-                    <xs:complexType>
-                        <xs:choice>
-                            <xs:element name="cuboid">
-                                <xs:annotation>
-                                    <xs:documentation>3D rectangle</xs:documentation>
-                                </xs:annotation>
-                                <xs:complexType>
-                                    <xs:sequence>
-                                        <xs:element name="origin">
-                                            <xs:complexType>
-                                                <xs:sequence>
-                                                  <xs:element name="x"/>
-                                                  <xs:element name="y"/>
-                                                  <xs:element name="z"/>
-                                                </xs:sequence>
-                                            </xs:complexType>
-                                        </xs:element>
-                                        <xs:element name="dimensions">
-                                            <xs:complexType>
-                                                <xs:sequence>
-                                                  <xs:element name="x"/>
-                                                  <xs:element name="y"/>
-                                                  <xs:element name="z"/>
-                                                </xs:sequence>
-                                            </xs:complexType>
-                                        </xs:element>
-                                        <xs:element name="viewVectorRotation">
-                                            <xs:complexType>
-                                                <xs:sequence>
-                                                  <xs:element name="x"/>
-                                                  <xs:element name="y"/>
-                                                  <xs:element name="z"/>
-                                                </xs:sequence>
-                                            </xs:complexType>
-                                        </xs:element>
-                                    </xs:sequence>
-                                </xs:complexType>
-                            </xs:element>
-                            <xs:element name="ellipsoid">
-                                <xs:complexType>
-                                    <xs:sequence>
-                                        <xs:element name="origin">
-                                            <xs:complexType>
-                                                <xs:sequence>
-                                                  <xs:element name="x"/>
-                                                  <xs:element name="y"/>
-                                                  <xs:element name="z"/>
-                                                </xs:sequence>
-                                            </xs:complexType>
-                                        </xs:element>
-                                        <xs:element name="axes">
-                                            <xs:complexType>
-                                                <xs:sequence>
-                                                  <xs:element name="x"/>
-                                                  <xs:element name="y"/>
-                                                  <xs:element name="z"/>
-                                                </xs:sequence>
-                                            </xs:complexType>
-                                        </xs:element>
-                                        <xs:element name="viewVectorRotation">
-                                            <xs:complexType>
-                                                <xs:sequence>
-                                                  <xs:element name="x"/>
-                                                  <xs:element name="y"/>
-                                                  <xs:element name="z"/>
-                                                </xs:sequence>
-                                            </xs:complexType>
-                                        </xs:element>
-                                    </xs:sequence>
-                                </xs:complexType>
-                            </xs:element>
-                            <xs:element name="cylinder">
-                                <xs:complexType>
-                                    <xs:sequence>
-                                        <xs:element name="origin">
-                                            <xs:complexType>
-                                                <xs:sequence>
-                                                  <xs:element name="x"/>
-                                                  <xs:element name="y"/>
-                                                  <xs:element name="z"/>
-                                                </xs:sequence>
-                                            </xs:complexType>
-                                        </xs:element>
-                                        <xs:element name="dimensions">
-                                            <xs:complexType>
-                                                <xs:sequence>
-                                                  <xs:element name="height"/>
-                                                  <xs:element name="diameter"/>
-                                                </xs:sequence>
-                                            </xs:complexType>
-                                        </xs:element>
-                                        <xs:element name="viewVectorRotation">
-                                            <xs:complexType>
-                                                <xs:sequence>
-                                                  <xs:element name="x"/>
-                                                  <xs:element name="y"/>
-                                                  <xs:element name="z"/>
-                                                </xs:sequence>
-                                            </xs:complexType>
-                                        </xs:element>
-                                    </xs:sequence>
-                                </xs:complexType>
-                            </xs:element>
-                            <xs:element name="pyramid"/>
-                        </xs:choice>
-                    </xs:complexType>
-                </xs:element>
-                <xs:element name="triangulatedSurface" type="triangulatedSurfaceType"/>
-                <xs:element name="segmentObject" minOccurs="1" maxOccurs="unbounded">
-                    <xs:annotation>
-                        <xs:documentation>IMOD models store segmentations as contours with optional
-                            meshes. This is a rudimentary implementation excluding other parameters
-                            (flags, time and surf).
-                        </xs:documentation>
-                    </xs:annotation>
+                <xs:element name="shapePrimitiveList" minOccurs="0">
                     <xs:complexType>
                         <xs:sequence>
-                            <xs:element name="contour" minOccurs="1" maxOccurs="unbounded">
-                                <xs:complexType>
-                                    <xs:sequence>
-                                        <xs:element name="point" type="floatVectorType"
-                                            maxOccurs="unbounded"/>
-                                    </xs:sequence>
-                                    <xs:attribute name="id" type="xs:nonNegativeInteger"/>
-                                </xs:complexType>
-                            </xs:element>
-                            <xs:element name="mesh" minOccurs="0" maxOccurs="unbounded">
-                                <xs:complexType>
-                                    <xs:sequence>
-                                        <xs:element name="meshPoint" type="meshPointType"
-                                            maxOccurs="unbounded"/>
-                                    </xs:sequence>
-                                    <xs:attribute name="id" type="xs:nonNegativeInteger"/>
-                                </xs:complexType>
-                            </xs:element>
+                            <xs:element ref="shapePrimitive" minOccurs="1" maxOccurs="unbounded"/>
                         </xs:sequence>
                     </xs:complexType>
                 </xs:element>
-            </xs:choice>
+                <xs:element name="contours" minOccurs="0">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="contour" type="contourType" minOccurs="1"
+                                maxOccurs="unbounded"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="mesh" type="surfaceType" minOccurs="0"/>
+            </xs:sequence>
         </xs:sequence>
         <xs:attribute name="id" type="xs:positiveInteger" use="required"/>
         <xs:attribute name="parentID" type="xs:nonNegativeInteger" use="required">
@@ -252,9 +191,12 @@
             </xs:annotation>
         </xs:attribute>
     </xs:complexType>
+
+    <!-- macromoleculesAndComplexesType -->
     <xs:complexType name="macromoleculesAndComplexesType">
         <xs:annotation>
-            <xs:documentation>Depending on the problem, one can either reference the sample on the macromolecule level or the complex level. </xs:documentation>
+            <xs:documentation>Depending on the problem, one can either reference the sample on the
+                macromolecule level or the complex level. </xs:documentation>
         </xs:annotation>
         <xs:sequence>
             <xs:element name="macromolecule" minOccurs="0">
@@ -273,44 +215,32 @@
             </xs:element>
         </xs:sequence>
     </xs:complexType>
-    <xs:complexType name="runLengthEncodingType">
+
+    <!-- triangulatedSurfaceType -->
+    <xs:complexType name="surfaceType">
         <xs:sequence>
-            <xs:element name="string">
-                <xs:simpleType>
-                    <xs:restriction base="xs:token">
-                        <xs:pattern value="\d+(,\d+)+"/>
-                    </xs:restriction>
-                </xs:simpleType>
-            </xs:element>
-            <xs:element name="offset" type="integerVectorType">
-                <xs:annotation>
-                    <xs:documentation>Offset of the segment relative to the orign map.</xs:documentation>
-                </xs:annotation>
-            </xs:element>
-            <xs:element name="boxSize" type="positiveIntegerVectorType"/>
+            <xs:element name="vertices" type="vertexListType"/>
+            <xs:element name="polygons" type="polygonListType"/>
         </xs:sequence>
     </xs:complexType>
-    <xs:complexType name="integerVectorType">
-        <xs:sequence>
-            <xs:element name="x" type="xs:integer"/>
-            <xs:element name="y" type="xs:integer"/>
-            <xs:element name="z" type="xs:integer"/>
+
+    <!-- vertexListType -->
+    <xs:complexType name="vertexListType">
+        <xs:sequence maxOccurs="unbounded" minOccurs="0">
+            <xs:element name="vertex" type="vertexType"/>
         </xs:sequence>
+        <xs:attribute name="numVertices" type="xs:nonNegativeInteger"/>
     </xs:complexType>
-    <xs:complexType name="positiveIntegerVectorType">
-        <xs:sequence>
-            <xs:element name="x" type="xs:positiveInteger"/>
-            <xs:element name="y" type="xs:positiveInteger"/>
-            <xs:element name="y" type="xs:positiveInteger"/>
+
+    <!-- polygonListType -->
+    <xs:complexType name="polygonListType">
+        <xs:sequence maxOccurs="unbounded" minOccurs="0">
+            <xs:element name="polygon" type="polygonType"/>
         </xs:sequence>
+        <xs:attribute name="numPolygons" type="xs:nonNegativeInteger"/>
     </xs:complexType>
-    <xs:complexType name="softwareType">
-        <xs:sequence>
-            <xs:element name="name" type="xs:token"/>
-            <xs:element minOccurs="0" name="version" type="xs:token"/>
-            <xs:element minOccurs="0" name="processingDetails" type="xs:string"/>
-        </xs:sequence>
-    </xs:complexType>
+
+    <!-- vertexType -->
     <xs:complexType name="vertexType">
         <xs:sequence>
             <xs:element name="x" type="xs:float"/>
@@ -319,69 +249,151 @@
         </xs:sequence>
         <xs:attribute name="vertexID" type="xs:positiveInteger"/>
     </xs:complexType>
-    <xs:complexType name="vertexListType">
-        <xs:sequence maxOccurs="unbounded" minOccurs="0">
-            <xs:element name="vertex" type="vertexType"/>
-        </xs:sequence>
-        <xs:attribute name="numVertices" type="xs:nonNegativeInteger"/>
-    </xs:complexType>
-    <xs:complexType name="triangleType">
+
+    <!-- polygonType -->
+    <xs:complexType name="polygonType">
         <xs:sequence>
-            <xs:element name="vertex1" type="xs:positiveInteger"/>
-            <xs:element name="vertex2" type="xs:positiveInteger"/>
-            <xs:element name="vertex3" type="xs:positiveInteger"/>
+            <xs:element name="vertex" type="xs:positiveInteger" minOccurs="3" maxOccurs="unbounded"/>
         </xs:sequence>
-        <xs:attribute name="triangleID" type="xs:positiveInteger"/>
+        <xs:attribute name="polygonID" type="xs:positiveInteger"/>
     </xs:complexType>
-    <xs:complexType name="triangleListType">
-        <xs:sequence maxOccurs="unbounded" minOccurs="0">
-            <xs:element name="triangle" type="triangleType"/>
-        </xs:sequence>
-        <xs:attribute name="numTriangles" type="xs:nonNegativeInteger"/>
-    </xs:complexType>
-    <xs:complexType name="triangulatedSurfaceType">
-        <xs:sequence>
-            <xs:element name="vertices" type="vertexListType"/>
-            <xs:element name="triangles" type="triangleListType"/>
-        </xs:sequence>
-    </xs:complexType>
-    <xs:complexType name="rgbType">
-        <xs:sequence>
-            <xs:element name="red" type="xs:float"/>
-            <xs:element name="green" type="xs:float"/>
-            <xs:element name="blue" type="xs:float"/>
-            <xs:element name="alpha" type="xs:float"/>
-        </xs:sequence>
-    </xs:complexType>
-    <xs:complexType name="hsvType">
-        <xs:sequence>
-            <xs:element name="hue" type="xs:float"/>
-            <xs:element name="saturation" type="xs:float"/>
-            <xs:element name="value" type="xs:float"/>
-        </xs:sequence>
-    </xs:complexType>
-    <xs:complexType name="colorType">
-        <xs:sequence>
-            <xs:element minOccurs="0" name="rgb" type="rgbType"/>
-            <xs:element minOccurs="0" name="hsv" type="hsvType"/>
-        </xs:sequence>
-        <xs:attribute name="name" type="xs:token" use="optional"/>
-    </xs:complexType>
-    <xs:complexType name="transformationMatrix">
+
+    <!-- colorType -->
+    <xs:complexType name="colourType">
         <xs:annotation>
-            <xs:documentation>data is a space-separated sequence of numbers to be converted to
-                floats. The number of items in 'data' is equivalent to the product of 'rows' and
-                'cols'.</xs:documentation>
+            <xs:documentation> The 'name' corresponds to the sRGB colour space name and maps
+                precisely to an RGB value. When this happens, the alpha channel should be set to '1'
+                (opaque). Requires the use of an external Python module (webcolors.py).
+            </xs:documentation>
         </xs:annotation>
+        <xs:choice>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="rgba" type="rgbaType" minOccurs="0"/>
+        </xs:choice>
+    </xs:complexType>
+
+    <!-- rgbaType -->
+    <xs:complexType name="rgbaType">
         <xs:sequence>
-            <xs:element name="rows" type="xs:positiveInteger"/>
-            <xs:element name="cols" type="xs:positiveInteger"/>
-            <xs:element name="data" type="xs:string"/>
+            <xs:element name="red" type="colourChannelType"/>
+            <xs:element name="green" type="colourChannelType"/>
+            <xs:element name="blue" type="colourChannelType"/>
+            <xs:element name="alpha" type="colourChannelType" minOccurs="0" default="1"/>
         </xs:sequence>
     </xs:complexType>
+
+    <!-- colourChannelType -->
+    <xs:simpleType name="colourChannelType">
+        <xs:restriction base="xs:float">
+            <xs:minInclusive value="0"/>
+            <xs:maxInclusive value="1"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- contourType -->
+    <xs:complexType name="contourType">
+        <xs:sequence>
+            <xs:element name="point" type="floatVectorType" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute name="id" type="xs:nonNegativeInteger"/>
+    </xs:complexType>
+
+    <!-- floatVectorType -->
+    <xs:complexType name="floatVectorType">
+        <xs:attribute name="x" type="xs:float"/>
+        <xs:attribute name="y" type="xs:float"/>
+        <xs:attribute name="z" type="xs:float"/>
+    </xs:complexType>
+   
+    <!-- END REFERENCED TYPES -->
+
+    <!-- BEGIN REFERENCED ELEMENTS (in order of reference) -->
+    <!-- shapePrimitive -->
+    <xs:element name="shapePrimitive"/>
+    <xs:element name="cuboid" substitutionGroup="shapePrimitive">
+        <xs:annotation>
+            <xs:documentation>3D rectangle</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="dimensions">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="x"/>
+                            <xs:element name="y"/>
+                            <xs:element name="z"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="transformID" type="xs:nonNegativeInteger"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="ellipsoid" substitutionGroup="shapePrimitive">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="axes">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="x"/>
+                            <xs:element name="y"/>
+                            <xs:element name="z"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="transformID" type="xs:nonNegativeInteger"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="cylinder" substitutionGroup="shapePrimitive">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="dimensions">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="height"/>
+                            <xs:element name="diameter"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="transformID" type="xs:nonNegativeInteger"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="cone" substitutionGroup="shapePrimitive">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="dimensions">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="height"/>
+                            <xs:element name="bottomRadius"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="transformID" type="xs:nonNegativeInteger"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="subtomogramAverage" substitutionGroup="shapePrimitive">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="file" type="xs:token"/>
+                <xs:element name="objectPath" type="xs:token"/>
+                <xs:element name="transformID" type="xs:nonNegativeInteger"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    <!-- END REFERENCED ELEMENTS -->
+    
+    <!-- BEGIN DEPRECATED TYPES -->
+    
+    <!-- meshPointType (deprecated) -->
     <xs:complexType name="meshPointType">
         <xs:annotation>
             <xs:documentation>A mesh is a sequence of triangles</xs:documentation>
+            <xs:documentation>Deprecated</xs:documentation>
         </xs:annotation>
         <xs:sequence>
             <xs:element name="point" type="floatVectorType" minOccurs="0" maxOccurs="unbounded"/>
@@ -396,9 +408,59 @@
             </xs:simpleType>
         </xs:attribute>
     </xs:complexType>
-    <xs:complexType name="floatVectorType">
-        <xs:attribute name="x" type="xs:float"/>
-        <xs:attribute name="y" type="xs:float"/>
-        <xs:attribute name="z" type="xs:float"/>
+
+    <!-- hsvType (deprecated) -->
+    <xs:complexType name="hsvType">
+        <xs:annotation>
+            <xs:documentation> Deprecated </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="hue" type="xs:float"/>
+            <xs:element name="saturation" type="xs:float"/>
+            <xs:element name="value" type="xs:float"/>
+        </xs:sequence>
     </xs:complexType>
+    
+    <!-- runLengthEncodingType (deprecated) -->
+    <xs:complexType name="runLengthEncodingType">
+        <xs:sequence>
+            <xs:element name="string">
+                <xs:simpleType>
+                    <xs:restriction base="xs:token">
+                        <xs:pattern value="\d+(,\d+)+"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="offset" type="integerVectorType">
+                <xs:annotation>
+                    <xs:documentation>Offset of the segment relative to the orign
+                        map.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="boxSize" type="positiveIntegerVectorType"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <!-- integerVectorType (deprecated) -->
+    <xs:complexType name="integerVectorType">
+        <xs:annotation>
+            <xs:documentation>Deprecated</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="x" type="xs:integer"/>
+            <xs:element name="y" type="xs:integer"/>
+            <xs:element name="z" type="xs:integer"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <!-- positiveIntegerVectorType (deprecated) -->
+    <xs:complexType name="positiveIntegerVectorType">
+        <xs:sequence>
+            <xs:element name="x" type="xs:positiveInteger"/>
+            <xs:element name="y" type="xs:positiveInteger"/>
+            <xs:element name="y" type="xs:positiveInteger"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <!-- END DEPRECATED TYPES -->
 </xs:schema>
