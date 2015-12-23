@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
     targetNamespace="http://pdbe.org/empiarSFF" xmlns="http://pdbe.org/empiarSFF">
-    
+
     <!-- BEGIN MAIN STRUCTURE -->
-    
+
     <xs:element name="segmentation">
         <xs:annotation>
             <xs:documentation>Link to assembly or component id.</xs:documentation>
@@ -12,11 +12,10 @@
             <xs:sequence>
                 <xs:element name="name" type="xs:string"/>
                 <xs:element name="software" type="softwareType" minOccurs="0"/>
-                <xs:element name="transforms">
+                <xs:element name="transformList">
                     <xs:complexType>
                         <xs:sequence>
-                            <xs:element name="transformationMatrix" type="transformationMatrixType"
-                                minOccurs="0" maxOccurs="unbounded"/>
+                            <xs:element ref="transform" minOccurs="0" maxOccurs="unbounded"/>
                         </xs:sequence>
                     </xs:complexType>
                 </xs:element>
@@ -30,7 +29,7 @@
                 </xs:element>
                 <xs:element name="details" type="xs:string" minOccurs="0"/>
             </xs:sequence>
-            <xs:attribute name="schemaVersion" type="xs:token" fixed="0.5">
+            <xs:attribute name="schemaVersion" type="xs:token" fixed="0.5.1">
                 <xs:annotation>
                     <xs:documentation>
                         <![CDATA[
@@ -59,13 +58,22 @@
                         9) Renamed shapePrimitive 'pyramid' to 'cone' and added tentative definition
                         10) Removed 'origin' and 'viewVectorRotation' elements from shape primitives (cuboid, ellipsoid, cone, cylinder) and replaced with 'transformID' element
                         11) Renamed references to 'triangles' to 'polygons' e.g. 'triangleListType' now 'polygonListType'
+                        
+                        0.5.1, 2015/12/23, Paul Korir:
+                        1) Change colourType to have rgbaType minOccurs=1
+                        2) Added 'attribute' element (e.g. for FOM) to shapePrimitive
+                        3) Deleted comment: 'Are the CCP4 format masks going to be allowed? If so, we could represent the information of the mask (mapType) here.' from 'voxelSegmentation'.
+                        4) Added segment 'format' element to 'voxelSegmentation' restricted to values 'runLengthEncoding', 'MRC', or 'Segger'
+                        5) Renamed 'voxelSegmentation' to 'threeDVolume' and deprecated 'subTomogramAverage'.
+                        6) Restructured 'transforms' into a list ('transformList') of 'transform', which is a substitutionGroup of 'transformationMatrix', 'canonicalEulerAngles' or 'viewVectorRotation'. 
+                        7) Added an 'angleDegreeType' to restrict angle range in degrees [0,360].
                         ]]>
                     </xs:documentation>
                 </xs:annotation>
             </xs:attribute>
         </xs:complexType>
     </xs:element>
-    
+
     <!-- END MAIN STRUCTURE -->
 
 
@@ -94,6 +102,39 @@
         </xs:sequence>
         <xs:attribute name="transformID" type="xs:nonNegativeInteger"/>
     </xs:complexType>
+
+    <!-- canonicalEulerAnglesType -->
+    <xs:complexType name="canonicalEulerAnglesType">
+        <xs:annotation>
+            <xs:documentation>Euler angler according to Heymann et al. 2005
+                (doi:10.1016/j.jsb.2005.06.001)</xs:documentation>
+            <xs:documentation>Angles are specified in degrees together with their
+                bounds.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="phi" type="angleDegreeType"/>
+            <xs:element name="theta" type="angleDegreeType"/>
+            <xs:element name="psi" type="angleDegreeType"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- viewVectorRotationType -->
+    <xs:complexType name="viewVectorRotationType">
+        <xs:sequence>
+            <xs:element name="x" type="xs:float"/>
+            <xs:element name="y" type="xs:float"/>
+            <xs:element name="z" type="xs:float"/>
+            <xs:element name="r" type="angleDegreeType"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <!-- angleDegreeType -->
+    <xs:simpleType name="angleDegreeType">
+        <xs:restriction base="xs:float">
+            <xs:minInclusive value="0"/>
+            <xs:maxInclusive value="360"/>
+        </xs:restriction>
+    </xs:simpleType>
 
     <!-- segmentType -->
     <xs:complexType name="segmentType">
@@ -139,12 +180,7 @@
             </xs:element>
             <xs:element name="colour" type="colourType" minOccurs="0"/>
             <xs:sequence>
-                <xs:element name="voxelSegmentation" minOccurs="0">
-                    <xs:annotation>
-                        <xs:documentation>Are the CCP4 format masks going to be allowed? If so, we
-                            could represent the information of the mask (mapType)
-                            here.</xs:documentation>
-                    </xs:annotation>
+                <xs:element name="threeDVolume" minOccurs="0">
                     <xs:complexType>
                         <xs:sequence>
                             <xs:element name="file" type="xs:token"/>
@@ -163,6 +199,15 @@
                             </xs:element>
                             <xs:element name="transformID" type="xs:nonNegativeInteger"
                                 minOccurs="0"/>
+                            <xs:element name="format">
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:enumeration value="runLengthEncoding"/>
+                                        <xs:enumeration value="MRC"/>
+                                        <xs:enumeration value="Segger"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:element>
                         </xs:sequence>
                     </xs:complexType>
                 </xs:element>
@@ -216,7 +261,7 @@
         </xs:sequence>
     </xs:complexType>
 
-    <!-- triangulatedSurfaceType -->
+    <!-- surfaceType -->
     <xs:complexType name="surfaceType">
         <xs:sequence>
             <xs:element name="vertices" type="vertexListType"/>
@@ -226,18 +271,18 @@
 
     <!-- vertexListType -->
     <xs:complexType name="vertexListType">
-        <xs:sequence maxOccurs="unbounded" minOccurs="0">
-            <xs:element name="vertex" type="vertexType"/>
+        <xs:sequence>
+            <xs:element name="vertex" type="vertexType" minOccurs="3" maxOccurs="unbounded"/>
         </xs:sequence>
-        <xs:attribute name="numVertices" type="xs:nonNegativeInteger"/>
+        <xs:attribute name="numVertices" type="xs:positiveInteger"/>
     </xs:complexType>
 
     <!-- polygonListType -->
     <xs:complexType name="polygonListType">
-        <xs:sequence maxOccurs="unbounded" minOccurs="0">
+        <xs:sequence maxOccurs="unbounded" minOccurs="1">
             <xs:element name="polygon" type="polygonType"/>
         </xs:sequence>
-        <xs:attribute name="numPolygons" type="xs:nonNegativeInteger"/>
+        <xs:attribute name="numPolygons" type="xs:positiveInteger"/>
     </xs:complexType>
 
     <!-- vertexType -->
@@ -253,7 +298,8 @@
     <!-- polygonType -->
     <xs:complexType name="polygonType">
         <xs:sequence>
-            <xs:element name="vertex" type="xs:positiveInteger" minOccurs="3" maxOccurs="unbounded"/>
+            <xs:element name="vertex" type="xs:positiveInteger" minOccurs="3" maxOccurs="unbounded"
+            />
         </xs:sequence>
         <xs:attribute name="polygonID" type="xs:positiveInteger"/>
     </xs:complexType>
@@ -268,7 +314,7 @@
         </xs:annotation>
         <xs:choice>
             <xs:element name="name" type="xs:string"/>
-            <xs:element name="rgba" type="rgbaType" minOccurs="0"/>
+            <xs:element name="rgba" type="rgbaType" minOccurs="1"/>
         </xs:choice>
     </xs:complexType>
 
@@ -304,15 +350,25 @@
         <xs:attribute name="y" type="xs:float"/>
         <xs:attribute name="z" type="xs:float"/>
     </xs:complexType>
-   
+
     <!-- END REFERENCED TYPES -->
 
     <!-- BEGIN REFERENCED ELEMENTS (in order of reference) -->
+    <!-- transform -->
+    <xs:element name="transform"/>
+    <xs:element name="transformationMatrix" type="transformationMatrixType"
+        substitutionGroup="transform"/>
+    <xs:element name="canonicalEulerAngles" type="canonicalEulerAnglesType"
+        substitutionGroup="transform"/>
+    <xs:element name="viewVectorRotation" type="viewVectorRotationType"
+        substitutionGroup="transform"/>
+
     <!-- shapePrimitive -->
     <xs:element name="shapePrimitive"/>
     <xs:element name="cuboid" substitutionGroup="shapePrimitive">
         <xs:annotation>
             <xs:documentation>3D rectangle</xs:documentation>
+            <xs:documentation>'attribute' could refer to figure of merit (FOM)</xs:documentation>
         </xs:annotation>
         <xs:complexType>
             <xs:sequence>
@@ -326,10 +382,14 @@
                     </xs:complexType>
                 </xs:element>
                 <xs:element name="transformID" type="xs:nonNegativeInteger"/>
+                <xs:element name="attribute" type="xs:float"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
     <xs:element name="ellipsoid" substitutionGroup="shapePrimitive">
+        <xs:annotation>
+            <xs:documentation>3D sphere</xs:documentation>
+        </xs:annotation>
         <xs:complexType>
             <xs:sequence>
                 <xs:element name="axes">
@@ -342,6 +402,7 @@
                     </xs:complexType>
                 </xs:element>
                 <xs:element name="transformID" type="xs:nonNegativeInteger"/>
+                <xs:element name="attribute" type="xs:float"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
@@ -357,6 +418,7 @@
                     </xs:complexType>
                 </xs:element>
                 <xs:element name="transformID" type="xs:nonNegativeInteger"/>
+                <xs:element name="attribute" type="xs:float"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
@@ -372,23 +434,35 @@
                     </xs:complexType>
                 </xs:element>
                 <xs:element name="transformID" type="xs:nonNegativeInteger"/>
+                <xs:element name="attribute" type="xs:float"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
-    <xs:element name="subtomogramAverage" substitutionGroup="shapePrimitive">
+
+
+    <!-- END REFERENCED ELEMENTS -->
+
+    <!-- BEGIN DEPRECATED ELEMENTS -->
+
+    <!-- subTomogramAverage (deprecated) -->
+    <xs:element name="subtomogramAverage">
+        <xs:annotation>
+            <xs:documentation>Deprecated</xs:documentation>
+        </xs:annotation>
         <xs:complexType>
             <xs:sequence>
                 <xs:element name="file" type="xs:token"/>
                 <xs:element name="objectPath" type="xs:token"/>
                 <xs:element name="transformID" type="xs:nonNegativeInteger"/>
+                <xs:element name="attribute" type="xs:float"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
-    
-    <!-- END REFERENCED ELEMENTS -->
-    
+
+    <!-- END DEPRECATED ELEMENTS -->
+
     <!-- BEGIN DEPRECATED TYPES -->
-    
+
     <!-- meshPointType (deprecated) -->
     <xs:complexType name="meshPointType">
         <xs:annotation>
@@ -412,7 +486,7 @@
     <!-- hsvType (deprecated) -->
     <xs:complexType name="hsvType">
         <xs:annotation>
-            <xs:documentation> Deprecated </xs:documentation>
+            <xs:documentation>Deprecated</xs:documentation>
         </xs:annotation>
         <xs:sequence>
             <xs:element name="hue" type="xs:float"/>
@@ -420,9 +494,12 @@
             <xs:element name="value" type="xs:float"/>
         </xs:sequence>
     </xs:complexType>
-    
+
     <!-- runLengthEncodingType (deprecated) -->
     <xs:complexType name="runLengthEncodingType">
+        <xs:annotation>
+            <xs:documentation>Deprecated</xs:documentation>
+        </xs:annotation>
         <xs:sequence>
             <xs:element name="string">
                 <xs:simpleType>
@@ -440,7 +517,7 @@
             <xs:element name="boxSize" type="positiveIntegerVectorType"/>
         </xs:sequence>
     </xs:complexType>
-    
+
     <!-- integerVectorType (deprecated) -->
     <xs:complexType name="integerVectorType">
         <xs:annotation>
@@ -452,7 +529,7 @@
             <xs:element name="z" type="xs:integer"/>
         </xs:sequence>
     </xs:complexType>
-    
+
     <!-- positiveIntegerVectorType (deprecated) -->
     <xs:complexType name="positiveIntegerVectorType">
         <xs:sequence>
@@ -461,6 +538,6 @@
             <xs:element name="y" type="xs:positiveInteger"/>
         </xs:sequence>
     </xs:complexType>
-    
+
     <!-- END DEPRECATED TYPES -->
 </xs:schema>
