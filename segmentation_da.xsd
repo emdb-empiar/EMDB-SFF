@@ -12,14 +12,24 @@
             <xs:sequence>
                 <xs:element name="name" type="xs:string"/>
                 <xs:element name="software" type="softwareType" minOccurs="0"/>
-                <xs:element name="transformList">
+                <xs:element name="transformList" minOccurs="0">
                     <xs:complexType>
                         <xs:sequence>
                             <xs:element ref="transform" minOccurs="0" maxOccurs="unbounded"/>
                         </xs:sequence>
                     </xs:complexType>
                 </xs:element>
-                <xs:element name="filePath" type="xs:token"/>
+                <xs:element name="filePath" type="xs:token">
+                    <xs:annotation>
+                        <xs:documentation>Specifies the location of file containing referenced data.
+                            Applies to 'threeDVolume' and 'subtomogramAverage'. If its value is an
+                            empty string then the full path is assumed to be contained in the 'file'
+                            attribute that refers to the data ('threeDVolume' or
+                            'subtomogramAverage'). Otherwise it is assumed to be a full path
+                            excluding the filename. This is consistent with concatenating the
+                            'filePath' content with the 'file' content.</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
                 <xs:element name="segmentList">
                     <xs:complexType>
                         <xs:sequence>
@@ -29,7 +39,7 @@
                 </xs:element>
                 <xs:element name="details" type="xs:string" minOccurs="0"/>
             </xs:sequence>
-            <xs:attribute name="schemaVersion" type="xs:token" fixed="0.5.1">
+            <xs:attribute name="schemaVersion" type="xs:token" fixed="0.5.2">
                 <xs:annotation>
                     <xs:documentation>
                         <![CDATA[
@@ -67,6 +77,17 @@
                         5) Renamed 'voxelSegmentation' to 'threeDVolume' and deprecated 'subTomogramAverage'.
                         6) Restructured 'transforms' into a list ('transformList') of 'transform', which is a substitutionGroup of 'transformationMatrix', 'canonicalEulerAngles' or 'viewVectorRotation'. 
                         7) Added an 'angleDegreeType' to restrict angle range in degrees [0,360].
+                        
+                        0.5.2, 2016/01/04, Paul Korir:
+                        1) Made 'transformList' optional
+                        2) Added 'id' attributes for 'canonicalEulerAngle' and 'viewVectorRotation'
+                        3) Annotations for 'filePath'
+                        4) Added 'other' to types for 'externalReference' and optional 'otherTypes' attribute
+                        5) Changed type of 'name' element in 'colour' from 'xs:string' to 'xs:token'
+                        6) Created 'threeDVolumeType' to be used by 'threeDVolume' and 'subtomogramAverage'
+                        7) Added 'id' attributes for 'shapePrimitive' and 'threeDVolumeType'
+                        8) Renamed 'contours' to 'contourList'
+                        9) Created 'meshList' as a sequence of 'mesh'. Each 'mesh' has an 'id'
                         ]]>
                     </xs:documentation>
                 </xs:annotation>
@@ -116,6 +137,7 @@
             <xs:element name="theta" type="angleDegreeType"/>
             <xs:element name="psi" type="angleDegreeType"/>
         </xs:sequence>
+        <xs:attribute name="id" type="xs:nonNegativeInteger"/>
     </xs:complexType>
 
     <!-- viewVectorRotationType -->
@@ -126,8 +148,9 @@
             <xs:element name="z" type="xs:float"/>
             <xs:element name="r" type="angleDegreeType"/>
         </xs:sequence>
+        <xs:attribute name="id" type="xs:nonNegativeInteger"/>
     </xs:complexType>
-    
+
     <!-- angleDegreeType -->
     <xs:simpleType name="angleDegreeType">
         <xs:restriction base="xs:float">
@@ -155,9 +178,11 @@
                                                   <xs:whiteSpace value="collapse"/>
                                                   <xs:enumeration value="interpro"/>
                                                   <xs:enumeration value="go"/>
+                                                  <xs:enumeration value="other"/>
                                                 </xs:restriction>
                                             </xs:simpleType>
                                         </xs:attribute>
+                                        <xs:attribute name="otherType" type="xs:token"/>
                                     </xs:extension>
                                 </xs:simpleContent>
                             </xs:complexType>
@@ -180,37 +205,7 @@
             </xs:element>
             <xs:element name="colour" type="colourType" minOccurs="0"/>
             <xs:sequence>
-                <xs:element name="threeDVolume" minOccurs="0">
-                    <xs:complexType>
-                        <xs:sequence>
-                            <xs:element name="file" type="xs:token"/>
-                            <xs:element name="objectPath" type="xs:token" minOccurs="0">
-                                <xs:annotation>
-                                    <xs:documentation> This is particularly relevant if all the
-                                        segments are stored in one file, like in HDF5.
-                                    </xs:documentation>
-                                </xs:annotation>
-                            </xs:element>
-                            <xs:element name="contourLevel" type="xs:float" minOccurs="0">
-                                <xs:annotation>
-                                    <xs:documentation> Should be specified if map is non-binary
-                                    </xs:documentation>
-                                </xs:annotation>
-                            </xs:element>
-                            <xs:element name="transformID" type="xs:nonNegativeInteger"
-                                minOccurs="0"/>
-                            <xs:element name="format">
-                                <xs:simpleType>
-                                    <xs:restriction base="xs:string">
-                                        <xs:enumeration value="runLengthEncoding"/>
-                                        <xs:enumeration value="MRC"/>
-                                        <xs:enumeration value="Segger"/>
-                                    </xs:restriction>
-                                </xs:simpleType>
-                            </xs:element>
-                        </xs:sequence>
-                    </xs:complexType>
-                </xs:element>
+                <xs:element name="threeDVolume" type="threeDVolumeType" minOccurs="0"/>
                 <xs:element name="shapePrimitiveList" minOccurs="0">
                     <xs:complexType>
                         <xs:sequence>
@@ -218,7 +213,7 @@
                         </xs:sequence>
                     </xs:complexType>
                 </xs:element>
-                <xs:element name="contours" minOccurs="0">
+                <xs:element name="contourList" minOccurs="0">
                     <xs:complexType>
                         <xs:sequence>
                             <xs:element name="contour" type="contourType" minOccurs="1"
@@ -226,7 +221,14 @@
                         </xs:sequence>
                     </xs:complexType>
                 </xs:element>
-                <xs:element name="mesh" type="surfaceType" minOccurs="0"/>
+                <xs:element name="meshList" minOccurs="0">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="mesh" type="surfaceType" minOccurs="1"
+                                maxOccurs="unbounded"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
             </xs:sequence>
         </xs:sequence>
         <xs:attribute name="id" type="xs:positiveInteger" use="required"/>
@@ -261,12 +263,42 @@
         </xs:sequence>
     </xs:complexType>
 
+    <!-- threeDVolumeType -->
+    <xs:complexType name="threeDVolumeType">
+        <xs:sequence>
+            <xs:element name="file" type="xs:token"/>
+            <xs:element name="objectPath" type="xs:token" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation> This is particularly relevant if all the segments are stored
+                        in one file, like in HDF5. </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="contourLevel" type="xs:float" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation> Should be specified if map is non-binary </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="transformID" type="xs:nonNegativeInteger" minOccurs="0"/>
+            <xs:element name="format">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:enumeration value="runLengthEncoding"/>
+                        <xs:enumeration value="MRC"/>
+                        <xs:enumeration value="Segger"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="id" type="xs:nonNegativeInteger"/>
+    </xs:complexType>
+
     <!-- surfaceType -->
     <xs:complexType name="surfaceType">
         <xs:sequence>
             <xs:element name="vertices" type="vertexListType"/>
             <xs:element name="polygons" type="polygonListType"/>
         </xs:sequence>
+        <xs:attribute name="id" type="xs:nonNegativeInteger"/>
     </xs:complexType>
 
     <!-- vertexListType -->
@@ -313,7 +345,7 @@
             </xs:documentation>
         </xs:annotation>
         <xs:choice>
-            <xs:element name="name" type="xs:string"/>
+            <xs:element name="name" type="xs:token"/>
             <xs:element name="rgba" type="rgbaType" minOccurs="1"/>
         </xs:choice>
     </xs:complexType>
@@ -375,15 +407,16 @@
                 <xs:element name="dimensions">
                     <xs:complexType>
                         <xs:sequence>
-                            <xs:element name="x"/>
-                            <xs:element name="y"/>
-                            <xs:element name="z"/>
+                            <xs:element name="x" type="xs:float"/>
+                            <xs:element name="y" type="xs:float"/>
+                            <xs:element name="z" type="xs:float"/>
                         </xs:sequence>
                     </xs:complexType>
                 </xs:element>
                 <xs:element name="transformID" type="xs:nonNegativeInteger"/>
                 <xs:element name="attribute" type="xs:float"/>
             </xs:sequence>
+            <xs:attribute name="id" type="xs:nonNegativeInteger"/>
         </xs:complexType>
     </xs:element>
     <xs:element name="ellipsoid" substitutionGroup="shapePrimitive">
@@ -395,31 +428,46 @@
                 <xs:element name="axes">
                     <xs:complexType>
                         <xs:sequence>
-                            <xs:element name="x"/>
-                            <xs:element name="y"/>
-                            <xs:element name="z"/>
+                            <xs:element name="x" type="xs:float"/>
+                            <xs:element name="y" type="xs:float"/>
+                            <xs:element name="z" type="xs:float"/>
                         </xs:sequence>
                     </xs:complexType>
                 </xs:element>
                 <xs:element name="transformID" type="xs:nonNegativeInteger"/>
                 <xs:element name="attribute" type="xs:float"/>
             </xs:sequence>
+            <xs:attribute name="id" type="xs:nonNegativeInteger"/>
         </xs:complexType>
     </xs:element>
+    <xs:element name="newElement"/>
     <xs:element name="cylinder" substitutionGroup="shapePrimitive">
         <xs:complexType>
             <xs:sequence>
                 <xs:element name="dimensions">
                     <xs:complexType>
                         <xs:sequence>
-                            <xs:element name="height"/>
-                            <xs:element name="diameter"/>
+                            <xs:element name="height">
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:float">
+                                        <xs:minExclusive value="0"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:element>
+                            <xs:element name="diameter">
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:float">
+                                        <xs:minExclusive value="0"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:element>
                         </xs:sequence>
                     </xs:complexType>
                 </xs:element>
                 <xs:element name="transformID" type="xs:nonNegativeInteger"/>
                 <xs:element name="attribute" type="xs:float"/>
             </xs:sequence>
+            <xs:attribute name="id" type="xs:nonNegativeInteger"/>
         </xs:complexType>
     </xs:element>
     <xs:element name="cone" substitutionGroup="shapePrimitive">
@@ -428,25 +476,33 @@
                 <xs:element name="dimensions">
                     <xs:complexType>
                         <xs:sequence>
-                            <xs:element name="height"/>
-                            <xs:element name="bottomRadius"/>
+                            <xs:element name="height">
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:float">
+                                        <xs:minExclusive value="0"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:element>
+                            <xs:element name="bottomRadius">
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:float">
+                                        <xs:minExclusive value="0"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:element>
                         </xs:sequence>
                     </xs:complexType>
                 </xs:element>
                 <xs:element name="transformID" type="xs:nonNegativeInteger"/>
                 <xs:element name="attribute" type="xs:float"/>
             </xs:sequence>
+            <xs:attribute name="id" type="xs:nonNegativeInteger"/>
         </xs:complexType>
     </xs:element>
-
-
-    <!-- END REFERENCED ELEMENTS -->
-
-    <!-- BEGIN DEPRECATED ELEMENTS -->
-
-    <!-- subTomogramAverage (deprecated) -->
-    <xs:element name="subtomogramAverage">
-        <xs:annotation>
+    <!-- subTomogramAverage -->
+    <xs:element name="subtomogramAverage" type="threeDVolumeType" substitutionGroup="shapePrimitive"
+        >
+        <!--<xs:annotation>
             <xs:documentation>Deprecated</xs:documentation>
         </xs:annotation>
         <xs:complexType>
@@ -456,8 +512,13 @@
                 <xs:element name="transformID" type="xs:nonNegativeInteger"/>
                 <xs:element name="attribute" type="xs:float"/>
             </xs:sequence>
-        </xs:complexType>
-    </xs:element>
+        </xs:complexType>--> </xs:element>
+
+
+    <!-- END REFERENCED ELEMENTS -->
+
+    <!-- BEGIN DEPRECATED ELEMENTS -->
+
 
     <!-- END DEPRECATED ELEMENTS -->
 
