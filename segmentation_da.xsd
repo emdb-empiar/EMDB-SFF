@@ -30,6 +30,22 @@
                             'filePath' content with the 'file' content.</xs:documentation>
                     </xs:annotation>
                 </xs:element>
+                <xs:element name="primaryDescriptor">
+                    <xs:annotation>
+                        <xs:documentation>Mandatory field. Designates the element type within
+                            'segmentList' that contains the primary description of the segments.
+                            Constrained to be either 'threeDVolume', 'shapePrimitiveList',
+                            'contourList' or 'meshList'.</xs:documentation>
+                    </xs:annotation>
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:enumeration value="threeDVolume"/>
+                            <xs:enumeration value="shapePrimitiveList"/>
+                            <xs:enumeration value="contourList"/>
+                            <xs:enumeration value="meshList"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:element>
                 <xs:element name="segmentList">
                     <xs:complexType>
                         <xs:sequence>
@@ -39,7 +55,7 @@
                 </xs:element>
                 <xs:element name="details" type="xs:string" minOccurs="0"/>
             </xs:sequence>
-            <xs:attribute name="schemaVersion" type="xs:token" fixed="0.5.3">
+            <xs:attribute name="schemaVersion" type="xs:token" fixed="0.5.4">
                 <xs:annotation>
                     <xs:documentation>
                         <![CDATA[
@@ -89,9 +105,12 @@
                         8) Renamed 'contours' to 'contourList'
                         9) Created 'meshList' as a sequence of 'mesh'. Each 'mesh' has an 'id'
                         
-                        0.5.3, 2015/01/06, Paul Korir:
+                        0.5.3, 2016/01/06, Paul Korir:
                         1) Renamed 'transformationMatrixType' attribute from 'transformId' to 'id'
                         2) Created 'dimensionType' for all 'shapePrimitive' dimensions
+                        
+                        0.5.4, 2016/01/06, Paul Korir:
+                        1) Added element 'primaryDescriptor' of type restricted string to 'threeDVolume', 'shapePrimitiveList', 'contourList', 'meshList'
                         ]]>
                     </xs:documentation>
                 </xs:annotation>
@@ -486,8 +505,7 @@
         </xs:complexType>
     </xs:element>
     <!-- subTomogramAverage -->
-    <xs:element name="subtomogramAverage" type="threeDVolumeType" substitutionGroup="shapePrimitive"
-        >
+    <xs:element name="subtomogramAverage" type="threeDVolumeType" substitutionGroup="shapePrimitive">
         <!--<xs:annotation>
             <xs:documentation>Deprecated</xs:documentation>
         </xs:annotation>
@@ -498,7 +516,8 @@
                 <xs:element name="transformId" type="xs:nonNegativeInteger"/>
                 <xs:element name="attribute" type="xs:float"/>
             </xs:sequence>
-        </xs:complexType>--> </xs:element>
+        </xs:complexType>-->
+    </xs:element>
 
 
     <!-- END REFERENCED ELEMENTS -->
