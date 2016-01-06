@@ -39,7 +39,7 @@
                 </xs:element>
                 <xs:element name="details" type="xs:string" minOccurs="0"/>
             </xs:sequence>
-            <xs:attribute name="schemaVersion" type="xs:token" fixed="0.5.2">
+            <xs:attribute name="schemaVersion" type="xs:token" fixed="0.5.3">
                 <xs:annotation>
                     <xs:documentation>
                         <![CDATA[
@@ -61,12 +61,12 @@
                         2) Moved 'numberOfCopies' as 'numberOfInstances' to  be a sequence element within 'biologicalAnnotation'
                         3) Made 'color' a choice between 'name' (X11/HTML4 sRGB colour space names) and 'rgba'
                         4) Added a 'transform' element, which is a possibly empty list of transformation matrices referenced within the document by a non-negative identifier
-                        5) Renamed 'segmentLink' to 'voxelSegmentation' and added a 'transformID' element
+                        5) Renamed 'segmentLink' to 'voxelSegmentation' and added a 'transformId' element
                         6) Renamed 'color' element to 'colour' and 'colorType' to 'colourType'
                         7) Structured 'shapePrimitive' to a list of 'shapePrimitive' (substitution group for 'ellipsoid', 'cuboid', 'pyramid', 'cylinder')
                         8) Identified and labeled deprecated data types
                         9) Renamed shapePrimitive 'pyramid' to 'cone' and added tentative definition
-                        10) Removed 'origin' and 'viewVectorRotation' elements from shape primitives (cuboid, ellipsoid, cone, cylinder) and replaced with 'transformID' element
+                        10) Removed 'origin' and 'viewVectorRotation' elements from shape primitives (cuboid, ellipsoid, cone, cylinder) and replaced with 'transformId' element
                         11) Renamed references to 'triangles' to 'polygons' e.g. 'triangleListType' now 'polygonListType'
                         
                         0.5.1, 2015/12/23, Paul Korir:
@@ -88,6 +88,10 @@
                         7) Added 'id' attributes for 'shapePrimitive' and 'threeDVolumeType'
                         8) Renamed 'contours' to 'contourList'
                         9) Created 'meshList' as a sequence of 'mesh'. Each 'mesh' has an 'id'
+                        
+                        0.5.3, 2015/01/06, Paul Korir:
+                        1) Renamed 'transformationMatrixType' attribute from 'transformId' to 'id'
+                        2) Created 'dimensionType' for all 'shapePrimitive' dimensions
                         ]]>
                     </xs:documentation>
                 </xs:annotation>
@@ -121,7 +125,7 @@
             <xs:element name="cols" type="xs:positiveInteger"/>
             <xs:element name="data" type="xs:string"/>
         </xs:sequence>
-        <xs:attribute name="transformID" type="xs:nonNegativeInteger"/>
+        <xs:attribute name="id" type="xs:nonNegativeInteger"/>
     </xs:complexType>
 
     <!-- canonicalEulerAnglesType -->
@@ -278,7 +282,7 @@
                     <xs:documentation> Should be specified if map is non-binary </xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element name="transformID" type="xs:nonNegativeInteger" minOccurs="0"/>
+            <xs:element name="transformId" type="xs:nonNegativeInteger" minOccurs="0"/>
             <xs:element name="format">
                 <xs:simpleType>
                     <xs:restriction base="xs:string">
@@ -383,6 +387,13 @@
         <xs:attribute name="z" type="xs:float"/>
     </xs:complexType>
 
+    <!-- dimensionType -->
+    <xs:simpleType name="dimensionType">
+        <xs:restriction base="xs:float">
+            <xs:minExclusive value="0"/>
+        </xs:restriction>
+    </xs:simpleType>
+
     <!-- END REFERENCED TYPES -->
 
     <!-- BEGIN REFERENCED ELEMENTS (in order of reference) -->
@@ -407,13 +418,13 @@
                 <xs:element name="dimensions">
                     <xs:complexType>
                         <xs:sequence>
-                            <xs:element name="x" type="xs:float"/>
-                            <xs:element name="y" type="xs:float"/>
-                            <xs:element name="z" type="xs:float"/>
+                            <xs:element name="x" type="dimensionType"/>
+                            <xs:element name="y" type="dimensionType"/>
+                            <xs:element name="z" type="dimensionType"/>
                         </xs:sequence>
                     </xs:complexType>
                 </xs:element>
-                <xs:element name="transformID" type="xs:nonNegativeInteger"/>
+                <xs:element name="transformId" type="xs:nonNegativeInteger"/>
                 <xs:element name="attribute" type="xs:float"/>
             </xs:sequence>
             <xs:attribute name="id" type="xs:nonNegativeInteger"/>
@@ -428,43 +439,30 @@
                 <xs:element name="axes">
                     <xs:complexType>
                         <xs:sequence>
-                            <xs:element name="x" type="xs:float"/>
-                            <xs:element name="y" type="xs:float"/>
-                            <xs:element name="z" type="xs:float"/>
+                            <xs:element name="x" type="dimensionType"/>
+                            <xs:element name="y" type="dimensionType"/>
+                            <xs:element name="z" type="dimensionType"/>
                         </xs:sequence>
                     </xs:complexType>
                 </xs:element>
-                <xs:element name="transformID" type="xs:nonNegativeInteger"/>
+                <xs:element name="transformId" type="xs:nonNegativeInteger"/>
                 <xs:element name="attribute" type="xs:float"/>
             </xs:sequence>
             <xs:attribute name="id" type="xs:nonNegativeInteger"/>
         </xs:complexType>
     </xs:element>
-    <xs:element name="newElement"/>
     <xs:element name="cylinder" substitutionGroup="shapePrimitive">
         <xs:complexType>
             <xs:sequence>
                 <xs:element name="dimensions">
                     <xs:complexType>
                         <xs:sequence>
-                            <xs:element name="height">
-                                <xs:simpleType>
-                                    <xs:restriction base="xs:float">
-                                        <xs:minExclusive value="0"/>
-                                    </xs:restriction>
-                                </xs:simpleType>
-                            </xs:element>
-                            <xs:element name="diameter">
-                                <xs:simpleType>
-                                    <xs:restriction base="xs:float">
-                                        <xs:minExclusive value="0"/>
-                                    </xs:restriction>
-                                </xs:simpleType>
-                            </xs:element>
+                            <xs:element name="height" type="dimensionType"/>
+                            <xs:element name="diameter" type="dimensionType"/>
                         </xs:sequence>
                     </xs:complexType>
                 </xs:element>
-                <xs:element name="transformID" type="xs:nonNegativeInteger"/>
+                <xs:element name="transformId" type="xs:nonNegativeInteger"/>
                 <xs:element name="attribute" type="xs:float"/>
             </xs:sequence>
             <xs:attribute name="id" type="xs:nonNegativeInteger"/>
@@ -476,24 +474,12 @@
                 <xs:element name="dimensions">
                     <xs:complexType>
                         <xs:sequence>
-                            <xs:element name="height">
-                                <xs:simpleType>
-                                    <xs:restriction base="xs:float">
-                                        <xs:minExclusive value="0"/>
-                                    </xs:restriction>
-                                </xs:simpleType>
-                            </xs:element>
-                            <xs:element name="bottomRadius">
-                                <xs:simpleType>
-                                    <xs:restriction base="xs:float">
-                                        <xs:minExclusive value="0"/>
-                                    </xs:restriction>
-                                </xs:simpleType>
-                            </xs:element>
+                            <xs:element name="height" type="dimensionType"/>
+                            <xs:element name="bottomRadius" type="dimensionType"/>
                         </xs:sequence>
                     </xs:complexType>
                 </xs:element>
-                <xs:element name="transformID" type="xs:nonNegativeInteger"/>
+                <xs:element name="transformId" type="xs:nonNegativeInteger"/>
                 <xs:element name="attribute" type="xs:float"/>
             </xs:sequence>
             <xs:attribute name="id" type="xs:nonNegativeInteger"/>
@@ -509,7 +495,7 @@
             <xs:sequence>
                 <xs:element name="file" type="xs:token"/>
                 <xs:element name="objectPath" type="xs:token"/>
-                <xs:element name="transformID" type="xs:nonNegativeInteger"/>
+                <xs:element name="transformId" type="xs:nonNegativeInteger"/>
                 <xs:element name="attribute" type="xs:float"/>
             </xs:sequence>
         </xs:complexType>--> </xs:element>
