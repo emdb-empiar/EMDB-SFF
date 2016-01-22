@@ -114,6 +114,7 @@
                         
                         0.5.5, 2016/01/22, Paul Korir:
                         1) Changed 'vertices' and 'polygons' to 'vertexList' and 'polygonList', respectively.
+                        2) Added attribute 'designation' restricted to string 'vertex' (default) and 'normal' to 'vertex' element.
                         ]]>
                     </xs:documentation>
                 </xs:annotation>
@@ -351,6 +352,14 @@
             <xs:element name="z" type="xs:float"/>
         </xs:sequence>
         <xs:attribute name="vertexID" type="xs:positiveInteger"/>
+        <xs:attribute name="designation" default="vertex">
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="vertex"/>
+                    <xs:enumeration value="normal"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
     </xs:complexType>
 
     <!-- polygonType -->
