@@ -111,6 +111,9 @@
                         
                         0.5.4, 2016/01/06, Paul Korir:
                         1) Added element 'primaryDescriptor' of type restricted string to 'threeDVolume', 'shapePrimitiveList', 'contourList', 'meshList'
+                        
+                        0.5.5, 2016/01/22, Paul Korir:
+                        1) Changed 'vertices' and 'polygons' to 'vertexList' and 'polygonList', respectively.
                         ]]>
                     </xs:documentation>
                 </xs:annotation>
@@ -318,8 +321,8 @@
     <!-- surfaceType -->
     <xs:complexType name="surfaceType">
         <xs:sequence>
-            <xs:element name="vertices" type="vertexListType"/>
-            <xs:element name="polygons" type="polygonListType"/>
+            <xs:element name="vertexList" type="vertexListType"/>
+            <xs:element name="polygonList" type="polygonListType"/>
         </xs:sequence>
         <xs:attribute name="id" type="xs:nonNegativeInteger"/>
     </xs:complexType>
@@ -379,15 +382,15 @@
             <xs:element name="red" type="colourChannelType"/>
             <xs:element name="green" type="colourChannelType"/>
             <xs:element name="blue" type="colourChannelType"/>
-            <xs:element name="alpha" type="colourChannelType" minOccurs="0" default="1"/>
+            <xs:element name="alpha" type="colourChannelType" default="1.0" minOccurs="0"/>
         </xs:sequence>
     </xs:complexType>
 
     <!-- colourChannelType -->
     <xs:simpleType name="colourChannelType">
         <xs:restriction base="xs:float">
-            <xs:minInclusive value="0"/>
-            <xs:maxInclusive value="1"/>
+            <xs:minInclusive value="0.0"/>
+            <xs:maxInclusive value="1.0"/>
         </xs:restriction>
     </xs:simpleType>
 
