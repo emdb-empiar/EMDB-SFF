@@ -115,6 +115,9 @@
                         0.5.5, 2016/01/22, Paul Korir:
                         1) Changed 'vertices' and 'polygons' to 'vertexList' and 'polygonList', respectively.
                         2) Added attribute 'designation' restricted to string 'vertex' (default) and 'normal' to 'vertex' element.
+                        
+                        0.5.6, 2016/01/25, Paul Korir:
+                        1) Changed attribute 'polygonID' from 'positiveInteger' to 'nonNegativeInteger'
                         ]]>
                     </xs:documentation>
                 </xs:annotation>
@@ -368,7 +371,7 @@
             <xs:element name="vertex" type="xs:positiveInteger" minOccurs="3" maxOccurs="unbounded"
             />
         </xs:sequence>
-        <xs:attribute name="polygonID" type="xs:positiveInteger"/>
+        <xs:attribute name="polygonID" type="xs:nonNegativeInteger"/>
     </xs:complexType>
 
     <!-- colorType -->
