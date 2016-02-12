@@ -374,7 +374,7 @@
     <!-- polygonType -->
     <xs:complexType name="polygonType">
         <xs:sequence>
-            <xs:element name="v" type="xs:positiveInteger" minOccurs="3" maxOccurs="unbounded"/>
+            <xs:element name="v" type="xs:nonNegativeInteger" minOccurs="3" maxOccurs="unbounded"/>
         </xs:sequence>
         <xs:attribute name="PID" type="xs:nonNegativeInteger"/>
     </xs:complexType>
