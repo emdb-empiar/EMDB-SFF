@@ -10,6 +10,7 @@
         </xs:annotation>
         <xs:complexType>
             <xs:sequence>
+                <xs:element name="version" type="xs:string"/>
                 <xs:element name="name" type="xs:string"/>
                 <xs:element name="software" type="softwareType" minOccurs="0"/>
                 <xs:element name="transformList" minOccurs="0">
@@ -55,7 +56,7 @@
                 </xs:element>
                 <xs:element name="details" type="xs:string" minOccurs="0"/>
             </xs:sequence>
-            <xs:attribute name="schemaVersion" type="xs:token" fixed="0.5.4">
+            <xs:attribute name="schemaVersion" type="xs:token" default="0.5.7">
                 <xs:annotation>
                     <xs:documentation>
                         <![CDATA[
@@ -118,6 +119,11 @@
                         
                         0.5.6, 2016/01/25, Paul Korir:
                         1) Changed attribute 'polygonID' from 'positiveInteger' to 'nonNegativeInteger'
+                        
+                        0.5.7, 2016/01/26, Paul Korir:
+                        1) Change element names to save disk space: 'vertex' to 'v', 'vertexID' to 'vID', 'point' to 'p', 'polygon' to 'P', 'polygonID' to 'PID'
+                        2) Added 'version' element as first element in root element to specify the schema version
+                        3) Changed 'vertexType' to have ID of type 'xs:nonNegativeInteger' (from 'xs:positiveInteger')
                         ]]>
                     </xs:documentation>
                 </xs:annotation>
@@ -334,7 +340,7 @@
     <!-- vertexListType -->
     <xs:complexType name="vertexListType">
         <xs:sequence>
-            <xs:element name="vertex" type="vertexType" minOccurs="3" maxOccurs="unbounded"/>
+            <xs:element name="v" type="vertexType" minOccurs="3" maxOccurs="unbounded"/>
         </xs:sequence>
         <xs:attribute name="numVertices" type="xs:positiveInteger"/>
     </xs:complexType>
@@ -342,7 +348,7 @@
     <!-- polygonListType -->
     <xs:complexType name="polygonListType">
         <xs:sequence maxOccurs="unbounded" minOccurs="1">
-            <xs:element name="polygon" type="polygonType"/>
+            <xs:element name="P" type="polygonType"/>
         </xs:sequence>
         <xs:attribute name="numPolygons" type="xs:positiveInteger"/>
     </xs:complexType>
@@ -354,7 +360,7 @@
             <xs:element name="y" type="xs:float"/>
             <xs:element name="z" type="xs:float"/>
         </xs:sequence>
-        <xs:attribute name="vertexID" type="xs:positiveInteger"/>
+        <xs:attribute name="vID" type="xs:nonNegativeInteger"/>
         <xs:attribute name="designation" default="vertex">
             <xs:simpleType>
                 <xs:restriction base="xs:string">
@@ -368,10 +374,9 @@
     <!-- polygonType -->
     <xs:complexType name="polygonType">
         <xs:sequence>
-            <xs:element name="vertex" type="xs:positiveInteger" minOccurs="3" maxOccurs="unbounded"
-            />
+            <xs:element name="v" type="xs:positiveInteger" minOccurs="3" maxOccurs="unbounded"/>
         </xs:sequence>
-        <xs:attribute name="polygonID" type="xs:nonNegativeInteger"/>
+        <xs:attribute name="PID" type="xs:nonNegativeInteger"/>
     </xs:complexType>
 
     <!-- colorType -->
@@ -409,7 +414,7 @@
     <!-- contourType -->
     <xs:complexType name="contourType">
         <xs:sequence>
-            <xs:element name="point" type="floatVectorType" maxOccurs="unbounded"/>
+            <xs:element name="p" type="floatVectorType" maxOccurs="unbounded"/>
         </xs:sequence>
         <xs:attribute name="id" type="xs:nonNegativeInteger"/>
     </xs:complexType>
