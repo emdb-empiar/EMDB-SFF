@@ -10,7 +10,6 @@
         </xs:annotation>
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="version" type="xs:string"/>
                 <xs:element name="name" type="xs:string"/>
                 <xs:element name="software" type="softwareType" minOccurs="0"/>
                 <xs:element name="transformList" minOccurs="0">
@@ -60,7 +59,7 @@
                 <xs:annotation>
                     <xs:documentation>
                         <![CDATA[
-                        Version History 
+                        Version History
                         0.2, 2015/3/15, Ardan Patwardhan: 
                         1) Added support for color 
                         2) Added support for triangle representation of segment - this is in support of Amira segmentations 
@@ -122,8 +121,7 @@
                         
                         0.5.7, 2016/01/26, Paul Korir:
                         1) Change element names to save disk space: 'vertex' to 'v', 'vertexID' to 'vID', 'point' to 'p', 'polygon' to 'P', 'polygonID' to 'PID'
-                        2) Added 'version' element as first element in root element to specify the schema version
-                        3) Changed 'vertexType' to have ID of type 'xs:nonNegativeInteger' (from 'xs:positiveInteger')
+                        2) Changed 'vertexType' to have ID of type 'xs:nonNegativeInteger' (from 'xs:positiveInteger')
                         ]]>
                     </xs:documentation>
                 </xs:annotation>
