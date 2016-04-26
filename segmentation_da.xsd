@@ -10,6 +10,7 @@
         </xs:annotation>
         <xs:complexType>
             <xs:sequence>
+                <xs:element name="version" type="xs:string"/>
                 <xs:element name="name" type="xs:string"/>
                 <xs:element name="software" type="softwareType" minOccurs="0"/>
                 <xs:element name="transformList" minOccurs="0">
@@ -55,7 +56,7 @@
                 </xs:element>
                 <xs:element name="details" type="xs:string" minOccurs="0"/>
             </xs:sequence>
-            <xs:attribute name="schemaVersion" type="xs:token" default="0.5.7">
+            <xs:attribute name="schemaVersion" type="xs:token" default="0.5.8">
                 <xs:annotation>
                     <xs:documentation>
                         <![CDATA[
@@ -122,6 +123,9 @@
                         0.5.7, 2016/01/26, Paul Korir:
                         1) Change element names to save disk space: 'vertex' to 'v', 'vertexID' to 'vID', 'point' to 'p', 'polygon' to 'P', 'polygonID' to 'PID'
                         2) Changed 'vertexType' to have ID of type 'xs:nonNegativeInteger' (from 'xs:positiveInteger')
+                        
+                        0.5.8, 2016/04/26, Paul Korir:
+                        1) Added 'version' element at the root.
                         ]]>
                     </xs:documentation>
                 </xs:annotation>
