@@ -431,7 +431,7 @@
     <!-- dimensionType -->
     <xs:simpleType name="dimensionType">
         <xs:restriction base="xs:float">
-            <xs:minExclusive value="0"/>
+            <xs:minInclusive value="0"/>
         </xs:restriction>
     </xs:simpleType>
 
