@@ -125,6 +125,9 @@
                         
                         0.5.8, 2016/04/26, Paul Korir:
                         1) Added 'version' element at the root.
+                        
+                        0.5.8, 2016/08/08, Paul Korir:
+                        2) Made 'shapePrimitive' element 'attribute (not present in 'subtomogramAverage' optional (minOccurs=0)
                         ]]>
                     </xs:documentation>
                 </xs:annotation>
@@ -465,7 +468,7 @@
                     </xs:complexType>
                 </xs:element>
                 <xs:element name="transformId" type="xs:nonNegativeInteger"/>
-                <xs:element name="attribute" type="xs:float"/>
+                <xs:element name="attribute" type="xs:float" minOccurs="0"/>
             </xs:sequence>
             <xs:attribute name="id" type="xs:nonNegativeInteger"/>
         </xs:complexType>
@@ -486,7 +489,7 @@
                     </xs:complexType>
                 </xs:element>
                 <xs:element name="transformId" type="xs:nonNegativeInteger"/>
-                <xs:element name="attribute" type="xs:float"/>
+                <xs:element name="attribute" type="xs:float" minOccurs="0"/>
             </xs:sequence>
             <xs:attribute name="id" type="xs:nonNegativeInteger"/>
         </xs:complexType>
@@ -503,7 +506,7 @@
                     </xs:complexType>
                 </xs:element>
                 <xs:element name="transformId" type="xs:nonNegativeInteger"/>
-                <xs:element name="attribute" type="xs:float"/>
+                <xs:element name="attribute" type="xs:float" minOccurs="0"/>
             </xs:sequence>
             <xs:attribute name="id" type="xs:nonNegativeInteger"/>
         </xs:complexType>
@@ -520,13 +523,14 @@
                     </xs:complexType>
                 </xs:element>
                 <xs:element name="transformId" type="xs:nonNegativeInteger"/>
-                <xs:element name="attribute" type="xs:float"/>
+                <xs:element name="attribute" type="xs:float" minOccurs="0"/>
             </xs:sequence>
             <xs:attribute name="id" type="xs:nonNegativeInteger"/>
         </xs:complexType>
     </xs:element>
     <!-- subTomogramAverage -->
-    <xs:element name="subtomogramAverage" type="threeDVolumeType" substitutionGroup="shapePrimitive">
+    <xs:element name="subtomogramAverage" type="threeDVolumeType" substitutionGroup="shapePrimitive"
+        >
         <!--<xs:annotation>
             <xs:documentation>Deprecated</xs:documentation>
         </xs:annotation>
@@ -537,8 +541,7 @@
                 <xs:element name="transformId" type="xs:nonNegativeInteger"/>
                 <xs:element name="attribute" type="xs:float"/>
             </xs:sequence>
-        </xs:complexType>-->
-    </xs:element>
+        </xs:complexType>--> </xs:element>
 
 
     <!-- END REFERENCED ELEMENTS -->
