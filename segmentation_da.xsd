@@ -128,6 +128,9 @@
                         
                         0.5.8, 2016/08/08, Paul Korir:
                         2) Made 'shapePrimitive' element 'attribute (not present in 'subtomogramAverage' optional (minOccurs=0)
+                        
+                        0.5.8, 2016/08/17, Paul Korir:
+                        3) Added a 'transformId' element to 'contourList' and to 'mesh'.
                         ]]>
                     </xs:documentation>
                 </xs:annotation>
@@ -258,6 +261,7 @@
                         <xs:sequence>
                             <xs:element name="contour" type="contourType" minOccurs="1"
                                 maxOccurs="unbounded"/>
+                            <xs:element name="transformId" type="xs:nonNegativeInteger"/>
                         </xs:sequence>
                     </xs:complexType>
                 </xs:element>
@@ -337,6 +341,7 @@
         <xs:sequence>
             <xs:element name="vertexList" type="vertexListType"/>
             <xs:element name="polygonList" type="polygonListType"/>
+            <xs:element name="transformId" type="xs:nonNegativeInteger"/>
         </xs:sequence>
         <xs:attribute name="id" type="xs:nonNegativeInteger"/>
     </xs:complexType>
