@@ -261,7 +261,7 @@
                         <xs:sequence>
                             <xs:element name="contour" type="contourType" minOccurs="1"
                                 maxOccurs="unbounded"/>
-                            <xs:element name="transformId" type="xs:nonNegativeInteger"/>
+                            <xs:element name="transformId" type="xs:nonNegativeInteger" minOccurs="0"/>
                         </xs:sequence>
                     </xs:complexType>
                 </xs:element>
@@ -341,7 +341,7 @@
         <xs:sequence>
             <xs:element name="vertexList" type="vertexListType"/>
             <xs:element name="polygonList" type="polygonListType"/>
-            <xs:element name="transformId" type="xs:nonNegativeInteger"/>
+            <xs:element name="transformId" type="xs:nonNegativeInteger" minOccurs="0"/>
         </xs:sequence>
         <xs:attribute name="id" type="xs:nonNegativeInteger"/>
     </xs:complexType>
