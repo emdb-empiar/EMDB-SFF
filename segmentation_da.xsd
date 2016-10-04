@@ -131,6 +131,9 @@
                         
                         0.5.8, 2016/08/17, Paul Korir:
                         3) Added a 'transformId' element to 'contourList' and to 'mesh'.
+                        
+                        0.5.8, 2016/10/04, Paul Korir:
+                        4) Simplified shape primitives by eliminating internal layering e.g. cone/dimensions/height to cone/height
                         ]]>
                     </xs:documentation>
                 </xs:annotation>
@@ -463,7 +466,10 @@
         </xs:annotation>
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="dimensions">
+                <xs:element name="x" type="dimensionType"/>
+                <xs:element name="y" type="dimensionType"/>
+                <xs:element name="z" type="dimensionType"/>
+                <!--<xs:element name="dimensions">
                     <xs:complexType>
                         <xs:sequence>
                             <xs:element name="x" type="dimensionType"/>
@@ -471,7 +477,7 @@
                             <xs:element name="z" type="dimensionType"/>
                         </xs:sequence>
                     </xs:complexType>
-                </xs:element>
+                </xs:element>-->
                 <xs:element name="transformId" type="xs:nonNegativeInteger"/>
                 <xs:element name="attribute" type="xs:float" minOccurs="0"/>
             </xs:sequence>
@@ -484,7 +490,10 @@
         </xs:annotation>
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="axes">
+                <xs:element name="x" type="dimensionType"/>
+                <xs:element name="y" type="dimensionType"/>
+                <xs:element name="z" type="dimensionType"/>
+                <!--<xs:element name="axes">
                     <xs:complexType>
                         <xs:sequence>
                             <xs:element name="x" type="dimensionType"/>
@@ -492,7 +501,7 @@
                             <xs:element name="z" type="dimensionType"/>
                         </xs:sequence>
                     </xs:complexType>
-                </xs:element>
+                </xs:element>-->
                 <xs:element name="transformId" type="xs:nonNegativeInteger"/>
                 <xs:element name="attribute" type="xs:float" minOccurs="0"/>
             </xs:sequence>
@@ -502,14 +511,16 @@
     <xs:element name="cylinder" substitutionGroup="shapePrimitive">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="dimensions">
+                <xs:element name="height" type="dimensionType"/>
+                <xs:element name="diameter" type="dimensionType"/>
+                <!--<xs:element name="dimensions">
                     <xs:complexType>
                         <xs:sequence>
                             <xs:element name="height" type="dimensionType"/>
                             <xs:element name="diameter" type="dimensionType"/>
                         </xs:sequence>
                     </xs:complexType>
-                </xs:element>
+                </xs:element>-->
                 <xs:element name="transformId" type="xs:nonNegativeInteger"/>
                 <xs:element name="attribute" type="xs:float" minOccurs="0"/>
             </xs:sequence>
@@ -519,14 +530,16 @@
     <xs:element name="cone" substitutionGroup="shapePrimitive">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="dimensions">
+                <xs:element name="height" type="dimensionType"/>
+                <xs:element name="bottomRadius" type="dimensionType"/>
+<!--                <xs:element name="dimensions">
                     <xs:complexType>
                         <xs:sequence>
                             <xs:element name="height" type="dimensionType"/>
                             <xs:element name="bottomRadius" type="dimensionType"/>
                         </xs:sequence>
-                    </xs:complexType>
-                </xs:element>
+                    </xs:complexType>-->
+                <!--</xs:element>-->
                 <xs:element name="transformId" type="xs:nonNegativeInteger"/>
                 <xs:element name="attribute" type="xs:float" minOccurs="0"/>
             </xs:sequence>
