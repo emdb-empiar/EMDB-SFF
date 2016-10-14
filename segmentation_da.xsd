@@ -134,6 +134,9 @@
                         
                         0.5.8, 2016/10/04, Paul Korir:
                         4) Simplified shape primitives by eliminating internal layering e.g. cone/dimensions/height to cone/height
+                        
+                        0.5.8, 2016/10/14, Paul Korir:
+                        5) (Finally) renamed 'surfaceType' to 'meshType' for consistency.
                         ]]>
                     </xs:documentation>
                 </xs:annotation>
@@ -271,7 +274,7 @@
                 <xs:element name="meshList" minOccurs="0">
                     <xs:complexType>
                         <xs:sequence>
-                            <xs:element name="mesh" type="surfaceType" minOccurs="1"
+                            <xs:element name="mesh" type="meshType" minOccurs="1"
                                 maxOccurs="unbounded"/>
                         </xs:sequence>
                     </xs:complexType>
@@ -339,8 +342,8 @@
         <xs:attribute name="id" type="xs:nonNegativeInteger"/>
     </xs:complexType>
 
-    <!-- surfaceType -->
-    <xs:complexType name="surfaceType">
+    <!-- meshType -->
+    <xs:complexType name="meshType">
         <xs:sequence>
             <xs:element name="vertexList" type="vertexListType"/>
             <xs:element name="polygonList" type="polygonListType"/>
