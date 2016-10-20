@@ -137,6 +137,9 @@
                         
                         0.5.8, 2016/10/14, Paul Korir:
                         5) (Finally) renamed 'surfaceType' to 'meshType' for consistency.
+                        
+                        0.5.8, 2016/10/20, Paul Korir:
+                        6) 'macromolecule' and 'complex' changed from 'positiveInteger' to 'string'
                         ]]>
                     </xs:documentation>
                 </xs:annotation>
@@ -299,14 +302,14 @@
             <xs:element name="macromolecule" minOccurs="0">
                 <xs:complexType>
                     <xs:sequence>
-                        <xs:element name="id" type="xs:positiveInteger" maxOccurs="unbounded"/>
+                        <xs:element name="id" type="xs:string" maxOccurs="unbounded"/>
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
             <xs:element name="complex" minOccurs="0">
                 <xs:complexType>
                     <xs:sequence>
-                        <xs:element name="id" type="xs:positiveInteger" maxOccurs="unbounded"/>
+                        <xs:element name="id" type="xs:string" maxOccurs="unbounded"/>
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
