@@ -1,0 +1,1330 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>Schema documentation for segmentation_da.xsd</title>
+      <link rel="stylesheet" href="docHtml.css" type="text/css" /><script type="text/javascript">
+         <!--
+        var propertiesBoxes= new Array('properties_segmentation_da.xsd', 
+				'properties_segmentation', 
+				'properties_segmentation_version', 
+				'properties_segmentation_name', 
+				'properties_segmentation_software', 
+				'properties_softwareType_name', 
+				'properties_softwareType_version', 
+				'properties_softwareType_processingDetails', 
+				'properties_segmentation_transformList', 
+				'properties_segmentation_filePath', 
+				'properties_segmentation_primaryDescriptor', 
+				'properties_segmentation_segmentList', 
+				'properties_segmentation_segmentation_segmentList_segment', 
+				'properties_segmentType_biologicalAnnotation', 
+				'properties_segmentType_segmentType_biologicalAnnotation_description', 
+				'properties_segmentType_segmentType_biologicalAnnotation_externalReferences', 
+				'properties_segmentType_segmentType_biologicalAnnotation_numberOfInstances', 
+				'properties_segmentType_complexesAndMacromolecules', 
+				'properties_macromoleculesAndComplexesType_macromolecule', 
+				'properties_macromoleculesAndComplexesType_macromoleculesAndComplexesType_macromolecule_id', 
+				'properties_macromoleculesAndComplexesType_complex', 
+				'properties_macromoleculesAndComplexesType_macromoleculesAndComplexesType_complex_id', 
+				'properties_segmentType_colour', 
+				'properties_colourType_name', 
+				'properties_colourType_rgba', 
+				'properties_rgbaType_red', 
+				'properties_rgbaType_green', 
+				'properties_rgbaType_blue', 
+				'properties_rgbaType_alpha', 
+				'properties_segmentType_threeDVolume', 
+				'properties_threeDVolumeType_file', 
+				'properties_threeDVolumeType_objectPath', 
+				'properties_threeDVolumeType_contourLevel', 
+				'properties_threeDVolumeType_transformId', 
+				'properties_threeDVolumeType_format', 
+				'properties_segmentType_shapePrimitiveList', 
+				'properties_segmentType_contourList', 
+				'properties_segmentType_segmentType_contourList_contour', 
+				'properties_contourType_p', 
+				'properties_segmentType_segmentType_contourList_transformId', 
+				'properties_segmentType_meshList', 
+				'properties_segmentType_segmentType_meshList_mesh', 
+				'properties_meshType_vertexList', 
+				'properties_vertexListType_v', 
+				'properties_vertexType_x', 
+				'properties_vertexType_y', 
+				'properties_vertexType_z', 
+				'properties_meshType_polygonList', 
+				'properties_polygonListType_P', 
+				'properties_polygonType_v', 
+				'properties_meshType_transformId', 
+				'properties_segmentation_details', 
+				'properties_transformationMatrixType_rows', 
+				'properties_transformationMatrixType_cols', 
+				'properties_transformationMatrixType_data', 
+				'properties_canonicalEulerAnglesType_phi', 
+				'properties_canonicalEulerAnglesType_theta', 
+				'properties_canonicalEulerAnglesType_psi', 
+				'properties_viewVectorRotationType_x', 
+				'properties_viewVectorRotationType_y', 
+				'properties_viewVectorRotationType_z', 
+				'properties_viewVectorRotationType_r', 
+				'properties_transformationMatrix', 
+				'properties_canonicalEulerAngles', 
+				'properties_viewVectorRotation', 
+				'properties_cuboid', 
+				'properties_cuboid_x', 
+				'properties_cuboid_y', 
+				'properties_cuboid_z', 
+				'properties_cuboid_transformId', 
+				'properties_cuboid_attribute', 
+				'properties_ellipsoid', 
+				'properties_ellipsoid_x', 
+				'properties_ellipsoid_y', 
+				'properties_ellipsoid_z', 
+				'properties_ellipsoid_transformId', 
+				'properties_ellipsoid_attribute', 
+				'properties_cylinder', 
+				'properties_cylinder_height', 
+				'properties_cylinder_diameter', 
+				'properties_cylinder_transformId', 
+				'properties_cylinder_attribute', 
+				'properties_cone', 
+				'properties_cone_height', 
+				'properties_cone_bottomRadius', 
+				'properties_cone_transformId', 
+				'properties_cone_attribute', 
+				'properties_subtomogramAverage', 
+				'properties_meshPointType_point', 
+				'properties_hsvType_hue', 
+				'properties_hsvType_saturation', 
+				'properties_hsvType_value', 
+				'properties_runLengthEncodingType_string', 
+				'properties_runLengthEncodingType_offset', 
+				'properties_integerVectorType_x', 
+				'properties_integerVectorType_y', 
+				'properties_integerVectorType_z', 
+				'properties_runLengthEncodingType_boxSize', 
+				'properties_positiveIntegerVectorType_x', 
+				'properties_positiveIntegerVectorType_y', 
+				'properties_segmentType_segmentType_biologicalAnnotation_segmentType_segmentType_biologicalAnnotation_externalReferences_type', 
+				'properties_segmentType_segmentType_biologicalAnnotation_segmentType_segmentType_biologicalAnnotation_externalReferences_otherType', 
+				'properties_threeDVolumeType_id', 
+				'properties_floatVectorType_x', 
+				'properties_floatVectorType_y', 
+				'properties_floatVectorType_z', 
+				'properties_contourType_id', 
+				'properties_vertexType_vID', 
+				'properties_vertexType_designation', 
+				'properties_vertexListType_numVertices', 
+				'properties_polygonType_PID', 
+				'properties_polygonListType_numPolygons', 
+				'properties_meshType_id', 
+				'properties_segmentType_id', 
+				'properties_segmentType_parentID', 
+				'properties_segmentation_schemaVersion', 
+				'properties_transformationMatrixType_id', 
+				'properties_canonicalEulerAnglesType_id', 
+				'properties_viewVectorRotationType_id', 
+				'properties_cuboid_id', 
+				'properties_ellipsoid_id', 
+				'properties_cylinder_id', 
+				'properties_cone_id', 
+				'properties_meshPointType_index', 
+				'properties_meshPointType_designation');
+var facetsBoxes= new Array('facets_segmentation_primaryDescriptor', 
+				'facets_rgbaType_red', 
+				'facets_rgbaType_green', 
+				'facets_rgbaType_blue', 
+				'facets_rgbaType_alpha', 
+				'facets_threeDVolumeType_format', 
+				'facets_canonicalEulerAnglesType_phi', 
+				'facets_canonicalEulerAnglesType_theta', 
+				'facets_canonicalEulerAnglesType_psi', 
+				'facets_viewVectorRotationType_r', 
+				'facets_cuboid_x', 
+				'facets_cuboid_y', 
+				'facets_cuboid_z', 
+				'facets_ellipsoid_x', 
+				'facets_ellipsoid_y', 
+				'facets_ellipsoid_z', 
+				'facets_cylinder_height', 
+				'facets_cylinder_diameter', 
+				'facets_cone_height', 
+				'facets_cone_bottomRadius', 
+				'facets_runLengthEncodingType_string', 
+				'facets_colourChannelType', 
+				'facets_angleDegreeType', 
+				'facets_dimensionType', 
+				'facets_segmentType_segmentType_biologicalAnnotation_segmentType_segmentType_biologicalAnnotation_externalReferences_type', 
+				'facets_vertexType_designation', 
+				'facets_meshPointType_designation');
+var usedByBoxes= new Array('usedBy_transform', 
+				'usedBy_shapePrimitive', 
+				'usedBy_softwareType', 
+				'usedBy_segmentType', 
+				'usedBy_macromoleculesAndComplexesType', 
+				'usedBy_colourType', 
+				'usedBy_rgbaType', 
+				'usedBy_colourChannelType', 
+				'usedBy_threeDVolumeType', 
+				'usedBy_contourType', 
+				'usedBy_floatVectorType', 
+				'usedBy_meshType', 
+				'usedBy_vertexListType', 
+				'usedBy_vertexType', 
+				'usedBy_polygonListType', 
+				'usedBy_polygonType', 
+				'usedBy_transformationMatrixType', 
+				'usedBy_canonicalEulerAnglesType', 
+				'usedBy_angleDegreeType', 
+				'usedBy_viewVectorRotationType', 
+				'usedBy_dimensionType', 
+				'usedBy_integerVectorType', 
+				'usedBy_positiveIntegerVectorType', 
+				'usedBy_segmentType_segmentType_biologicalAnnotation_segmentType_segmentType_biologicalAnnotation_externalReferences_type', 
+				'usedBy_segmentType_segmentType_biologicalAnnotation_segmentType_segmentType_biologicalAnnotation_externalReferences_otherType', 
+				'usedBy_threeDVolumeType_id', 
+				'usedBy_floatVectorType_x', 
+				'usedBy_floatVectorType_y', 
+				'usedBy_floatVectorType_z', 
+				'usedBy_contourType_id', 
+				'usedBy_vertexType_vID', 
+				'usedBy_vertexType_designation', 
+				'usedBy_vertexListType_numVertices', 
+				'usedBy_polygonType_PID', 
+				'usedBy_polygonListType_numPolygons', 
+				'usedBy_meshType_id', 
+				'usedBy_segmentType_id', 
+				'usedBy_segmentType_parentID', 
+				'usedBy_segmentation_schemaVersion', 
+				'usedBy_transformationMatrixType_id', 
+				'usedBy_canonicalEulerAnglesType_id', 
+				'usedBy_viewVectorRotationType_id', 
+				'usedBy_cuboid_id', 
+				'usedBy_ellipsoid_id', 
+				'usedBy_cylinder_id', 
+				'usedBy_cone_id', 
+				'usedBy_meshPointType_index', 
+				'usedBy_meshPointType_designation');
+var sourceBoxes= new Array('source_segmentation', 
+				'source_segmentation_version', 
+				'source_segmentation_name', 
+				'source_segmentation_software', 
+				'source_softwareType_name', 
+				'source_softwareType_version', 
+				'source_softwareType_processingDetails', 
+				'source_segmentation_transformList', 
+				'source_transform', 
+				'source_segmentation_filePath', 
+				'source_segmentation_primaryDescriptor', 
+				'source_segmentation_segmentList', 
+				'source_segmentation_segmentation_segmentList_segment', 
+				'source_segmentType_biologicalAnnotation', 
+				'source_segmentType_segmentType_biologicalAnnotation_description', 
+				'source_segmentType_segmentType_biologicalAnnotation_externalReferences', 
+				'source_segmentType_segmentType_biologicalAnnotation_numberOfInstances', 
+				'source_segmentType_complexesAndMacromolecules', 
+				'source_macromoleculesAndComplexesType_macromolecule', 
+				'source_macromoleculesAndComplexesType_macromoleculesAndComplexesType_macromolecule_id', 
+				'source_macromoleculesAndComplexesType_complex', 
+				'source_macromoleculesAndComplexesType_macromoleculesAndComplexesType_complex_id', 
+				'source_segmentType_colour', 
+				'source_colourType_name', 
+				'source_colourType_rgba', 
+				'source_rgbaType_red', 
+				'source_rgbaType_green', 
+				'source_rgbaType_blue', 
+				'source_rgbaType_alpha', 
+				'source_segmentType_threeDVolume', 
+				'source_threeDVolumeType_file', 
+				'source_threeDVolumeType_objectPath', 
+				'source_threeDVolumeType_contourLevel', 
+				'source_threeDVolumeType_transformId', 
+				'source_threeDVolumeType_format', 
+				'source_segmentType_shapePrimitiveList', 
+				'source_shapePrimitive', 
+				'source_segmentType_contourList', 
+				'source_segmentType_segmentType_contourList_contour', 
+				'source_contourType_p', 
+				'source_segmentType_segmentType_contourList_transformId', 
+				'source_segmentType_meshList', 
+				'source_segmentType_segmentType_meshList_mesh', 
+				'source_meshType_vertexList', 
+				'source_vertexListType_v', 
+				'source_vertexType_x', 
+				'source_vertexType_y', 
+				'source_vertexType_z', 
+				'source_meshType_polygonList', 
+				'source_polygonListType_P', 
+				'source_polygonType_v', 
+				'source_meshType_transformId', 
+				'source_segmentation_details', 
+				'source_transformationMatrixType_rows', 
+				'source_transformationMatrixType_cols', 
+				'source_transformationMatrixType_data', 
+				'source_canonicalEulerAnglesType_phi', 
+				'source_canonicalEulerAnglesType_theta', 
+				'source_canonicalEulerAnglesType_psi', 
+				'source_viewVectorRotationType_x', 
+				'source_viewVectorRotationType_y', 
+				'source_viewVectorRotationType_z', 
+				'source_viewVectorRotationType_r', 
+				'source_transformationMatrix', 
+				'source_canonicalEulerAngles', 
+				'source_viewVectorRotation', 
+				'source_cuboid', 
+				'source_cuboid_x', 
+				'source_cuboid_y', 
+				'source_cuboid_z', 
+				'source_cuboid_transformId', 
+				'source_cuboid_attribute', 
+				'source_ellipsoid', 
+				'source_ellipsoid_x', 
+				'source_ellipsoid_y', 
+				'source_ellipsoid_z', 
+				'source_ellipsoid_transformId', 
+				'source_ellipsoid_attribute', 
+				'source_cylinder', 
+				'source_cylinder_height', 
+				'source_cylinder_diameter', 
+				'source_cylinder_transformId', 
+				'source_cylinder_attribute', 
+				'source_cone', 
+				'source_cone_height', 
+				'source_cone_bottomRadius', 
+				'source_cone_transformId', 
+				'source_cone_attribute', 
+				'source_subtomogramAverage', 
+				'source_meshPointType_point', 
+				'source_hsvType_hue', 
+				'source_hsvType_saturation', 
+				'source_hsvType_value', 
+				'source_runLengthEncodingType_string', 
+				'source_runLengthEncodingType_offset', 
+				'source_integerVectorType_x', 
+				'source_integerVectorType_y', 
+				'source_integerVectorType_z', 
+				'source_runLengthEncodingType_boxSize', 
+				'source_positiveIntegerVectorType_x', 
+				'source_positiveIntegerVectorType_y', 
+				'source_softwareType', 
+				'source_segmentType', 
+				'source_macromoleculesAndComplexesType', 
+				'source_colourType', 
+				'source_rgbaType', 
+				'source_colourChannelType', 
+				'source_threeDVolumeType', 
+				'source_contourType', 
+				'source_floatVectorType', 
+				'source_meshType', 
+				'source_vertexListType', 
+				'source_vertexType', 
+				'source_polygonListType', 
+				'source_polygonType', 
+				'source_transformationMatrixType', 
+				'source_canonicalEulerAnglesType', 
+				'source_angleDegreeType', 
+				'source_viewVectorRotationType', 
+				'source_dimensionType', 
+				'source_meshPointType', 
+				'source_hsvType', 
+				'source_runLengthEncodingType', 
+				'source_integerVectorType', 
+				'source_positiveIntegerVectorType', 
+				'source_segmentType_segmentType_biologicalAnnotation_segmentType_segmentType_biologicalAnnotation_externalReferences_type', 
+				'source_segmentType_segmentType_biologicalAnnotation_segmentType_segmentType_biologicalAnnotation_externalReferences_otherType', 
+				'source_threeDVolumeType_id', 
+				'source_floatVectorType_x', 
+				'source_floatVectorType_y', 
+				'source_floatVectorType_z', 
+				'source_contourType_id', 
+				'source_vertexType_vID', 
+				'source_vertexType_designation', 
+				'source_vertexListType_numVertices', 
+				'source_polygonType_PID', 
+				'source_polygonListType_numPolygons', 
+				'source_meshType_id', 
+				'source_segmentType_id', 
+				'source_segmentType_parentID', 
+				'source_segmentation_schemaVersion', 
+				'source_transformationMatrixType_id', 
+				'source_canonicalEulerAnglesType_id', 
+				'source_viewVectorRotationType_id', 
+				'source_cuboid_id', 
+				'source_ellipsoid_id', 
+				'source_cylinder_id', 
+				'source_cone_id', 
+				'source_meshPointType_index', 
+				'source_meshPointType_designation');
+var instanceBoxes= new Array('instance_segmentation', 
+				'instance_segmentation_software', 
+				'instance_segmentation_transformList', 
+				'instance_segmentation_segmentList', 
+				'instance_segmentation_segmentation_segmentList_segment', 
+				'instance_segmentType_biologicalAnnotation', 
+				'instance_segmentType_complexesAndMacromolecules', 
+				'instance_macromoleculesAndComplexesType_macromolecule', 
+				'instance_macromoleculesAndComplexesType_complex', 
+				'instance_segmentType_colour', 
+				'instance_colourType_rgba', 
+				'instance_segmentType_threeDVolume', 
+				'instance_segmentType_shapePrimitiveList', 
+				'instance_segmentType_contourList', 
+				'instance_segmentType_segmentType_contourList_contour', 
+				'instance_segmentType_meshList', 
+				'instance_segmentType_segmentType_meshList_mesh', 
+				'instance_meshType_vertexList', 
+				'instance_vertexListType_v', 
+				'instance_meshType_polygonList', 
+				'instance_polygonListType_P', 
+				'instance_transformationMatrix', 
+				'instance_canonicalEulerAngles', 
+				'instance_viewVectorRotation', 
+				'instance_cuboid', 
+				'instance_ellipsoid', 
+				'instance_cylinder', 
+				'instance_cone', 
+				'instance_subtomogramAverage', 
+				'instance_runLengthEncodingType_offset', 
+				'instance_runLengthEncodingType_boxSize');
+var diagramBoxes= new Array('diagram_segmentation', 
+				'diagram_segmentation_version', 
+				'diagram_segmentation_name', 
+				'diagram_segmentation_software', 
+				'diagram_softwareType_name', 
+				'diagram_softwareType_version', 
+				'diagram_softwareType_processingDetails', 
+				'diagram_segmentation_transformList', 
+				'diagram_transform', 
+				'diagram_segmentation_filePath', 
+				'diagram_segmentation_primaryDescriptor', 
+				'diagram_segmentation_segmentList', 
+				'diagram_segmentation_segmentation_segmentList_segment', 
+				'diagram_segmentType_biologicalAnnotation', 
+				'diagram_segmentType_segmentType_biologicalAnnotation_description', 
+				'diagram_segmentType_segmentType_biologicalAnnotation_externalReferences', 
+				'diagram_segmentType_segmentType_biologicalAnnotation_numberOfInstances', 
+				'diagram_segmentType_complexesAndMacromolecules', 
+				'diagram_macromoleculesAndComplexesType_macromolecule', 
+				'diagram_macromoleculesAndComplexesType_macromoleculesAndComplexesType_macromolecule_id', 
+				'diagram_macromoleculesAndComplexesType_complex', 
+				'diagram_macromoleculesAndComplexesType_macromoleculesAndComplexesType_complex_id', 
+				'diagram_segmentType_colour', 
+				'diagram_colourType_name', 
+				'diagram_colourType_rgba', 
+				'diagram_rgbaType_red', 
+				'diagram_rgbaType_green', 
+				'diagram_rgbaType_blue', 
+				'diagram_rgbaType_alpha', 
+				'diagram_segmentType_threeDVolume', 
+				'diagram_threeDVolumeType_file', 
+				'diagram_threeDVolumeType_objectPath', 
+				'diagram_threeDVolumeType_contourLevel', 
+				'diagram_threeDVolumeType_transformId', 
+				'diagram_threeDVolumeType_format', 
+				'diagram_segmentType_shapePrimitiveList', 
+				'diagram_shapePrimitive', 
+				'diagram_segmentType_contourList', 
+				'diagram_segmentType_segmentType_contourList_contour', 
+				'diagram_contourType_p', 
+				'diagram_segmentType_segmentType_contourList_transformId', 
+				'diagram_segmentType_meshList', 
+				'diagram_segmentType_segmentType_meshList_mesh', 
+				'diagram_meshType_vertexList', 
+				'diagram_vertexListType_v', 
+				'diagram_vertexType_x', 
+				'diagram_vertexType_y', 
+				'diagram_vertexType_z', 
+				'diagram_meshType_polygonList', 
+				'diagram_polygonListType_P', 
+				'diagram_polygonType_v', 
+				'diagram_meshType_transformId', 
+				'diagram_segmentation_details', 
+				'diagram_transformationMatrixType_rows', 
+				'diagram_transformationMatrixType_cols', 
+				'diagram_transformationMatrixType_data', 
+				'diagram_canonicalEulerAnglesType_phi', 
+				'diagram_canonicalEulerAnglesType_theta', 
+				'diagram_canonicalEulerAnglesType_psi', 
+				'diagram_viewVectorRotationType_x', 
+				'diagram_viewVectorRotationType_y', 
+				'diagram_viewVectorRotationType_z', 
+				'diagram_viewVectorRotationType_r', 
+				'diagram_transformationMatrix', 
+				'diagram_canonicalEulerAngles', 
+				'diagram_viewVectorRotation', 
+				'diagram_cuboid', 
+				'diagram_cuboid_x', 
+				'diagram_cuboid_y', 
+				'diagram_cuboid_z', 
+				'diagram_cuboid_transformId', 
+				'diagram_cuboid_attribute', 
+				'diagram_ellipsoid', 
+				'diagram_ellipsoid_x', 
+				'diagram_ellipsoid_y', 
+				'diagram_ellipsoid_z', 
+				'diagram_ellipsoid_transformId', 
+				'diagram_ellipsoid_attribute', 
+				'diagram_cylinder', 
+				'diagram_cylinder_height', 
+				'diagram_cylinder_diameter', 
+				'diagram_cylinder_transformId', 
+				'diagram_cylinder_attribute', 
+				'diagram_cone', 
+				'diagram_cone_height', 
+				'diagram_cone_bottomRadius', 
+				'diagram_cone_transformId', 
+				'diagram_cone_attribute', 
+				'diagram_subtomogramAverage', 
+				'diagram_meshPointType_point', 
+				'diagram_hsvType_hue', 
+				'diagram_hsvType_saturation', 
+				'diagram_hsvType_value', 
+				'diagram_runLengthEncodingType_string', 
+				'diagram_runLengthEncodingType_offset', 
+				'diagram_integerVectorType_x', 
+				'diagram_integerVectorType_y', 
+				'diagram_integerVectorType_z', 
+				'diagram_runLengthEncodingType_boxSize', 
+				'diagram_positiveIntegerVectorType_x', 
+				'diagram_positiveIntegerVectorType_y', 
+				'diagram_softwareType', 
+				'diagram_segmentType', 
+				'diagram_macromoleculesAndComplexesType', 
+				'diagram_colourType', 
+				'diagram_rgbaType', 
+				'diagram_colourChannelType', 
+				'diagram_threeDVolumeType', 
+				'diagram_contourType', 
+				'diagram_floatVectorType', 
+				'diagram_meshType', 
+				'diagram_vertexListType', 
+				'diagram_vertexType', 
+				'diagram_polygonListType', 
+				'diagram_polygonType', 
+				'diagram_transformationMatrixType', 
+				'diagram_canonicalEulerAnglesType', 
+				'diagram_angleDegreeType', 
+				'diagram_viewVectorRotationType', 
+				'diagram_dimensionType', 
+				'diagram_meshPointType', 
+				'diagram_hsvType', 
+				'diagram_runLengthEncodingType', 
+				'diagram_integerVectorType', 
+				'diagram_positiveIntegerVectorType');
+var annotationBoxes= new Array('annotations_segmentation', 
+				'annotations_segmentation_filePath', 
+				'annotations_segmentation_primaryDescriptor', 
+				'annotations_segmentType_segmentType_biologicalAnnotation_numberOfInstances', 
+				'annotations_segmentType_complexesAndMacromolecules', 
+				'annotations_threeDVolumeType_objectPath', 
+				'annotations_threeDVolumeType_contourLevel', 
+				'annotations_cuboid', 
+				'annotations_ellipsoid', 
+				'annotations_runLengthEncodingType_offset', 
+				'annotations_macromoleculesAndComplexesType', 
+				'annotations_colourType', 
+				'annotations_transformationMatrixType', 
+				'annotations_canonicalEulerAnglesType', 
+				'annotations_meshPointType', 
+				'annotations_hsvType', 
+				'annotations_runLengthEncodingType', 
+				'annotations_integerVectorType', 
+				'annotations_segmentType_parentID', 
+				'annotations_segmentation_schemaVersion');
+var attributesBoxes= new Array('attributes_segmentation', 
+				'attributes_segmentation_segmentation_segmentList_segment', 
+				'attributes_segmentType_segmentType_biologicalAnnotation_externalReferences', 
+				'attributes_segmentType_threeDVolume', 
+				'attributes_segmentType_segmentType_contourList_contour', 
+				'attributes_contourType_p', 
+				'attributes_segmentType_segmentType_meshList_mesh', 
+				'attributes_meshType_vertexList', 
+				'attributes_vertexListType_v', 
+				'attributes_meshType_polygonList', 
+				'attributes_polygonListType_P', 
+				'attributes_transformationMatrix', 
+				'attributes_canonicalEulerAngles', 
+				'attributes_viewVectorRotation', 
+				'attributes_cuboid', 
+				'attributes_ellipsoid', 
+				'attributes_cylinder', 
+				'attributes_cone', 
+				'attributes_subtomogramAverage', 
+				'attributes_meshPointType_point', 
+				'attributes_segmentType', 
+				'attributes_threeDVolumeType', 
+				'attributes_contourType', 
+				'attributes_floatVectorType', 
+				'attributes_meshType', 
+				'attributes_vertexListType', 
+				'attributes_vertexType', 
+				'attributes_polygonListType', 
+				'attributes_polygonType', 
+				'attributes_transformationMatrixType', 
+				'attributes_canonicalEulerAnglesType', 
+				'attributes_viewVectorRotationType', 
+				'attributes_meshPointType');
+var modelBoxes= new Array('model_segmentation', 
+				'model_segmentation_software', 
+				'model_segmentation_transformList', 
+				'model_segmentation_segmentList', 
+				'model_segmentation_segmentation_segmentList_segment', 
+				'model_segmentType_biologicalAnnotation', 
+				'model_segmentType_complexesAndMacromolecules', 
+				'model_macromoleculesAndComplexesType_macromolecule', 
+				'model_macromoleculesAndComplexesType_complex', 
+				'model_segmentType_colour', 
+				'model_colourType_rgba', 
+				'model_segmentType_threeDVolume', 
+				'model_segmentType_shapePrimitiveList', 
+				'model_segmentType_contourList', 
+				'model_segmentType_segmentType_contourList_contour', 
+				'model_segmentType_meshList', 
+				'model_segmentType_segmentType_meshList_mesh', 
+				'model_meshType_vertexList', 
+				'model_vertexListType_v', 
+				'model_meshType_polygonList', 
+				'model_polygonListType_P', 
+				'model_transformationMatrix', 
+				'model_canonicalEulerAngles', 
+				'model_viewVectorRotation', 
+				'model_cuboid', 
+				'model_ellipsoid', 
+				'model_cylinder', 
+				'model_cone', 
+				'model_subtomogramAverage', 
+				'model_runLengthEncodingType_offset', 
+				'model_runLengthEncodingType_boxSize', 
+				'model_softwareType', 
+				'model_segmentType', 
+				'model_macromoleculesAndComplexesType', 
+				'model_colourType', 
+				'model_rgbaType', 
+				'model_threeDVolumeType', 
+				'model_contourType', 
+				'model_meshType', 
+				'model_vertexListType', 
+				'model_vertexType', 
+				'model_polygonListType', 
+				'model_polygonType', 
+				'model_transformationMatrixType', 
+				'model_canonicalEulerAnglesType', 
+				'model_viewVectorRotationType', 
+				'model_meshPointType', 
+				'model_hsvType', 
+				'model_runLengthEncodingType', 
+				'model_integerVectorType', 
+				'model_positiveIntegerVectorType');
+
+      
+        var button_prefix = 'button_';
+        
+        /**
+        * Returns an element in the current HTML document.
+        *
+        * @param elementID Identifier of HTML element
+        * @return               HTML element object
+        */
+        function getElementObject(elementID) {
+            var elemObj = null;
+            if (document.getElementById) {
+                elemObj = document.getElementById(elementID);
+            }
+            return elemObj;
+        }
+        
+        /**
+        * Switches the state of a collapseable box, e.g.
+        * if it's opened, it'll be closed, and vice versa.
+        *
+        * @param boxID Identifier of box
+        */
+        function switchState(boxID) {
+            var boxObj = getElementObject(boxID);
+            var buttonObj = getElementObject(button_prefix + boxID);
+            if (boxObj == null || buttonObj == null) {
+                // Box or button not found
+            } else if (boxObj.style.display == "none") {
+                // Box is closed, so open it
+                openBox(boxObj, buttonObj);
+            } else if (boxObj.style.display == "block") {
+                // Box is opened, so close it
+                closeBox(boxObj, buttonObj);
+            }
+        }
+        
+        /**
+        * Opens a collapseable box.
+        *
+        * @param boxObj       Collapseable box
+        * @param buttonObj Button controlling box
+        */
+        function openBox(boxObj, buttonObj) {
+            if (boxObj == null || buttonObj == null) {
+                // Box or button not found
+            } else {
+                // Change 'display' CSS property of box
+                boxObj.style.display = "block";
+                
+                // Change text of button
+                if (boxObj.style.display == "block") {
+                    buttonObj.src = "img/btM.gif";
+                }
+            }
+        }
+        
+        /**
+        * Closes a collapseable box.
+        *
+        * @param boxObj       Collapseable box
+        * @param buttonObj Button controlling box
+        */
+        function closeBox(boxObj, buttonObj) {
+            if (boxObj == null || buttonObj == null) {
+                // Box or button not found
+            } else {
+                // Change 'display' CSS property of box
+                boxObj.style.display = "none";
+                
+                // Change text of button
+                if (boxObj.style.display == "none") {
+                    buttonObj.src = "img/btP.gif";
+                }
+            }
+        }
+    
+       function switchStateForAll(buttonObj, boxList) {
+            if (buttonObj == null) {
+                // button not found
+            } else if (buttonObj.value == "+") {
+                // Expand all
+                expandAll(boxList);
+                buttonObj.value = "-";
+            } else if (buttonObj.value == "-") {
+                // Collapse all
+                collapseAll(boxList);
+                buttonObj.value = "+";
+            }
+        }
+        
+        /**
+        * Closes all boxes in a given list.
+        *
+        * @param boxList Array of box IDs
+        */
+        function collapseAll(boxList) {
+            var idx;
+            for (idx = 0; idx < boxList.length; idx++) {
+                var boxObj = getElementObject(boxList[idx]);
+                var buttonObj = getElementObject(button_prefix + boxList[idx]);
+                closeBox(boxObj, buttonObj);
+            }
+        }
+            
+        /**
+        * Open all boxes in a given list.
+        *
+        * @param boxList Array of box IDs
+        */
+        function expandAll(boxList) {
+            var idx;
+            for (idx = 0; idx < boxList.length; idx++) {
+                var boxObj = getElementObject(boxList[idx]);
+                var buttonObj = getElementObject(button_prefix + boxList[idx]);
+                openBox(boxObj, buttonObj);
+            }
+        }
+        
+        /**
+         * Update the message presented in the title of the html page.
+         * - If the documentation was splited by namespace we present something like: "Documentation for namespace 'ns'"
+         * - If the documentation was splited by location we present somehing like: "Documentation for 'Schema.xsd'"
+         * - If no split we always present: "Documentation for 'MainSchema.xsd'"
+         */
+        function updatePageTitle(message) {
+            top.document.title = message;
+        }
+        
+          
+                    
+         /**
+          * Finds an HTML element by its ID and makes it floatable over the normal content.
+          *
+          * @param x_displacement The difference in pixels to the right side of the window from 
+          *           the left side of the element.
+          * @param y_displacement The difference in pixels to the right side of the window from 
+          *           the top of the element.          
+          */
+         function findAndFloat(id, x_displacement, y_displacement){
+
+            var element = getElementObject(id);            
+            
+            window[id + "_obj"] = element;
+            
+            if(document.layers) {
+               element.style = element;
+            }
+            
+            element.current_y = y_displacement;      
+            element.first_time = true;
+         
+            element.floatElement = function(){
+               // It may be closed by an user action.
+                
+               // Target X and Y coordinates.
+               var x, y;
+               
+               var myWidth = 0, myHeight = 0;
+               if( typeof( window.innerWidth ) == 'number' ) {
+                  //Non-IE
+                  myWidth = window.innerWidth;
+                  myHeight = window.innerHeight;
+               } else if( document.documentElement && ( document.documentElement.clientWidth || document.documentElement.clientHeight ) ) {
+                  //IE 6+ in 'standards compliant mode'
+                  myWidth = document.documentElement.clientWidth;
+                  myHeight = document.documentElement.clientHeight;
+               } else if( document.body && ( document.body.clientWidth || document.body.clientHeight ) ) {
+                  //IE 4 compatible
+                  myWidth = document.body.clientWidth;
+                  myHeight = document.body.clientHeight;
+               }
+               
+               
+               x = myWidth - x_displacement;
+               
+               var ns = (navigator.appName.indexOf("Netscape") != -1);               
+               y = ns ? pageYOffset : document.documentElement && document.documentElement.scrollTop ? 
+                  document.documentElement.scrollTop : document.body.scrollTop;               
+               y = y + y_displacement;               
+               
+               // The current y is the current coordinate of the floating element.
+               // This should be at the limit the y target coordinate.
+               this.current_y += (y - this.current_y)/1.25;
+               
+               // Add the pixels constant after the values
+               // and move the element.
+               var px = document.layers ? "" : "px";
+               this.style.left =  x + px;
+               this.style.top =  this.current_y + px;
+                              
+               setTimeout(this.id + "_obj.floatElement()", 100);
+            }
+            
+            element.floatElement();
+            return element;
+          }
+
+         /**
+          * Finds an HTML element by its ID and makes it floatable over the normal content.
+          *
+          * @param x_displacement The difference in pixels to the right side of the window from 
+          *           the left side of the element.
+          * @param y_displacement The difference in pixels to the right side of the window from 
+          *           the top of the element.          
+          */
+         function selectTOCGroupBy(id, isChunked, indexFileLocation, indexFileNamespace, indexFileComponent){
+
+            if (!isChunked) {
+             var selectIds = new Array('toc_group_by_namespace', 'toc_group_by_location', 'toc_group_by_component_type');
+             // Make all the tabs invisible.
+               for (i = 0; i < 3; i++){
+                  var tab = getElementObject(selectIds[i]);
+                  tab.style.display = 'none';
+               }
+               var selTab = getElementObject(id);
+               selTab.style.display = 'block';
+            } else {
+             if (id == 'toc_group_by_namespace') {
+               parent.indexFrame.location = indexFileNamespace;
+             } else  if (id == 'toc_group_by_location') {
+               parent.indexFrame.location = indexFileLocation;
+             } else  if (id == 'toc_group_by_component_type') {
+              parent.indexFrame.location = indexFileComponent;
+             }
+            }
+         }
+          
+
+    
+                        //--></script></head>
+   <body>
+      <h2><a id="INDEX">Table of Contents</a></h2>
+      <div class="toc">
+         <form action="none">
+            <div><span> Group by: <select id="selectTOC" onchange="selectTOCGroupBy(this.options[this.selectedIndex].value, false, '.html', 'ns.html', 'comp.html');">
+                     <option value="toc_group_by_namespace" selected="selected">Namespace</option>
+                     <option value="toc_group_by_location">Location</option>
+                     <option value="toc_group_by_component_type">Component Type</option></select></span></div>
+         </form>
+         <div class="level1" id="toc_group_by_namespace" style="display:block">
+            <div>
+               <div class="level2">
+                  <p><input id="button_boxIdNamespace1" type="image" value="-" src="img/btM.gif" onclick="switchState('boxIdNamespace1');" class="control" /><span class="indexGroupTitle">No namespace</span></p>
+                  <div id="boxIdNamespace1" style="display:block">
+                     <div class="horizontalLayout">
+                        <table class="rt">
+                           <tr>
+                              <td class="rt_cornerTopLeft"></td>
+                              <td class="rt_lineTop"></td>
+                              <td class="rt_cornerTopRight"></td>
+                           </tr>
+                           <tr>
+                              <td class="rt_lineLeft"></td>
+                              <td class="rt_content">
+                                 <table class="componentGroup">
+                                    <tbody>
+                                       <tr>
+                                          <td class="componentGroup"><input id="button_boxIdNamespace1Element" type="image" value="-" src="img/btM.gif" onclick="switchState('boxIdNamespace1Element');" class="control" /></td>
+                                          <td class="componentGroup">
+                                             <div class="componentGroupTitle">Elements</div>
+                                          </td>
+                                       </tr>
+                                       <tr>
+                                          <td class="componentGroup"></td>
+                                          <td class="componentGroup">
+                                             <div id="boxIdNamespace1Element" class="componentGroup" style="display:block">
+                                                <div><b><a href="segmentation_da.html#canonicalEulerAngles" target="_self" title="No namespace">canonicalEulerAngles</a></b></div>
+                                                <div><b><a href="segmentation_da.html#cone" target="_self" title="No namespace">cone</a></b></div>
+                                                <div><b><a href="segmentation_da.html#cuboid" target="_self" title="No namespace">cuboid</a></b></div>
+                                                <div><b><a href="segmentation_da.html#cylinder" target="_self" title="No namespace">cylinder</a></b></div>
+                                                <div><b><a href="segmentation_da.html#ellipsoid" target="_self" title="No namespace">ellipsoid</a></b></div>
+                                                <div><b><a href="segmentation_da.html#segmentation" target="_self" title="No namespace">segmentation</a></b></div>
+                                                <div><b><a href="segmentation_da.html#shapePrimitive" target="_self" title="No namespace">shapePrimitive</a></b></div>
+                                                <div><b><a href="segmentation_da.html#subtomogramAverage" target="_self" title="No namespace">subtomogramAverage</a></b></div>
+                                                <div><b><a href="segmentation_da.html#transform" target="_self" title="No namespace">transform</a></b></div>
+                                                <div><b><a href="segmentation_da.html#transformationMatrix" target="_self" title="No namespace">transformationMatrix</a></b></div>
+                                                <div><b><a href="segmentation_da.html#viewVectorRotation" target="_self" title="No namespace">viewVectorRotation</a></b></div>
+                                             </div>
+                                          </td>
+                                       </tr>
+                                    </tbody>
+                                 </table>
+                              </td>
+                              <td class="rt_lineRight"></td>
+                           </tr>
+                           <tr>
+                              <td class="rt_cornerBottomLeft"></td>
+                              <td class="rt_lineBottom"></td>
+                              <td class="rt_cornerBottomRight"></td>
+                           </tr>
+                        </table>
+                     </div>
+                     <div class="horizontalLayout">
+                        <table class="rt">
+                           <tr>
+                              <td class="rt_cornerTopLeft"></td>
+                              <td class="rt_lineTop"></td>
+                              <td class="rt_cornerTopRight"></td>
+                           </tr>
+                           <tr>
+                              <td class="rt_lineLeft"></td>
+                              <td class="rt_content">
+                                 <table class="componentGroup">
+                                    <tbody>
+                                       <tr>
+                                          <td class="componentGroup"><input id="button_boxIdNamespace1Complex_Type" type="image" value="-" src="img/btM.gif" onclick="switchState('boxIdNamespace1Complex_Type');" class="control" /></td>
+                                          <td class="componentGroup">
+                                             <div class="componentGroupTitle">Complex Types</div>
+                                          </td>
+                                       </tr>
+                                       <tr>
+                                          <td class="componentGroup"></td>
+                                          <td class="componentGroup">
+                                             <div id="boxIdNamespace1Complex_Type" class="componentGroup" style="display:block">
+                                                <div><b><a href="segmentation_da.html#canonicalEulerAnglesType" target="_self" title="No namespace">canonicalEulerAnglesType</a></b></div>
+                                                <div><b><a href="segmentation_da.html#colourType" target="_self" title="No namespace">colourType</a></b></div>
+                                                <div><b><a href="segmentation_da.html#contourType" target="_self" title="No namespace">contourType</a></b></div>
+                                                <div><b><a href="segmentation_da.html#floatVectorType" target="_self" title="No namespace">floatVectorType</a></b></div>
+                                                <div><b><a href="segmentation_da.html#hsvType" target="_self" title="No namespace">hsvType</a></b></div>
+                                                <div><b><a href="segmentation_da.html#integerVectorType" target="_self" title="No namespace">integerVectorType</a></b></div>
+                                                <div><b><a href="segmentation_da.html#macromoleculesAndComplexesType" target="_self" title="No namespace">macromoleculesAndComplexesType</a></b></div>
+                                                <div><b><a href="segmentation_da.html#meshPointType" target="_self" title="No namespace">meshPointType</a></b></div>
+                                                <div><b><a href="segmentation_da.html#meshType" target="_self" title="No namespace">meshType</a></b></div>
+                                                <div><b><a href="segmentation_da.html#polygonListType" target="_self" title="No namespace">polygonListType</a></b></div>
+                                                <div><b><a href="segmentation_da.html#polygonType" target="_self" title="No namespace">polygonType</a></b></div>
+                                                <div><b><a href="segmentation_da.html#positiveIntegerVectorType" target="_self" title="No namespace">positiveIntegerVectorType</a></b></div>
+                                                <div><b><a href="segmentation_da.html#rgbaType" target="_self" title="No namespace">rgbaType</a></b></div>
+                                                <div><b><a href="segmentation_da.html#runLengthEncodingType" target="_self" title="No namespace">runLengthEncodingType</a></b></div>
+                                                <div><b><a href="segmentation_da.html#segmentType" target="_self" title="No namespace">segmentType</a></b></div>
+                                                <div><b><a href="segmentation_da.html#softwareType" target="_self" title="No namespace">softwareType</a></b></div>
+                                                <div><b><a href="segmentation_da.html#threeDVolumeType" target="_self" title="No namespace">threeDVolumeType</a></b></div>
+                                                <div><b><a href="segmentation_da.html#transformationMatrixType" target="_self" title="No namespace">transformationMatrixType</a></b></div>
+                                                <div><b><a href="segmentation_da.html#vertexListType" target="_self" title="No namespace">vertexListType</a></b></div>
+                                                <div><b><a href="segmentation_da.html#vertexType" target="_self" title="No namespace">vertexType</a></b></div>
+                                                <div><b><a href="segmentation_da.html#viewVectorRotationType" target="_self" title="No namespace">viewVectorRotationType</a></b></div>
+                                             </div>
+                                          </td>
+                                       </tr>
+                                    </tbody>
+                                 </table>
+                              </td>
+                              <td class="rt_lineRight"></td>
+                           </tr>
+                           <tr>
+                              <td class="rt_cornerBottomLeft"></td>
+                              <td class="rt_lineBottom"></td>
+                              <td class="rt_cornerBottomRight"></td>
+                           </tr>
+                        </table>
+                     </div>
+                     <div class="horizontalLayout">
+                        <table class="rt">
+                           <tr>
+                              <td class="rt_cornerTopLeft"></td>
+                              <td class="rt_lineTop"></td>
+                              <td class="rt_cornerTopRight"></td>
+                           </tr>
+                           <tr>
+                              <td class="rt_lineLeft"></td>
+                              <td class="rt_content">
+                                 <table class="componentGroup">
+                                    <tbody>
+                                       <tr>
+                                          <td class="componentGroup"><input id="button_boxIdNamespace1Simple_Type" type="image" value="-" src="img/btM.gif" onclick="switchState('boxIdNamespace1Simple_Type');" class="control" /></td>
+                                          <td class="componentGroup">
+                                             <div class="componentGroupTitle">Simple Types</div>
+                                          </td>
+                                       </tr>
+                                       <tr>
+                                          <td class="componentGroup"></td>
+                                          <td class="componentGroup">
+                                             <div id="boxIdNamespace1Simple_Type" class="componentGroup" style="display:block">
+                                                <div><b><a href="segmentation_da.html#angleDegreeType" target="_self" title="No namespace">angleDegreeType</a></b></div>
+                                                <div><b><a href="segmentation_da.html#colourChannelType" target="_self" title="No namespace">colourChannelType</a></b></div>
+                                                <div><b><a href="segmentation_da.html#dimensionType" target="_self" title="No namespace">dimensionType</a></b></div>
+                                             </div>
+                                          </td>
+                                       </tr>
+                                    </tbody>
+                                 </table>
+                              </td>
+                              <td class="rt_lineRight"></td>
+                           </tr>
+                           <tr>
+                              <td class="rt_cornerBottomLeft"></td>
+                              <td class="rt_lineBottom"></td>
+                              <td class="rt_cornerBottomRight"></td>
+                           </tr>
+                        </table>
+                     </div>
+                     <div style="clear:left"></div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="level1" id="toc_group_by_component_type" style="display:none">
+            <div>
+               <div class="horizontalLayout">
+                  <table class="rt">
+                     <tr>
+                        <td class="rt_cornerTopLeft"></td>
+                        <td class="rt_lineTop"></td>
+                        <td class="rt_cornerTopRight"></td>
+                     </tr>
+                     <tr>
+                        <td class="rt_lineLeft"></td>
+                        <td class="rt_content">
+                           <table class="componentGroup">
+                              <tbody>
+                                 <tr>
+                                    <td class="componentGroup"><input id="button_Element" type="image" value="-" src="img/btM.gif" onclick="switchState('Element');" class="control" /></td>
+                                    <td class="componentGroup">
+                                       <div class="componentGroupTitle">Elements</div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="componentGroup"></td>
+                                    <td class="componentGroup">
+                                       <div id="Element" class="componentGroup" style="display:block">
+                                          <div><b><a href="segmentation_da.html#canonicalEulerAngles" target="_self" title="No namespace">canonicalEulerAngles</a></b></div>
+                                          <div><b><a href="segmentation_da.html#cone" target="_self" title="No namespace">cone</a></b></div>
+                                          <div><b><a href="segmentation_da.html#cuboid" target="_self" title="No namespace">cuboid</a></b></div>
+                                          <div><b><a href="segmentation_da.html#cylinder" target="_self" title="No namespace">cylinder</a></b></div>
+                                          <div><b><a href="segmentation_da.html#ellipsoid" target="_self" title="No namespace">ellipsoid</a></b></div>
+                                          <div><b><a href="segmentation_da.html#segmentation" target="_self" title="No namespace">segmentation</a></b></div>
+                                          <div><b><a href="segmentation_da.html#shapePrimitive" target="_self" title="No namespace">shapePrimitive</a></b></div>
+                                          <div><b><a href="segmentation_da.html#subtomogramAverage" target="_self" title="No namespace">subtomogramAverage</a></b></div>
+                                          <div><b><a href="segmentation_da.html#transform" target="_self" title="No namespace">transform</a></b></div>
+                                          <div><b><a href="segmentation_da.html#transformationMatrix" target="_self" title="No namespace">transformationMatrix</a></b></div>
+                                          <div><b><a href="segmentation_da.html#viewVectorRotation" target="_self" title="No namespace">viewVectorRotation</a></b></div>
+                                       </div>
+                                    </td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </td>
+                        <td class="rt_lineRight"></td>
+                     </tr>
+                     <tr>
+                        <td class="rt_cornerBottomLeft"></td>
+                        <td class="rt_lineBottom"></td>
+                        <td class="rt_cornerBottomRight"></td>
+                     </tr>
+                  </table>
+               </div>
+               <div class="horizontalLayout">
+                  <table class="rt">
+                     <tr>
+                        <td class="rt_cornerTopLeft"></td>
+                        <td class="rt_lineTop"></td>
+                        <td class="rt_cornerTopRight"></td>
+                     </tr>
+                     <tr>
+                        <td class="rt_lineLeft"></td>
+                        <td class="rt_content">
+                           <table class="componentGroup">
+                              <tbody>
+                                 <tr>
+                                    <td class="componentGroup"><input id="button_Complex_Type" type="image" value="-" src="img/btM.gif" onclick="switchState('Complex_Type');" class="control" /></td>
+                                    <td class="componentGroup">
+                                       <div class="componentGroupTitle">Complex Types</div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="componentGroup"></td>
+                                    <td class="componentGroup">
+                                       <div id="Complex_Type" class="componentGroup" style="display:block">
+                                          <div><b><a href="segmentation_da.html#canonicalEulerAnglesType" target="_self" title="No namespace">canonicalEulerAnglesType</a></b></div>
+                                          <div><b><a href="segmentation_da.html#colourType" target="_self" title="No namespace">colourType</a></b></div>
+                                          <div><b><a href="segmentation_da.html#contourType" target="_self" title="No namespace">contourType</a></b></div>
+                                          <div><b><a href="segmentation_da.html#floatVectorType" target="_self" title="No namespace">floatVectorType</a></b></div>
+                                          <div><b><a href="segmentation_da.html#hsvType" target="_self" title="No namespace">hsvType</a></b></div>
+                                          <div><b><a href="segmentation_da.html#integerVectorType" target="_self" title="No namespace">integerVectorType</a></b></div>
+                                          <div><b><a href="segmentation_da.html#macromoleculesAndComplexesType" target="_self" title="No namespace">macromoleculesAndComplexesType</a></b></div>
+                                          <div><b><a href="segmentation_da.html#meshPointType" target="_self" title="No namespace">meshPointType</a></b></div>
+                                          <div><b><a href="segmentation_da.html#meshType" target="_self" title="No namespace">meshType</a></b></div>
+                                          <div><b><a href="segmentation_da.html#polygonListType" target="_self" title="No namespace">polygonListType</a></b></div>
+                                          <div><b><a href="segmentation_da.html#polygonType" target="_self" title="No namespace">polygonType</a></b></div>
+                                          <div><b><a href="segmentation_da.html#positiveIntegerVectorType" target="_self" title="No namespace">positiveIntegerVectorType</a></b></div>
+                                          <div><b><a href="segmentation_da.html#rgbaType" target="_self" title="No namespace">rgbaType</a></b></div>
+                                          <div><b><a href="segmentation_da.html#runLengthEncodingType" target="_self" title="No namespace">runLengthEncodingType</a></b></div>
+                                          <div><b><a href="segmentation_da.html#segmentType" target="_self" title="No namespace">segmentType</a></b></div>
+                                          <div><b><a href="segmentation_da.html#softwareType" target="_self" title="No namespace">softwareType</a></b></div>
+                                          <div><b><a href="segmentation_da.html#threeDVolumeType" target="_self" title="No namespace">threeDVolumeType</a></b></div>
+                                          <div><b><a href="segmentation_da.html#transformationMatrixType" target="_self" title="No namespace">transformationMatrixType</a></b></div>
+                                          <div><b><a href="segmentation_da.html#vertexListType" target="_self" title="No namespace">vertexListType</a></b></div>
+                                          <div><b><a href="segmentation_da.html#vertexType" target="_self" title="No namespace">vertexType</a></b></div>
+                                          <div><b><a href="segmentation_da.html#viewVectorRotationType" target="_self" title="No namespace">viewVectorRotationType</a></b></div>
+                                       </div>
+                                    </td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </td>
+                        <td class="rt_lineRight"></td>
+                     </tr>
+                     <tr>
+                        <td class="rt_cornerBottomLeft"></td>
+                        <td class="rt_lineBottom"></td>
+                        <td class="rt_cornerBottomRight"></td>
+                     </tr>
+                  </table>
+               </div>
+               <div class="horizontalLayout">
+                  <table class="rt">
+                     <tr>
+                        <td class="rt_cornerTopLeft"></td>
+                        <td class="rt_lineTop"></td>
+                        <td class="rt_cornerTopRight"></td>
+                     </tr>
+                     <tr>
+                        <td class="rt_lineLeft"></td>
+                        <td class="rt_content">
+                           <table class="componentGroup">
+                              <tbody>
+                                 <tr>
+                                    <td class="componentGroup"><input id="button_Simple_Type" type="image" value="-" src="img/btM.gif" onclick="switchState('Simple_Type');" class="control" /></td>
+                                    <td class="componentGroup">
+                                       <div class="componentGroupTitle">Simple Types</div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="componentGroup"></td>
+                                    <td class="componentGroup">
+                                       <div id="Simple_Type" class="componentGroup" style="display:block">
+                                          <div><b><a href="segmentation_da.html#angleDegreeType" target="_self" title="No namespace">angleDegreeType</a></b></div>
+                                          <div><b><a href="segmentation_da.html#colourChannelType" target="_self" title="No namespace">colourChannelType</a></b></div>
+                                          <div><b><a href="segmentation_da.html#dimensionType" target="_self" title="No namespace">dimensionType</a></b></div>
+                                       </div>
+                                    </td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </td>
+                        <td class="rt_lineRight"></td>
+                     </tr>
+                     <tr>
+                        <td class="rt_cornerBottomLeft"></td>
+                        <td class="rt_lineBottom"></td>
+                        <td class="rt_cornerBottomRight"></td>
+                     </tr>
+                  </table>
+               </div>
+               <div style="clear:left"></div>
+            </div>
+         </div>
+         <div class="level1" id="toc_group_by_location" style="display:none">
+            <div>
+               <div class="level2">
+                  <p><input id="button_gr_segmentation_da.xsd" type="image" value="-" src="img/btM.gif" onclick="switchState('gr_segmentation_da.xsd');" class="control" /><span class="indexGroupTitle">segmentation_da.xsd</span></p>
+                  <div id="gr_segmentation_da.xsd" style="display:block">
+                     <div class="horizontalLayout">
+                        <table class="rt">
+                           <tr>
+                              <td class="rt_cornerTopLeft"></td>
+                              <td class="rt_lineTop"></td>
+                              <td class="rt_cornerTopRight"></td>
+                           </tr>
+                           <tr>
+                              <td class="rt_lineLeft"></td>
+                              <td class="rt_content">
+                                 <table class="componentGroup">
+                                    <tbody>
+                                       <tr>
+                                          <td class="componentGroup"><input id="button_gr_segmentation_da.xsdElement" type="image" value="-" src="img/btM.gif" onclick="switchState('gr_segmentation_da.xsdElement');" class="control" /></td>
+                                          <td class="componentGroup">
+                                             <div class="componentGroupTitle">Elements</div>
+                                          </td>
+                                       </tr>
+                                       <tr>
+                                          <td class="componentGroup"></td>
+                                          <td class="componentGroup">
+                                             <div id="gr_segmentation_da.xsdElement" class="componentGroup" style="display:block">
+                                                <div><b><a href="segmentation_da.html#canonicalEulerAngles" target="_self" title="No namespace">canonicalEulerAngles</a></b></div>
+                                                <div><b><a href="segmentation_da.html#cone" target="_self" title="No namespace">cone</a></b></div>
+                                                <div><b><a href="segmentation_da.html#cuboid" target="_self" title="No namespace">cuboid</a></b></div>
+                                                <div><b><a href="segmentation_da.html#cylinder" target="_self" title="No namespace">cylinder</a></b></div>
+                                                <div><b><a href="segmentation_da.html#ellipsoid" target="_self" title="No namespace">ellipsoid</a></b></div>
+                                                <div><b><a href="segmentation_da.html#segmentation" target="_self" title="No namespace">segmentation</a></b></div>
+                                                <div><b><a href="segmentation_da.html#shapePrimitive" target="_self" title="No namespace">shapePrimitive</a></b></div>
+                                                <div><b><a href="segmentation_da.html#subtomogramAverage" target="_self" title="No namespace">subtomogramAverage</a></b></div>
+                                                <div><b><a href="segmentation_da.html#transform" target="_self" title="No namespace">transform</a></b></div>
+                                                <div><b><a href="segmentation_da.html#transformationMatrix" target="_self" title="No namespace">transformationMatrix</a></b></div>
+                                                <div><b><a href="segmentation_da.html#viewVectorRotation" target="_self" title="No namespace">viewVectorRotation</a></b></div>
+                                             </div>
+                                          </td>
+                                       </tr>
+                                    </tbody>
+                                 </table>
+                              </td>
+                              <td class="rt_lineRight"></td>
+                           </tr>
+                           <tr>
+                              <td class="rt_cornerBottomLeft"></td>
+                              <td class="rt_lineBottom"></td>
+                              <td class="rt_cornerBottomRight"></td>
+                           </tr>
+                        </table>
+                     </div>
+                     <div class="horizontalLayout">
+                        <table class="rt">
+                           <tr>
+                              <td class="rt_cornerTopLeft"></td>
+                              <td class="rt_lineTop"></td>
+                              <td class="rt_cornerTopRight"></td>
+                           </tr>
+                           <tr>
+                              <td class="rt_lineLeft"></td>
+                              <td class="rt_content">
+                                 <table class="componentGroup">
+                                    <tbody>
+                                       <tr>
+                                          <td class="componentGroup"><input id="button_gr_segmentation_da.xsdComplex_Type" type="image" value="-" src="img/btM.gif" onclick="switchState('gr_segmentation_da.xsdComplex_Type');" class="control" /></td>
+                                          <td class="componentGroup">
+                                             <div class="componentGroupTitle">Complex Types</div>
+                                          </td>
+                                       </tr>
+                                       <tr>
+                                          <td class="componentGroup"></td>
+                                          <td class="componentGroup">
+                                             <div id="gr_segmentation_da.xsdComplex_Type" class="componentGroup" style="display:block">
+                                                <div><b><a href="segmentation_da.html#canonicalEulerAnglesType" target="_self" title="No namespace">canonicalEulerAnglesType</a></b></div>
+                                                <div><b><a href="segmentation_da.html#colourType" target="_self" title="No namespace">colourType</a></b></div>
+                                                <div><b><a href="segmentation_da.html#contourType" target="_self" title="No namespace">contourType</a></b></div>
+                                                <div><b><a href="segmentation_da.html#floatVectorType" target="_self" title="No namespace">floatVectorType</a></b></div>
+                                                <div><b><a href="segmentation_da.html#hsvType" target="_self" title="No namespace">hsvType</a></b></div>
+                                                <div><b><a href="segmentation_da.html#integerVectorType" target="_self" title="No namespace">integerVectorType</a></b></div>
+                                                <div><b><a href="segmentation_da.html#macromoleculesAndComplexesType" target="_self" title="No namespace">macromoleculesAndComplexesType</a></b></div>
+                                                <div><b><a href="segmentation_da.html#meshPointType" target="_self" title="No namespace">meshPointType</a></b></div>
+                                                <div><b><a href="segmentation_da.html#meshType" target="_self" title="No namespace">meshType</a></b></div>
+                                                <div><b><a href="segmentation_da.html#polygonListType" target="_self" title="No namespace">polygonListType</a></b></div>
+                                                <div><b><a href="segmentation_da.html#polygonType" target="_self" title="No namespace">polygonType</a></b></div>
+                                                <div><b><a href="segmentation_da.html#positiveIntegerVectorType" target="_self" title="No namespace">positiveIntegerVectorType</a></b></div>
+                                                <div><b><a href="segmentation_da.html#rgbaType" target="_self" title="No namespace">rgbaType</a></b></div>
+                                                <div><b><a href="segmentation_da.html#runLengthEncodingType" target="_self" title="No namespace">runLengthEncodingType</a></b></div>
+                                                <div><b><a href="segmentation_da.html#segmentType" target="_self" title="No namespace">segmentType</a></b></div>
+                                                <div><b><a href="segmentation_da.html#softwareType" target="_self" title="No namespace">softwareType</a></b></div>
+                                                <div><b><a href="segmentation_da.html#threeDVolumeType" target="_self" title="No namespace">threeDVolumeType</a></b></div>
+                                                <div><b><a href="segmentation_da.html#transformationMatrixType" target="_self" title="No namespace">transformationMatrixType</a></b></div>
+                                                <div><b><a href="segmentation_da.html#vertexListType" target="_self" title="No namespace">vertexListType</a></b></div>
+                                                <div><b><a href="segmentation_da.html#vertexType" target="_self" title="No namespace">vertexType</a></b></div>
+                                                <div><b><a href="segmentation_da.html#viewVectorRotationType" target="_self" title="No namespace">viewVectorRotationType</a></b></div>
+                                             </div>
+                                          </td>
+                                       </tr>
+                                    </tbody>
+                                 </table>
+                              </td>
+                              <td class="rt_lineRight"></td>
+                           </tr>
+                           <tr>
+                              <td class="rt_cornerBottomLeft"></td>
+                              <td class="rt_lineBottom"></td>
+                              <td class="rt_cornerBottomRight"></td>
+                           </tr>
+                        </table>
+                     </div>
+                     <div class="horizontalLayout">
+                        <table class="rt">
+                           <tr>
+                              <td class="rt_cornerTopLeft"></td>
+                              <td class="rt_lineTop"></td>
+                              <td class="rt_cornerTopRight"></td>
+                           </tr>
+                           <tr>
+                              <td class="rt_lineLeft"></td>
+                              <td class="rt_content">
+                                 <table class="componentGroup">
+                                    <tbody>
+                                       <tr>
+                                          <td class="componentGroup"><input id="button_gr_segmentation_da.xsdSimple_Type" type="image" value="-" src="img/btM.gif" onclick="switchState('gr_segmentation_da.xsdSimple_Type');" class="control" /></td>
+                                          <td class="componentGroup">
+                                             <div class="componentGroupTitle">Simple Types</div>
+                                          </td>
+                                       </tr>
+                                       <tr>
+                                          <td class="componentGroup"></td>
+                                          <td class="componentGroup">
+                                             <div id="gr_segmentation_da.xsdSimple_Type" class="componentGroup" style="display:block">
+                                                <div><b><a href="segmentation_da.html#angleDegreeType" target="_self" title="No namespace">angleDegreeType</a></b></div>
+                                                <div><b><a href="segmentation_da.html#colourChannelType" target="_self" title="No namespace">colourChannelType</a></b></div>
+                                                <div><b><a href="segmentation_da.html#dimensionType" target="_self" title="No namespace">dimensionType</a></b></div>
+                                             </div>
+                                          </td>
+                                       </tr>
+                                    </tbody>
+                                 </table>
+                              </td>
+                              <td class="rt_lineRight"></td>
+                           </tr>
+                           <tr>
+                              <td class="rt_cornerBottomLeft"></td>
+                              <td class="rt_lineBottom"></td>
+                              <td class="rt_cornerBottomRight"></td>
+                           </tr>
+                        </table>
+                     </div>
+                     <div style="clear:left"></div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="footer">
+         <hr />
+         <div align="center">XML Schema documentation generated by <a href="http://www.oxygenxml.com" target="_parent"><span class="oXygenLogo"><span class="redX">&lt;</span>o<span class="redX">X</span>ygen<span class="redX">/&gt;</span></span></a><sup>®</sup> XML Editor.
+         </div>
+      </div>
+   </body>
+</html>
