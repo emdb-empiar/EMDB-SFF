@@ -55,7 +55,7 @@
                 </xs:element>
                 <xs:element name="details" type="xs:string" minOccurs="0"/>
             </xs:sequence>
-            <xs:attribute name="schemaVersion" type="xs:token" default="0.5.8">
+            <xs:attribute name="schemaVersion" type="xs:token" default="0.6.0a1">
                 <xs:annotation>
                     <xs:documentation>
                         <![CDATA[
@@ -140,6 +140,9 @@
                         
                         0.5.8, 2016/10/20, Paul Korir:
                         6) 'macromolecule' and 'complex' changed from 'positiveInteger' to 'string'
+                        
+                        0.6.0a1, 2017/02/28, Paul Korir:
+                        1) Added 'EMAN' as a 'threeDVolume' format
                         ]]>
                     </xs:documentation>
                 </xs:annotation>
@@ -338,6 +341,7 @@
                         <xs:enumeration value="runLengthEncoding"/>
                         <xs:enumeration value="MRC"/>
                         <xs:enumeration value="Segger"/>
+                        <xs:enumeration value="EMAN"/>
                     </xs:restriction>
                 </xs:simpleType>
             </xs:element>
