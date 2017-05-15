@@ -55,7 +55,7 @@
                 </xs:element>
                 <xs:element name="details" type="xs:string" minOccurs="0"/>
             </xs:sequence>
-            <xs:attribute name="schemaVersion" type="xs:token" default="0.6.0a1">
+            <xs:attribute name="schemaVersion" type="xs:token" default="0.6.1a1">
                 <xs:annotation>
                     <xs:documentation>
                         <![CDATA[
@@ -143,6 +143,9 @@
                         
                         0.6.0a1, 2017/02/28, Paul Korir:
                         1) Added 'EMAN' as a 'threeDVolume' format
+                        
+                        0.6.1a1, 2017/05/15, Paul Korir:
+                        1) Restructured 'externalReferences' from simpleType to complexType 
                         ]]>
                     </xs:documentation>
                 </xs:annotation>
@@ -221,9 +224,12 @@
                 <xs:complexType>
                     <xs:sequence>
                         <xs:element name="description" minOccurs="0"/>
-                        <xs:element name="externalReferences" minOccurs="0" maxOccurs="unbounded">
+                        <xs:element name="externalReferences">
                             <xs:complexType>
-                                <xs:simpleContent>
+                                <xs:sequence>
+                                    <xs:element name="ref" type="externalReference" minOccurs="0" maxOccurs="unbounded"/>
+                                </xs:sequence>
+<!--                                <xs:simpleContent>
                                     <xs:extension base="xs:token">
                                         <xs:attribute name="type" use="required">
                                             <xs:simpleType>
@@ -239,7 +245,7 @@
                                         </xs:attribute>
                                         <xs:attribute name="otherType" type="xs:token"/>
                                     </xs:extension>
-                                </xs:simpleContent>
+                                </xs:simpleContent>-->
                             </xs:complexType>
                         </xs:element>
                         <xs:element name="numberOfInstances" type="xs:positiveInteger" minOccurs="0">
@@ -454,6 +460,16 @@
             <xs:minInclusive value="0"/>
         </xs:restriction>
     </xs:simpleType>
+    
+    <!-- externalReference -->
+    <xs:complexType name="externalReference">
+        <xs:sequence>
+            <xs:element name="type" type="xs:token"/>
+            <xs:element name="otherType" type="xs:token" minOccurs="0"/>
+            <xs:element name="value" type="xs:token"/>
+        </xs:sequence>
+        <xs:attribute name="id" type="xs:nonNegativeInteger"/>
+    </xs:complexType>
 
     <!-- END REFERENCED TYPES -->
 
