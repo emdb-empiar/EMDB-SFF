@@ -46,6 +46,7 @@
                         </xs:restriction>
                     </xs:simpleType>
                 </xs:element>
+                <xs:element name="boundingBox" type="boundingBoxType" minOccurs="0"></xs:element>
                 <xs:element name="segmentList">
                     <xs:complexType>
                         <xs:sequence>
@@ -55,7 +56,7 @@
                 </xs:element>
                 <xs:element name="details" type="xs:string" minOccurs="0"/>
             </xs:sequence>
-            <xs:attribute name="schemaVersion" type="xs:token" default="0.6.0a2">
+            <xs:attribute name="schemaVersion" type="xs:token" default="0.6.0a3">
                 <xs:annotation>
                     <xs:documentation>
                         <![CDATA[
@@ -147,6 +148,9 @@
                         0.6.0a2, 2017/05/15, Paul Korir:
                         1) Restructured 'externalReferences' from simpleType to complexType
                         2) Changed 'externalReference' to 'externalReferenceType' and replaced elements with attributes
+                        
+                        0.6.0a3, 2017/05/25, Paul Korir:
+                        1) Added element 'boundingBox' taking six integers: xmin, xmax, ymin, ymax, zmin, zmax; minimums default to 0
                         ]]>
                     </xs:documentation>
                 </xs:annotation>
@@ -217,6 +221,18 @@
             <xs:maxInclusive value="360"/>
         </xs:restriction>
     </xs:simpleType>
+    
+    <!-- boundingBoxType -->
+    <xs:complexType name="boundingBoxType">
+        <xs:sequence>
+        </xs:sequence>
+        <xs:attribute name="xmin" type="xs:integer" default="0"/>
+        <xs:attribute name="xmax" type="xs:integer"/>
+        <xs:attribute name="ymin" type="xs:integer" default="0"/>
+        <xs:attribute name="ymax" type="xs:integer"/>
+        <xs:attribute name="zmin" type="xs:integer" default="0"/>
+        <xs:attribute name="zmax" type="xs:integer"/>
+    </xs:complexType>
 
     <!-- segmentType -->
     <xs:complexType name="segmentType">
