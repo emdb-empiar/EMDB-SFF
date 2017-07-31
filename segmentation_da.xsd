@@ -59,7 +59,7 @@
                 </xs:element>
                 <xs:element name="details" type="xs:string" minOccurs="0"/>
             </xs:sequence>
-            <xs:attribute name="schemaVersion" type="xs:token" default="0.6.0a3">
+            <xs:attribute name="schemaVersion" type="xs:token" default="0.6.0a4">
                 <xs:annotation>
                     <xs:documentation>
                         <![CDATA[
