@@ -32,10 +32,12 @@
                 </xs:element>
                 <xs:element name="primaryDescriptor">
                     <xs:annotation>
-                        <xs:documentation>Mandatory field. Designates the element type within
+                        <xs:documentation>
+                            Mandatory field. Designates the element type within
                             'segmentList' that contains the primary description of the segments.
                             Constrained to be either 'threeDVolume', 'shapePrimitiveList',
-                            'contourList' or 'meshList'.</xs:documentation>
+                            'contourList' or 'meshList'.
+                        </xs:documentation>
                     </xs:annotation>
                     <xs:simpleType>
                         <xs:restriction base="xs:string">
@@ -46,7 +48,8 @@
                         </xs:restriction>
                     </xs:simpleType>
                 </xs:element>
-                <xs:element name="boundingBox" type="boundingBoxType" minOccurs="0"></xs:element>
+                <xs:element name="boundingBox" type="boundingBoxType" minOccurs="0"/>
+                <xs:element name="externalReferences" type="externalReferenceType" minOccurs="0"/>
                 <xs:element name="segmentList">
                     <xs:complexType>
                         <xs:sequence>
@@ -151,6 +154,9 @@
                         
                         0.6.0a3, 2017/05/25, Paul Korir:
                         1) Added element 'boundingBox' taking six integers: xmin, xmax, ymin, ymax, zmin, zmax; minimums default to 0
+                        
+                        0.6.0a4, 2017/07/31, Paul Korir:
+                        1) Added global (optional) external references
                         ]]>
                     </xs:documentation>
                 </xs:annotation>
@@ -221,11 +227,10 @@
             <xs:maxInclusive value="360"/>
         </xs:restriction>
     </xs:simpleType>
-    
+
     <!-- boundingBoxType -->
     <xs:complexType name="boundingBoxType">
-        <xs:sequence>
-        </xs:sequence>
+        <xs:sequence> </xs:sequence>
         <xs:attribute name="xmin" type="xs:integer" default="0"/>
         <xs:attribute name="xmax" type="xs:integer"/>
         <xs:attribute name="ymin" type="xs:integer" default="0"/>
@@ -244,25 +249,9 @@
                         <xs:element name="externalReferences" minOccurs="0">
                             <xs:complexType>
                                 <xs:sequence>
-                                    <xs:element name="ref" type="externalReferenceType" minOccurs="0" maxOccurs="unbounded"/>
+                                    <xs:element name="ref" type="externalReferenceType"
+                                        minOccurs="0" maxOccurs="unbounded"/>
                                 </xs:sequence>
-<!--                                <xs:simpleContent>
-                                    <xs:extension base="xs:token">
-                                        <xs:attribute name="type" use="required">
-                                            <xs:simpleType>
-                                                <xs:restriction base="xs:token">
-                                                  <xs:enumeration value="uniprotkb"/>
-                                                  <xs:enumeration value="uniparc"/>
-                                                  <xs:whiteSpace value="collapse"/>
-                                                  <xs:enumeration value="interpro"/>
-                                                  <xs:enumeration value="go"/>
-                                                  <xs:enumeration value="other"/>
-                                                </xs:restriction>
-                                            </xs:simpleType>
-                                        </xs:attribute>
-                                        <xs:attribute name="otherType" type="xs:token"/>
-                                    </xs:extension>
-                                </xs:simpleContent>-->
                             </xs:complexType>
                         </xs:element>
                         <xs:element name="numberOfInstances" type="xs:positiveInteger" minOccurs="0">
@@ -296,7 +285,8 @@
                         <xs:sequence>
                             <xs:element name="contour" type="contourType" minOccurs="1"
                                 maxOccurs="unbounded"/>
-                            <xs:element name="transformId" type="xs:nonNegativeInteger" minOccurs="0"/>
+                            <xs:element name="transformId" type="xs:nonNegativeInteger"
+                                minOccurs="0"/>
                         </xs:sequence>
                     </xs:complexType>
                 </xs:element>
@@ -477,14 +467,9 @@
             <xs:minInclusive value="0"/>
         </xs:restriction>
     </xs:simpleType>
-    
+
     <!-- externalReferenceType -->
     <xs:complexType name="externalReferenceType">
-<!--        <xs:sequence>
-            <xs:element name="type" type="xs:token"/>
-            <xs:element name="otherType" type="xs:token" minOccurs="0"/>
-            <xs:element name="value" type="xs:token"/>
-        </xs:sequence>-->
         <xs:attribute name="id" type="xs:nonNegativeInteger"/>
         <xs:attribute name="type" type="xs:token"/>
         <xs:attribute name="otherType" type="xs:token"/>
@@ -515,15 +500,6 @@
                 <xs:element name="x" type="dimensionType"/>
                 <xs:element name="y" type="dimensionType"/>
                 <xs:element name="z" type="dimensionType"/>
-                <!--<xs:element name="dimensions">
-                    <xs:complexType>
-                        <xs:sequence>
-                            <xs:element name="x" type="dimensionType"/>
-                            <xs:element name="y" type="dimensionType"/>
-                            <xs:element name="z" type="dimensionType"/>
-                        </xs:sequence>
-                    </xs:complexType>
-                </xs:element>-->
                 <xs:element name="transformId" type="xs:nonNegativeInteger"/>
                 <xs:element name="attribute" type="xs:float" minOccurs="0"/>
             </xs:sequence>
@@ -539,15 +515,6 @@
                 <xs:element name="x" type="dimensionType"/>
                 <xs:element name="y" type="dimensionType"/>
                 <xs:element name="z" type="dimensionType"/>
-                <!--<xs:element name="axes">
-                    <xs:complexType>
-                        <xs:sequence>
-                            <xs:element name="x" type="dimensionType"/>
-                            <xs:element name="y" type="dimensionType"/>
-                            <xs:element name="z" type="dimensionType"/>
-                        </xs:sequence>
-                    </xs:complexType>
-                </xs:element>-->
                 <xs:element name="transformId" type="xs:nonNegativeInteger"/>
                 <xs:element name="attribute" type="xs:float" minOccurs="0"/>
             </xs:sequence>
@@ -559,14 +526,6 @@
             <xs:sequence>
                 <xs:element name="height" type="dimensionType"/>
                 <xs:element name="diameter" type="dimensionType"/>
-                <!--<xs:element name="dimensions">
-                    <xs:complexType>
-                        <xs:sequence>
-                            <xs:element name="height" type="dimensionType"/>
-                            <xs:element name="diameter" type="dimensionType"/>
-                        </xs:sequence>
-                    </xs:complexType>
-                </xs:element>-->
                 <xs:element name="transformId" type="xs:nonNegativeInteger"/>
                 <xs:element name="attribute" type="xs:float" minOccurs="0"/>
             </xs:sequence>
@@ -578,14 +537,6 @@
             <xs:sequence>
                 <xs:element name="height" type="dimensionType"/>
                 <xs:element name="bottomRadius" type="dimensionType"/>
-<!--                <xs:element name="dimensions">
-                    <xs:complexType>
-                        <xs:sequence>
-                            <xs:element name="height" type="dimensionType"/>
-                            <xs:element name="bottomRadius" type="dimensionType"/>
-                        </xs:sequence>
-                    </xs:complexType>-->
-                <!--</xs:element>-->
                 <xs:element name="transformId" type="xs:nonNegativeInteger"/>
                 <xs:element name="attribute" type="xs:float" minOccurs="0"/>
             </xs:sequence>
@@ -593,19 +544,7 @@
         </xs:complexType>
     </xs:element>
     <!-- subTomogramAverage -->
-    <xs:element name="subtomogramAverage" type="threeDVolumeType" substitutionGroup="shapePrimitive"
-        >
-        <!--<xs:annotation>
-            <xs:documentation>Deprecated</xs:documentation>
-        </xs:annotation>
-        <xs:complexType>
-            <xs:sequence>
-                <xs:element name="file" type="xs:token"/>
-                <xs:element name="objectPath" type="xs:token"/>
-                <xs:element name="transformId" type="xs:nonNegativeInteger"/>
-                <xs:element name="attribute" type="xs:float"/>
-            </xs:sequence>
-        </xs:complexType>--> </xs:element>
+    <xs:element name="subtomogramAverage" type="threeDVolumeType" substitutionGroup="shapePrimitive"/>
 
 
     <!-- END REFERENCED ELEMENTS -->
