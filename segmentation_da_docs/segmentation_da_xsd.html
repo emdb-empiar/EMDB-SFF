@@ -18,7 +18,7 @@
 				'properties_segmentation_filePath', 
 				'properties_segmentation_primaryDescriptor', 
 				'properties_segmentation_boundingBox', 
-				'properties_segmentation_externalReferences', 
+				'properties_segmentation_globalExternalReferences', 
 				'properties_segmentation_segmentList', 
 				'properties_segmentation_segmentation_segmentList_segment', 
 				'properties_segmentType_biologicalAnnotation', 
@@ -239,7 +239,7 @@ var sourceBoxes= new Array('source_segmentation',
 				'source_segmentation_filePath', 
 				'source_segmentation_primaryDescriptor', 
 				'source_segmentation_boundingBox', 
-				'source_segmentation_externalReferences', 
+				'source_segmentation_globalExternalReferences', 
 				'source_segmentation_segmentList', 
 				'source_segmentation_segmentation_segmentList_segment', 
 				'source_segmentType_biologicalAnnotation', 
@@ -435,7 +435,7 @@ var diagramBoxes= new Array('diagram_segmentation',
 				'diagram_segmentation_filePath', 
 				'diagram_segmentation_primaryDescriptor', 
 				'diagram_segmentation_boundingBox', 
-				'diagram_segmentation_externalReferences', 
+				'diagram_segmentation_globalExternalReferences', 
 				'diagram_segmentation_segmentList', 
 				'diagram_segmentation_segmentation_segmentList_segment', 
 				'diagram_segmentType_biologicalAnnotation', 
@@ -576,7 +576,7 @@ var annotationBoxes= new Array('annotations_segmentation',
 				'annotations_segmentation_schemaVersion');
 var attributesBoxes= new Array('attributes_segmentation', 
 				'attributes_segmentation_boundingBox', 
-				'attributes_segmentation_externalReferences', 
+				'attributes_segmentation_globalExternalReferences', 
 				'attributes_segmentation_segmentation_segmentList_segment', 
 				'attributes_segmentType_segmentType_biologicalAnnotation_segmentType_segmentType_biologicalAnnotation_externalReferences_ref', 
 				'attributes_segmentType_threeDVolume', 
@@ -1042,7 +1042,7 @@ var modelBoxes= new Array('model_segmentation',
                                  <area alt="segmentation_da_xsd.tmp#segmentation_filePath" href="segmentation_da_xsd.html#segmentation_filePath" coords="223,350,334,392" />
                                  <area alt="segmentation_da_xsd.tmp#segmentation_primaryDescriptor" href="segmentation_da_xsd.html#segmentation_primaryDescriptor" coords="223,458,417,500" />
                                  <area alt="segmentation_da_xsd.tmp#segmentation_boundingBox" href="segmentation_da_xsd.html#segmentation_boundingBox" coords="223,553,386,595" />
-                                 <area alt="segmentation_da_xsd.tmp#segmentation_externalReferences" href="segmentation_da_xsd.html#segmentation_externalReferences" coords="223,605,411,647" />
+                                 <area alt="segmentation_da_xsd.tmp#segmentation_globalExternalReferences" href="segmentation_da_xsd.html#segmentation_globalExternalReferences" coords="223,605,411,647" />
                                  <area alt="segmentation_da_xsd.tmp#segmentation_segmentList" href="segmentation_da_xsd.html#segmentation_segmentList" coords="223,657,319,681" />
                                  <area alt="segmentation_da_xsd.tmp#segmentation_details" href="segmentation_da_xsd.html#segmentation_details" coords="223,691,336,733" /></map></div>
                         </td>
@@ -1067,12 +1067,12 @@ var modelBoxes= new Array('model_segmentation',
                         <td class="firstColumn"><b>Model</b><div class="floatRight"><input id="button_model_segmentation" type="image" src="img/btM.gif" value="-" onclick="switchState('model_segmentation');" class="control" /></div>
                         </td>
                         <td>
-                           <div id="model_segmentation" style="display:block"><b><a href="segmentation_da_xsd.html#segmentation_version" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for segmentation_da.xsd')">version</a></b> , <b><a href="segmentation_da_xsd.html#segmentation_name" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for segmentation_da.xsd')">name</a></b> , <b><a href="segmentation_da_xsd.html#segmentation_software" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for segmentation_da.xsd')">software{0,1}</a></b> , <b><a href="segmentation_da_xsd.html#segmentation_transformList" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for segmentation_da.xsd')">transformList{0,1}</a></b> , <b><a href="segmentation_da_xsd.html#segmentation_filePath" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for segmentation_da.xsd')">filePath</a></b> , <b><a href="segmentation_da_xsd.html#segmentation_primaryDescriptor" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for segmentation_da.xsd')">primaryDescriptor</a></b> , <b><a href="segmentation_da_xsd.html#segmentation_boundingBox" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for segmentation_da.xsd')">boundingBox{0,1}</a></b> , <b><a href="segmentation_da_xsd.html#segmentation_externalReferences" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for segmentation_da.xsd')">externalReferences{0,1}</a></b> , <b><a href="segmentation_da_xsd.html#segmentation_segmentList" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for segmentation_da.xsd')">segmentList</a></b> , <b><a href="segmentation_da_xsd.html#segmentation_details" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for segmentation_da.xsd')">details{0,1}</a></b></div>
+                           <div id="model_segmentation" style="display:block"><b><a href="segmentation_da_xsd.html#segmentation_version" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for segmentation_da.xsd')">version</a></b> , <b><a href="segmentation_da_xsd.html#segmentation_name" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for segmentation_da.xsd')">name</a></b> , <b><a href="segmentation_da_xsd.html#segmentation_software" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for segmentation_da.xsd')">software{0,1}</a></b> , <b><a href="segmentation_da_xsd.html#segmentation_transformList" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for segmentation_da.xsd')">transformList{0,1}</a></b> , <b><a href="segmentation_da_xsd.html#segmentation_filePath" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for segmentation_da.xsd')">filePath</a></b> , <b><a href="segmentation_da_xsd.html#segmentation_primaryDescriptor" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for segmentation_da.xsd')">primaryDescriptor</a></b> , <b><a href="segmentation_da_xsd.html#segmentation_boundingBox" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for segmentation_da.xsd')">boundingBox{0,1}</a></b> , <b><a href="segmentation_da_xsd.html#segmentation_globalExternalReferences" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for segmentation_da.xsd')">globalExternalReferences{0,1}</a></b> , <b><a href="segmentation_da_xsd.html#segmentation_segmentList" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for segmentation_da.xsd')">segmentList</a></b> , <b><a href="segmentation_da_xsd.html#segmentation_details" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for segmentation_da.xsd')">details{0,1}</a></b></div>
                         </td>
                      </tr>
                      <tr>
                         <td class="firstColumn"><b>Children</b></td>
-                        <td><b><a href="segmentation_da_xsd.html#segmentation_boundingBox" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for segmentation_da.xsd')">boundingBox</a></b>, <b><a href="segmentation_da_xsd.html#segmentation_details" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for segmentation_da.xsd')">details</a></b>, <b><a href="segmentation_da_xsd.html#segmentation_externalReferences" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for segmentation_da.xsd')">externalReferences</a></b>, <b><a href="segmentation_da_xsd.html#segmentation_filePath" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for segmentation_da.xsd')">filePath</a></b>, <b><a href="segmentation_da_xsd.html#segmentation_name" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for segmentation_da.xsd')">name</a></b>, <b><a href="segmentation_da_xsd.html#segmentation_primaryDescriptor" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for segmentation_da.xsd')">primaryDescriptor</a></b>, <b><a href="segmentation_da_xsd.html#segmentation_segmentList" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for segmentation_da.xsd')">segmentList</a></b>, <b><a href="segmentation_da_xsd.html#segmentation_software" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for segmentation_da.xsd')">software</a></b>, <b><a href="segmentation_da_xsd.html#segmentation_transformList" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for segmentation_da.xsd')">transformList</a></b>, <b><a href="segmentation_da_xsd.html#segmentation_version" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for segmentation_da.xsd')">version</a></b></td>
+                        <td><b><a href="segmentation_da_xsd.html#segmentation_boundingBox" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for segmentation_da.xsd')">boundingBox</a></b>, <b><a href="segmentation_da_xsd.html#segmentation_details" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for segmentation_da.xsd')">details</a></b>, <b><a href="segmentation_da_xsd.html#segmentation_filePath" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for segmentation_da.xsd')">filePath</a></b>, <b><a href="segmentation_da_xsd.html#segmentation_globalExternalReferences" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for segmentation_da.xsd')">globalExternalReferences</a></b>, <b><a href="segmentation_da_xsd.html#segmentation_name" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for segmentation_da.xsd')">name</a></b>, <b><a href="segmentation_da_xsd.html#segmentation_primaryDescriptor" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for segmentation_da.xsd')">primaryDescriptor</a></b>, <b><a href="segmentation_da_xsd.html#segmentation_segmentList" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for segmentation_da.xsd')">segmentList</a></b>, <b><a href="segmentation_da_xsd.html#segmentation_software" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for segmentation_da.xsd')">software</a></b>, <b><a href="segmentation_da_xsd.html#segmentation_transformList" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for segmentation_da.xsd')">transformList</a></b>, <b><a href="segmentation_da_xsd.html#segmentation_version" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for segmentation_da.xsd')">version</a></b></td>
                      </tr>
                      <tr>
                         <td class="firstColumn">
@@ -1091,7 +1091,7 @@ var modelBoxes= new Array('model_segmentation',
   </span><span class="tEl">&lt;filePath</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{1,1}</span><span class="tEl">&lt;/filePath&gt;</span><span class="tI">
   </span><span class="tEl">&lt;primaryDescriptor</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{1,1}</span><span class="tEl">&lt;/primaryDescriptor&gt;</span><span class="tI">
   </span><span class="tEl">&lt;boundingBox</span><span class="tT"> </span><span class="tAN">xmax=</span><span class="tAV">""</span><span class="tT"> </span><span class="tAN">xmin=</span><span class="tAV">"0"</span><span class="tT"> </span><span class="tAN">ymax=</span><span class="tAV">""</span><span class="tT"> </span><span class="tAN">ymin=</span><span class="tAV">"0"</span><span class="tT"> </span><span class="tAN">zmax=</span><span class="tAV">""</span><span class="tT"> </span><span class="tAN">zmin=</span><span class="tAV">"0"</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{0,1}</span><span class="tEl">&lt;/boundingBox&gt;</span><span class="tI">
-  </span><span class="tEl">&lt;externalReferences</span><span class="tT"> </span><span class="tAN">id=</span><span class="tAV">""</span><span class="tT"> </span><span class="tAN">otherType=</span><span class="tAV">""</span><span class="tT"> </span><span class="tAN">type=</span><span class="tAV">""</span><span class="tT"> </span><span class="tAN">value=</span><span class="tAV">""</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{0,1}</span><span class="tEl">&lt;/externalReferences&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;globalExternalReferences</span><span class="tT"> </span><span class="tAN">id=</span><span class="tAV">""</span><span class="tT"> </span><span class="tAN">otherType=</span><span class="tAV">""</span><span class="tT"> </span><span class="tAN">type=</span><span class="tAV">""</span><span class="tT"> </span><span class="tAN">value=</span><span class="tAV">""</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{0,1}</span><span class="tEl">&lt;/globalExternalReferences&gt;</span><span class="tI">
   </span><span class="tEl">&lt;segmentList</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{1,1}</span><span class="tEl">&lt;/segmentList&gt;</span><span class="tI">
   </span><span class="tEl">&lt;details</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{0,1}</span><span class="tEl">&lt;/details&gt;</span><span class="tI">
 </span><span class="tEl">&lt;/segmentation&gt;</span></pre></td>
@@ -1220,6 +1220,9 @@ var modelBoxes= new Array('model_segmentation',
 </span><span class="tT">                        </span><span class="tI">
 </span><span class="tT">0.6.0a4, 2017/07/31, Paul Korir:</span><span class="tI">
 </span><span class="tT">1) Added global (optional) external references</span><span class="tI">
+</span><span class="tT">                        </span><span class="tI">
+</span><span class="tT">0.6.0a4, 2017/09/20, Paul Korir:</span><span class="tI">
+</span><span class="tT">2) Renamed global external references to globalExternalReferences</span><span class="tI">
 </span></pre></td>
                                              </tr>
                                           </table>
@@ -1274,7 +1277,7 @@ var modelBoxes= new Array('model_segmentation',
         </span><span class="tEl">&lt;/xs:simpleType&gt;</span><span class="tI">
       </span><span class="tEl">&lt;/xs:element&gt;</span><span class="tI">
       </span><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"boundingBox"</span><span class="tAN"> type=</span><span class="tAV">"boundingBoxType"</span><span class="tAN"> minOccurs=</span><span class="tAV">"0"</span><span class="tEl">/&gt;</span><span class="tI">
-      </span><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"externalReferences"</span><span class="tAN"> type=</span><span class="tAV">"externalReferenceType"</span><span class="tAN"> minOccurs=</span><span class="tAV">"0"</span><span class="tEl">/&gt;</span><span class="tI">
+      </span><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"globalExternalReferences"</span><span class="tAN"> type=</span><span class="tAV">"externalReferenceType"</span><span class="tAN"> minOccurs=</span><span class="tAV">"0"</span><span class="tEl">/&gt;</span><span class="tI">
       </span><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"segmentList"</span><span class="tEl">&gt;</span><span class="tI">
         </span><span class="tEl">&lt;xs:complexType</span><span class="tEl">&gt;</span><span class="tI">
           </span><span class="tEl">&lt;xs:sequence</span><span class="tEl">&gt;</span><span class="tI">
@@ -1382,6 +1385,9 @@ var modelBoxes= new Array('model_segmentation',
                         
                         0.6.0a4, 2017/07/31, Paul Korir:
                         1) Added global (optional) external references
+                        
+                        0.6.0a4, 2017/09/20, Paul Korir:
+                        2) Renamed global external references to globalExternalReferences
                         </span><span class="tCD">]]</span><span class="tCD">&gt;</span><span class="tI">
         </span><span class="tEl">&lt;/xs:documentation&gt;</span><span class="tI">
       </span><span class="tEl">&lt;/xs:annotation&gt;</span><span class="tI">
@@ -2455,7 +2461,7 @@ var modelBoxes= new Array('model_segmentation',
             <td class="rt_lineBottom"></td>
             <td class="rt_cornerBottomRight"></td>
          </tr>
-      </table><a id="segmentation_externalReferences"></a><div class="componentTitle">Element <span class="qname"><b><a href="segmentation_da_xsd.html#segmentation" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for segmentation_da.xsd')">segmentation</a></b> / externalReferences</span></div>
+      </table><a id="segmentation_globalExternalReferences"></a><div class="componentTitle">Element <span class="qname"><b><a href="segmentation_da_xsd.html#segmentation" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for segmentation_da.xsd')">segmentation</a></b> / globalExternalReferences</span></div>
       <table class="rt">
          <tr>
             <td class="rt_cornerTopLeft"></td>
@@ -2474,10 +2480,10 @@ var modelBoxes= new Array('model_segmentation',
                      <tr>
                         <td class="firstColumn">
                            <div class="floatLeft"><b>Diagram</b></div>
-                           <div class="floatRight"><input id="button_diagram_segmentation_externalReferences" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_segmentation_externalReferences');" class="control" /></div>
+                           <div class="floatRight"><input id="button_diagram_segmentation_globalExternalReferences" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_segmentation_globalExternalReferences');" class="control" /></div>
                         </td>
                         <td class="diagram">
-                           <div id="diagram_segmentation_externalReferences" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_externalReferences.jpeg" usemap="#segmentation_da_xsd_Element_externalReferences" /><map name="segmentation_da_xsd_Element_externalReferences" id="segmentation_da_xsd_Element_externalReferences">
+                           <div id="diagram_segmentation_globalExternalReferences" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_globalExternalReferences.jpeg" usemap="#segmentation_da_xsd_Element_globalExternalReferences" /><map name="segmentation_da_xsd_Element_globalExternalReferences" id="segmentation_da_xsd_Element_globalExternalReferences">
                                  <area alt="segmentation_da_xsd.tmp#externalReferenceType_id" href="segmentation_da_xsd.html#externalReferenceType_id" coords="244,78,430,120" />
                                  <area alt="segmentation_da_xsd.tmp#externalReferenceType_type" href="segmentation_da_xsd.html#externalReferenceType_type" coords="244,130,355,172" />
                                  <area alt="segmentation_da_xsd.tmp#externalReferenceType_otherType" href="segmentation_da_xsd.html#externalReferenceType_otherType" coords="244,182,355,224" />
@@ -2492,10 +2498,10 @@ var modelBoxes= new Array('model_segmentation',
                      <tr>
                         <td class="firstColumn">
                            <div class="floatLeft"><b>Properties</b></div>
-                           <div class="floatRight"><input id="button_properties_segmentation_externalReferences" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_segmentation_externalReferences');" class="control" /></div>
+                           <div class="floatRight"><input id="button_properties_segmentation_globalExternalReferences" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_segmentation_globalExternalReferences');" class="control" /></div>
                         </td>
                         <td>
-                           <div id="properties_segmentation_externalReferences" style="display:block">
+                           <div id="properties_segmentation_globalExternalReferences" style="display:block">
                               <table class="propertiesTable">
                                  <tr>
                                     <td class="firstColumn" style="white-space: nowrap;">content</td>
@@ -2512,10 +2518,10 @@ var modelBoxes= new Array('model_segmentation',
                      <tr>
                         <td class="firstColumn">
                            <div class="floatLeft"><b>Attributes</b></div>
-                           <div class="floatRight"><input id="button_attributes_segmentation_externalReferences" type="image" src="img/btM.gif" value="-" onclick="switchState('attributes_segmentation_externalReferences');" class="control" /></div>
+                           <div class="floatRight"><input id="button_attributes_segmentation_globalExternalReferences" type="image" src="img/btM.gif" value="-" onclick="switchState('attributes_segmentation_globalExternalReferences');" class="control" /></div>
                         </td>
                         <td>
-                           <div id="attributes_segmentation_externalReferences" style="display:block">
+                           <div id="attributes_segmentation_globalExternalReferences" style="display:block">
                               <table class="attributesTable">
                                  <thead>
                                     <tr>
@@ -2564,13 +2570,13 @@ var modelBoxes= new Array('model_segmentation',
                      <tr>
                         <td class="firstColumn">
                            <div class="floatLeft"><b>Source</b></div>
-                           <div class="floatRight"><input id="button_source_segmentation_externalReferences" type="image" src="img/btM.gif" value="-" onclick="switchState('source_segmentation_externalReferences');" class="control" /></div>
+                           <div class="floatRight"><input id="button_source_segmentation_globalExternalReferences" type="image" src="img/btM.gif" value="-" onclick="switchState('source_segmentation_globalExternalReferences');" class="control" /></div>
                         </td>
                         <td>
-                           <div id="source_segmentation_externalReferences" style="display:block">
+                           <div id="source_segmentation_globalExternalReferences" style="display:block">
                               <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
                                  <tr>
-                                    <td width="100%"><pre><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"externalReferences"</span><span class="tAN"> type=</span><span class="tAV">"externalReferenceType"</span><span class="tAN"> minOccurs=</span><span class="tAV">"0"</span><span class="tEl">/&gt;</span></pre></td>
+                                    <td width="100%"><pre><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"globalExternalReferences"</span><span class="tAN"> type=</span><span class="tAV">"externalReferenceType"</span><span class="tAN"> minOccurs=</span><span class="tAV">"0"</span><span class="tEl">/&gt;</span></pre></td>
                                  </tr>
                               </table>
                            </div>
@@ -3064,7 +3070,7 @@ var modelBoxes= new Array('model_segmentation',
                            <div class="floatRight"><input id="button_diagram_segmentType_segmentType_biologicalAnnotation_externalReferences" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_segmentType_segmentType_biologicalAnnotation_externalReferences');" class="control" /></div>
                         </td>
                         <td class="diagram">
-                           <div id="diagram_segmentType_segmentType_biologicalAnnotation_externalReferences" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_externalReferences_1.jpeg" usemap="#segmentation_da_xsd_Element_externalReferences_1" /><map name="segmentation_da_xsd_Element_externalReferences_1" id="segmentation_da_xsd_Element_externalReferences_1">
+                           <div id="diagram_segmentType_segmentType_biologicalAnnotation_externalReferences" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_externalReferences.jpeg" usemap="#segmentation_da_xsd_Element_externalReferences" /><map name="segmentation_da_xsd_Element_externalReferences" id="segmentation_da_xsd_Element_externalReferences">
                                  <area alt="segmentation_da_xsd.tmp#segmentType_segmentType_biologicalAnnotation_segmentType_segmentType_biologicalAnnotation_externalReferences_ref" href="segmentation_da_xsd.html#segmentType_segmentType_biologicalAnnotation_segmentType_segmentType_biologicalAnnotation_externalReferences_ref" coords="254,2,442,44" /></map></div>
                         </td>
                      </tr>
@@ -4970,7 +4976,7 @@ var modelBoxes= new Array('model_segmentation',
                            <div class="floatRight"><input id="button_diagram_threeDVolumeType_transformId" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_threeDVolumeType_transformId');" class="control" /></div>
                         </td>
                         <td class="diagram">
-                           <div id="diagram_threeDVolumeType_transformId" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_transformId_4.jpeg" /></div>
+                           <div id="diagram_threeDVolumeType_transformId" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_transformId_3.jpeg" /></div>
                         </td>
                      </tr>
                      <tr>
@@ -5596,7 +5602,7 @@ var modelBoxes= new Array('model_segmentation',
                            <div class="floatRight"><input id="button_diagram_contourType_p" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_contourType_p');" class="control" /></div>
                         </td>
                         <td class="diagram">
-                           <div id="diagram_contourType_p" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_p_1.jpeg" usemap="#segmentation_da_xsd_Element_p_1" /><map name="segmentation_da_xsd_Element_p_1" id="segmentation_da_xsd_Element_p_1">
+                           <div id="diagram_contourType_p" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_p.jpeg" usemap="#segmentation_da_xsd_Element_p" /><map name="segmentation_da_xsd_Element_p" id="segmentation_da_xsd_Element_p">
                                  <area alt="segmentation_da_xsd.tmp#floatVectorType_x" href="segmentation_da_xsd.html#floatVectorType_x" coords="206,78,311,120" />
                                  <area alt="segmentation_da_xsd.tmp#floatVectorType_y" href="segmentation_da_xsd.html#floatVectorType_y" coords="206,130,311,172" />
                                  <area alt="segmentation_da_xsd.tmp#floatVectorType_z" href="segmentation_da_xsd.html#floatVectorType_z" coords="206,182,311,224" />
@@ -5718,7 +5724,7 @@ var modelBoxes= new Array('model_segmentation',
                            <div class="floatRight"><input id="button_diagram_segmentType_segmentType_contourList_transformId" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_segmentType_segmentType_contourList_transformId');" class="control" /></div>
                         </td>
                         <td class="diagram">
-                           <div id="diagram_segmentType_segmentType_contourList_transformId" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_transformId_1.jpeg" /></div>
+                           <div id="diagram_segmentType_segmentType_contourList_transformId" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_transformId_6.jpeg" /></div>
                         </td>
                      </tr>
                      <tr>
@@ -6320,7 +6326,7 @@ var modelBoxes= new Array('model_segmentation',
                            <div class="floatRight"><input id="button_diagram_vertexType_x" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_vertexType_x');" class="control" /></div>
                         </td>
                         <td class="diagram">
-                           <div id="diagram_vertexType_x" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_x_3.jpeg" /></div>
+                           <div id="diagram_vertexType_x" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_x_1.jpeg" /></div>
                         </td>
                      </tr>
                      <tr>
@@ -6390,7 +6396,7 @@ var modelBoxes= new Array('model_segmentation',
                            <div class="floatRight"><input id="button_diagram_vertexType_y" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_vertexType_y');" class="control" /></div>
                         </td>
                         <td class="diagram">
-                           <div id="diagram_vertexType_y" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_y_5.jpeg" /></div>
+                           <div id="diagram_vertexType_y" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_y_1.jpeg" /></div>
                         </td>
                      </tr>
                      <tr>
@@ -6659,7 +6665,7 @@ var modelBoxes= new Array('model_segmentation',
                            <div class="floatRight"><input id="button_diagram_polygonListType_P" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_polygonListType_P');" class="control" /></div>
                         </td>
                         <td class="diagram">
-                           <div id="diagram_polygonListType_P" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_P.jpeg" usemap="#segmentation_da_xsd_Element_P" /><map name="segmentation_da_xsd_Element_P" id="segmentation_da_xsd_Element_P">
+                           <div id="diagram_polygonListType_P" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_P_1.jpeg" usemap="#segmentation_da_xsd_Element_P_1" /><map name="segmentation_da_xsd_Element_P_1" id="segmentation_da_xsd_Element_P_1">
                                  <area alt="segmentation_da_xsd.tmp#polygonType_PID" href="segmentation_da_xsd.html#polygonType_PID" coords="191,78,377,120" />
                                  <area alt="segmentation_da_xsd.tmp#polygonType_v" href="segmentation_da_xsd.html#polygonType_v" coords="269,137,455,179" />
                                  <area alt="segmentation_da_xsd.tmp#polygonType" href="segmentation_da_xsd.html#polygonType" coords="166,3,287,25" /></map></div>
@@ -7515,7 +7521,7 @@ var modelBoxes= new Array('model_segmentation',
                            <div class="floatRight"><input id="button_diagram_viewVectorRotationType_x" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_viewVectorRotationType_x');" class="control" /></div>
                         </td>
                         <td class="diagram">
-                           <div id="diagram_viewVectorRotationType_x" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_x.jpeg" /></div>
+                           <div id="diagram_viewVectorRotationType_x" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_x_3.jpeg" /></div>
                         </td>
                      </tr>
                      <tr>
@@ -7585,7 +7591,7 @@ var modelBoxes= new Array('model_segmentation',
                            <div class="floatRight"><input id="button_diagram_viewVectorRotationType_y" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_viewVectorRotationType_y');" class="control" /></div>
                         </td>
                         <td class="diagram">
-                           <div id="diagram_viewVectorRotationType_y" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_y_3.jpeg" /></div>
+                           <div id="diagram_viewVectorRotationType_y" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_y_5.jpeg" /></div>
                         </td>
                      </tr>
                      <tr>
@@ -7655,7 +7661,7 @@ var modelBoxes= new Array('model_segmentation',
                            <div class="floatRight"><input id="button_diagram_viewVectorRotationType_z" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_viewVectorRotationType_z');" class="control" /></div>
                         </td>
                         <td class="diagram">
-                           <div id="diagram_viewVectorRotationType_z" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_z_5.jpeg" /></div>
+                           <div id="diagram_viewVectorRotationType_z" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_z.jpeg" /></div>
                         </td>
                      </tr>
                      <tr>
@@ -8430,7 +8436,7 @@ var modelBoxes= new Array('model_segmentation',
                            <div class="floatRight"><input id="button_diagram_cuboid_x" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_cuboid_x');" class="control" /></div>
                         </td>
                         <td class="diagram">
-                           <div id="diagram_cuboid_x" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_x_1.jpeg" usemap="#segmentation_da_xsd_Element_x_1" /><map name="segmentation_da_xsd_Element_x_1" id="segmentation_da_xsd_Element_x_1">
+                           <div id="diagram_cuboid_x" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_x_5.jpeg" usemap="#segmentation_da_xsd_Element_x_5" /><map name="segmentation_da_xsd_Element_x_5" id="segmentation_da_xsd_Element_x_5">
                                  <area alt="segmentation_da_xsd.tmp#dimensionType" href="segmentation_da_xsd.html#dimensionType" coords="175,8,312,34" /></map></div>
                         </td>
                      </tr>
@@ -8520,7 +8526,7 @@ var modelBoxes= new Array('model_segmentation',
                            <div class="floatRight"><input id="button_diagram_cuboid_y" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_cuboid_y');" class="control" /></div>
                         </td>
                         <td class="diagram">
-                           <div id="diagram_cuboid_y" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_y_1.jpeg" usemap="#segmentation_da_xsd_Element_y_1" /><map name="segmentation_da_xsd_Element_y_1" id="segmentation_da_xsd_Element_y_1">
+                           <div id="diagram_cuboid_y" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_y_3.jpeg" usemap="#segmentation_da_xsd_Element_y_3" /><map name="segmentation_da_xsd_Element_y_3" id="segmentation_da_xsd_Element_y_3">
                                  <area alt="segmentation_da_xsd.tmp#dimensionType" href="segmentation_da_xsd.html#dimensionType" coords="175,8,312,34" /></map></div>
                         </td>
                      </tr>
@@ -8610,7 +8616,7 @@ var modelBoxes= new Array('model_segmentation',
                            <div class="floatRight"><input id="button_diagram_cuboid_z" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_cuboid_z');" class="control" /></div>
                         </td>
                         <td class="diagram">
-                           <div id="diagram_cuboid_z" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_z.jpeg" usemap="#segmentation_da_xsd_Element_z" /><map name="segmentation_da_xsd_Element_z" id="segmentation_da_xsd_Element_z">
+                           <div id="diagram_cuboid_z" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_z_5.jpeg" usemap="#segmentation_da_xsd_Element_z_5" /><map name="segmentation_da_xsd_Element_z_5" id="segmentation_da_xsd_Element_z_5">
                                  <area alt="segmentation_da_xsd.tmp#dimensionType" href="segmentation_da_xsd.html#dimensionType" coords="175,8,312,34" /></map></div>
                         </td>
                      </tr>
@@ -9196,7 +9202,7 @@ var modelBoxes= new Array('model_segmentation',
                            <div class="floatRight"><input id="button_diagram_ellipsoid_z" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_ellipsoid_z');" class="control" /></div>
                         </td>
                         <td class="diagram">
-                           <div id="diagram_ellipsoid_z" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_z_3.jpeg" usemap="#segmentation_da_xsd_Element_z_3" /><map name="segmentation_da_xsd_Element_z_3" id="segmentation_da_xsd_Element_z_3">
+                           <div id="diagram_ellipsoid_z" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_z_2.jpeg" usemap="#segmentation_da_xsd_Element_z_2" /><map name="segmentation_da_xsd_Element_z_2" id="segmentation_da_xsd_Element_z_2">
                                  <area alt="segmentation_da_xsd.tmp#dimensionType" href="segmentation_da_xsd.html#dimensionType" coords="175,8,312,34" /></map></div>
                         </td>
                      </tr>
@@ -9286,7 +9292,7 @@ var modelBoxes= new Array('model_segmentation',
                            <div class="floatRight"><input id="button_diagram_ellipsoid_transformId" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_ellipsoid_transformId');" class="control" /></div>
                         </td>
                         <td class="diagram">
-                           <div id="diagram_ellipsoid_transformId" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_transformId_3.jpeg" /></div>
+                           <div id="diagram_ellipsoid_transformId" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_transformId_4.jpeg" /></div>
                         </td>
                      </tr>
                      <tr>
@@ -9356,7 +9362,7 @@ var modelBoxes= new Array('model_segmentation',
                            <div class="floatRight"><input id="button_diagram_ellipsoid_attribute" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_ellipsoid_attribute');" class="control" /></div>
                         </td>
                         <td class="diagram">
-                           <div id="diagram_ellipsoid_attribute" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_attribute_3.jpeg" /></div>
+                           <div id="diagram_ellipsoid_attribute" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_attribute_2.jpeg" /></div>
                         </td>
                      </tr>
                      <tr>
@@ -9759,7 +9765,7 @@ var modelBoxes= new Array('model_segmentation',
                            <div class="floatRight"><input id="button_diagram_cylinder_transformId" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_cylinder_transformId');" class="control" /></div>
                         </td>
                         <td class="diagram">
-                           <div id="diagram_cylinder_transformId" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_transformId_6.jpeg" /></div>
+                           <div id="diagram_cylinder_transformId" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_transformId_1.jpeg" /></div>
                         </td>
                      </tr>
                      <tr>
@@ -10302,7 +10308,7 @@ var modelBoxes= new Array('model_segmentation',
                            <div class="floatRight"><input id="button_diagram_cone_attribute" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_cone_attribute');" class="control" /></div>
                         </td>
                         <td class="diagram">
-                           <div id="diagram_cone_attribute" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_attribute_2.jpeg" /></div>
+                           <div id="diagram_cone_attribute" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_attribute_3.jpeg" /></div>
                         </td>
                      </tr>
                      <tr>
@@ -11079,7 +11085,7 @@ var modelBoxes= new Array('model_segmentation',
                            <div class="floatRight"><input id="button_diagram_integerVectorType_x" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_integerVectorType_x');" class="control" /></div>
                         </td>
                         <td class="diagram">
-                           <div id="diagram_integerVectorType_x" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_x_5.jpeg" /></div>
+                           <div id="diagram_integerVectorType_x" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_x_2.jpeg" /></div>
                         </td>
                      </tr>
                      <tr>
@@ -11149,7 +11155,7 @@ var modelBoxes= new Array('model_segmentation',
                            <div class="floatRight"><input id="button_diagram_integerVectorType_y" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_integerVectorType_y');" class="control" /></div>
                         </td>
                         <td class="diagram">
-                           <div id="diagram_integerVectorType_y" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_y_4.jpeg" /></div>
+                           <div id="diagram_integerVectorType_y" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_y.jpeg" /></div>
                         </td>
                      </tr>
                      <tr>
@@ -11393,7 +11399,7 @@ var modelBoxes= new Array('model_segmentation',
                            <div class="floatRight"><input id="button_diagram_positiveIntegerVectorType_x" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_positiveIntegerVectorType_x');" class="control" /></div>
                         </td>
                         <td class="diagram">
-                           <div id="diagram_positiveIntegerVectorType_x" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_x_2.jpeg" /></div>
+                           <div id="diagram_positiveIntegerVectorType_x" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_x.jpeg" /></div>
                         </td>
                      </tr>
                      <tr>
@@ -11463,7 +11469,7 @@ var modelBoxes= new Array('model_segmentation',
                            <div class="floatRight"><input id="button_diagram_positiveIntegerVectorType_y" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_positiveIntegerVectorType_y');" class="control" /></div>
                         </td>
                         <td class="diagram">
-                           <div id="diagram_positiveIntegerVectorType_y" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_y.jpeg" /></div>
+                           <div id="diagram_positiveIntegerVectorType_y" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_y_4.jpeg" /></div>
                         </td>
                      </tr>
                      <tr>
@@ -11533,7 +11539,7 @@ var modelBoxes= new Array('model_segmentation',
                            <div class="floatRight"><input id="button_diagram_positiveIntegerVectorType_z" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_positiveIntegerVectorType_z');" class="control" /></div>
                         </td>
                         <td class="diagram">
-                           <div id="diagram_positiveIntegerVectorType_z" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_z_2.jpeg" /></div>
+                           <div id="diagram_positiveIntegerVectorType_z" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_z_3.jpeg" /></div>
                         </td>
                      </tr>
                      <tr>
@@ -11869,7 +11875,7 @@ var modelBoxes= new Array('model_segmentation',
                               <table class="usedByTable">
                                  <tr>
                                     <td class="firstColumn">Elements </td>
-                                    <td><b><a href="segmentation_da_xsd.html#segmentType_segmentType_biologicalAnnotation_segmentType_segmentType_biologicalAnnotation_externalReferences_ref" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for segmentation_da.xsd')">segmentType/biologicalAnnotation/externalReferences/ref</a></b>, <b><a href="segmentation_da_xsd.html#segmentation_externalReferences" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for segmentation_da.xsd')">segmentation/externalReferences</a></b></td>
+                                    <td><b><a href="segmentation_da_xsd.html#segmentType_segmentType_biologicalAnnotation_segmentType_segmentType_biologicalAnnotation_externalReferences_ref" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for segmentation_da.xsd')">segmentType/biologicalAnnotation/externalReferences/ref</a></b>, <b><a href="segmentation_da_xsd.html#segmentation_globalExternalReferences" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for segmentation_da.xsd')">segmentation/globalExternalReferences</a></b></td>
                                  </tr>
                               </table>
                            </div>
@@ -16574,6 +16580,9 @@ var modelBoxes= new Array('model_segmentation',
 </span><span class="tT">                        </span><span class="tI">
 </span><span class="tT">0.6.0a4, 2017/07/31, Paul Korir:</span><span class="tI">
 </span><span class="tT">1) Added global (optional) external references</span><span class="tI">
+</span><span class="tT">                        </span><span class="tI">
+</span><span class="tT">0.6.0a4, 2017/09/20, Paul Korir:</span><span class="tI">
+</span><span class="tT">2) Renamed global external references to globalExternalReferences</span><span class="tI">
 </span></pre></td>
                                     </tr>
                                  </table>
@@ -16724,6 +16733,9 @@ var modelBoxes= new Array('model_segmentation',
                         
                         0.6.0a4, 2017/07/31, Paul Korir:
                         1) Added global (optional) external references
+                        
+                        0.6.0a4, 2017/09/20, Paul Korir:
+                        2) Renamed global external references to globalExternalReferences
                         </span><span class="tCD">]]</span><span class="tCD">&gt;</span><span class="tI">
     </span><span class="tEl">&lt;/xs:documentation&gt;</span><span class="tI">
   </span><span class="tEl">&lt;/xs:annotation&gt;</span><span class="tI">
