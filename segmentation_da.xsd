@@ -349,7 +349,7 @@
     <xs:complexType name="threeDVolumeType">
         <xs:sequence>
             <xs:element name="file" type="xs:token"/>
-            <xs:element name="objectPath" type="xs:token" minOccurs="0">
+            <xs:element name="objectPath" type="xs:string" minOccurs="0">
                 <xs:annotation>
                     <xs:documentation> This is particularly relevant if all the segments are stored
                         in one file, like in HDF5. </xs:documentation>
