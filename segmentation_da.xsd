@@ -19,7 +19,7 @@
                         </xs:sequence>
                     </xs:complexType>
                 </xs:element>
-                <xs:element name="filePath" type="xs:token">
+                <xs:element name="filePath" type="xs:string">
                     <xs:annotation>
                         <xs:documentation>Specifies the location of file containing referenced data.
                             Applies to 'threeDVolume' and 'subtomogramAverage'. If its value is an
@@ -65,7 +65,7 @@
                 </xs:element>
                 <xs:element name="details" type="xs:string" minOccurs="0"/>
             </xs:sequence>
-            <xs:attribute name="schemaVersion" type="xs:token" default="0.6.0a4">
+            <xs:attribute name="schemaVersion" type="xs:string" default="0.6.0a4">
                 <xs:annotation>
                     <xs:documentation>
                         <![CDATA[
@@ -170,6 +170,9 @@
                         0.6.0a4, 2017/09/25, Paul Korir:
                         3) Restructured global external references to have the form <ref [attrs]/>
                         4) Now externalReferenceType has attributes: type (required), otherType (required), value (required), label (new, optional), description (new, optional)
+                        
+                        0.6.0a4, 2017/11/23, Paul Korir:
+                        5) Replaced all active 'token' to 'string' types
                         ]]>
                     </xs:documentation>
                 </xs:annotation>
@@ -185,8 +188,8 @@
     <!-- softwareType -->
     <xs:complexType name="softwareType">
         <xs:sequence>
-            <xs:element name="name" type="xs:token"/>
-            <xs:element name="version" type="xs:token" minOccurs="0"/>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="version" type="xs:string" minOccurs="0"/>
             <xs:element name="processingDetails" type="xs:string" minOccurs="0"/>
         </xs:sequence>
     </xs:complexType>
@@ -348,7 +351,7 @@
     <!-- threeDVolumeType -->
     <xs:complexType name="threeDVolumeType">
         <xs:sequence>
-            <xs:element name="file" type="xs:token"/>
+            <xs:element name="file" type="xs:string"/>
             <xs:element name="objectPath" type="xs:string" minOccurs="0">
                 <xs:annotation>
                     <xs:documentation> This is particularly relevant if all the segments are stored
@@ -436,7 +439,7 @@
             </xs:documentation>
         </xs:annotation>
         <xs:choice>
-            <xs:element name="name" type="xs:token"/>
+            <xs:element name="name" type="xs:string"/>
             <xs:element name="rgba" type="rgbaType" minOccurs="1"/>
         </xs:choice>
     </xs:complexType>
@@ -486,11 +489,11 @@
         <!-- id -->
         <xs:attribute name="id" type="xs:nonNegativeInteger"/>
         <!-- ontology_name -->
-        <xs:attribute name="type" type="xs:token" use="required"/>
+        <xs:attribute name="type" type="xs:string" use="required"/>
         <!-- iri -->
-        <xs:attribute name="otherType" type="xs:token" use="required"/>
+        <xs:attribute name="otherType" type="xs:string" use="required"/>
         <!-- short_form -->
-        <xs:attribute name="value" type="xs:token" use="required"/>
+        <xs:attribute name="value" type="xs:string" use="required"/>
         <xs:attribute name="label" type="xs:string"/>
         <xs:attribute name="description" type="xs:string"/>
     </xs:complexType>
