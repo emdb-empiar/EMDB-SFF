@@ -1208,121 +1208,124 @@ var modelBoxes= new Array('model_segmentation',
                                           <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
                                              <tr>
                                                 <td width="100%"><pre><span class="tT">Version History</span><span class="tI">
-</span><span class="tT">0.2, 2015/3/15, Ardan Patwardhan: </span><span class="tI">
-</span><span class="tT">1) Added support for color </span><span class="tI">
-</span><span class="tT">2) Added support for triangle representation of segment - this is in support of Amira segmentations </span><span class="tI">
+</span><span class="tT">                        0.2, 2015/3/15, Ardan Patwardhan: </span><span class="tI">
+</span><span class="tT">                        1) Added support for color </span><span class="tI">
+</span><span class="tT">                        2) Added support for triangle representation of segment - this is in support of Amira segmentations </span><span class="tI">
 </span><span class="tT">                        </span><span class="tI">
-</span><span class="tT">0.3, 2015/10/21, Paul Korir: </span><span class="tI">
-</span><span class="tT">1) Added voxelTransform </span><span class="tI">
-</span><span class="tT">2) Added filePath for segmentLinks to HDF5 (Segger) segmentations </span><span class="tI">
-</span><span class="tT">3) Added segmentObjects with contours and meshes for IMOD </span><span class="tI">
+</span><span class="tT">                        0.3, 2015/10/21, Paul Korir: </span><span class="tI">
+</span><span class="tT">                        1) Added voxelTransform </span><span class="tI">
+</span><span class="tT">                        2) Added filePath for segmentLinks to HDF5 (Segger) segmentations </span><span class="tI">
+</span><span class="tT">                        3) Added segmentObjects with contours and meshes for IMOD </span><span class="tI">
 </span><span class="tT">                        </span><span class="tI">
-</span><span class="tT">0.4, 2015/11/04, Paul Korir: </span><span class="tI">
-</span><span class="tT">1) Added alpha for rgb color (transparency) </span><span class="tI">
+</span><span class="tT">                        0.4, 2015/11/04, Paul Korir: </span><span class="tI">
+</span><span class="tT">                        1) Added alpha for rgb color (transparency) </span><span class="tI">
 </span><span class="tT">                        </span><span class="tI">
-</span><span class="tT">0.5, 2015/12/14, Paul Korir: </span><span class="tI">
-</span><span class="tT">1) Removed 'voxelTransform'</span><span class="tI">
-</span><span class="tT">2) Moved 'numberOfCopies' as 'numberOfInstances' to  be a sequence element within 'biologicalAnnotation'</span><span class="tI">
-</span><span class="tT">3) Made 'color' a choice between 'name' (X11/HTML4 sRGB colour space names) and 'rgba'</span><span class="tI">
-</span><span class="tT">4) Added a 'transform' element, which is a possibly empty list of transformation matrices referenced within the document by a non-negative identifier</span><span class="tI">
-</span><span class="tT">5) Renamed 'segmentLink' to 'voxelSegmentation' and added a 'transformId' element</span><span class="tI">
-</span><span class="tT">6) Renamed 'color' element to 'colour' and 'colorType' to 'colourType'</span><span class="tI">
-</span><span class="tT">7) Structured 'shapePrimitive' to a list of 'shapePrimitive' (substitution group for 'ellipsoid', 'cuboid', 'pyramid', 'cylinder')</span><span class="tI">
-</span><span class="tT">8) Identified and labeled deprecated data types</span><span class="tI">
-</span><span class="tT">9) Renamed shapePrimitive 'pyramid' to 'cone' and added tentative definition</span><span class="tI">
-</span><span class="tT">10) Removed 'origin' and 'viewVectorRotation' elements from shape primitives (cuboid, ellipsoid, cone, cylinder) and replaced with 'transformId' element</span><span class="tI">
-</span><span class="tT">11) Renamed references to 'triangles' to 'polygons' e.g. 'triangleListType' now 'polygonListType'</span><span class="tI">
+</span><span class="tT">                        0.5, 2015/12/14, Paul Korir: </span><span class="tI">
+</span><span class="tT">                        1) Removed 'voxelTransform'</span><span class="tI">
+</span><span class="tT">                        2) Moved 'numberOfCopies' as 'numberOfInstances' to  be a sequence element within 'biologicalAnnotation'</span><span class="tI">
+</span><span class="tT">                        3) Made 'color' a choice between 'name' (X11/HTML4 sRGB colour space names) and 'rgba'</span><span class="tI">
+</span><span class="tT">                        4) Added a 'transform' element, which is a possibly empty list of transformation matrices referenced within the document by a non-negative identifier</span><span class="tI">
+</span><span class="tT">                        5) Renamed 'segmentLink' to 'voxelSegmentation' and added a 'transformId' element</span><span class="tI">
+</span><span class="tT">                        6) Renamed 'color' element to 'colour' and 'colorType' to 'colourType'</span><span class="tI">
+</span><span class="tT">                        7) Structured 'shapePrimitive' to a list of 'shapePrimitive' (substitution group for 'ellipsoid', 'cuboid', 'pyramid', 'cylinder')</span><span class="tI">
+</span><span class="tT">                        8) Identified and labeled deprecated data types</span><span class="tI">
+</span><span class="tT">                        9) Renamed shapePrimitive 'pyramid' to 'cone' and added tentative definition</span><span class="tI">
+</span><span class="tT">                        10) Removed 'origin' and 'viewVectorRotation' elements from shape primitives (cuboid, ellipsoid, cone, cylinder) and replaced with 'transformId' element</span><span class="tI">
+</span><span class="tT">                        11) Renamed references to 'triangles' to 'polygons' e.g. 'triangleListType' now 'polygonListType'</span><span class="tI">
 </span><span class="tT">                        </span><span class="tI">
-</span><span class="tT">0.5.1, 2015/12/23, Paul Korir:</span><span class="tI">
-</span><span class="tT">1) Change colourType to have rgbaType minOccurs=1</span><span class="tI">
-</span><span class="tT">2) Added 'attribute' element (e.g. for FOM) to shapePrimitive</span><span class="tI">
-</span><span class="tT">3) Deleted comment: 'Are the CCP4 format masks going to be allowed? If so, we could represent the information of the mask (mapType) here.' from 'voxelSegmentation'.</span><span class="tI">
-</span><span class="tT">4) Added segment 'format' element to 'voxelSegmentation' restricted to values 'runLengthEncoding', 'MRC', or 'Segger'</span><span class="tI">
-</span><span class="tT">5) Renamed 'voxelSegmentation' to 'threeDVolume' and deprecated 'subTomogramAverage'.</span><span class="tI">
-</span><span class="tT">6) Restructured 'transforms' into a list ('transformList') of 'transform', which is a substitutionGroup of 'transformationMatrix', 'canonicalEulerAngles' or 'viewVectorRotation'. </span><span class="tI">
-</span><span class="tT">7) Added an 'angleDegreeType' to restrict angle range in degrees [0,360].</span><span class="tI">
+</span><span class="tT">                        0.5.1, 2015/12/23, Paul Korir:</span><span class="tI">
+</span><span class="tT">                        1) Change colourType to have rgbaType minOccurs=1</span><span class="tI">
+</span><span class="tT">                        2) Added 'attribute' element (e.g. for FOM) to shapePrimitive</span><span class="tI">
+</span><span class="tT">                        3) Deleted comment: 'Are the CCP4 format masks going to be allowed? If so, we could represent the information of the mask (mapType) here.' from 'voxelSegmentation'.</span><span class="tI">
+</span><span class="tT">                        4) Added segment 'format' element to 'voxelSegmentation' restricted to values 'runLengthEncoding', 'MRC', or 'Segger'</span><span class="tI">
+</span><span class="tT">                        5) Renamed 'voxelSegmentation' to 'threeDVolume' and deprecated 'subTomogramAverage'.</span><span class="tI">
+</span><span class="tT">                        6) Restructured 'transforms' into a list ('transformList') of 'transform', which is a substitutionGroup of 'transformationMatrix', 'canonicalEulerAngles' or 'viewVectorRotation'. </span><span class="tI">
+</span><span class="tT">                        7) Added an 'angleDegreeType' to restrict angle range in degrees [0,360].</span><span class="tI">
 </span><span class="tT">                        </span><span class="tI">
-</span><span class="tT">0.5.2, 2016/01/04, Paul Korir:</span><span class="tI">
-</span><span class="tT">1) Made 'transformList' optional</span><span class="tI">
-</span><span class="tT">2) Added 'id' attributes for 'canonicalEulerAngle' and 'viewVectorRotation'</span><span class="tI">
-</span><span class="tT">3) Annotations for 'filePath'</span><span class="tI">
-</span><span class="tT">4) Added 'other' to types for 'externalReference' and optional 'otherTypes' attribute</span><span class="tI">
-</span><span class="tT">5) Changed type of 'name' element in 'colour' from 'xs:string' to 'xs:token'</span><span class="tI">
-</span><span class="tT">6) Created 'threeDVolumeType' to be used by 'threeDVolume' and 'subtomogramAverage'</span><span class="tI">
-</span><span class="tT">7) Added 'id' attributes for 'shapePrimitive' and 'threeDVolumeType'</span><span class="tI">
-</span><span class="tT">8) Renamed 'contours' to 'contourList'</span><span class="tI">
-</span><span class="tT">9) Created 'meshList' as a sequence of 'mesh'. Each 'mesh' has an 'id'</span><span class="tI">
+</span><span class="tT">                        0.5.2, 2016/01/04, Paul Korir:</span><span class="tI">
+</span><span class="tT">                        1) Made 'transformList' optional</span><span class="tI">
+</span><span class="tT">                        2) Added 'id' attributes for 'canonicalEulerAngle' and 'viewVectorRotation'</span><span class="tI">
+</span><span class="tT">                        3) Annotations for 'filePath'</span><span class="tI">
+</span><span class="tT">                        4) Added 'other' to types for 'externalReference' and optional 'otherTypes' attribute</span><span class="tI">
+</span><span class="tT">                        5) Changed type of 'name' element in 'colour' from 'xs:string' to 'xs:token'</span><span class="tI">
+</span><span class="tT">                        6) Created 'threeDVolumeType' to be used by 'threeDVolume' and 'subtomogramAverage'</span><span class="tI">
+</span><span class="tT">                        7) Added 'id' attributes for 'shapePrimitive' and 'threeDVolumeType'</span><span class="tI">
+</span><span class="tT">                        8) Renamed 'contours' to 'contourList'</span><span class="tI">
+</span><span class="tT">                        9) Created 'meshList' as a sequence of 'mesh'. Each 'mesh' has an 'id'</span><span class="tI">
 </span><span class="tT">                        </span><span class="tI">
-</span><span class="tT">0.5.3, 2016/01/06, Paul Korir:</span><span class="tI">
-</span><span class="tT">1) Renamed 'transformationMatrixType' attribute from 'transformId' to 'id'</span><span class="tI">
-</span><span class="tT">2) Created 'dimensionType' for all 'shapePrimitive' dimensions</span><span class="tI">
+</span><span class="tT">                        0.5.3, 2016/01/06, Paul Korir:</span><span class="tI">
+</span><span class="tT">                        1) Renamed 'transformationMatrixType' attribute from 'transformId' to 'id'</span><span class="tI">
+</span><span class="tT">                        2) Created 'dimensionType' for all 'shapePrimitive' dimensions</span><span class="tI">
 </span><span class="tT">                        </span><span class="tI">
-</span><span class="tT">0.5.4, 2016/01/06, Paul Korir:</span><span class="tI">
-</span><span class="tT">1) Added element 'primaryDescriptor' of type restricted string to 'threeDVolume', 'shapePrimitiveList', 'contourList', 'meshList'</span><span class="tI">
+</span><span class="tT">                        0.5.4, 2016/01/06, Paul Korir:</span><span class="tI">
+</span><span class="tT">                        1) Added element 'primaryDescriptor' of type restricted string to 'threeDVolume', 'shapePrimitiveList', 'contourList', 'meshList'</span><span class="tI">
 </span><span class="tT">                        </span><span class="tI">
-</span><span class="tT">0.5.5, 2016/01/22, Paul Korir:</span><span class="tI">
-</span><span class="tT">1) Changed 'vertices' and 'polygons' to 'vertexList' and 'polygonList', respectively.</span><span class="tI">
-</span><span class="tT">2) Added attribute 'designation' restricted to string 'vertex' (default) and 'normal' to 'vertex' element.</span><span class="tI">
+</span><span class="tT">                        0.5.5, 2016/01/22, Paul Korir:</span><span class="tI">
+</span><span class="tT">                        1) Changed 'vertices' and 'polygons' to 'vertexList' and 'polygonList', respectively.</span><span class="tI">
+</span><span class="tT">                        2) Added attribute 'designation' restricted to string 'vertex' (default) and 'normal' to 'vertex' element.</span><span class="tI">
 </span><span class="tT">                        </span><span class="tI">
-</span><span class="tT">0.5.6, 2016/01/25, Paul Korir:</span><span class="tI">
-</span><span class="tT">1) Changed attribute 'polygonID' from 'positiveInteger' to 'nonNegativeInteger'</span><span class="tI">
+</span><span class="tT">                        0.5.6, 2016/01/25, Paul Korir:</span><span class="tI">
+</span><span class="tT">                        1) Changed attribute 'polygonID' from 'positiveInteger' to 'nonNegativeInteger'</span><span class="tI">
 </span><span class="tT">                        </span><span class="tI">
-</span><span class="tT">0.5.7, 2016/01/26, Paul Korir:</span><span class="tI">
-</span><span class="tT">1) Change element names to save disk space: 'vertex' to 'v', 'vertexID' to 'vID', 'point' to 'p', 'polygon' to 'P', 'polygonID' to 'PID'</span><span class="tI">
-</span><span class="tT">2) Changed 'vertexType' to have ID of type 'xs:nonNegativeInteger' (from 'xs:positiveInteger')</span><span class="tI">
+</span><span class="tT">                        0.5.7, 2016/01/26, Paul Korir:</span><span class="tI">
+</span><span class="tT">                        1) Change element names to save disk space: 'vertex' to 'v', 'vertexID' to 'vID', 'point' to 'p', 'polygon' to 'P', 'polygonID' to 'PID'</span><span class="tI">
+</span><span class="tT">                        2) Changed 'vertexType' to have ID of type 'xs:nonNegativeInteger' (from 'xs:positiveInteger')</span><span class="tI">
 </span><span class="tT">                        </span><span class="tI">
-</span><span class="tT">0.5.8, 2016/04/26, Paul Korir:</span><span class="tI">
-</span><span class="tT">1) Added 'version' element at the root.</span><span class="tI">
+</span><span class="tT">                        0.5.8, 2016/04/26, Paul Korir:</span><span class="tI">
+</span><span class="tT">                        1) Added 'version' element at the root.</span><span class="tI">
 </span><span class="tT">                        </span><span class="tI">
-</span><span class="tT">0.5.8, 2016/08/08, Paul Korir:</span><span class="tI">
-</span><span class="tT">2) Made 'shapePrimitive' element 'attribute (not present in 'subtomogramAverage' optional (minOccurs=0)</span><span class="tI">
+</span><span class="tT">                        0.5.8, 2016/08/08, Paul Korir:</span><span class="tI">
+</span><span class="tT">                        2) Made 'shapePrimitive' element 'attribute (not present in 'subtomogramAverage' optional (minOccurs=0)</span><span class="tI">
 </span><span class="tT">                        </span><span class="tI">
-</span><span class="tT">0.5.8, 2016/08/17, Paul Korir:</span><span class="tI">
-</span><span class="tT">3) Added a 'transformId' element to 'contourList' and to 'mesh'.</span><span class="tI">
+</span><span class="tT">                        0.5.8, 2016/08/17, Paul Korir:</span><span class="tI">
+</span><span class="tT">                        3) Added a 'transformId' element to 'contourList' and to 'mesh'.</span><span class="tI">
 </span><span class="tT">                        </span><span class="tI">
-</span><span class="tT">0.5.8, 2016/10/04, Paul Korir:</span><span class="tI">
-</span><span class="tT">4) Simplified shape primitives by eliminating internal layering e.g. cone/dimensions/height to cone/height</span><span class="tI">
+</span><span class="tT">                        0.5.8, 2016/10/04, Paul Korir:</span><span class="tI">
+</span><span class="tT">                        4) Simplified shape primitives by eliminating internal layering e.g. cone/dimensions/height to cone/height</span><span class="tI">
 </span><span class="tT">                        </span><span class="tI">
-</span><span class="tT">0.5.8, 2016/10/14, Paul Korir:</span><span class="tI">
-</span><span class="tT">5) (Finally) renamed 'surfaceType' to 'meshType' for consistency.</span><span class="tI">
+</span><span class="tT">                        0.5.8, 2016/10/14, Paul Korir:</span><span class="tI">
+</span><span class="tT">                        5) (Finally) renamed 'surfaceType' to 'meshType' for consistency.</span><span class="tI">
 </span><span class="tT">                        </span><span class="tI">
-</span><span class="tT">0.5.8, 2016/10/20, Paul Korir:</span><span class="tI">
-</span><span class="tT">6) 'macromolecule' and 'complex' changed from 'positiveInteger' to 'string'</span><span class="tI">
+</span><span class="tT">                        0.5.8, 2016/10/20, Paul Korir:</span><span class="tI">
+</span><span class="tT">                        6) 'macromolecule' and 'complex' changed from 'positiveInteger' to 'string'</span><span class="tI">
 </span><span class="tT">                        </span><span class="tI">
-</span><span class="tT">0.6.0a1, 2017/02/28, Paul Korir:</span><span class="tI">
-</span><span class="tT">1) Added 'EMAN' as a 'threeDVolume' format</span><span class="tI">
+</span><span class="tT">                        0.6.0a1, 2017/02/28, Paul Korir:</span><span class="tI">
+</span><span class="tT">                        1) Added 'EMAN' as a 'threeDVolume' format</span><span class="tI">
 </span><span class="tT">                        </span><span class="tI">
-</span><span class="tT">0.6.0a2, 2017/05/15, Paul Korir:</span><span class="tI">
-</span><span class="tT">1) Restructured 'externalReferences' from simpleType to complexType</span><span class="tI">
-</span><span class="tT">2) Changed 'externalReference' to 'externalReferenceType' and replaced elements with attributes</span><span class="tI">
+</span><span class="tT">                        0.6.0a2, 2017/05/15, Paul Korir:</span><span class="tI">
+</span><span class="tT">                        1) Restructured 'externalReferences' from simpleType to complexType</span><span class="tI">
+</span><span class="tT">                        2) Changed 'externalReference' to 'externalReferenceType' and replaced elements with attributes</span><span class="tI">
 </span><span class="tT">                        </span><span class="tI">
-</span><span class="tT">0.6.0a3, 2017/05/25, Paul Korir:</span><span class="tI">
-</span><span class="tT">1) Added element 'boundingBox' taking six integers: xmin, xmax, ymin, ymax, zmin, zmax; minimums default to 0</span><span class="tI">
+</span><span class="tT">                        0.6.0a3, 2017/05/25, Paul Korir:</span><span class="tI">
+</span><span class="tT">                        1) Added element 'boundingBox' taking six integers: xmin, xmax, ymin, ymax, zmin, zmax; minimums default to 0</span><span class="tI">
 </span><span class="tT">                        </span><span class="tI">
-</span><span class="tT">0.6.0a4, 2017/07/31, Paul Korir:</span><span class="tI">
-</span><span class="tT">1) Added global (optional) external references</span><span class="tI">
+</span><span class="tT">                        0.6.0a4, 2017/07/31, Paul Korir:</span><span class="tI">
+</span><span class="tT">                        1) Added global (optional) external references</span><span class="tI">
 </span><span class="tT">                        </span><span class="tI">
-</span><span class="tT">0.6.0a4, 2017/09/20, Paul Korir:</span><span class="tI">
-</span><span class="tT">2) Renamed global external references to globalExternalReferences</span><span class="tI">
+</span><span class="tT">                        0.6.0a4, 2017/09/20, Paul Korir:</span><span class="tI">
+</span><span class="tT">                        2) Renamed global external references to globalExternalReferences</span><span class="tI">
 </span><span class="tT">                        </span><span class="tI">
-</span><span class="tT">0.6.0a4, 2017/09/25, Paul Korir:</span><span class="tI">
-</span><span class="tT">3) Restructured global external references to have the form &lt;ref [attrs]/&gt;</span><span class="tI">
-</span><span class="tT">4) Now externalReferenceType has attributes: type (required), otherType (required), value (required), label (new, optional), description (new, optional)</span><span class="tI">
+</span><span class="tT">                        0.6.0a4, 2017/09/25, Paul Korir:</span><span class="tI">
+</span><span class="tT">                        3) Restructured global external references to have the form &lt;ref [attrs]/&gt;</span><span class="tI">
+</span><span class="tT">                        4) Now externalReferenceType has attributes: type (required), otherType (required), value (required), label (new, optional), description (new, optional)</span><span class="tI">
+</span><span class="tT"></span><span class="tI">
+</span><span class="tT">                        0.6.0a4, 2017/11/23, Paul Korir:</span><span class="tI">
+</span><span class="tT">                        5) Replaced all active 'token' to 'string' types</span><span class="tI">
 </span><span class="tT">                        </span><span class="tI">
-</span><span class="tT">0.7.0.dev0, 2017/11/09, Paul Korir:</span><span class="tI">
-</span><span class="tT">1) new 3D volume type: 'threeDVolumeType' (previous one is 'oldThreeDVolumeType'</span><span class="tI">
-</span><span class="tT">    supports both byte/integer lattices and density volumes (for subtomogram averages)</span><span class="tI">
-</span><span class="tT">2) embedded volume as base64 string using new 'latticeType'</span><span class="tI">
-</span><span class="tT">3) removed contour representation</span><span class="tI">
+</span><span class="tT">                        0.7.0.dev0, 2017/11/09, Paul Korir:</span><span class="tI">
+</span><span class="tT">                        1) new 3D volume type: 'threeDVolumeType' (previous one is 'oldThreeDVolumeType'</span><span class="tI">
+</span><span class="tT">                            supports both byte/integer lattices and density volumes (for subtomogram averages)</span><span class="tI">
+</span><span class="tT">                        2) embedded volume as base64 string using new 'latticeType'</span><span class="tI">
+</span><span class="tT">                        3) removed contour representation</span><span class="tI">
 </span><span class="tT">                        </span><span class="tI">
-</span><span class="tT">0.7.0.dev0, 2018/05/04, Paul Korir:</span><span class="tI">
-</span><span class="tT">4) segment name added</span><span class="tI">
-</span><span class="tT">5) removed filePath</span><span class="tI">
-</span><span class="tT">6) removed viewVectorRotation and canonicalEulerAngles</span><span class="tI">
-</span><span class="tT">7) colour has rgbaType now</span><span class="tI">
+</span><span class="tT">                        0.7.0.dev0, 2018/05/04, Paul Korir:</span><span class="tI">
+</span><span class="tT">                        4) segment name added</span><span class="tI">
+</span><span class="tT">                        5) removed filePath</span><span class="tI">
+</span><span class="tT">                        6) removed viewVectorRotation and canonicalEulerAngles</span><span class="tI">
+</span><span class="tT">                        7) colour has rgbaType now</span><span class="tI">
 </span><span class="tT">                        </span><span class="tI">
-</span><span class="tT">0.7.0.dev0, 2018/07/18, Paul Korir:</span><span class="tI">
-</span><span class="tT">8) vertex designation now 'surface' or 'normal'</span><span class="tI">
+</span><span class="tT">                        0.7.0.dev0, 2018/07/18, Paul Korir:</span><span class="tI">
+</span><span class="tT">                        8) vertex designation now 'surface' or 'normal'</span><span class="tI">
 </span></pre></td>
                                              </tr>
                                           </table>
@@ -1499,6 +1502,9 @@ var modelBoxes= new Array('model_segmentation',
                         0.6.0a4, 2017/09/25, Paul Korir:
                         3) Restructured global external references to have the form &lt;ref [attrs]/&gt;
                         4) Now externalReferenceType has attributes: type (required), otherType (required), value (required), label (new, optional), description (new, optional)
+
+                        0.6.0a4, 2017/11/23, Paul Korir:
+                        5) Replaced all active 'token' to 'string' types
                         
                         0.7.0.dev0, 2017/11/09, Paul Korir:
                         1) new 3D volume type: 'threeDVolumeType' (previous one is 'oldThreeDVolumeType'
@@ -1557,7 +1563,7 @@ var modelBoxes= new Array('model_segmentation',
                            <div class="floatRight"><input id="button_diagram_segmentation_version" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_segmentation_version');" class="control" /></div>
                         </td>
                         <td class="diagram">
-                           <div id="diagram_segmentation_version" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_version.jpeg" /></div>
+                           <div id="diagram_segmentation_version" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_version_1.jpeg" /></div>
                         </td>
                      </tr>
                      <tr>
@@ -1698,8 +1704,8 @@ var modelBoxes= new Array('model_segmentation',
                         </td>
                         <td class="diagram">
                            <div id="diagram_segmentation_software" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_software.jpeg" usemap="#segmentation_da_xsd_Element_software" /><map name="segmentation_da_xsd_Element_software" id="segmentation_da_xsd_Element_software">
-                                 <area alt="segmentation_da_xsd.tmp#softwareType_name" href="segmentation_da_xsd.html#softwareType_name" coords="250,40,361,82" />
-                                 <area alt="segmentation_da_xsd.tmp#softwareType_version" href="segmentation_da_xsd.html#softwareType_version" coords="250,92,361,134" />
+                                 <area alt="segmentation_da_xsd.tmp#softwareType_name" href="segmentation_da_xsd.html#softwareType_name" coords="250,40,363,82" />
+                                 <area alt="segmentation_da_xsd.tmp#softwareType_version" href="segmentation_da_xsd.html#softwareType_version" coords="250,92,363,134" />
                                  <area alt="segmentation_da_xsd.tmp#softwareType_processingDetails" href="segmentation_da_xsd.html#softwareType_processingDetails" coords="250,144,377,186" />
                                  <area alt="segmentation_da_xsd.tmp#softwareType" href="segmentation_da_xsd.html#softwareType" coords="168,3,291,25" /></map></div>
                         </td>
@@ -1805,12 +1811,12 @@ var modelBoxes= new Array('model_segmentation',
                            <div class="floatRight"><input id="button_diagram_softwareType_name" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_softwareType_name');" class="control" /></div>
                         </td>
                         <td class="diagram">
-                           <div id="diagram_softwareType_name" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_name_3.jpeg" /></div>
+                           <div id="diagram_softwareType_name" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_name_1.jpeg" /></div>
                         </td>
                      </tr>
                      <tr>
                         <td class="firstColumn"><b>Type</b></td>
-                        <td><b>xs:token</b></td>
+                        <td><b>xs:string</b></td>
                      </tr>
                      <tr>
                         <td class="firstColumn">
@@ -1837,7 +1843,7 @@ var modelBoxes= new Array('model_segmentation',
                            <div id="source_softwareType_name" style="display:block">
                               <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
                                  <tr>
-                                    <td width="100%"><pre><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"name"</span><span class="tAN"> type=</span><span class="tAV">"xs:token"</span><span class="tEl">/&gt;</span></pre></td>
+                                    <td width="100%"><pre><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"name"</span><span class="tAN"> type=</span><span class="tAV">"xs:string"</span><span class="tEl">/&gt;</span></pre></td>
                                  </tr>
                               </table>
                            </div>
@@ -1875,12 +1881,12 @@ var modelBoxes= new Array('model_segmentation',
                            <div class="floatRight"><input id="button_diagram_softwareType_version" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_softwareType_version');" class="control" /></div>
                         </td>
                         <td class="diagram">
-                           <div id="diagram_softwareType_version" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_version_1.jpeg" /></div>
+                           <div id="diagram_softwareType_version" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_version.jpeg" /></div>
                         </td>
                      </tr>
                      <tr>
                         <td class="firstColumn"><b>Type</b></td>
-                        <td><b>xs:token</b></td>
+                        <td><b>xs:string</b></td>
                      </tr>
                      <tr>
                         <td class="firstColumn">
@@ -1911,7 +1917,7 @@ var modelBoxes= new Array('model_segmentation',
                            <div id="source_softwareType_version" style="display:block">
                               <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
                                  <tr>
-                                    <td width="100%"><pre><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"version"</span><span class="tAN"> type=</span><span class="tAV">"xs:token"</span><span class="tAN"> minOccurs=</span><span class="tAV">"0"</span><span class="tEl">/&gt;</span></pre></td>
+                                    <td width="100%"><pre><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"version"</span><span class="tAN"> type=</span><span class="tAV">"xs:string"</span><span class="tAN"> minOccurs=</span><span class="tAV">"0"</span><span class="tEl">/&gt;</span></pre></td>
                                  </tr>
                               </table>
                            </div>
@@ -2600,9 +2606,9 @@ var modelBoxes= new Array('model_segmentation',
                         <td class="diagram">
                            <div id="diagram_segmentation_segmentation_globalExternalReferences_ref" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_ref_1.jpeg" usemap="#segmentation_da_xsd_Element_ref_1" /><map name="segmentation_da_xsd_Element_ref_1" id="segmentation_da_xsd_Element_ref_1">
                                  <area alt="segmentation_da_xsd.tmp#externalReferenceType_id" href="segmentation_da_xsd.html#externalReferenceType_id" coords="244,78,430,120" />
-                                 <area alt="segmentation_da_xsd.tmp#externalReferenceType_type" href="segmentation_da_xsd.html#externalReferenceType_type" coords="244,130,355,172" />
-                                 <area alt="segmentation_da_xsd.tmp#externalReferenceType_otherType" href="segmentation_da_xsd.html#externalReferenceType_otherType" coords="244,182,355,224" />
-                                 <area alt="segmentation_da_xsd.tmp#externalReferenceType_value" href="segmentation_da_xsd.html#externalReferenceType_value" coords="244,234,355,276" />
+                                 <area alt="segmentation_da_xsd.tmp#externalReferenceType_type" href="segmentation_da_xsd.html#externalReferenceType_type" coords="244,130,357,172" />
+                                 <area alt="segmentation_da_xsd.tmp#externalReferenceType_otherType" href="segmentation_da_xsd.html#externalReferenceType_otherType" coords="244,182,357,224" />
+                                 <area alt="segmentation_da_xsd.tmp#externalReferenceType_value" href="segmentation_da_xsd.html#externalReferenceType_value" coords="244,234,357,276" />
                                  <area alt="segmentation_da_xsd.tmp#externalReferenceType_label" href="segmentation_da_xsd.html#externalReferenceType_label" coords="244,286,357,328" />
                                  <area alt="segmentation_da_xsd.tmp#externalReferenceType_description" href="segmentation_da_xsd.html#externalReferenceType_description" coords="244,338,357,380" />
                                  <area alt="segmentation_da_xsd.tmp#externalReferenceType" href="segmentation_da_xsd.html#externalReferenceType" coords="219,3,393,25" /></map></div>
@@ -2678,7 +2684,7 @@ var modelBoxes= new Array('model_segmentation',
                                  </tr>
                                  <tr>
                                     <td class="firstColumn"><b><a href="segmentation_da_xsd.html#externalReferenceType_otherType" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for segmentation_da.xsd')">otherType</a></b></td>
-                                    <td><b>xs:token</b></td>
+                                    <td><b>xs:string</b></td>
                                     <td>required</td>
                                     <td>
                                        <div class="annotation"></div>
@@ -2686,7 +2692,7 @@ var modelBoxes= new Array('model_segmentation',
                                  </tr>
                                  <tr>
                                     <td class="firstColumn"><b><a href="segmentation_da_xsd.html#externalReferenceType_type" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for segmentation_da.xsd')">type</a></b></td>
-                                    <td><b>xs:token</b></td>
+                                    <td><b>xs:string</b></td>
                                     <td>required</td>
                                     <td>
                                        <div class="annotation"></div>
@@ -2694,7 +2700,7 @@ var modelBoxes= new Array('model_segmentation',
                                  </tr>
                                  <tr>
                                     <td class="firstColumn"><b><a href="segmentation_da_xsd.html#externalReferenceType_value" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for segmentation_da.xsd')">value</a></b></td>
-                                    <td><b>xs:token</b></td>
+                                    <td><b>xs:string</b></td>
                                     <td>required</td>
                                     <td>
                                        <div class="annotation"></div>
@@ -3389,9 +3395,9 @@ var modelBoxes= new Array('model_segmentation',
                         <td class="diagram">
                            <div id="diagram_segmentType_segmentType_biologicalAnnotation_segmentType_segmentType_biologicalAnnotation_externalReferences_ref" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_ref.jpeg" usemap="#segmentation_da_xsd_Element_ref" /><map name="segmentation_da_xsd_Element_ref" id="segmentation_da_xsd_Element_ref">
                                  <area alt="segmentation_da_xsd.tmp#externalReferenceType_id" href="segmentation_da_xsd.html#externalReferenceType_id" coords="244,78,430,120" />
-                                 <area alt="segmentation_da_xsd.tmp#externalReferenceType_type" href="segmentation_da_xsd.html#externalReferenceType_type" coords="244,130,355,172" />
-                                 <area alt="segmentation_da_xsd.tmp#externalReferenceType_otherType" href="segmentation_da_xsd.html#externalReferenceType_otherType" coords="244,182,355,224" />
-                                 <area alt="segmentation_da_xsd.tmp#externalReferenceType_value" href="segmentation_da_xsd.html#externalReferenceType_value" coords="244,234,355,276" />
+                                 <area alt="segmentation_da_xsd.tmp#externalReferenceType_type" href="segmentation_da_xsd.html#externalReferenceType_type" coords="244,130,357,172" />
+                                 <area alt="segmentation_da_xsd.tmp#externalReferenceType_otherType" href="segmentation_da_xsd.html#externalReferenceType_otherType" coords="244,182,357,224" />
+                                 <area alt="segmentation_da_xsd.tmp#externalReferenceType_value" href="segmentation_da_xsd.html#externalReferenceType_value" coords="244,234,357,276" />
                                  <area alt="segmentation_da_xsd.tmp#externalReferenceType_label" href="segmentation_da_xsd.html#externalReferenceType_label" coords="244,286,357,328" />
                                  <area alt="segmentation_da_xsd.tmp#externalReferenceType_description" href="segmentation_da_xsd.html#externalReferenceType_description" coords="244,338,357,380" />
                                  <area alt="segmentation_da_xsd.tmp#externalReferenceType" href="segmentation_da_xsd.html#externalReferenceType" coords="219,3,393,25" /></map></div>
@@ -3467,7 +3473,7 @@ var modelBoxes= new Array('model_segmentation',
                                  </tr>
                                  <tr>
                                     <td class="firstColumn"><b><a href="segmentation_da_xsd.html#externalReferenceType_otherType" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for segmentation_da.xsd')">otherType</a></b></td>
-                                    <td><b>xs:token</b></td>
+                                    <td><b>xs:string</b></td>
                                     <td>required</td>
                                     <td>
                                        <div class="annotation"></div>
@@ -3475,7 +3481,7 @@ var modelBoxes= new Array('model_segmentation',
                                  </tr>
                                  <tr>
                                     <td class="firstColumn"><b><a href="segmentation_da_xsd.html#externalReferenceType_type" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for segmentation_da.xsd')">type</a></b></td>
-                                    <td><b>xs:token</b></td>
+                                    <td><b>xs:string</b></td>
                                     <td>required</td>
                                     <td>
                                        <div class="annotation"></div>
@@ -3483,7 +3489,7 @@ var modelBoxes= new Array('model_segmentation',
                                  </tr>
                                  <tr>
                                     <td class="firstColumn"><b><a href="segmentation_da_xsd.html#externalReferenceType_value" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for segmentation_da.xsd')">value</a></b></td>
-                                    <td><b>xs:token</b></td>
+                                    <td><b>xs:string</b></td>
                                     <td>required</td>
                                     <td>
                                        <div class="annotation"></div>
@@ -4851,7 +4857,7 @@ var modelBoxes= new Array('model_segmentation',
                            <div class="floatRight"><input id="button_diagram_threeDVolumeType_value" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_threeDVolumeType_value');" class="control" /></div>
                         </td>
                         <td class="diagram">
-                           <div id="diagram_threeDVolumeType_value" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_value.jpeg" /></div>
+                           <div id="diagram_threeDVolumeType_value" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_value_1.jpeg" /></div>
                         </td>
                      </tr>
                      <tr>
@@ -4925,7 +4931,7 @@ var modelBoxes= new Array('model_segmentation',
                            <div class="floatRight"><input id="button_diagram_threeDVolumeType_transformId" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_threeDVolumeType_transformId');" class="control" /></div>
                         </td>
                         <td class="diagram">
-                           <div id="diagram_threeDVolumeType_transformId" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_transformId_1.jpeg" /></div>
+                           <div id="diagram_threeDVolumeType_transformId" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_transformId_4.jpeg" /></div>
                         </td>
                      </tr>
                      <tr>
@@ -5715,7 +5721,7 @@ var modelBoxes= new Array('model_segmentation',
                            <div class="floatRight"><input id="button_diagram_vertexType_x" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_vertexType_x');" class="control" /></div>
                         </td>
                         <td class="diagram">
-                           <div id="diagram_vertexType_x" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_x.jpeg" /></div>
+                           <div id="diagram_vertexType_x" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_x_1.jpeg" /></div>
                         </td>
                      </tr>
                      <tr>
@@ -5785,7 +5791,7 @@ var modelBoxes= new Array('model_segmentation',
                            <div class="floatRight"><input id="button_diagram_vertexType_y" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_vertexType_y');" class="control" /></div>
                         </td>
                         <td class="diagram">
-                           <div id="diagram_vertexType_y" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_y_2.jpeg" /></div>
+                           <div id="diagram_vertexType_y" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_y_1.jpeg" /></div>
                         </td>
                      </tr>
                      <tr>
@@ -5855,7 +5861,7 @@ var modelBoxes= new Array('model_segmentation',
                            <div class="floatRight"><input id="button_diagram_vertexType_z" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_vertexType_z');" class="control" /></div>
                         </td>
                         <td class="diagram">
-                           <div id="diagram_vertexType_z" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_z.jpeg" /></div>
+                           <div id="diagram_vertexType_z" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_z_5.jpeg" /></div>
                         </td>
                      </tr>
                      <tr>
@@ -7020,7 +7026,7 @@ var modelBoxes= new Array('model_segmentation',
                            <div class="floatRight"><input id="button_diagram_volumeStructureType_cols" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_volumeStructureType_cols');" class="control" /></div>
                         </td>
                         <td class="diagram">
-                           <div id="diagram_volumeStructureType_cols" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_cols.jpeg" /></div>
+                           <div id="diagram_volumeStructureType_cols" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_cols_2.jpeg" /></div>
                         </td>
                      </tr>
                      <tr>
@@ -7160,7 +7166,7 @@ var modelBoxes= new Array('model_segmentation',
                            <div class="floatRight"><input id="button_diagram_volumeStructureType_sections" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_volumeStructureType_sections');" class="control" /></div>
                         </td>
                         <td class="diagram">
-                           <div id="diagram_volumeStructureType_sections" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_sections.jpeg" /></div>
+                           <div id="diagram_volumeStructureType_sections" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_sections_1.jpeg" /></div>
                         </td>
                      </tr>
                      <tr>
@@ -7495,7 +7501,7 @@ var modelBoxes= new Array('model_segmentation',
                            <div class="floatRight"><input id="button_diagram_volumeIndexType_sections" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_volumeIndexType_sections');" class="control" /></div>
                         </td>
                         <td class="diagram">
-                           <div id="diagram_volumeIndexType_sections" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_sections_1.jpeg" /></div>
+                           <div id="diagram_volumeIndexType_sections" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_sections.jpeg" /></div>
                         </td>
                      </tr>
                      <tr>
@@ -7582,7 +7588,7 @@ var modelBoxes= new Array('model_segmentation',
                            <div class="floatRight"><input id="button_diagram_latticeType_data" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_latticeType_data');" class="control" /></div>
                         </td>
                         <td class="diagram">
-                           <div id="diagram_latticeType_data" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_data.jpeg" /></div>
+                           <div id="diagram_latticeType_data" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_data_1.jpeg" /></div>
                         </td>
                      </tr>
                      <tr>
@@ -7800,7 +7806,7 @@ var modelBoxes= new Array('model_segmentation',
                            <div class="floatRight"><input id="button_diagram_transformationMatrixType_cols" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_transformationMatrixType_cols');" class="control" /></div>
                         </td>
                         <td class="diagram">
-                           <div id="diagram_transformationMatrixType_cols" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_cols_2.jpeg" /></div>
+                           <div id="diagram_transformationMatrixType_cols" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_cols.jpeg" /></div>
                         </td>
                      </tr>
                      <tr>
@@ -7870,7 +7876,7 @@ var modelBoxes= new Array('model_segmentation',
                            <div class="floatRight"><input id="button_diagram_transformationMatrixType_data" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_transformationMatrixType_data');" class="control" /></div>
                         </td>
                         <td class="diagram">
-                           <div id="diagram_transformationMatrixType_data" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_data_1.jpeg" /></div>
+                           <div id="diagram_transformationMatrixType_data" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_data.jpeg" /></div>
                         </td>
                      </tr>
                      <tr>
@@ -7945,7 +7951,7 @@ var modelBoxes= new Array('model_segmentation',
                      </tr>
                      <tr>
                         <td class="firstColumn"><b>Type</b></td>
-                        <td><b>xs:token</b></td>
+                        <td><b>xs:string</b></td>
                      </tr>
                      <tr>
                         <td class="firstColumn">
@@ -7972,7 +7978,7 @@ var modelBoxes= new Array('model_segmentation',
                            <div id="source_oldThreeDVolumeType_file" style="display:block">
                               <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
                                  <tr>
-                                    <td width="100%"><pre><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"file"</span><span class="tAN"> type=</span><span class="tAV">"xs:token"</span><span class="tEl">/&gt;</span></pre></td>
+                                    <td width="100%"><pre><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"file"</span><span class="tAN"> type=</span><span class="tAV">"xs:string"</span><span class="tEl">/&gt;</span></pre></td>
                                  </tr>
                               </table>
                            </div>
@@ -8201,7 +8207,7 @@ var modelBoxes= new Array('model_segmentation',
                            <div class="floatRight"><input id="button_diagram_oldThreeDVolumeType_transformId" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_oldThreeDVolumeType_transformId');" class="control" /></div>
                         </td>
                         <td class="diagram">
-                           <div id="diagram_oldThreeDVolumeType_transformId" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_transformId_5.jpeg" /></div>
+                           <div id="diagram_oldThreeDVolumeType_transformId" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_transformId_3.jpeg" /></div>
                         </td>
                      </tr>
                      <tr>
@@ -8806,7 +8812,7 @@ var modelBoxes= new Array('model_segmentation',
                            <div class="floatRight"><input id="button_diagram_cuboid_y" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_cuboid_y');" class="control" /></div>
                         </td>
                         <td class="diagram">
-                           <div id="diagram_cuboid_y" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_y_5.jpeg" usemap="#segmentation_da_xsd_Element_y_5" /><map name="segmentation_da_xsd_Element_y_5" id="segmentation_da_xsd_Element_y_5">
+                           <div id="diagram_cuboid_y" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_y.jpeg" usemap="#segmentation_da_xsd_Element_y" /><map name="segmentation_da_xsd_Element_y" id="segmentation_da_xsd_Element_y">
                                  <area alt="segmentation_da_xsd.tmp#dimensionType" href="segmentation_da_xsd.html#dimensionType" coords="175,8,312,34" /></map></div>
                         </td>
                      </tr>
@@ -8896,7 +8902,7 @@ var modelBoxes= new Array('model_segmentation',
                            <div class="floatRight"><input id="button_diagram_cuboid_z" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_cuboid_z');" class="control" /></div>
                         </td>
                         <td class="diagram">
-                           <div id="diagram_cuboid_z" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_z_4.jpeg" usemap="#segmentation_da_xsd_Element_z_4" /><map name="segmentation_da_xsd_Element_z_4" id="segmentation_da_xsd_Element_z_4">
+                           <div id="diagram_cuboid_z" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_z.jpeg" usemap="#segmentation_da_xsd_Element_z" /><map name="segmentation_da_xsd_Element_z" id="segmentation_da_xsd_Element_z">
                                  <area alt="segmentation_da_xsd.tmp#dimensionType" href="segmentation_da_xsd.html#dimensionType" coords="175,8,312,34" /></map></div>
                         </td>
                      </tr>
@@ -9056,7 +9062,7 @@ var modelBoxes= new Array('model_segmentation',
                            <div class="floatRight"><input id="button_diagram_cuboid_attribute" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_cuboid_attribute');" class="control" /></div>
                         </td>
                         <td class="diagram">
-                           <div id="diagram_cuboid_attribute" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_attribute_2.jpeg" /></div>
+                           <div id="diagram_cuboid_attribute" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_attribute_3.jpeg" /></div>
                         </td>
                      </tr>
                      <tr>
@@ -9302,7 +9308,7 @@ var modelBoxes= new Array('model_segmentation',
                            <div class="floatRight"><input id="button_diagram_ellipsoid_x" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_ellipsoid_x');" class="control" /></div>
                         </td>
                         <td class="diagram">
-                           <div id="diagram_ellipsoid_x" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_x_3.jpeg" usemap="#segmentation_da_xsd_Element_x_3" /><map name="segmentation_da_xsd_Element_x_3" id="segmentation_da_xsd_Element_x_3">
+                           <div id="diagram_ellipsoid_x" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_x_2.jpeg" usemap="#segmentation_da_xsd_Element_x_2" /><map name="segmentation_da_xsd_Element_x_2" id="segmentation_da_xsd_Element_x_2">
                                  <area alt="segmentation_da_xsd.tmp#dimensionType" href="segmentation_da_xsd.html#dimensionType" coords="175,8,312,34" /></map></div>
                         </td>
                      </tr>
@@ -9482,7 +9488,7 @@ var modelBoxes= new Array('model_segmentation',
                            <div class="floatRight"><input id="button_diagram_ellipsoid_z" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_ellipsoid_z');" class="control" /></div>
                         </td>
                         <td class="diagram">
-                           <div id="diagram_ellipsoid_z" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_z_5.jpeg" usemap="#segmentation_da_xsd_Element_z_5" /><map name="segmentation_da_xsd_Element_z_5" id="segmentation_da_xsd_Element_z_5">
+                           <div id="diagram_ellipsoid_z" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_z_3.jpeg" usemap="#segmentation_da_xsd_Element_z_3" /><map name="segmentation_da_xsd_Element_z_3" id="segmentation_da_xsd_Element_z_3">
                                  <area alt="segmentation_da_xsd.tmp#dimensionType" href="segmentation_da_xsd.html#dimensionType" coords="175,8,312,34" /></map></div>
                         </td>
                      </tr>
@@ -9572,7 +9578,7 @@ var modelBoxes= new Array('model_segmentation',
                            <div class="floatRight"><input id="button_diagram_ellipsoid_transformId" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_ellipsoid_transformId');" class="control" /></div>
                         </td>
                         <td class="diagram">
-                           <div id="diagram_ellipsoid_transformId" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_transformId.jpeg" /></div>
+                           <div id="diagram_ellipsoid_transformId" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_transformId_5.jpeg" /></div>
                         </td>
                      </tr>
                      <tr>
@@ -9642,7 +9648,7 @@ var modelBoxes= new Array('model_segmentation',
                            <div class="floatRight"><input id="button_diagram_ellipsoid_attribute" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_ellipsoid_attribute');" class="control" /></div>
                         </td>
                         <td class="diagram">
-                           <div id="diagram_ellipsoid_attribute" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_attribute_3.jpeg" /></div>
+                           <div id="diagram_ellipsoid_attribute" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_attribute_2.jpeg" /></div>
                         </td>
                      </tr>
                      <tr>
@@ -10045,7 +10051,7 @@ var modelBoxes= new Array('model_segmentation',
                            <div class="floatRight"><input id="button_diagram_cylinder_transformId" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_cylinder_transformId');" class="control" /></div>
                         </td>
                         <td class="diagram">
-                           <div id="diagram_cylinder_transformId" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_transformId_4.jpeg" /></div>
+                           <div id="diagram_cylinder_transformId" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_transformId.jpeg" /></div>
                         </td>
                      </tr>
                      <tr>
@@ -10115,7 +10121,7 @@ var modelBoxes= new Array('model_segmentation',
                            <div class="floatRight"><input id="button_diagram_cylinder_attribute" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_cylinder_attribute');" class="control" /></div>
                         </td>
                         <td class="diagram">
-                           <div id="diagram_cylinder_attribute" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_attribute.jpeg" /></div>
+                           <div id="diagram_cylinder_attribute" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_attribute_1.jpeg" /></div>
                         </td>
                      </tr>
                      <tr>
@@ -10518,7 +10524,7 @@ var modelBoxes= new Array('model_segmentation',
                            <div class="floatRight"><input id="button_diagram_cone_transformId" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_cone_transformId');" class="control" /></div>
                         </td>
                         <td class="diagram">
-                           <div id="diagram_cone_transformId" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_transformId_3.jpeg" /></div>
+                           <div id="diagram_cone_transformId" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_transformId_1.jpeg" /></div>
                         </td>
                      </tr>
                      <tr>
@@ -10588,7 +10594,7 @@ var modelBoxes= new Array('model_segmentation',
                            <div class="floatRight"><input id="button_diagram_cone_attribute" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_cone_attribute');" class="control" /></div>
                         </td>
                         <td class="diagram">
-                           <div id="diagram_cone_attribute" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_attribute_1.jpeg" /></div>
+                           <div id="diagram_cone_attribute" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_attribute.jpeg" /></div>
                         </td>
                      </tr>
                      <tr>
@@ -11334,7 +11340,7 @@ var modelBoxes= new Array('model_segmentation',
                            <div class="floatRight"><input id="button_diagram_viewVectorRotationType_x" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_viewVectorRotationType_x');" class="control" /></div>
                         </td>
                         <td class="diagram">
-                           <div id="diagram_viewVectorRotationType_x" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_x_4.jpeg" /></div>
+                           <div id="diagram_viewVectorRotationType_x" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_x_3.jpeg" /></div>
                         </td>
                      </tr>
                      <tr>
@@ -11404,7 +11410,7 @@ var modelBoxes= new Array('model_segmentation',
                            <div class="floatRight"><input id="button_diagram_viewVectorRotationType_y" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_viewVectorRotationType_y');" class="control" /></div>
                         </td>
                         <td class="diagram">
-                           <div id="diagram_viewVectorRotationType_y" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_y_1.jpeg" /></div>
+                           <div id="diagram_viewVectorRotationType_y" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_y_5.jpeg" /></div>
                         </td>
                      </tr>
                      <tr>
@@ -11474,7 +11480,7 @@ var modelBoxes= new Array('model_segmentation',
                            <div class="floatRight"><input id="button_diagram_viewVectorRotationType_z" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_viewVectorRotationType_z');" class="control" /></div>
                         </td>
                         <td class="diagram">
-                           <div id="diagram_viewVectorRotationType_z" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_z_2.jpeg" /></div>
+                           <div id="diagram_viewVectorRotationType_z" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_z_1.jpeg" /></div>
                         </td>
                      </tr>
                      <tr>
@@ -11907,7 +11913,7 @@ var modelBoxes= new Array('model_segmentation',
                            <div class="floatRight"><input id="button_diagram_hsvType_value" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_hsvType_value');" class="control" /></div>
                         </td>
                         <td class="diagram">
-                           <div id="diagram_hsvType_value" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_value_1.jpeg" /></div>
+                           <div id="diagram_hsvType_value" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_value.jpeg" /></div>
                         </td>
                      </tr>
                      <tr>
@@ -12198,7 +12204,7 @@ var modelBoxes= new Array('model_segmentation',
                            <div class="floatRight"><input id="button_diagram_integerVectorType_x" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_integerVectorType_x');" class="control" /></div>
                         </td>
                         <td class="diagram">
-                           <div id="diagram_integerVectorType_x" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_x_2.jpeg" /></div>
+                           <div id="diagram_integerVectorType_x" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_x_4.jpeg" /></div>
                         </td>
                      </tr>
                      <tr>
@@ -12268,7 +12274,7 @@ var modelBoxes= new Array('model_segmentation',
                            <div class="floatRight"><input id="button_diagram_integerVectorType_y" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_integerVectorType_y');" class="control" /></div>
                         </td>
                         <td class="diagram">
-                           <div id="diagram_integerVectorType_y" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_y_4.jpeg" /></div>
+                           <div id="diagram_integerVectorType_y" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_y_2.jpeg" /></div>
                         </td>
                      </tr>
                      <tr>
@@ -12338,7 +12344,7 @@ var modelBoxes= new Array('model_segmentation',
                            <div class="floatRight"><input id="button_diagram_integerVectorType_z" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_integerVectorType_z');" class="control" /></div>
                         </td>
                         <td class="diagram">
-                           <div id="diagram_integerVectorType_z" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_z_3.jpeg" /></div>
+                           <div id="diagram_integerVectorType_z" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_z_2.jpeg" /></div>
                         </td>
                      </tr>
                      <tr>
@@ -12512,7 +12518,7 @@ var modelBoxes= new Array('model_segmentation',
                            <div class="floatRight"><input id="button_diagram_positiveIntegerVectorType_x" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_positiveIntegerVectorType_x');" class="control" /></div>
                         </td>
                         <td class="diagram">
-                           <div id="diagram_positiveIntegerVectorType_x" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_x_1.jpeg" /></div>
+                           <div id="diagram_positiveIntegerVectorType_x" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_x.jpeg" /></div>
                         </td>
                      </tr>
                      <tr>
@@ -12582,7 +12588,7 @@ var modelBoxes= new Array('model_segmentation',
                            <div class="floatRight"><input id="button_diagram_positiveIntegerVectorType_y" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_positiveIntegerVectorType_y');" class="control" /></div>
                         </td>
                         <td class="diagram">
-                           <div id="diagram_positiveIntegerVectorType_y" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_y.jpeg" /></div>
+                           <div id="diagram_positiveIntegerVectorType_y" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_y_4.jpeg" /></div>
                         </td>
                      </tr>
                      <tr>
@@ -12652,7 +12658,7 @@ var modelBoxes= new Array('model_segmentation',
                            <div class="floatRight"><input id="button_diagram_positiveIntegerVectorType_z" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_positiveIntegerVectorType_z');" class="control" /></div>
                         </td>
                         <td class="diagram">
-                           <div id="diagram_positiveIntegerVectorType_z" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_z_1.jpeg" /></div>
+                           <div id="diagram_positiveIntegerVectorType_z" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_z_4.jpeg" /></div>
                         </td>
                      </tr>
                      <tr>
@@ -12722,7 +12728,7 @@ var modelBoxes= new Array('model_segmentation',
                            <div class="floatRight"><input id="button_diagram_colourType_name" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_colourType_name');" class="control" /></div>
                         </td>
                         <td class="diagram">
-                           <div id="diagram_colourType_name" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_name_1.jpeg" /></div>
+                           <div id="diagram_colourType_name" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_name_3.jpeg" /></div>
                         </td>
                      </tr>
                      <tr>
@@ -13025,8 +13031,8 @@ var modelBoxes= new Array('model_segmentation',
                         </td>
                         <td class="diagram">
                            <div id="diagram_softwareType" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Complex_Type_softwareType.jpeg" usemap="#segmentation_da_xsd_Complex_Type_softwareType" /><map name="segmentation_da_xsd_Complex_Type_softwareType" id="segmentation_da_xsd_Complex_Type_softwareType">
-                                 <area alt="segmentation_da_xsd.tmp#softwareType_name" href="segmentation_da_xsd.html#softwareType_name" coords="226,0,337,42" />
-                                 <area alt="segmentation_da_xsd.tmp#softwareType_version" href="segmentation_da_xsd.html#softwareType_version" coords="226,52,337,94" />
+                                 <area alt="segmentation_da_xsd.tmp#softwareType_name" href="segmentation_da_xsd.html#softwareType_name" coords="226,0,339,42" />
+                                 <area alt="segmentation_da_xsd.tmp#softwareType_version" href="segmentation_da_xsd.html#softwareType_version" coords="226,52,339,94" />
                                  <area alt="segmentation_da_xsd.tmp#softwareType_processingDetails" href="segmentation_da_xsd.html#softwareType_processingDetails" coords="226,104,353,146" /></map></div>
                         </td>
                      </tr>
@@ -13068,8 +13074,8 @@ var modelBoxes= new Array('model_segmentation',
                                  <tr>
                                     <td width="100%"><pre><span class="tEl">&lt;xs:complexType</span><span class="tAN"> name=</span><span class="tAV">"softwareType"</span><span class="tEl">&gt;</span><span class="tI">
   </span><span class="tEl">&lt;xs:sequence</span><span class="tEl">&gt;</span><span class="tI">
-    </span><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"name"</span><span class="tAN"> type=</span><span class="tAV">"xs:token"</span><span class="tEl">/&gt;</span><span class="tI">
-    </span><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"version"</span><span class="tAN"> type=</span><span class="tAV">"xs:token"</span><span class="tAN"> minOccurs=</span><span class="tAV">"0"</span><span class="tEl">/&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"name"</span><span class="tAN"> type=</span><span class="tAV">"xs:string"</span><span class="tEl">/&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"version"</span><span class="tAN"> type=</span><span class="tAV">"xs:string"</span><span class="tAN"> minOccurs=</span><span class="tAV">"0"</span><span class="tEl">/&gt;</span><span class="tI">
     </span><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"processingDetails"</span><span class="tAN"> type=</span><span class="tAV">"xs:string"</span><span class="tAN"> minOccurs=</span><span class="tAV">"0"</span><span class="tEl">/&gt;</span><span class="tI">
   </span><span class="tEl">&lt;/xs:sequence&gt;</span><span class="tI">
 </span><span class="tEl">&lt;/xs:complexType&gt;</span></pre></td>
@@ -13363,9 +13369,9 @@ var modelBoxes= new Array('model_segmentation',
                         <td class="diagram">
                            <div id="diagram_externalReferenceType" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Complex_Type_externalReferenceType.jpeg" usemap="#segmentation_da_xsd_Complex_Type_externalReferenceType" /><map name="segmentation_da_xsd_Complex_Type_externalReferenceType" id="segmentation_da_xsd_Complex_Type_externalReferenceType">
                                  <area alt="segmentation_da_xsd.tmp#externalReferenceType_id" href="segmentation_da_xsd.html#externalReferenceType_id" coords="220,38,406,80" />
-                                 <area alt="segmentation_da_xsd.tmp#externalReferenceType_type" href="segmentation_da_xsd.html#externalReferenceType_type" coords="220,90,331,132" />
-                                 <area alt="segmentation_da_xsd.tmp#externalReferenceType_otherType" href="segmentation_da_xsd.html#externalReferenceType_otherType" coords="220,142,331,184" />
-                                 <area alt="segmentation_da_xsd.tmp#externalReferenceType_value" href="segmentation_da_xsd.html#externalReferenceType_value" coords="220,194,331,236" />
+                                 <area alt="segmentation_da_xsd.tmp#externalReferenceType_type" href="segmentation_da_xsd.html#externalReferenceType_type" coords="220,90,333,132" />
+                                 <area alt="segmentation_da_xsd.tmp#externalReferenceType_otherType" href="segmentation_da_xsd.html#externalReferenceType_otherType" coords="220,142,333,184" />
+                                 <area alt="segmentation_da_xsd.tmp#externalReferenceType_value" href="segmentation_da_xsd.html#externalReferenceType_value" coords="220,194,333,236" />
                                  <area alt="segmentation_da_xsd.tmp#externalReferenceType_label" href="segmentation_da_xsd.html#externalReferenceType_label" coords="220,246,333,288" />
                                  <area alt="segmentation_da_xsd.tmp#externalReferenceType_description" href="segmentation_da_xsd.html#externalReferenceType_description" coords="220,298,333,340" /></map></div>
                         </td>
@@ -13428,7 +13434,7 @@ var modelBoxes= new Array('model_segmentation',
                                  </tr>
                                  <tr>
                                     <td class="firstColumn"><b><a href="segmentation_da_xsd.html#externalReferenceType_otherType" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for segmentation_da.xsd')">otherType</a></b></td>
-                                    <td><b>xs:token</b></td>
+                                    <td><b>xs:string</b></td>
                                     <td>required</td>
                                     <td>
                                        <div class="annotation"></div>
@@ -13436,7 +13442,7 @@ var modelBoxes= new Array('model_segmentation',
                                  </tr>
                                  <tr>
                                     <td class="firstColumn"><b><a href="segmentation_da_xsd.html#externalReferenceType_type" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for segmentation_da.xsd')">type</a></b></td>
-                                    <td><b>xs:token</b></td>
+                                    <td><b>xs:string</b></td>
                                     <td>required</td>
                                     <td>
                                        <div class="annotation"></div>
@@ -13444,7 +13450,7 @@ var modelBoxes= new Array('model_segmentation',
                                  </tr>
                                  <tr>
                                     <td class="firstColumn"><b><a href="segmentation_da_xsd.html#externalReferenceType_value" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for segmentation_da.xsd')">value</a></b></td>
-                                    <td><b>xs:token</b></td>
+                                    <td><b>xs:string</b></td>
                                     <td>required</td>
                                     <td>
                                        <div class="annotation"></div>
@@ -13467,11 +13473,11 @@ var modelBoxes= new Array('model_segmentation',
   </span><span class="tC">&lt;!-- id --&gt;</span><span class="tI">
   </span><span class="tEl">&lt;xs:attribute</span><span class="tAN"> name=</span><span class="tAV">"id"</span><span class="tAN"> type=</span><span class="tAV">"xs:nonNegativeInteger"</span><span class="tEl">/&gt;</span><span class="tI">
   </span><span class="tC">&lt;!-- ontology_name --&gt;</span><span class="tI">
-  </span><span class="tEl">&lt;xs:attribute</span><span class="tAN"> name=</span><span class="tAV">"type"</span><span class="tAN"> type=</span><span class="tAV">"xs:token"</span><span class="tAN"> use=</span><span class="tAV">"required"</span><span class="tEl">/&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;xs:attribute</span><span class="tAN"> name=</span><span class="tAV">"type"</span><span class="tAN"> type=</span><span class="tAV">"xs:string"</span><span class="tAN"> use=</span><span class="tAV">"required"</span><span class="tEl">/&gt;</span><span class="tI">
   </span><span class="tC">&lt;!-- iri --&gt;</span><span class="tI">
-  </span><span class="tEl">&lt;xs:attribute</span><span class="tAN"> name=</span><span class="tAV">"otherType"</span><span class="tAN"> type=</span><span class="tAV">"xs:token"</span><span class="tAN"> use=</span><span class="tAV">"required"</span><span class="tEl">/&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;xs:attribute</span><span class="tAN"> name=</span><span class="tAV">"otherType"</span><span class="tAN"> type=</span><span class="tAV">"xs:string"</span><span class="tAN"> use=</span><span class="tAV">"required"</span><span class="tEl">/&gt;</span><span class="tI">
   </span><span class="tC">&lt;!-- short_form --&gt;</span><span class="tI">
-  </span><span class="tEl">&lt;xs:attribute</span><span class="tAN"> name=</span><span class="tAV">"value"</span><span class="tAN"> type=</span><span class="tAV">"xs:token"</span><span class="tAN"> use=</span><span class="tAV">"required"</span><span class="tEl">/&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;xs:attribute</span><span class="tAN"> name=</span><span class="tAV">"value"</span><span class="tAN"> type=</span><span class="tAV">"xs:string"</span><span class="tAN"> use=</span><span class="tAV">"required"</span><span class="tEl">/&gt;</span><span class="tI">
   </span><span class="tEl">&lt;xs:attribute</span><span class="tAN"> name=</span><span class="tAV">"label"</span><span class="tAN"> type=</span><span class="tAV">"xs:string"</span><span class="tEl">/&gt;</span><span class="tI">
   </span><span class="tEl">&lt;xs:attribute</span><span class="tAN"> name=</span><span class="tAV">"description"</span><span class="tAN"> type=</span><span class="tAV">"xs:string"</span><span class="tEl">/&gt;</span><span class="tI">
 </span><span class="tEl">&lt;/xs:complexType&gt;</span></pre></td>
@@ -15151,7 +15157,7 @@ var modelBoxes= new Array('model_segmentation',
                         <td class="diagram">
                            <div id="diagram_oldThreeDVolumeType" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Complex_Type_oldThreeDVolumeType.jpeg" usemap="#segmentation_da_xsd_Complex_Type_oldThreeDVolumeType" /><map name="segmentation_da_xsd_Complex_Type_oldThreeDVolumeType" id="segmentation_da_xsd_Complex_Type_oldThreeDVolumeType">
                                  <area alt="segmentation_da_xsd.tmp#oldThreeDVolumeType_id" href="segmentation_da_xsd.html#oldThreeDVolumeType_id" coords="219,38,405,80" />
-                                 <area alt="segmentation_da_xsd.tmp#oldThreeDVolumeType_file" href="segmentation_da_xsd.html#oldThreeDVolumeType_file" coords="276,97,387,139" />
+                                 <area alt="segmentation_da_xsd.tmp#oldThreeDVolumeType_file" href="segmentation_da_xsd.html#oldThreeDVolumeType_file" coords="276,97,389,139" />
                                  <area alt="segmentation_da_xsd.tmp#oldThreeDVolumeType_objectPath" href="segmentation_da_xsd.html#oldThreeDVolumeType_objectPath" coords="276,149,389,191" />
                                  <area alt="segmentation_da_xsd.tmp#oldThreeDVolumeType_contourLevel" href="segmentation_da_xsd.html#oldThreeDVolumeType_contourLevel" coords="276,244,381,286" />
                                  <area alt="segmentation_da_xsd.tmp#oldThreeDVolumeType_transformId" href="segmentation_da_xsd.html#oldThreeDVolumeType_transformId" coords="276,326,462,368" />
@@ -15208,7 +15214,7 @@ var modelBoxes= new Array('model_segmentation',
                                  <tr>
                                     <td width="100%"><pre><span class="tEl">&lt;xs:complexType</span><span class="tAN"> name=</span><span class="tAV">"oldThreeDVolumeType"</span><span class="tEl">&gt;</span><span class="tI">
   </span><span class="tEl">&lt;xs:sequence</span><span class="tEl">&gt;</span><span class="tI">
-    </span><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"file"</span><span class="tAN"> type=</span><span class="tAV">"xs:token"</span><span class="tEl">/&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"file"</span><span class="tAN"> type=</span><span class="tAV">"xs:string"</span><span class="tEl">/&gt;</span><span class="tI">
     </span><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"objectPath"</span><span class="tAN"> type=</span><span class="tAV">"xs:string"</span><span class="tAN"> minOccurs=</span><span class="tAV">"0"</span><span class="tEl">&gt;</span><span class="tI">
       </span><span class="tEl">&lt;xs:annotation</span><span class="tEl">&gt;</span><span class="tI">
         </span><span class="tEl">&lt;xs:documentation</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">This is particularly relevant if all the segments are stored in one file, like in HDF5.</span><span class="tEl">&lt;/xs:documentation&gt;</span><span class="tI">
@@ -17110,7 +17116,7 @@ var modelBoxes= new Array('model_segmentation',
                      </tr>
                      <tr>
                         <td class="firstColumn"><b>Type</b></td>
-                        <td><b>xs:token</b></td>
+                        <td><b>xs:string</b></td>
                      </tr>
                      <tr>
                         <td class="firstColumn">
@@ -17153,7 +17159,7 @@ var modelBoxes= new Array('model_segmentation',
                            <div id="source_externalReferenceType_type" style="display:block">
                               <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
                                  <tr>
-                                    <td width="100%"><pre><span class="tEl">&lt;xs:attribute</span><span class="tAN"> name=</span><span class="tAV">"type"</span><span class="tAN"> type=</span><span class="tAV">"xs:token"</span><span class="tAN"> use=</span><span class="tAV">"required"</span><span class="tEl">/&gt;</span></pre></td>
+                                    <td width="100%"><pre><span class="tEl">&lt;xs:attribute</span><span class="tAN"> name=</span><span class="tAV">"type"</span><span class="tAN"> type=</span><span class="tAV">"xs:string"</span><span class="tAN"> use=</span><span class="tAV">"required"</span><span class="tEl">/&gt;</span></pre></td>
                                  </tr>
                               </table>
                            </div>
@@ -17187,7 +17193,7 @@ var modelBoxes= new Array('model_segmentation',
                      </tr>
                      <tr>
                         <td class="firstColumn"><b>Type</b></td>
-                        <td><b>xs:token</b></td>
+                        <td><b>xs:string</b></td>
                      </tr>
                      <tr>
                         <td class="firstColumn">
@@ -17230,7 +17236,7 @@ var modelBoxes= new Array('model_segmentation',
                            <div id="source_externalReferenceType_otherType" style="display:block">
                               <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
                                  <tr>
-                                    <td width="100%"><pre><span class="tEl">&lt;xs:attribute</span><span class="tAN"> name=</span><span class="tAV">"otherType"</span><span class="tAN"> type=</span><span class="tAV">"xs:token"</span><span class="tAN"> use=</span><span class="tAV">"required"</span><span class="tEl">/&gt;</span></pre></td>
+                                    <td width="100%"><pre><span class="tEl">&lt;xs:attribute</span><span class="tAN"> name=</span><span class="tAV">"otherType"</span><span class="tAN"> type=</span><span class="tAV">"xs:string"</span><span class="tAN"> use=</span><span class="tAV">"required"</span><span class="tEl">/&gt;</span></pre></td>
                                  </tr>
                               </table>
                            </div>
@@ -17264,7 +17270,7 @@ var modelBoxes= new Array('model_segmentation',
                      </tr>
                      <tr>
                         <td class="firstColumn"><b>Type</b></td>
-                        <td><b>xs:token</b></td>
+                        <td><b>xs:string</b></td>
                      </tr>
                      <tr>
                         <td class="firstColumn">
@@ -17307,7 +17313,7 @@ var modelBoxes= new Array('model_segmentation',
                            <div id="source_externalReferenceType_value" style="display:block">
                               <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
                                  <tr>
-                                    <td width="100%"><pre><span class="tEl">&lt;xs:attribute</span><span class="tAN"> name=</span><span class="tAV">"value"</span><span class="tAN"> type=</span><span class="tAV">"xs:token"</span><span class="tAN"> use=</span><span class="tAV">"required"</span><span class="tEl">/&gt;</span></pre></td>
+                                    <td width="100%"><pre><span class="tEl">&lt;xs:attribute</span><span class="tAN"> name=</span><span class="tAV">"value"</span><span class="tAN"> type=</span><span class="tAV">"xs:string"</span><span class="tAN"> use=</span><span class="tAV">"required"</span><span class="tEl">/&gt;</span></pre></td>
                                  </tr>
                               </table>
                            </div>
@@ -18251,121 +18257,124 @@ var modelBoxes= new Array('model_segmentation',
                                  <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
                                     <tr>
                                        <td width="100%"><pre><span class="tT">Version History</span><span class="tI">
-</span><span class="tT">0.2, 2015/3/15, Ardan Patwardhan: </span><span class="tI">
-</span><span class="tT">1) Added support for color </span><span class="tI">
-</span><span class="tT">2) Added support for triangle representation of segment - this is in support of Amira segmentations </span><span class="tI">
+</span><span class="tT">                        0.2, 2015/3/15, Ardan Patwardhan: </span><span class="tI">
+</span><span class="tT">                        1) Added support for color </span><span class="tI">
+</span><span class="tT">                        2) Added support for triangle representation of segment - this is in support of Amira segmentations </span><span class="tI">
 </span><span class="tT">                        </span><span class="tI">
-</span><span class="tT">0.3, 2015/10/21, Paul Korir: </span><span class="tI">
-</span><span class="tT">1) Added voxelTransform </span><span class="tI">
-</span><span class="tT">2) Added filePath for segmentLinks to HDF5 (Segger) segmentations </span><span class="tI">
-</span><span class="tT">3) Added segmentObjects with contours and meshes for IMOD </span><span class="tI">
+</span><span class="tT">                        0.3, 2015/10/21, Paul Korir: </span><span class="tI">
+</span><span class="tT">                        1) Added voxelTransform </span><span class="tI">
+</span><span class="tT">                        2) Added filePath for segmentLinks to HDF5 (Segger) segmentations </span><span class="tI">
+</span><span class="tT">                        3) Added segmentObjects with contours and meshes for IMOD </span><span class="tI">
 </span><span class="tT">                        </span><span class="tI">
-</span><span class="tT">0.4, 2015/11/04, Paul Korir: </span><span class="tI">
-</span><span class="tT">1) Added alpha for rgb color (transparency) </span><span class="tI">
+</span><span class="tT">                        0.4, 2015/11/04, Paul Korir: </span><span class="tI">
+</span><span class="tT">                        1) Added alpha for rgb color (transparency) </span><span class="tI">
 </span><span class="tT">                        </span><span class="tI">
-</span><span class="tT">0.5, 2015/12/14, Paul Korir: </span><span class="tI">
-</span><span class="tT">1) Removed 'voxelTransform'</span><span class="tI">
-</span><span class="tT">2) Moved 'numberOfCopies' as 'numberOfInstances' to  be a sequence element within 'biologicalAnnotation'</span><span class="tI">
-</span><span class="tT">3) Made 'color' a choice between 'name' (X11/HTML4 sRGB colour space names) and 'rgba'</span><span class="tI">
-</span><span class="tT">4) Added a 'transform' element, which is a possibly empty list of transformation matrices referenced within the document by a non-negative identifier</span><span class="tI">
-</span><span class="tT">5) Renamed 'segmentLink' to 'voxelSegmentation' and added a 'transformId' element</span><span class="tI">
-</span><span class="tT">6) Renamed 'color' element to 'colour' and 'colorType' to 'colourType'</span><span class="tI">
-</span><span class="tT">7) Structured 'shapePrimitive' to a list of 'shapePrimitive' (substitution group for 'ellipsoid', 'cuboid', 'pyramid', 'cylinder')</span><span class="tI">
-</span><span class="tT">8) Identified and labeled deprecated data types</span><span class="tI">
-</span><span class="tT">9) Renamed shapePrimitive 'pyramid' to 'cone' and added tentative definition</span><span class="tI">
-</span><span class="tT">10) Removed 'origin' and 'viewVectorRotation' elements from shape primitives (cuboid, ellipsoid, cone, cylinder) and replaced with 'transformId' element</span><span class="tI">
-</span><span class="tT">11) Renamed references to 'triangles' to 'polygons' e.g. 'triangleListType' now 'polygonListType'</span><span class="tI">
+</span><span class="tT">                        0.5, 2015/12/14, Paul Korir: </span><span class="tI">
+</span><span class="tT">                        1) Removed 'voxelTransform'</span><span class="tI">
+</span><span class="tT">                        2) Moved 'numberOfCopies' as 'numberOfInstances' to  be a sequence element within 'biologicalAnnotation'</span><span class="tI">
+</span><span class="tT">                        3) Made 'color' a choice between 'name' (X11/HTML4 sRGB colour space names) and 'rgba'</span><span class="tI">
+</span><span class="tT">                        4) Added a 'transform' element, which is a possibly empty list of transformation matrices referenced within the document by a non-negative identifier</span><span class="tI">
+</span><span class="tT">                        5) Renamed 'segmentLink' to 'voxelSegmentation' and added a 'transformId' element</span><span class="tI">
+</span><span class="tT">                        6) Renamed 'color' element to 'colour' and 'colorType' to 'colourType'</span><span class="tI">
+</span><span class="tT">                        7) Structured 'shapePrimitive' to a list of 'shapePrimitive' (substitution group for 'ellipsoid', 'cuboid', 'pyramid', 'cylinder')</span><span class="tI">
+</span><span class="tT">                        8) Identified and labeled deprecated data types</span><span class="tI">
+</span><span class="tT">                        9) Renamed shapePrimitive 'pyramid' to 'cone' and added tentative definition</span><span class="tI">
+</span><span class="tT">                        10) Removed 'origin' and 'viewVectorRotation' elements from shape primitives (cuboid, ellipsoid, cone, cylinder) and replaced with 'transformId' element</span><span class="tI">
+</span><span class="tT">                        11) Renamed references to 'triangles' to 'polygons' e.g. 'triangleListType' now 'polygonListType'</span><span class="tI">
 </span><span class="tT">                        </span><span class="tI">
-</span><span class="tT">0.5.1, 2015/12/23, Paul Korir:</span><span class="tI">
-</span><span class="tT">1) Change colourType to have rgbaType minOccurs=1</span><span class="tI">
-</span><span class="tT">2) Added 'attribute' element (e.g. for FOM) to shapePrimitive</span><span class="tI">
-</span><span class="tT">3) Deleted comment: 'Are the CCP4 format masks going to be allowed? If so, we could represent the information of the mask (mapType) here.' from 'voxelSegmentation'.</span><span class="tI">
-</span><span class="tT">4) Added segment 'format' element to 'voxelSegmentation' restricted to values 'runLengthEncoding', 'MRC', or 'Segger'</span><span class="tI">
-</span><span class="tT">5) Renamed 'voxelSegmentation' to 'threeDVolume' and deprecated 'subTomogramAverage'.</span><span class="tI">
-</span><span class="tT">6) Restructured 'transforms' into a list ('transformList') of 'transform', which is a substitutionGroup of 'transformationMatrix', 'canonicalEulerAngles' or 'viewVectorRotation'. </span><span class="tI">
-</span><span class="tT">7) Added an 'angleDegreeType' to restrict angle range in degrees [0,360].</span><span class="tI">
+</span><span class="tT">                        0.5.1, 2015/12/23, Paul Korir:</span><span class="tI">
+</span><span class="tT">                        1) Change colourType to have rgbaType minOccurs=1</span><span class="tI">
+</span><span class="tT">                        2) Added 'attribute' element (e.g. for FOM) to shapePrimitive</span><span class="tI">
+</span><span class="tT">                        3) Deleted comment: 'Are the CCP4 format masks going to be allowed? If so, we could represent the information of the mask (mapType) here.' from 'voxelSegmentation'.</span><span class="tI">
+</span><span class="tT">                        4) Added segment 'format' element to 'voxelSegmentation' restricted to values 'runLengthEncoding', 'MRC', or 'Segger'</span><span class="tI">
+</span><span class="tT">                        5) Renamed 'voxelSegmentation' to 'threeDVolume' and deprecated 'subTomogramAverage'.</span><span class="tI">
+</span><span class="tT">                        6) Restructured 'transforms' into a list ('transformList') of 'transform', which is a substitutionGroup of 'transformationMatrix', 'canonicalEulerAngles' or 'viewVectorRotation'. </span><span class="tI">
+</span><span class="tT">                        7) Added an 'angleDegreeType' to restrict angle range in degrees [0,360].</span><span class="tI">
 </span><span class="tT">                        </span><span class="tI">
-</span><span class="tT">0.5.2, 2016/01/04, Paul Korir:</span><span class="tI">
-</span><span class="tT">1) Made 'transformList' optional</span><span class="tI">
-</span><span class="tT">2) Added 'id' attributes for 'canonicalEulerAngle' and 'viewVectorRotation'</span><span class="tI">
-</span><span class="tT">3) Annotations for 'filePath'</span><span class="tI">
-</span><span class="tT">4) Added 'other' to types for 'externalReference' and optional 'otherTypes' attribute</span><span class="tI">
-</span><span class="tT">5) Changed type of 'name' element in 'colour' from 'xs:string' to 'xs:token'</span><span class="tI">
-</span><span class="tT">6) Created 'threeDVolumeType' to be used by 'threeDVolume' and 'subtomogramAverage'</span><span class="tI">
-</span><span class="tT">7) Added 'id' attributes for 'shapePrimitive' and 'threeDVolumeType'</span><span class="tI">
-</span><span class="tT">8) Renamed 'contours' to 'contourList'</span><span class="tI">
-</span><span class="tT">9) Created 'meshList' as a sequence of 'mesh'. Each 'mesh' has an 'id'</span><span class="tI">
+</span><span class="tT">                        0.5.2, 2016/01/04, Paul Korir:</span><span class="tI">
+</span><span class="tT">                        1) Made 'transformList' optional</span><span class="tI">
+</span><span class="tT">                        2) Added 'id' attributes for 'canonicalEulerAngle' and 'viewVectorRotation'</span><span class="tI">
+</span><span class="tT">                        3) Annotations for 'filePath'</span><span class="tI">
+</span><span class="tT">                        4) Added 'other' to types for 'externalReference' and optional 'otherTypes' attribute</span><span class="tI">
+</span><span class="tT">                        5) Changed type of 'name' element in 'colour' from 'xs:string' to 'xs:token'</span><span class="tI">
+</span><span class="tT">                        6) Created 'threeDVolumeType' to be used by 'threeDVolume' and 'subtomogramAverage'</span><span class="tI">
+</span><span class="tT">                        7) Added 'id' attributes for 'shapePrimitive' and 'threeDVolumeType'</span><span class="tI">
+</span><span class="tT">                        8) Renamed 'contours' to 'contourList'</span><span class="tI">
+</span><span class="tT">                        9) Created 'meshList' as a sequence of 'mesh'. Each 'mesh' has an 'id'</span><span class="tI">
 </span><span class="tT">                        </span><span class="tI">
-</span><span class="tT">0.5.3, 2016/01/06, Paul Korir:</span><span class="tI">
-</span><span class="tT">1) Renamed 'transformationMatrixType' attribute from 'transformId' to 'id'</span><span class="tI">
-</span><span class="tT">2) Created 'dimensionType' for all 'shapePrimitive' dimensions</span><span class="tI">
+</span><span class="tT">                        0.5.3, 2016/01/06, Paul Korir:</span><span class="tI">
+</span><span class="tT">                        1) Renamed 'transformationMatrixType' attribute from 'transformId' to 'id'</span><span class="tI">
+</span><span class="tT">                        2) Created 'dimensionType' for all 'shapePrimitive' dimensions</span><span class="tI">
 </span><span class="tT">                        </span><span class="tI">
-</span><span class="tT">0.5.4, 2016/01/06, Paul Korir:</span><span class="tI">
-</span><span class="tT">1) Added element 'primaryDescriptor' of type restricted string to 'threeDVolume', 'shapePrimitiveList', 'contourList', 'meshList'</span><span class="tI">
+</span><span class="tT">                        0.5.4, 2016/01/06, Paul Korir:</span><span class="tI">
+</span><span class="tT">                        1) Added element 'primaryDescriptor' of type restricted string to 'threeDVolume', 'shapePrimitiveList', 'contourList', 'meshList'</span><span class="tI">
 </span><span class="tT">                        </span><span class="tI">
-</span><span class="tT">0.5.5, 2016/01/22, Paul Korir:</span><span class="tI">
-</span><span class="tT">1) Changed 'vertices' and 'polygons' to 'vertexList' and 'polygonList', respectively.</span><span class="tI">
-</span><span class="tT">2) Added attribute 'designation' restricted to string 'vertex' (default) and 'normal' to 'vertex' element.</span><span class="tI">
+</span><span class="tT">                        0.5.5, 2016/01/22, Paul Korir:</span><span class="tI">
+</span><span class="tT">                        1) Changed 'vertices' and 'polygons' to 'vertexList' and 'polygonList', respectively.</span><span class="tI">
+</span><span class="tT">                        2) Added attribute 'designation' restricted to string 'vertex' (default) and 'normal' to 'vertex' element.</span><span class="tI">
 </span><span class="tT">                        </span><span class="tI">
-</span><span class="tT">0.5.6, 2016/01/25, Paul Korir:</span><span class="tI">
-</span><span class="tT">1) Changed attribute 'polygonID' from 'positiveInteger' to 'nonNegativeInteger'</span><span class="tI">
+</span><span class="tT">                        0.5.6, 2016/01/25, Paul Korir:</span><span class="tI">
+</span><span class="tT">                        1) Changed attribute 'polygonID' from 'positiveInteger' to 'nonNegativeInteger'</span><span class="tI">
 </span><span class="tT">                        </span><span class="tI">
-</span><span class="tT">0.5.7, 2016/01/26, Paul Korir:</span><span class="tI">
-</span><span class="tT">1) Change element names to save disk space: 'vertex' to 'v', 'vertexID' to 'vID', 'point' to 'p', 'polygon' to 'P', 'polygonID' to 'PID'</span><span class="tI">
-</span><span class="tT">2) Changed 'vertexType' to have ID of type 'xs:nonNegativeInteger' (from 'xs:positiveInteger')</span><span class="tI">
+</span><span class="tT">                        0.5.7, 2016/01/26, Paul Korir:</span><span class="tI">
+</span><span class="tT">                        1) Change element names to save disk space: 'vertex' to 'v', 'vertexID' to 'vID', 'point' to 'p', 'polygon' to 'P', 'polygonID' to 'PID'</span><span class="tI">
+</span><span class="tT">                        2) Changed 'vertexType' to have ID of type 'xs:nonNegativeInteger' (from 'xs:positiveInteger')</span><span class="tI">
 </span><span class="tT">                        </span><span class="tI">
-</span><span class="tT">0.5.8, 2016/04/26, Paul Korir:</span><span class="tI">
-</span><span class="tT">1) Added 'version' element at the root.</span><span class="tI">
+</span><span class="tT">                        0.5.8, 2016/04/26, Paul Korir:</span><span class="tI">
+</span><span class="tT">                        1) Added 'version' element at the root.</span><span class="tI">
 </span><span class="tT">                        </span><span class="tI">
-</span><span class="tT">0.5.8, 2016/08/08, Paul Korir:</span><span class="tI">
-</span><span class="tT">2) Made 'shapePrimitive' element 'attribute (not present in 'subtomogramAverage' optional (minOccurs=0)</span><span class="tI">
+</span><span class="tT">                        0.5.8, 2016/08/08, Paul Korir:</span><span class="tI">
+</span><span class="tT">                        2) Made 'shapePrimitive' element 'attribute (not present in 'subtomogramAverage' optional (minOccurs=0)</span><span class="tI">
 </span><span class="tT">                        </span><span class="tI">
-</span><span class="tT">0.5.8, 2016/08/17, Paul Korir:</span><span class="tI">
-</span><span class="tT">3) Added a 'transformId' element to 'contourList' and to 'mesh'.</span><span class="tI">
+</span><span class="tT">                        0.5.8, 2016/08/17, Paul Korir:</span><span class="tI">
+</span><span class="tT">                        3) Added a 'transformId' element to 'contourList' and to 'mesh'.</span><span class="tI">
 </span><span class="tT">                        </span><span class="tI">
-</span><span class="tT">0.5.8, 2016/10/04, Paul Korir:</span><span class="tI">
-</span><span class="tT">4) Simplified shape primitives by eliminating internal layering e.g. cone/dimensions/height to cone/height</span><span class="tI">
+</span><span class="tT">                        0.5.8, 2016/10/04, Paul Korir:</span><span class="tI">
+</span><span class="tT">                        4) Simplified shape primitives by eliminating internal layering e.g. cone/dimensions/height to cone/height</span><span class="tI">
 </span><span class="tT">                        </span><span class="tI">
-</span><span class="tT">0.5.8, 2016/10/14, Paul Korir:</span><span class="tI">
-</span><span class="tT">5) (Finally) renamed 'surfaceType' to 'meshType' for consistency.</span><span class="tI">
+</span><span class="tT">                        0.5.8, 2016/10/14, Paul Korir:</span><span class="tI">
+</span><span class="tT">                        5) (Finally) renamed 'surfaceType' to 'meshType' for consistency.</span><span class="tI">
 </span><span class="tT">                        </span><span class="tI">
-</span><span class="tT">0.5.8, 2016/10/20, Paul Korir:</span><span class="tI">
-</span><span class="tT">6) 'macromolecule' and 'complex' changed from 'positiveInteger' to 'string'</span><span class="tI">
+</span><span class="tT">                        0.5.8, 2016/10/20, Paul Korir:</span><span class="tI">
+</span><span class="tT">                        6) 'macromolecule' and 'complex' changed from 'positiveInteger' to 'string'</span><span class="tI">
 </span><span class="tT">                        </span><span class="tI">
-</span><span class="tT">0.6.0a1, 2017/02/28, Paul Korir:</span><span class="tI">
-</span><span class="tT">1) Added 'EMAN' as a 'threeDVolume' format</span><span class="tI">
+</span><span class="tT">                        0.6.0a1, 2017/02/28, Paul Korir:</span><span class="tI">
+</span><span class="tT">                        1) Added 'EMAN' as a 'threeDVolume' format</span><span class="tI">
 </span><span class="tT">                        </span><span class="tI">
-</span><span class="tT">0.6.0a2, 2017/05/15, Paul Korir:</span><span class="tI">
-</span><span class="tT">1) Restructured 'externalReferences' from simpleType to complexType</span><span class="tI">
-</span><span class="tT">2) Changed 'externalReference' to 'externalReferenceType' and replaced elements with attributes</span><span class="tI">
+</span><span class="tT">                        0.6.0a2, 2017/05/15, Paul Korir:</span><span class="tI">
+</span><span class="tT">                        1) Restructured 'externalReferences' from simpleType to complexType</span><span class="tI">
+</span><span class="tT">                        2) Changed 'externalReference' to 'externalReferenceType' and replaced elements with attributes</span><span class="tI">
 </span><span class="tT">                        </span><span class="tI">
-</span><span class="tT">0.6.0a3, 2017/05/25, Paul Korir:</span><span class="tI">
-</span><span class="tT">1) Added element 'boundingBox' taking six integers: xmin, xmax, ymin, ymax, zmin, zmax; minimums default to 0</span><span class="tI">
+</span><span class="tT">                        0.6.0a3, 2017/05/25, Paul Korir:</span><span class="tI">
+</span><span class="tT">                        1) Added element 'boundingBox' taking six integers: xmin, xmax, ymin, ymax, zmin, zmax; minimums default to 0</span><span class="tI">
 </span><span class="tT">                        </span><span class="tI">
-</span><span class="tT">0.6.0a4, 2017/07/31, Paul Korir:</span><span class="tI">
-</span><span class="tT">1) Added global (optional) external references</span><span class="tI">
+</span><span class="tT">                        0.6.0a4, 2017/07/31, Paul Korir:</span><span class="tI">
+</span><span class="tT">                        1) Added global (optional) external references</span><span class="tI">
 </span><span class="tT">                        </span><span class="tI">
-</span><span class="tT">0.6.0a4, 2017/09/20, Paul Korir:</span><span class="tI">
-</span><span class="tT">2) Renamed global external references to globalExternalReferences</span><span class="tI">
+</span><span class="tT">                        0.6.0a4, 2017/09/20, Paul Korir:</span><span class="tI">
+</span><span class="tT">                        2) Renamed global external references to globalExternalReferences</span><span class="tI">
 </span><span class="tT">                        </span><span class="tI">
-</span><span class="tT">0.6.0a4, 2017/09/25, Paul Korir:</span><span class="tI">
-</span><span class="tT">3) Restructured global external references to have the form &lt;ref [attrs]/&gt;</span><span class="tI">
-</span><span class="tT">4) Now externalReferenceType has attributes: type (required), otherType (required), value (required), label (new, optional), description (new, optional)</span><span class="tI">
+</span><span class="tT">                        0.6.0a4, 2017/09/25, Paul Korir:</span><span class="tI">
+</span><span class="tT">                        3) Restructured global external references to have the form &lt;ref [attrs]/&gt;</span><span class="tI">
+</span><span class="tT">                        4) Now externalReferenceType has attributes: type (required), otherType (required), value (required), label (new, optional), description (new, optional)</span><span class="tI">
+</span><span class="tT"></span><span class="tI">
+</span><span class="tT">                        0.6.0a4, 2017/11/23, Paul Korir:</span><span class="tI">
+</span><span class="tT">                        5) Replaced all active 'token' to 'string' types</span><span class="tI">
 </span><span class="tT">                        </span><span class="tI">
-</span><span class="tT">0.7.0.dev0, 2017/11/09, Paul Korir:</span><span class="tI">
-</span><span class="tT">1) new 3D volume type: 'threeDVolumeType' (previous one is 'oldThreeDVolumeType'</span><span class="tI">
-</span><span class="tT">    supports both byte/integer lattices and density volumes (for subtomogram averages)</span><span class="tI">
-</span><span class="tT">2) embedded volume as base64 string using new 'latticeType'</span><span class="tI">
-</span><span class="tT">3) removed contour representation</span><span class="tI">
+</span><span class="tT">                        0.7.0.dev0, 2017/11/09, Paul Korir:</span><span class="tI">
+</span><span class="tT">                        1) new 3D volume type: 'threeDVolumeType' (previous one is 'oldThreeDVolumeType'</span><span class="tI">
+</span><span class="tT">                            supports both byte/integer lattices and density volumes (for subtomogram averages)</span><span class="tI">
+</span><span class="tT">                        2) embedded volume as base64 string using new 'latticeType'</span><span class="tI">
+</span><span class="tT">                        3) removed contour representation</span><span class="tI">
 </span><span class="tT">                        </span><span class="tI">
-</span><span class="tT">0.7.0.dev0, 2018/05/04, Paul Korir:</span><span class="tI">
-</span><span class="tT">4) segment name added</span><span class="tI">
-</span><span class="tT">5) removed filePath</span><span class="tI">
-</span><span class="tT">6) removed viewVectorRotation and canonicalEulerAngles</span><span class="tI">
-</span><span class="tT">7) colour has rgbaType now</span><span class="tI">
+</span><span class="tT">                        0.7.0.dev0, 2018/05/04, Paul Korir:</span><span class="tI">
+</span><span class="tT">                        4) segment name added</span><span class="tI">
+</span><span class="tT">                        5) removed filePath</span><span class="tI">
+</span><span class="tT">                        6) removed viewVectorRotation and canonicalEulerAngles</span><span class="tI">
+</span><span class="tT">                        7) colour has rgbaType now</span><span class="tI">
 </span><span class="tT">                        </span><span class="tI">
-</span><span class="tT">0.7.0.dev0, 2018/07/18, Paul Korir:</span><span class="tI">
-</span><span class="tT">8) vertex designation now 'surface' or 'normal'</span><span class="tI">
+</span><span class="tT">                        0.7.0.dev0, 2018/07/18, Paul Korir:</span><span class="tI">
+</span><span class="tT">                        8) vertex designation now 'surface' or 'normal'</span><span class="tI">
 </span></pre></td>
                                     </tr>
                                  </table>
@@ -18523,6 +18532,9 @@ var modelBoxes= new Array('model_segmentation',
                         0.6.0a4, 2017/09/25, Paul Korir:
                         3) Restructured global external references to have the form &lt;ref [attrs]/&gt;
                         4) Now externalReferenceType has attributes: type (required), otherType (required), value (required), label (new, optional), description (new, optional)
+
+                        0.6.0a4, 2017/11/23, Paul Korir:
+                        5) Replaced all active 'token' to 'string' types
                         
                         0.7.0.dev0, 2017/11/09, Paul Korir:
                         1) new 3D volume type: 'threeDVolumeType' (previous one is 'oldThreeDVolumeType'
