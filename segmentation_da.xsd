@@ -19,31 +19,19 @@
                         </xs:sequence>
                     </xs:complexType>
                 </xs:element>
-                <xs:element name="filePath" type="xs:string">
-                    <xs:annotation>
-                        <xs:documentation>Specifies the location of file containing referenced data.
-                            Applies to 'threeDVolume' and 'subtomogramAverage'. If its value is an
-                            empty string then the full path is assumed to be contained in the 'file'
-                            attribute that refers to the data ('threeDVolume' or
-                            'subtomogramAverage'). Otherwise it is assumed to be a full path
-                            excluding the filename. This is consistent with concatenating the
-                            'filePath' content with the 'file' content.</xs:documentation>
-                    </xs:annotation>
-                </xs:element>
                 <xs:element name="primaryDescriptor">
                     <xs:annotation>
                         <xs:documentation>
                             Mandatory field. Designates the element type within
                             'segmentList' that contains the primary description of the segments.
                             Constrained to be either 'threeDVolume', 'shapePrimitiveList',
-                            'contourList' or 'meshList'.
+                            or 'meshList'.
                         </xs:documentation>
                     </xs:annotation>
                     <xs:simpleType>
                         <xs:restriction base="xs:string">
                             <xs:enumeration value="threeDVolume"/>
                             <xs:enumeration value="shapePrimitiveList"/>
-                            <xs:enumeration value="contourList"/>
                             <xs:enumeration value="meshList"/>
                         </xs:restriction>
                     </xs:simpleType>
@@ -52,7 +40,8 @@
                 <xs:element name="globalExternalReferences" minOccurs="0">
                     <xs:complexType>
                         <xs:sequence>
-                            <xs:element name="ref" type="externalReferenceType" minOccurs="0" maxOccurs="unbounded"/>
+                            <xs:element name="ref" type="externalReferenceType" minOccurs="0"
+                                maxOccurs="unbounded"/>
                         </xs:sequence>
                     </xs:complexType>
                 </xs:element>
@@ -63,9 +52,16 @@
                         </xs:sequence>
                     </xs:complexType>
                 </xs:element>
+                <xs:element name="latticeList" minOccurs="0">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="lattice" type="latticeType" maxOccurs="unbounded"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
                 <xs:element name="details" type="xs:string" minOccurs="0"/>
             </xs:sequence>
-            <xs:attribute name="schemaVersion" type="xs:string" default="0.6.0a4">
+            <xs:attribute name="schemaVersion" type="xs:token" default="0.7.0.dev0">
                 <xs:annotation>
                     <xs:documentation>
                         <![CDATA[
@@ -170,9 +166,24 @@
                         0.6.0a4, 2017/09/25, Paul Korir:
                         3) Restructured global external references to have the form <ref [attrs]/>
                         4) Now externalReferenceType has attributes: type (required), otherType (required), value (required), label (new, optional), description (new, optional)
-                        
+
                         0.6.0a4, 2017/11/23, Paul Korir:
                         5) Replaced all active 'token' to 'string' types
+                        
+                        0.7.0.dev0, 2017/11/09, Paul Korir:
+                        1) new 3D volume type: 'threeDVolumeType' (previous one is 'oldThreeDVolumeType'
+                            supports both byte/integer lattices and density volumes (for subtomogram averages)
+                        2) embedded volume as base64 string using new 'latticeType'
+                        3) removed contour representation
+                        
+                        0.7.0.dev0, 2018/05/04, Paul Korir:
+                        4) segment name added
+                        5) removed filePath
+                        6) removed viewVectorRotation and canonicalEulerAngles
+                        7) colour has rgbaType now
+                        
+                        0.7.0.dev0, 2018/07/18, Paul Korir:
+                        8) vertex designation now 'surface' or 'normal'
                         ]]>
                     </xs:documentation>
                 </xs:annotation>
@@ -209,50 +220,14 @@
         <xs:attribute name="id" type="xs:nonNegativeInteger"/>
     </xs:complexType>
 
-    <!-- canonicalEulerAnglesType -->
-    <xs:complexType name="canonicalEulerAnglesType">
-        <xs:annotation>
-            <xs:documentation>Euler angler according to Heymann et al. 2005
-                (doi:10.1016/j.jsb.2005.06.001)</xs:documentation>
-            <xs:documentation>Angles are specified in degrees together with their
-                bounds.</xs:documentation>
-        </xs:annotation>
-        <xs:sequence>
-            <xs:element name="phi" type="angleDegreeType"/>
-            <xs:element name="theta" type="angleDegreeType"/>
-            <xs:element name="psi" type="angleDegreeType"/>
-        </xs:sequence>
-        <xs:attribute name="id" type="xs:nonNegativeInteger"/>
-    </xs:complexType>
-
-    <!-- viewVectorRotationType -->
-    <xs:complexType name="viewVectorRotationType">
-        <xs:sequence>
-            <xs:element name="x" type="xs:float"/>
-            <xs:element name="y" type="xs:float"/>
-            <xs:element name="z" type="xs:float"/>
-            <xs:element name="r" type="angleDegreeType"/>
-        </xs:sequence>
-        <xs:attribute name="id" type="xs:nonNegativeInteger"/>
-    </xs:complexType>
-
-    <!-- angleDegreeType -->
-    <xs:simpleType name="angleDegreeType">
-        <xs:restriction base="xs:float">
-            <xs:minInclusive value="0"/>
-            <xs:maxInclusive value="360"/>
-        </xs:restriction>
-    </xs:simpleType>
-
     <!-- boundingBoxType -->
     <xs:complexType name="boundingBoxType">
-        <xs:sequence> </xs:sequence>
-        <xs:attribute name="xmin" type="xs:integer" default="0"/>
-        <xs:attribute name="xmax" type="xs:integer"/>
-        <xs:attribute name="ymin" type="xs:integer" default="0"/>
-        <xs:attribute name="ymax" type="xs:integer"/>
-        <xs:attribute name="zmin" type="xs:integer" default="0"/>
-        <xs:attribute name="zmax" type="xs:integer"/>
+        <xs:attribute name="xmin" type="dimensionType" default="0"/>
+        <xs:attribute name="xmax" type="dimensionType"/>
+        <xs:attribute name="ymin" type="dimensionType" default="0"/>
+        <xs:attribute name="ymax" type="dimensionType"/>
+        <xs:attribute name="zmin" type="dimensionType" default="0"/>
+        <xs:attribute name="zmax" type="dimensionType"/>
     </xs:complexType>
 
     <!-- segmentType -->
@@ -261,6 +236,7 @@
             <xs:element name="biologicalAnnotation" minOccurs="0">
                 <xs:complexType>
                     <xs:sequence>
+                        <xs:element name="name" type="xs:string" minOccurs="0"/>
                         <xs:element name="description" type="xs:string" minOccurs="0"/>
                         <xs:element name="externalReferences" minOccurs="0">
                             <xs:complexType>
@@ -286,23 +262,13 @@
                     <xs:documentation>EMDB internal use</xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element name="colour" type="colourType" minOccurs="0"/>
+            <xs:element name="colour" type="rgbaType" minOccurs="0" maxOccurs="1"/>
             <xs:sequence>
                 <xs:element name="threeDVolume" type="threeDVolumeType" minOccurs="0"/>
                 <xs:element name="shapePrimitiveList" minOccurs="0">
                     <xs:complexType>
                         <xs:sequence>
                             <xs:element ref="shapePrimitive" minOccurs="1" maxOccurs="unbounded"/>
-                        </xs:sequence>
-                    </xs:complexType>
-                </xs:element>
-                <xs:element name="contourList" minOccurs="0">
-                    <xs:complexType>
-                        <xs:sequence>
-                            <xs:element name="contour" type="contourType" minOccurs="1"
-                                maxOccurs="unbounded"/>
-                            <xs:element name="transformId" type="xs:nonNegativeInteger"
-                                minOccurs="0"/>
                         </xs:sequence>
                     </xs:complexType>
                 </xs:element>
@@ -348,8 +314,8 @@
         </xs:sequence>
     </xs:complexType>
 
-    <!-- threeDVolumeType -->
-    <xs:complexType name="threeDVolumeType">
+    <!-- oldThreeDVolumeType -->
+    <xs:complexType name="oldThreeDVolumeType">
         <xs:sequence>
             <xs:element name="file" type="xs:string"/>
             <xs:element name="objectPath" type="xs:string" minOccurs="0">
@@ -373,6 +339,90 @@
                         <xs:enumeration value="EMAN"/>
                     </xs:restriction>
                 </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="id" type="xs:nonNegativeInteger"/>
+    </xs:complexType>
+
+    <!-- threeDVolumeType -->
+    <xs:complexType name="threeDVolumeType">
+        <xs:sequence>
+            <xs:element name="latticeId" type="xs:nonNegativeInteger">
+                <xs:annotation>
+                    <xs:documentation>
+                        The ID of the lattice in 'latticeList' that contains the data
+                        referred to by this 3D volume.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="value" type="xs:float">
+                <xs:annotation>
+                    <xs:documentation>
+                        The 'value' can either be a contour level used to denote a boundary
+                        or the voxel value for this segmentation. The value of 
+                        'mode' will be used to cast this elements value.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="transformId" type="xs:nonNegativeInteger" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- mask -->
+    <xs:complexType name="latticeType">
+        <xs:sequence>
+            <xs:element name="mode">
+                <xs:annotation>
+                    <xs:documentation>
+                        Mode specifies the datatype of each voxel in the 3D volume
+                    </xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:enumeration value="int8"/>
+                        <xs:enumeration value="uint8"/>
+                        <xs:enumeration value="int16"/>
+                        <xs:enumeration value="uint16"/>
+                        <xs:enumeration value="int32"/>
+                        <xs:enumeration value="uint32"/>
+                        <xs:enumeration value="int64"/>
+                        <xs:enumeration value="uint64"/>
+                        <xs:enumeration value="float32"/>
+                        <xs:enumeration value="float64"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="endianness" default="little">
+                <xs:annotation>
+                    <xs:documentation>
+                        The manner in which the binary data is read.
+                    </xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:enumeration value="little"/>
+                        <xs:enumeration value="big"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="size" type="volumeStructureType">
+                <xs:annotation>
+                    <xs:documentation>
+                        The 3D volume size in voxels.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="start" type="volumeIndexType">
+                <xs:annotation>
+                    <xs:documentation>
+                        The index values for the start voxel.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="data" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>Data is a base64 encoded string of zlib-compressed binary data.</xs:documentation>
+                </xs:annotation>
             </xs:element>
         </xs:sequence>
         <xs:attribute name="id" type="xs:nonNegativeInteger"/>
@@ -412,10 +462,10 @@
             <xs:element name="z" type="xs:float"/>
         </xs:sequence>
         <xs:attribute name="vID" type="xs:nonNegativeInteger"/>
-        <xs:attribute name="designation" default="vertex">
+        <xs:attribute name="designation" default="surface">
             <xs:simpleType>
                 <xs:restriction base="xs:string">
-                    <xs:enumeration value="vertex"/>
+                    <xs:enumeration value="surface"/>
                     <xs:enumeration value="normal"/>
                 </xs:restriction>
             </xs:simpleType>
@@ -428,20 +478,6 @@
             <xs:element name="v" type="xs:nonNegativeInteger" minOccurs="3" maxOccurs="unbounded"/>
         </xs:sequence>
         <xs:attribute name="PID" type="xs:nonNegativeInteger"/>
-    </xs:complexType>
-
-    <!-- colorType -->
-    <xs:complexType name="colourType">
-        <xs:annotation>
-            <xs:documentation> The 'name' corresponds to the sRGB colour space name and maps
-                precisely to an RGB value. When this happens, the alpha channel should be set to '1'
-                (opaque). Requires the use of an external Python module (webcolors.py).
-            </xs:documentation>
-        </xs:annotation>
-        <xs:choice>
-            <xs:element name="name" type="xs:string"/>
-            <xs:element name="rgba" type="rgbaType" minOccurs="1"/>
-        </xs:choice>
     </xs:complexType>
 
     <!-- rgbaType -->
@@ -461,14 +497,6 @@
             <xs:maxInclusive value="1.0"/>
         </xs:restriction>
     </xs:simpleType>
-
-    <!-- contourType -->
-    <xs:complexType name="contourType">
-        <xs:sequence>
-            <xs:element name="p" type="floatVectorType" maxOccurs="unbounded"/>
-        </xs:sequence>
-        <xs:attribute name="id" type="xs:nonNegativeInteger"/>
-    </xs:complexType>
 
     <!-- floatVectorType -->
     <xs:complexType name="floatVectorType">
@@ -498,16 +526,30 @@
         <xs:attribute name="description" type="xs:string"/>
     </xs:complexType>
 
+    <!-- volumeStructureType -->
+    <xs:complexType name="volumeStructureType">
+        <xs:sequence>
+            <xs:element name="cols" type="xs:nonNegativeInteger"/>
+            <xs:element name="rows" type="xs:nonNegativeInteger"/>
+            <xs:element name="sections" type="xs:nonNegativeInteger"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- volumeIndexType -->
+    <xs:complexType name="volumeIndexType">
+        <xs:sequence>
+            <xs:element name="cols" type="xs:integer"/>
+            <xs:element name="rows" type="xs:integer"/>
+            <xs:element name="sections" type="xs:integer"/>
+        </xs:sequence>
+    </xs:complexType>
+
     <!-- END REFERENCED TYPES -->
 
     <!-- BEGIN REFERENCED ELEMENTS (in order of reference) -->
     <!-- transform -->
     <xs:element name="transform"/>
     <xs:element name="transformationMatrix" type="transformationMatrixType"
-        substitutionGroup="transform"/>
-    <xs:element name="canonicalEulerAngles" type="canonicalEulerAnglesType"
-        substitutionGroup="transform"/>
-    <xs:element name="viewVectorRotation" type="viewVectorRotationType"
         substitutionGroup="transform"/>
 
     <!-- shapePrimitive -->
@@ -573,6 +615,19 @@
 
     <!-- BEGIN DEPRECATED ELEMENTS -->
 
+    <!--<xs:element name="filePath" type="xs:string">
+        <xs:annotation>
+            <xs:documentation>Specifies the location of file containing referenced data.
+                Applies to 'threeDVolume' and 'subtomogramAverage'. If its value is an
+                empty string then the full path is assumed to be contained in the 'file'
+                attribute that refers to the data ('threeDVolume' or
+                'subtomogramAverage'). Otherwise it is assumed to be a full path
+                excluding the filename. This is consistent with concatenating the
+                'filePath' content with the 'file' content.</xs:documentation>
+        </xs:annotation>
+    </xs:element>-->
+    <xs:element name="canonicalEulerAngles" type="canonicalEulerAnglesType"/>
+    <xs:element name="viewVectorRotation" type="viewVectorRotationType"/>
 
     <!-- END DEPRECATED ELEMENTS -->
 
@@ -653,6 +708,63 @@
             <xs:element name="z" type="xs:positiveInteger"/>
         </xs:sequence>
     </xs:complexType>
+
+    <!-- colorType (deprecated) -->
+    <xs:complexType name="colourType">
+        <xs:annotation>
+            <xs:documentation> The 'name' corresponds to the sRGB colour space name and maps
+                precisely to an RGB value. When this happens, the alpha channel should be set to '1'
+                (opaque). Requires the use of an external Python module (webcolors.py).
+            </xs:documentation>
+        </xs:annotation>
+        <xs:choice>
+            <xs:element name="name" type="xs:token"/>
+            <xs:element name="rgba" type="rgbaType" minOccurs="1"/>
+        </xs:choice>
+    </xs:complexType>
+
+    <!-- contourType (deprecated) -->
+    <xs:complexType name="contourType">
+        <xs:sequence>
+            <xs:element name="p" type="floatVectorType" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute name="id" type="xs:nonNegativeInteger"/>
+    </xs:complexType>
+
+    <!-- viewVectorRotationType (deprecated) -->
+    <xs:complexType name="viewVectorRotationType">
+        <xs:sequence>
+            <xs:element name="x" type="xs:float"/>
+            <xs:element name="y" type="xs:float"/>
+            <xs:element name="z" type="xs:float"/>
+            <xs:element name="r" type="angleDegreeType"/>
+        </xs:sequence>
+        <xs:attribute name="id" type="xs:nonNegativeInteger"/>
+    </xs:complexType>
+
+    <!-- canonicalEulerAnglesType (deprecated) -->
+    <xs:complexType name="canonicalEulerAnglesType">
+        <xs:annotation>
+            <xs:documentation>Euler angler according to Heymann et al. 2005
+                (doi:10.1016/j.jsb.2005.06.001)</xs:documentation>
+            <xs:documentation>Angles are specified in degrees together with their
+                bounds.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="phi" type="angleDegreeType"/>
+            <xs:element name="theta" type="angleDegreeType"/>
+            <xs:element name="psi" type="angleDegreeType"/>
+        </xs:sequence>
+        <xs:attribute name="id" type="xs:nonNegativeInteger"/>
+    </xs:complexType>
+
+    <!-- angleDegreeType (deprecated) -->
+    <xs:simpleType name="angleDegreeType">
+        <xs:restriction base="xs:float">
+            <xs:minInclusive value="0"/>
+            <xs:maxInclusive value="360"/>
+        </xs:restriction>
+    </xs:simpleType>
 
     <!-- END DEPRECATED TYPES -->
 </xs:schema>
