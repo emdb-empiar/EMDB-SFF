@@ -11,180 +11,210 @@
             <xs:sequence>
                 <xs:element name="version" type="xs:string"/>
                 <xs:element name="name" type="xs:string"/>
-                <xs:element name="software" type="softwareType" minOccurs="0"/>
-                <xs:element name="transformList" minOccurs="0">
+                <xs:element name="software_list" minOccurs="0">
                     <xs:complexType>
                         <xs:sequence>
-                            <xs:element ref="transform" minOccurs="0" maxOccurs="unbounded"/>
+                            <xs:element name="software" type="software_type" minOccurs="0"/>
                         </xs:sequence>
+                        <xs:attribute name="id" type="xs:nonNegativeInteger"/>
                     </xs:complexType>
                 </xs:element>
-                <xs:element name="primaryDescriptor">
+                <xs:element name="transform_list" minOccurs="1">
                     <xs:annotation>
-                        <xs:documentation>
-                            Mandatory field. Designates the element type within
-                            'segmentList' that contains the primary description of the segments.
-                            Constrained to be either 'threeDVolume', 'shapePrimitiveList',
-                            or 'meshList'.
-                        </xs:documentation>
+                        <xs:documentation> Mandatory field. The first 'transformation_matrix' must
+                            be the image-to-physical transform. </xs:documentation>
                     </xs:annotation>
-                    <xs:simpleType>
-                        <xs:restriction base="xs:string">
-                            <xs:enumeration value="threeDVolume"/>
-                            <xs:enumeration value="shapePrimitiveList"/>
-                            <xs:enumeration value="meshList"/>
-                        </xs:restriction>
-                    </xs:simpleType>
-                </xs:element>
-                <xs:element name="boundingBox" type="boundingBoxType" minOccurs="0"/>
-                <xs:element name="globalExternalReferences" minOccurs="0">
                     <xs:complexType>
                         <xs:sequence>
-                            <xs:element name="ref" type="externalReferenceType" minOccurs="0"
+                            <xs:element name="transformation_matrix"
+                                type="transformation_matrix_type" minOccurs="1"
                                 maxOccurs="unbounded"/>
                         </xs:sequence>
                     </xs:complexType>
                 </xs:element>
-                <xs:element name="segmentList">
+                <xs:element name="primary_descriptor">
+                    <xs:annotation>
+                        <xs:documentation> Mandatory field. Designates the element type within
+                            'segment_list' that contains the primary description of the segments.
+                            Constrained to be either 'three_d_volume', 'shape_primitive_list', or
+                            'mesh_list'. </xs:documentation>
+                    </xs:annotation>
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:enumeration value="three_d_volume"/>
+                            <xs:enumeration value="shape_primitive_list"/>
+                            <xs:enumeration value="mesh_list"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:element>
+                <xs:element name="bounding_box" type="bounding_box_type" minOccurs="0"/>
+                <xs:element name="global_external_references" minOccurs="0">
                     <xs:complexType>
                         <xs:sequence>
-                            <xs:element name="segment" type="segmentType" maxOccurs="unbounded"/>
+                            <xs:element name="ref" type="external_reference_type" minOccurs="0"
+                                maxOccurs="unbounded"/>
                         </xs:sequence>
                     </xs:complexType>
                 </xs:element>
-                <xs:element name="latticeList" minOccurs="0">
+                <xs:element name="segment_list">
                     <xs:complexType>
                         <xs:sequence>
-                            <xs:element name="lattice" type="latticeType" maxOccurs="unbounded"/>
+                            <xs:element name="segment" type="segment_type" maxOccurs="unbounded"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="lattice_list" minOccurs="0">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="lattice" type="lattice_type" maxOccurs="unbounded"/>
                         </xs:sequence>
                     </xs:complexType>
                 </xs:element>
                 <xs:element name="details" type="xs:string" minOccurs="0"/>
             </xs:sequence>
-            <xs:attribute name="schemaVersion" type="xs:token" default="0.7.0.dev0">
+            <xs:attribute name="schema_version" type="xs:string" default="0.8.0.dev0">
                 <xs:annotation>
                     <xs:documentation>
                         <![CDATA[
-                        Version History
-                        0.2, 2015/3/15, Ardan Patwardhan: 
-                        1) Added support for color 
-                        2) Added support for triangle representation of segment - this is in support of Amira segmentations 
-                        
-                        0.3, 2015/10/21, Paul Korir: 
-                        1) Added voxelTransform 
-                        2) Added filePath for segmentLinks to HDF5 (Segger) segmentations 
-                        3) Added segmentObjects with contours and meshes for IMOD 
-                        
-                        0.4, 2015/11/04, Paul Korir: 
-                        1) Added alpha for rgb color (transparency) 
-                        
-                        0.5, 2015/12/14, Paul Korir: 
-                        1) Removed 'voxelTransform'
-                        2) Moved 'numberOfCopies' as 'numberOfInstances' to  be a sequence element within 'biologicalAnnotation'
-                        3) Made 'color' a choice between 'name' (X11/HTML4 sRGB colour space names) and 'rgba'
-                        4) Added a 'transform' element, which is a possibly empty list of transformation matrices referenced within the document by a non-negative identifier
-                        5) Renamed 'segmentLink' to 'voxelSegmentation' and added a 'transformId' element
-                        6) Renamed 'color' element to 'colour' and 'colorType' to 'colourType'
-                        7) Structured 'shapePrimitive' to a list of 'shapePrimitive' (substitution group for 'ellipsoid', 'cuboid', 'pyramid', 'cylinder')
-                        8) Identified and labeled deprecated data types
-                        9) Renamed shapePrimitive 'pyramid' to 'cone' and added tentative definition
-                        10) Removed 'origin' and 'viewVectorRotation' elements from shape primitives (cuboid, ellipsoid, cone, cylinder) and replaced with 'transformId' element
-                        11) Renamed references to 'triangles' to 'polygons' e.g. 'triangleListType' now 'polygonListType'
-                        
-                        0.5.1, 2015/12/23, Paul Korir:
-                        1) Change colourType to have rgbaType minOccurs=1
-                        2) Added 'attribute' element (e.g. for FOM) to shapePrimitive
-                        3) Deleted comment: 'Are the CCP4 format masks going to be allowed? If so, we could represent the information of the mask (mapType) here.' from 'voxelSegmentation'.
-                        4) Added segment 'format' element to 'voxelSegmentation' restricted to values 'runLengthEncoding', 'MRC', or 'Segger'
-                        5) Renamed 'voxelSegmentation' to 'threeDVolume' and deprecated 'subTomogramAverage'.
-                        6) Restructured 'transforms' into a list ('transformList') of 'transform', which is a substitutionGroup of 'transformationMatrix', 'canonicalEulerAngles' or 'viewVectorRotation'. 
-                        7) Added an 'angleDegreeType' to restrict angle range in degrees [0,360].
-                        
-                        0.5.2, 2016/01/04, Paul Korir:
-                        1) Made 'transformList' optional
-                        2) Added 'id' attributes for 'canonicalEulerAngle' and 'viewVectorRotation'
-                        3) Annotations for 'filePath'
-                        4) Added 'other' to types for 'externalReference' and optional 'otherTypes' attribute
-                        5) Changed type of 'name' element in 'colour' from 'xs:string' to 'xs:token'
-                        6) Created 'threeDVolumeType' to be used by 'threeDVolume' and 'subtomogramAverage'
-                        7) Added 'id' attributes for 'shapePrimitive' and 'threeDVolumeType'
-                        8) Renamed 'contours' to 'contourList'
-                        9) Created 'meshList' as a sequence of 'mesh'. Each 'mesh' has an 'id'
-                        
-                        0.5.3, 2016/01/06, Paul Korir:
-                        1) Renamed 'transformationMatrixType' attribute from 'transformId' to 'id'
-                        2) Created 'dimensionType' for all 'shapePrimitive' dimensions
-                        
-                        0.5.4, 2016/01/06, Paul Korir:
-                        1) Added element 'primaryDescriptor' of type restricted string to 'threeDVolume', 'shapePrimitiveList', 'contourList', 'meshList'
-                        
-                        0.5.5, 2016/01/22, Paul Korir:
-                        1) Changed 'vertices' and 'polygons' to 'vertexList' and 'polygonList', respectively.
-                        2) Added attribute 'designation' restricted to string 'vertex' (default) and 'normal' to 'vertex' element.
-                        
-                        0.5.6, 2016/01/25, Paul Korir:
-                        1) Changed attribute 'polygonID' from 'positiveInteger' to 'nonNegativeInteger'
-                        
-                        0.5.7, 2016/01/26, Paul Korir:
-                        1) Change element names to save disk space: 'vertex' to 'v', 'vertexID' to 'vID', 'point' to 'p', 'polygon' to 'P', 'polygonID' to 'PID'
-                        2) Changed 'vertexType' to have ID of type 'xs:nonNegativeInteger' (from 'xs:positiveInteger')
-                        
-                        0.5.8, 2016/04/26, Paul Korir:
-                        1) Added 'version' element at the root.
-                        
-                        0.5.8, 2016/08/08, Paul Korir:
-                        2) Made 'shapePrimitive' element 'attribute (not present in 'subtomogramAverage' optional (minOccurs=0)
-                        
-                        0.5.8, 2016/08/17, Paul Korir:
-                        3) Added a 'transformId' element to 'contourList' and to 'mesh'.
-                        
-                        0.5.8, 2016/10/04, Paul Korir:
-                        4) Simplified shape primitives by eliminating internal layering e.g. cone/dimensions/height to cone/height
-                        
-                        0.5.8, 2016/10/14, Paul Korir:
-                        5) (Finally) renamed 'surfaceType' to 'meshType' for consistency.
-                        
-                        0.5.8, 2016/10/20, Paul Korir:
-                        6) 'macromolecule' and 'complex' changed from 'positiveInteger' to 'string'
-                        
-                        0.6.0a1, 2017/02/28, Paul Korir:
-                        1) Added 'EMAN' as a 'threeDVolume' format
-                        
-                        0.6.0a2, 2017/05/15, Paul Korir:
-                        1) Restructured 'externalReferences' from simpleType to complexType
-                        2) Changed 'externalReference' to 'externalReferenceType' and replaced elements with attributes
-                        
-                        0.6.0a3, 2017/05/25, Paul Korir:
-                        1) Added element 'boundingBox' taking six integers: xmin, xmax, ymin, ymax, zmin, zmax; minimums default to 0
-                        
-                        0.6.0a4, 2017/07/31, Paul Korir:
-                        1) Added global (optional) external references
-                        
-                        0.6.0a4, 2017/09/20, Paul Korir:
-                        2) Renamed global external references to globalExternalReferences
-                        
-                        0.6.0a4, 2017/09/25, Paul Korir:
-                        3) Restructured global external references to have the form <ref [attrs]/>
-                        4) Now externalReferenceType has attributes: type (required), otherType (required), value (required), label (new, optional), description (new, optional)
+Version History
 
-                        0.6.0a4, 2017/11/23, Paul Korir:
-                        5) Replaced all active 'token' to 'string' types
-                        
-                        0.7.0.dev0, 2017/11/09, Paul Korir:
-                        1) new 3D volume type: 'threeDVolumeType' (previous one is 'oldThreeDVolumeType'
-                            supports both byte/integer lattices and density volumes (for subtomogram averages)
-                        2) embedded volume as base64 string using new 'latticeType'
-                        3) removed contour representation
-                        
-                        0.7.0.dev0, 2018/05/04, Paul Korir:
-                        4) segment name added
-                        5) removed filePath
-                        6) removed viewVectorRotation and canonicalEulerAngles
-                        7) colour has rgbaType now
-                        
-                        0.7.0.dev0, 2018/07/18, Paul Korir:
-                        8) vertex designation now 'surface' or 'normal'
-                        ]]>
+0.2, 2015/3/15, Ardan Patwardhan: 
+1) Added support for color 
+2) Added support for triangle representation of segment - this is in support of Amira segmentations 
+
+0.3, 2015/10/21, Paul Korir: 
+1) Added voxelTransform 
+2) Added filePath for segmentLinks to HDF5 (Segger) segmentations 
+3) Added segmentObjects with contours and meshes for IMOD 
+
+0.4, 2015/11/04, Paul Korir: 
+1) Added alpha for rgb color (transparency) 
+
+0.5, 2015/12/14, Paul Korir: 
+1) Removed 'voxelTransform'
+2) Moved 'numberOfCopies' as 'numberOfInstances' to  be a sequence element within 'biologicalAnnotation'
+3) Made 'color' a choice between 'name' (X11/HTML4 sRGB colour space names) and 'rgba'
+4) Added a 'transform' element, which is a possibly empty list of transformation matrices referenced within the document by a non-negative identifier
+5) Renamed 'segmentLink' to 'voxelSegmentation' and added a 'transformId' element
+6) Renamed 'color' element to 'colour' and 'colorType' to 'colourType'
+7) Structured 'shapePrimitive' to a list of 'shapePrimitive' (substitution group for 'ellipsoid', 'cuboid', 'pyramid', 'cylinder')
+8) Identified and labeled deprecated data types
+9) Renamed shapePrimitive 'pyramid' to 'cone' and added tentative definition
+10) Removed 'origin' and 'viewVectorRotation' elements from shape primitives (cuboid, ellipsoid, cone, cylinder) and replaced with 'transformId' element
+11) Renamed references to 'triangles' to 'polygons' e.g. 'triangleListType' now 'polygonListType'
+
+0.5.1, 2015/12/23, Paul Korir:
+1) Change colourType to have rgbaType minOccurs=1
+2) Added 'attribute' element (e.g. for FOM) to shapePrimitive
+3) Deleted comment: 'Are the CCP4 format masks going to be allowed? If so, we could represent the information of the mask (mapType) here.' from 'voxelSegmentation'.
+4) Added segment 'format' element to 'voxelSegmentation' restricted to values 'runLengthEncoding', 'MRC', or 'Segger'
+5) Renamed 'voxelSegmentation' to 'threeDVolume' and deprecated 'subTomogramAverage'.
+6) Restructured 'transforms' into a list ('transformList') of 'transform', which is a substitutionGroup of 'transformationMatrix', 'canonicalEulerAngles' or 'viewVectorRotation'. 
+7) Added an 'angleDegreeType' to restrict angle range in degrees [0,360].
+
+0.5.2, 2016/01/04, Paul Korir:
+1) Made 'transformList' optional
+2) Added 'id' attributes for 'canonicalEulerAngle' and 'viewVectorRotation'
+3) Annotations for 'filePath'
+4) Added 'other' to types for 'externalReference' and optional 'otherTypes' attribute
+5) Changed type of 'name' element in 'colour' from 'xs:string' to 'xs:token'
+6) Created 'threeDVolumeType' to be used by 'threeDVolume' and 'subtomogramAverage'
+7) Added 'id' attributes for 'shapePrimitive' and 'threeDVolumeType'
+8) Renamed 'contours' to 'contourList'
+9) Created 'meshList' as a sequence of 'mesh'. Each 'mesh' has an 'id'
+
+0.5.3, 2016/01/06, Paul Korir:
+1) Renamed 'transformationMatrixType' attribute from 'transformId' to 'id'
+2) Created 'dimensionType' for all 'shapePrimitive' dimensions
+
+0.5.4, 2016/01/06, Paul Korir:
+1) Added element 'primaryDescriptor' of type restricted string to 'threeDVolume', 'shapePrimitiveList', 'contourList', 'meshList'
+
+0.5.5, 2016/01/22, Paul Korir:
+1) Changed 'vertices' and 'polygons' to 'vertexList' and 'polygonList', respectively.
+2) Added attribute 'designation' restricted to string 'vertex' (default) and 'normal' to 'vertex' element.
+
+0.5.6, 2016/01/25, Paul Korir:
+1) Changed attribute 'polygonID' from 'positiveInteger' to 'nonNegativeInteger'
+
+0.5.7, 2016/01/26, Paul Korir:
+1) Change element names to save disk space: 'vertex' to 'v', 'vertexID' to 'vID', 'point' to 'p', 'polygon' to 'P', 'polygonID' to 'PID'
+2) Changed 'vertexType' to have ID of type 'xs:nonNegativeInteger' (from 'xs:positiveInteger')
+
+0.5.8, 2016/04/26, Paul Korir:
+1) Added 'version' element at the root.
+
+0.5.8, 2016/08/08, Paul Korir:
+2) Made 'shapePrimitive' element 'attribute (not present in 'subtomogramAverage' optional (minOccurs=0)
+
+0.5.8, 2016/08/17, Paul Korir:
+3) Added a 'transformId' element to 'contourList' and to 'mesh'.
+
+0.5.8, 2016/10/04, Paul Korir:
+4) Simplified shape primitives by eliminating internal layering e.g. cone/dimensions/height to cone/height
+
+0.5.8, 2016/10/14, Paul Korir:
+5) (Finally) renamed 'surfaceType' to 'meshType' for consistency.
+
+0.5.8, 2016/10/20, Paul Korir:
+6) 'macromolecule' and 'complex' changed from 'positiveInteger' to 'string'
+
+0.6.0a1, 2017/02/28, Paul Korir:
+1) Added 'EMAN' as a 'threeDVolume' format
+
+0.6.0a2, 2017/05/15, Paul Korir:
+1) Restructured 'externalReferences' from simpleType to complexType
+2) Changed 'externalReference' to 'externalReferenceType' and replaced elements with attributes
+
+0.6.0a3, 2017/05/25, Paul Korir:
+1) Added element 'boundingBox' taking six integers: xmin, xmax, ymin, ymax, zmin, zmax; minimums default to 0
+
+0.6.0a4, 2017/07/31, Paul Korir:
+1) Added global (optional) external references
+
+0.6.0a4, 2017/09/20, Paul Korir:
+2) Renamed global external references to globalExternalReferences
+
+0.6.0a4, 2017/09/25, Paul Korir:
+3) Restructured global external references to have the form <ref [attrs]/>
+4) Now externalReferenceType has attributes: type (required), otherType (required), value (required), label (new, optional), description (new, optional)
+
+0.6.0a4, 2017/11/23, Paul Korir:
+5) Replaced all active 'token' to 'string' types
+
+0.7.0.dev0, 2017/11/09, Paul Korir:
+1) new 3D volume type: 'threeDVolumeType' (previous one is 'oldThreeDVolumeType'
+    supports both byte/integer lattices and density volumes (for subtomogram averages)
+2) embedded volume as base64 string using new 'latticeType'
+3) removed contour representation
+
+0.7.0.dev0, 2018/05/04, Paul Korir:
+4) segment name added
+5) removed filePath
+6) removed viewVectorRotation and canonicalEulerAngles
+7) colour has rgbaType now
+
+0.7.0.dev0, 2018/07/18, Paul Korir:
+8) vertex designation now 'surface' or 'normal'
+
+0.8.0.dev0, 2019/11/08, Paul Korir:
+1) converted all camelCase names to underscore_case
+2) 'polygon' is now 'triangle'
+3) changed 'transformation_matrix' from being a subsitution group
+4) external_reference (ref): attributes changed to 'resource', 'url', 'accession' from
+'type', 'otherType' and 'value', respectively
+5) renamed 'macromolecules_and_complexes_type' to 'complexes_and_macromolecules_type'
+6) restructured 'macromolecules' to 'macromolecule_list' (same for 'complexes')
+7) now 'macromolecule_list' contains 'macromolecule' with 'id' and text value for accession
+
+0.8.0.dev0, 2019/12/18, Paul Korir:
+8) now 'transform_list' is mandatory with at least one 'transformation_matrix' for the image-to-physical transform
+9) changed 'software' to be a 'software_list' of zero or more 'software' items; software 'version' now required if 'software' is defined
+10) 'complexes_and_macromolecules' are deprecated (were for annotation; 'external_references' are sufficient)
+11) overhaul of 'mesh' field to have 'vertices', 'normals' (optional) and 'triangles' which are base64-encoded strings of actual data
+12) 'xmax', 'ymax' and 'zmax' of 'bounding_box' are mandatory 
+
+]]>
                     </xs:documentation>
                 </xs:annotation>
             </xs:attribute>
@@ -197,20 +227,20 @@
     <!-- BEGIN REFERENCED TYPES (in order of reference) -->
 
     <!-- softwareType -->
-    <xs:complexType name="softwareType">
+    <xs:complexType name="software_type">
         <xs:sequence>
             <xs:element name="name" type="xs:string"/>
-            <xs:element name="version" type="xs:string" minOccurs="0"/>
-            <xs:element name="processingDetails" type="xs:string" minOccurs="0"/>
+            <xs:element name="version" type="xs:string" minOccurs="1"/>
+            <xs:element name="processing_details" type="xs:string" minOccurs="0"/>
         </xs:sequence>
     </xs:complexType>
 
     <!-- transformationMatrixType -->
-    <xs:complexType name="transformationMatrixType">
+    <xs:complexType name="transformation_matrix_type">
         <xs:annotation>
             <xs:documentation>data is a space-separated sequence of numbers to be converted to
                 floats. The number of items in 'data' is equivalent to the product of 'rows' and
-                'cols'.</xs:documentation>
+                'cols'. </xs:documentation>
         </xs:annotation>
         <xs:sequence>
             <xs:element name="rows" type="xs:positiveInteger"/>
@@ -221,277 +251,221 @@
     </xs:complexType>
 
     <!-- boundingBoxType -->
-    <xs:complexType name="boundingBoxType">
-        <xs:attribute name="xmin" type="dimensionType" default="0"/>
-        <xs:attribute name="xmax" type="dimensionType"/>
-        <xs:attribute name="ymin" type="dimensionType" default="0"/>
-        <xs:attribute name="ymax" type="dimensionType"/>
-        <xs:attribute name="zmin" type="dimensionType" default="0"/>
-        <xs:attribute name="zmax" type="dimensionType"/>
+    <xs:complexType name="bounding_box_type">
+        <xs:attribute name="xmin" type="dimension_type" default="0"/>
+        <xs:attribute name="xmax" type="dimension_type" use="required"/>
+        <xs:attribute name="ymin" type="dimension_type" default="0"/>
+        <xs:attribute name="ymax" type="dimension_type" use="required"/>
+        <xs:attribute name="zmin" type="dimension_type" default="0"/>
+        <xs:attribute name="zmax" type="dimension_type" use="required"/>
     </xs:complexType>
 
     <!-- segmentType -->
-    <xs:complexType name="segmentType">
+    <xs:complexType name="segment_type">
         <xs:sequence>
-            <xs:element name="biologicalAnnotation" minOccurs="0">
+            <xs:element name="biological_annotation" minOccurs="0">
                 <xs:complexType>
                     <xs:sequence>
                         <xs:element name="name" type="xs:string" minOccurs="0"/>
                         <xs:element name="description" type="xs:string" minOccurs="0"/>
-                        <xs:element name="externalReferences" minOccurs="0">
+                        <xs:element name="external_references" minOccurs="0">
                             <xs:complexType>
                                 <xs:sequence>
-                                    <xs:element name="ref" type="externalReferenceType"
+                                    <xs:element name="ref" type="external_reference_type"
                                         minOccurs="0" maxOccurs="unbounded"/>
                                 </xs:sequence>
                             </xs:complexType>
                         </xs:element>
-                        <xs:element name="numberOfInstances" type="xs:positiveInteger" minOccurs="0">
+                        <xs:element name="number_of_instances" type="xs:positiveInteger"
+                            minOccurs="0">
                             <xs:annotation>
                                 <xs:documentation>Number of instances present of the basic structure
                                     (complex or macromolecule). For example it could be '7' for the
-                                    upper ring of GroEL</xs:documentation>
+                                    upper ring of GroEL </xs:documentation>
                             </xs:annotation>
                         </xs:element>
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
-            <xs:element name="complexesAndMacromolecules" type="macromoleculesAndComplexesType"
-                minOccurs="0">
-                <xs:annotation>
-                    <xs:documentation>EMDB internal use</xs:documentation>
-                </xs:annotation>
-            </xs:element>
-            <xs:element name="colour" type="rgbaType" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="colour" type="rgba_type" minOccurs="0"/>
             <xs:sequence>
-                <xs:element name="threeDVolume" type="threeDVolumeType" minOccurs="0"/>
-                <xs:element name="shapePrimitiveList" minOccurs="0">
+                <xs:element name="three_d_volume" type="three_d_volume_type" minOccurs="0"/>
+                <xs:element name="shape_primitive_list" minOccurs="0">
                     <xs:complexType>
                         <xs:sequence>
-                            <xs:element ref="shapePrimitive" minOccurs="1" maxOccurs="unbounded"/>
+                            <xs:element ref="shape_primitive" maxOccurs="unbounded"/>
                         </xs:sequence>
                     </xs:complexType>
                 </xs:element>
-                <xs:element name="meshList" minOccurs="0">
+                <xs:element name="mesh_list" minOccurs="0">
                     <xs:complexType>
                         <xs:sequence>
-                            <xs:element name="mesh" type="meshType" minOccurs="1"
-                                maxOccurs="unbounded"/>
+                            <xs:element name="mesh" type="mesh_type" maxOccurs="unbounded"/>
                         </xs:sequence>
                     </xs:complexType>
                 </xs:element>
             </xs:sequence>
         </xs:sequence>
         <xs:attribute name="id" type="xs:positiveInteger" use="required"/>
-        <xs:attribute name="parentID" type="xs:nonNegativeInteger" use="required">
+        <xs:attribute name="parent_id" type="xs:nonNegativeInteger" use="required">
             <xs:annotation>
-                <xs:documentation>For the root segment: parentSegmentID = 0</xs:documentation>
+                <xs:documentation>For the root segmenƒt: parentSegmentID = 0</xs:documentation>
             </xs:annotation>
         </xs:attribute>
     </xs:complexType>
 
-    <!-- macromoleculesAndComplexesType -->
-    <xs:complexType name="macromoleculesAndComplexesType">
-        <xs:annotation>
-            <xs:documentation>Depending on the problem, one can either reference the sample on the
-                macromolecule level or the complex level. </xs:documentation>
-        </xs:annotation>
-        <xs:sequence>
-            <xs:element name="macromolecule" minOccurs="0">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element name="id" type="xs:string" maxOccurs="unbounded"/>
-                    </xs:sequence>
-                </xs:complexType>
-            </xs:element>
-            <xs:element name="complex" minOccurs="0">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element name="id" type="xs:string" maxOccurs="unbounded"/>
-                    </xs:sequence>
-                </xs:complexType>
-            </xs:element>
-        </xs:sequence>
-    </xs:complexType>
-
-    <!-- oldThreeDVolumeType -->
-    <xs:complexType name="oldThreeDVolumeType">
-        <xs:sequence>
-            <xs:element name="file" type="xs:string"/>
-            <xs:element name="objectPath" type="xs:string" minOccurs="0">
-                <xs:annotation>
-                    <xs:documentation> This is particularly relevant if all the segments are stored
-                        in one file, like in HDF5. </xs:documentation>
-                </xs:annotation>
-            </xs:element>
-            <xs:element name="contourLevel" type="xs:float" minOccurs="0">
-                <xs:annotation>
-                    <xs:documentation> Should be specified if map is non-binary </xs:documentation>
-                </xs:annotation>
-            </xs:element>
-            <xs:element name="transformId" type="xs:nonNegativeInteger" minOccurs="0"/>
-            <xs:element name="format">
-                <xs:simpleType>
-                    <xs:restriction base="xs:string">
-                        <xs:enumeration value="runLengthEncoding"/>
-                        <xs:enumeration value="MRC"/>
-                        <xs:enumeration value="Segger"/>
-                        <xs:enumeration value="EMAN"/>
-                    </xs:restriction>
-                </xs:simpleType>
-            </xs:element>
-        </xs:sequence>
-        <xs:attribute name="id" type="xs:nonNegativeInteger"/>
+    <!-- biomolecule_type -->
+    <xs:complexType name="biomolecule_type">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute name="id" type="xs:nonNegativeInteger"/>
+            </xs:extension>
+        </xs:simpleContent>
     </xs:complexType>
 
     <!-- threeDVolumeType -->
-    <xs:complexType name="threeDVolumeType">
+    <xs:complexType name="three_d_volume_type">
         <xs:sequence>
-            <xs:element name="latticeId" type="xs:nonNegativeInteger">
+            <xs:element name="lattice_id" type="xs:nonNegativeInteger">
                 <xs:annotation>
-                    <xs:documentation>
-                        The ID of the lattice in 'latticeList' that contains the data
-                        referred to by this 3D volume.
-                    </xs:documentation>
+                    <xs:documentation> The ID of the lattice in 'latticeList' that contains the data
+                        referred to by this 3D volume. </xs:documentation>
                 </xs:annotation>
             </xs:element>
             <xs:element name="value" type="xs:float">
                 <xs:annotation>
-                    <xs:documentation>
-                        The 'value' can either be a contour level used to denote a boundary
-                        or the voxel value for this segmentation. The value of 
-                        'mode' will be used to cast this elements value.
-                    </xs:documentation>
+                    <xs:documentation> The 'value' can either be a contour level used to denote a
+                        boundary or the voxel value for this segmentation. The value of 'mode' will
+                        be used to cast this elements value. </xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element name="transformId" type="xs:nonNegativeInteger" minOccurs="0"/>
+            <xs:element name="transform_id" type="xs:nonNegativeInteger" minOccurs="0"/>
         </xs:sequence>
     </xs:complexType>
 
     <!-- mask -->
-    <xs:complexType name="latticeType">
+    <xs:complexType name="lattice_type">
         <xs:sequence>
-            <xs:element name="mode">
+            <xs:element name="mode" type="mode_type">
                 <xs:annotation>
-                    <xs:documentation>
-                        Mode specifies the datatype of each voxel in the 3D volume
-                    </xs:documentation>
-                </xs:annotation>
-                <xs:simpleType>
-                    <xs:restriction base="xs:string">
-                        <xs:enumeration value="int8"/>
-                        <xs:enumeration value="uint8"/>
-                        <xs:enumeration value="int16"/>
-                        <xs:enumeration value="uint16"/>
-                        <xs:enumeration value="int32"/>
-                        <xs:enumeration value="uint32"/>
-                        <xs:enumeration value="int64"/>
-                        <xs:enumeration value="uint64"/>
-                        <xs:enumeration value="float32"/>
-                        <xs:enumeration value="float64"/>
-                    </xs:restriction>
-                </xs:simpleType>
-            </xs:element>
-            <xs:element name="endianness" default="little">
-                <xs:annotation>
-                    <xs:documentation>
-                        The manner in which the binary data is read.
-                    </xs:documentation>
-                </xs:annotation>
-                <xs:simpleType>
-                    <xs:restriction base="xs:string">
-                        <xs:enumeration value="little"/>
-                        <xs:enumeration value="big"/>
-                    </xs:restriction>
-                </xs:simpleType>
-            </xs:element>
-            <xs:element name="size" type="volumeStructureType">
-                <xs:annotation>
-                    <xs:documentation>
-                        The 3D volume size in voxels.
+                    <xs:documentation> Mode specifies the datatype of each voxel in the 3D volume
                     </xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element name="start" type="volumeIndexType">
+            <xs:element name="endianness" type="endian_type" default="little">
                 <xs:annotation>
-                    <xs:documentation>
-                        The index values for the start voxel.
+                    <xs:documentation> The manner in which the binary data is read.
                     </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="size" type="volume_structure_type">
+                <xs:annotation>
+                    <xs:documentation> The 3D volume size in voxels. </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="start" type="volume_index_type">
+                <xs:annotation>
+                    <xs:documentation> The index values for the start voxel. </xs:documentation>
                 </xs:annotation>
             </xs:element>
             <xs:element name="data" type="xs:string">
                 <xs:annotation>
-                    <xs:documentation>Data is a base64 encoded string of zlib-compressed binary data.</xs:documentation>
+                    <xs:documentation>Data is a base64 encoded string of zlib-compressed binary
+                        data.</xs:documentation>
                 </xs:annotation>
             </xs:element>
         </xs:sequence>
         <xs:attribute name="id" type="xs:nonNegativeInteger"/>
     </xs:complexType>
 
+    <!-- mode_type -->
+    <xs:simpleType name="mode_type">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="int8"/>
+            <xs:enumeration value="uint8"/>
+            <xs:enumeration value="int16"/>
+            <xs:enumeration value="uint16"/>
+            <xs:enumeration value="int32"/>
+            <xs:enumeration value="uint32"/>
+            <xs:enumeration value="int64"/>
+            <xs:enumeration value="uint64"/>
+            <xs:enumeration value="float32"/>
+            <xs:enumeration value="float64"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- endian_type -->
+    <xs:simpleType name="endian_type">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="little"/>
+            <xs:enumeration value="big"/>
+        </xs:restriction>
+    </xs:simpleType>
+
     <!-- meshType -->
-    <xs:complexType name="meshType">
+    <xs:complexType name="mesh_type">
         <xs:sequence>
-            <xs:element name="vertexList" type="vertexListType"/>
-            <xs:element name="polygonList" type="polygonListType"/>
-            <xs:element name="transformId" type="xs:nonNegativeInteger" minOccurs="0"/>
+            <!--<xs:element name="vertex_list" type="vertex_list_type"/>
+            <xs:element name="triangle_list" type="triangle_list_type"/>-->
+            <xs:element name="vertices" type="vertices_type" minOccurs="1"/>
+            <xs:element name="normals" type="normals_type" minOccurs="0"/>
+            <xs:element name="triangles" type="triangles_type" minOccurs="1"/>
+            <xs:element name="transform_id" type="xs:nonNegativeInteger" minOccurs="0"/>
         </xs:sequence>
         <xs:attribute name="id" type="xs:nonNegativeInteger"/>
     </xs:complexType>
 
-    <!-- vertexListType -->
-    <xs:complexType name="vertexListType">
-        <xs:sequence>
-            <xs:element name="v" type="vertexType" minOccurs="3" maxOccurs="unbounded"/>
-        </xs:sequence>
-        <xs:attribute name="numVertices" type="xs:positiveInteger"/>
+    <!-- vertices_type -->
+    <xs:complexType name="vertices_type">
+        <xs:annotation>
+            <xs:documentation> The 'data' attribute is a base64-encoded binary sequence of float
+                (default: float32) triples. The 0-based position is the index used when constructing
+                triangles (see 'triangles_type' definition). </xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="num_vertices" type="xs:nonNegativeInteger"/>
+        <xs:attribute name="mode" type="mode_type" default="float32"/>
+        <xs:attribute name="endianness" type="endian_type" default="little"/>
+        <xs:attribute name="data" type="xs:string"/>
     </xs:complexType>
 
-    <!-- polygonListType -->
-    <xs:complexType name="polygonListType">
-        <xs:sequence maxOccurs="unbounded" minOccurs="1">
-            <xs:element name="P" type="polygonType"/>
-        </xs:sequence>
-        <xs:attribute name="numPolygons" type="xs:positiveInteger"/>
+    <!-- normals_type -->
+    <xs:complexType name="normals_type">
+        <xs:annotation>
+            <xs:documentation> The 'data' attribute is a base64-encoded binary sequence of float
+                (default: float32) triples. The 0-based position is the index used when constructing
+                triangles (see 'triangles_type' definition). </xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="num_normals" type="xs:nonNegativeInteger"/>
+        <xs:attribute name="mode" type="mode_type" default="float32"/>
+        <xs:attribute name="endianness" type="endian_type" default="little"/>
+        <xs:attribute name="data" type="xs:string"/>
     </xs:complexType>
 
-    <!-- vertexType -->
-    <xs:complexType name="vertexType">
-        <xs:sequence>
-            <xs:element name="x" type="xs:float"/>
-            <xs:element name="y" type="xs:float"/>
-            <xs:element name="z" type="xs:float"/>
-        </xs:sequence>
-        <xs:attribute name="vID" type="xs:nonNegativeInteger"/>
-        <xs:attribute name="designation" default="surface">
-            <xs:simpleType>
-                <xs:restriction base="xs:string">
-                    <xs:enumeration value="surface"/>
-                    <xs:enumeration value="normal"/>
-                </xs:restriction>
-            </xs:simpleType>
-        </xs:attribute>
-    </xs:complexType>
-
-    <!-- polygonType -->
-    <xs:complexType name="polygonType">
-        <xs:sequence>
-            <xs:element name="v" type="xs:nonNegativeInteger" minOccurs="3" maxOccurs="unbounded"/>
-        </xs:sequence>
-        <xs:attribute name="PID" type="xs:nonNegativeInteger"/>
+    <!-- triangles_type -->
+    <xs:complexType name="triangles_type">
+        <xs:annotation>
+            <xs:documentation> The 'data' attribute is a base64-encoded binary sequence of int
+                (default: uint32) triples. The values are 0-based indices of the vertices in the
+                'vertices' mesh attribute. </xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="num_triangles" type="xs:nonNegativeInteger"/>
+        <xs:attribute name="mode" type="mode_type" default="uint32"/>
+        <xs:attribute name="endianness" type="endian_type" default="little"/>
+        <xs:attribute name="data" type="xs:string"/>
     </xs:complexType>
 
     <!-- rgbaType -->
-    <xs:complexType name="rgbaType">
+    <xs:complexType name="rgba_type">
         <xs:sequence>
-            <xs:element name="red" type="colourChannelType"/>
-            <xs:element name="green" type="colourChannelType"/>
-            <xs:element name="blue" type="colourChannelType"/>
-            <xs:element name="alpha" type="colourChannelType" default="1.0" minOccurs="0"/>
+            <xs:element name="red" type="colour_channel_type"/>
+            <xs:element name="green" type="colour_channel_type"/>
+            <xs:element name="blue" type="colour_channel_type"/>
+            <xs:element name="alpha" type="colour_channel_type" default="1.0" minOccurs="0"/>
         </xs:sequence>
     </xs:complexType>
 
     <!-- colourChannelType -->
-    <xs:simpleType name="colourChannelType">
+    <xs:simpleType name="colour_channel_type">
         <xs:restriction base="xs:float">
             <xs:minInclusive value="0.0"/>
             <xs:maxInclusive value="1.0"/>
@@ -499,35 +473,35 @@
     </xs:simpleType>
 
     <!-- floatVectorType -->
-    <xs:complexType name="floatVectorType">
+    <xs:complexType name="float_vector_type">
         <xs:attribute name="x" type="xs:float"/>
         <xs:attribute name="y" type="xs:float"/>
         <xs:attribute name="z" type="xs:float"/>
     </xs:complexType>
 
     <!-- dimensionType -->
-    <xs:simpleType name="dimensionType">
+    <xs:simpleType name="dimension_type">
         <xs:restriction base="xs:float">
             <xs:minInclusive value="0"/>
         </xs:restriction>
     </xs:simpleType>
 
     <!-- externalReferenceType -->
-    <xs:complexType name="externalReferenceType">
+    <xs:complexType name="external_reference_type">
         <!-- id -->
         <xs:attribute name="id" type="xs:nonNegativeInteger"/>
         <!-- ontology_name -->
-        <xs:attribute name="type" type="xs:string" use="required"/>
+        <xs:attribute name="resource" type="xs:string" use="required"/>
         <!-- iri -->
-        <xs:attribute name="otherType" type="xs:string" use="required"/>
+        <xs:attribute name="url" type="xs:string" use="required"/>
         <!-- short_form -->
-        <xs:attribute name="value" type="xs:string" use="required"/>
+        <xs:attribute name="accession" type="xs:string" use="required"/>
         <xs:attribute name="label" type="xs:string"/>
         <xs:attribute name="description" type="xs:string"/>
     </xs:complexType>
 
     <!-- volumeStructureType -->
-    <xs:complexType name="volumeStructureType">
+    <xs:complexType name="volume_structure_type">
         <xs:sequence>
             <xs:element name="cols" type="xs:nonNegativeInteger"/>
             <xs:element name="rows" type="xs:nonNegativeInteger"/>
@@ -536,7 +510,7 @@
     </xs:complexType>
 
     <!-- volumeIndexType -->
-    <xs:complexType name="volumeIndexType">
+    <xs:complexType name="volume_index_type">
         <xs:sequence>
             <xs:element name="cols" type="xs:integer"/>
             <xs:element name="rows" type="xs:integer"/>
@@ -547,75 +521,77 @@
     <!-- END REFERENCED TYPES -->
 
     <!-- BEGIN REFERENCED ELEMENTS (in order of reference) -->
-    <!-- transform -->
-    <xs:element name="transform"/>
-    <xs:element name="transformationMatrix" type="transformationMatrixType"
-        substitutionGroup="transform"/>
-
     <!-- shapePrimitive -->
-    <xs:element name="shapePrimitive"/>
-    <xs:element name="cuboid" substitutionGroup="shapePrimitive">
+    <xs:element name="shape_primitive"/>
+    <xs:element name="cuboid" substitutionGroup="shape_primitive">
         <xs:annotation>
             <xs:documentation>3D rectangle</xs:documentation>
             <xs:documentation>'attribute' could refer to figure of merit (FOM)</xs:documentation>
         </xs:annotation>
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="x" type="dimensionType"/>
-                <xs:element name="y" type="dimensionType"/>
-                <xs:element name="z" type="dimensionType"/>
-                <xs:element name="transformId" type="xs:nonNegativeInteger"/>
+                <xs:element name="x" type="dimension_type"/>
+                <xs:element name="y" type="dimension_type"/>
+                <xs:element name="z" type="dimension_type"/>
+                <xs:element name="transform_id" type="xs:nonNegativeInteger"/>
                 <xs:element name="attribute" type="xs:float" minOccurs="0"/>
             </xs:sequence>
             <xs:attribute name="id" type="xs:nonNegativeInteger"/>
         </xs:complexType>
     </xs:element>
-    <xs:element name="ellipsoid" substitutionGroup="shapePrimitive">
+    <xs:element name="ellipsoid" substitutionGroup="shape_primitive">
         <xs:annotation>
             <xs:documentation>3D sphere</xs:documentation>
         </xs:annotation>
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="x" type="dimensionType"/>
-                <xs:element name="y" type="dimensionType"/>
-                <xs:element name="z" type="dimensionType"/>
-                <xs:element name="transformId" type="xs:nonNegativeInteger"/>
+                <xs:element name="x" type="dimension_type"/>
+                <xs:element name="y" type="dimension_type"/>
+                <xs:element name="z" type="dimension_type"/>
+                <xs:element name="transform_id" type="xs:nonNegativeInteger"/>
                 <xs:element name="attribute" type="xs:float" minOccurs="0"/>
             </xs:sequence>
             <xs:attribute name="id" type="xs:nonNegativeInteger"/>
         </xs:complexType>
     </xs:element>
-    <xs:element name="cylinder" substitutionGroup="shapePrimitive">
+    <xs:element name="cylinder" substitutionGroup="shape_primitive">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="height" type="dimensionType"/>
-                <xs:element name="diameter" type="dimensionType"/>
-                <xs:element name="transformId" type="xs:nonNegativeInteger"/>
+                <xs:element name="height" type="dimension_type"/>
+                <xs:element name="diameter" type="dimension_type"/>
+                <xs:element name="transform_id" type="xs:nonNegativeInteger"/>
                 <xs:element name="attribute" type="xs:float" minOccurs="0"/>
             </xs:sequence>
             <xs:attribute name="id" type="xs:nonNegativeInteger"/>
         </xs:complexType>
     </xs:element>
-    <xs:element name="cone" substitutionGroup="shapePrimitive">
+    <xs:element name="cone" substitutionGroup="shape_primitive">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="height" type="dimensionType"/>
-                <xs:element name="bottomRadius" type="dimensionType"/>
-                <xs:element name="transformId" type="xs:nonNegativeInteger"/>
+                <xs:element name="height" type="dimension_type"/>
+                <xs:element name="bottom_radius" type="dimension_type"/>
+                <xs:element name="transform_id" type="xs:nonNegativeInteger"/>
                 <xs:element name="attribute" type="xs:float" minOccurs="0"/>
             </xs:sequence>
             <xs:attribute name="id" type="xs:nonNegativeInteger"/>
         </xs:complexType>
     </xs:element>
     <!-- subTomogramAverage -->
-    <xs:element name="subtomogramAverage" type="threeDVolumeType" substitutionGroup="shapePrimitive"/>
+    <xs:element name="subtomogram_average" type="three_d_volume_type"
+        substitutionGroup="shape_primitive"/>
 
 
     <!-- END REFERENCED ELEMENTS -->
 
     <!-- BEGIN DEPRECATED ELEMENTS -->
 
-    <!--<xs:element name="filePath" type="xs:string">
+    <!-- transform -->
+    <xs:element name="transform"/>
+    <xs:element name="transformation_matrix" type="transformation_matrix_type"
+        substitutionGroup="transform"/>
+
+
+    <!--<xs:element name="file_path" type="xs:string">
         <xs:annotation>
             <xs:documentation>Specifies the location of file containing referenced data.
                 Applies to 'threeDVolume' and 'subtomogramAverage'. If its value is an
@@ -633,6 +609,103 @@
 
     <!-- BEGIN DEPRECATED TYPES -->
 
+    <!-- vertexListType (deprecated) -->
+    <xs:complexType name="vertex_list_type">
+        <xs:sequence>
+            <xs:element name="v" type="vertex_type" minOccurs="3" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute name="num_vertices" type="xs:positiveInteger"/>
+    </xs:complexType>
+
+    <!-- triangleListType (deprecated) -->
+    <xs:complexType name="triangle_list_type">
+        <xs:sequence maxOccurs="unbounded">
+            <xs:element name="P" type="triangle_type"/>
+        </xs:sequence>
+        <xs:attribute name="num_triangles" type="xs:positiveInteger"/>
+    </xs:complexType>
+
+    <!-- vertexType (deprecated) -->
+    <xs:complexType name="vertex_type">
+        <xs:sequence>
+            <xs:element name="x" type="xs:float"/>
+            <xs:element name="y" type="xs:float"/>
+            <xs:element name="z" type="xs:float"/>
+        </xs:sequence>
+        <xs:attribute name="id" type="xs:nonNegativeInteger"/>
+        <xs:attribute name="designation" default="surface">
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="surface"/>
+                    <xs:enumeration value="normal"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+    </xs:complexType>
+
+    <!-- triangleType (deprecated) -->
+    <xs:complexType name="triangle_type">
+        <xs:sequence>
+            <xs:element name="v" type="xs:nonNegativeInteger" minOccurs="3" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute name="id" type="xs:nonNegativeInteger"/>
+    </xs:complexType>
+
+    <!-- macromoleculesAndComplexesType (deprecated) -->
+    <xs:complexType name="complexes_and_macromolecules_type">
+        <xs:annotation>
+            <xs:documentation>Depending on the problem, one can either reference the sample on the
+                macromolecule level or the complex level. </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="macromolecule_list" minOccurs="0">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="macromolecule" type="biomolecule_type"
+                            maxOccurs="unbounded"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="complex_list" minOccurs="0">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="complex" type="biomolecule_type" maxOccurs="unbounded"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- oldThreeDVolumeType (deprecated) -->
+    <xs:complexType name="oldThreeDVolumeType">
+        <xs:sequence>
+            <xs:element name="file" type="xs:string"/>
+            <xs:element name="objectPath" type="xs:string" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>This is particularly relevant if all the segments are stored
+                        in one file, like in HDF5. </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="contourLevel" type="xs:float" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>Should be specified if map is non-binary</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="transformId" type="xs:nonNegativeInteger" minOccurs="0"/>
+            <xs:element name="format">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:enumeration value="runLengthEncoding"/>
+                        <xs:enumeration value="MRC"/>
+                        <xs:enumeration value="Segger"/>
+                        <xs:enumeration value="EMAN"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="id" type="xs:nonNegativeInteger"/>
+    </xs:complexType>
+
     <!-- meshPointType (deprecated) -->
     <xs:complexType name="meshPointType">
         <xs:annotation>
@@ -640,7 +713,7 @@
             <xs:documentation>Deprecated</xs:documentation>
         </xs:annotation>
         <xs:sequence>
-            <xs:element name="point" type="floatVectorType" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="point" type="float_vector_type" minOccurs="0" maxOccurs="unbounded"/>
         </xs:sequence>
         <xs:attribute name="index" type="xs:nonNegativeInteger"/>
         <xs:attribute name="designation">
@@ -680,8 +753,8 @@
             </xs:element>
             <xs:element name="offset" type="integerVectorType">
                 <xs:annotation>
-                    <xs:documentation>Offset of the segment relative to the orign
-                        map.</xs:documentation>
+                    <xs:documentation>Offset of the segment relative to the orign map.
+                    </xs:documentation>
                 </xs:annotation>
             </xs:element>
             <xs:element name="boxSize" type="positiveIntegerVectorType"/>
@@ -712,21 +785,21 @@
     <!-- colorType (deprecated) -->
     <xs:complexType name="colourType">
         <xs:annotation>
-            <xs:documentation> The 'name' corresponds to the sRGB colour space name and maps
+            <xs:documentation>The 'name' corresponds to the sRGB colour space name and maps
                 precisely to an RGB value. When this happens, the alpha channel should be set to '1'
                 (opaque). Requires the use of an external Python module (webcolors.py).
             </xs:documentation>
         </xs:annotation>
         <xs:choice>
             <xs:element name="name" type="xs:token"/>
-            <xs:element name="rgba" type="rgbaType" minOccurs="1"/>
+            <xs:element name="rgba" type="rgba_type"/>
         </xs:choice>
     </xs:complexType>
 
     <!-- contourType (deprecated) -->
     <xs:complexType name="contourType">
         <xs:sequence>
-            <xs:element name="p" type="floatVectorType" maxOccurs="unbounded"/>
+            <xs:element name="p" type="float_vector_type" maxOccurs="unbounded"/>
         </xs:sequence>
         <xs:attribute name="id" type="xs:nonNegativeInteger"/>
     </xs:complexType>
@@ -746,9 +819,9 @@
     <xs:complexType name="canonicalEulerAnglesType">
         <xs:annotation>
             <xs:documentation>Euler angler according to Heymann et al. 2005
-                (doi:10.1016/j.jsb.2005.06.001)</xs:documentation>
-            <xs:documentation>Angles are specified in degrees together with their
-                bounds.</xs:documentation>
+                (doi:10.1016/j.jsb.2005.06.001) </xs:documentation>
+            <xs:documentation>Angles are specified in degrees together with their bounds.
+            </xs:documentation>
         </xs:annotation>
         <xs:sequence>
             <xs:element name="phi" type="angleDegreeType"/>
