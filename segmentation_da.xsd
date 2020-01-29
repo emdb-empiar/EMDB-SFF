@@ -14,9 +14,8 @@
                 <xs:element name="software_list" minOccurs="0">
                     <xs:complexType>
                         <xs:sequence>
-                            <xs:element name="software" type="software_type" minOccurs="0"/>
+                            <xs:element name="software" type="software_type" minOccurs="0" maxOccurs="unbounded"/>
                         </xs:sequence>
-                        <xs:attribute name="id" type="xs:nonNegativeInteger"/>
                     </xs:complexType>
                 </xs:element>
                 <xs:element name="transform_list" minOccurs="1">
@@ -72,7 +71,7 @@
                 </xs:element>
                 <xs:element name="details" type="xs:string" minOccurs="0"/>
             </xs:sequence>
-            <xs:attribute name="schema_version" type="xs:string" default="0.8.0.dev0">
+            <xs:attribute name="schema_version" type="xs:string" default="0.8.0.dev1">
                 <xs:annotation>
                     <xs:documentation>
                         <![CDATA[
@@ -214,6 +213,9 @@ Version History
 11) overhaul of 'mesh' field to have 'vertices', 'normals' (optional) and 'triangles' which are base64-encoded strings of actual data
 12) 'xmax', 'ymax' and 'zmax' of 'bounding_box' are mandatory 
 
+0.8.0.dev1, 2020/01/29, Paul Korir:
+Bugfix: 'software' elements should have an 'id' attribute; 'id' attribute erroneously placed in 'software_list' and should be a list of 0 or more 'software' elements
+
 ]]>
                     </xs:documentation>
                 </xs:annotation>
@@ -233,6 +235,7 @@ Version History
             <xs:element name="version" type="xs:string" minOccurs="1"/>
             <xs:element name="processing_details" type="xs:string" minOccurs="0"/>
         </xs:sequence>
+        <xs:attribute name="id" type="xs:nonNegativeInteger"/>
     </xs:complexType>
 
     <!-- transformationMatrixType -->

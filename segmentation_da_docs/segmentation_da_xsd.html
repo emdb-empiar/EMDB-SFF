@@ -126,7 +126,7 @@
 				'properties_colourType_name', 
 				'properties_colourType_rgba', 
 				'properties_contourType_p', 
-				'properties_segmentation_segmentation_software_list_id', 
+				'properties_software_type_id', 
 				'properties_transformation_matrix_type_id', 
 				'properties_bounding_box_type_xmin', 
 				'properties_bounding_box_type_xmax', 
@@ -246,7 +246,7 @@ var usedByBoxes= new Array('usedBy_shape_primitive',
 				'usedBy_triangle_type', 
 				'usedBy_integerVectorType', 
 				'usedBy_positiveIntegerVectorType', 
-				'usedBy_segmentation_segmentation_software_list_id', 
+				'usedBy_software_type_id', 
 				'usedBy_transformation_matrix_type_id', 
 				'usedBy_bounding_box_type_xmin', 
 				'usedBy_bounding_box_type_xmax', 
@@ -453,7 +453,7 @@ var sourceBoxes= new Array('source_segmentation',
 				'source_positiveIntegerVectorType', 
 				'source_colourType', 
 				'source_contourType', 
-				'source_segmentation_segmentation_software_list_id', 
+				'source_software_type_id', 
 				'source_transformation_matrix_type_id', 
 				'source_bounding_box_type_xmin', 
 				'source_bounding_box_type_xmax', 
@@ -724,7 +724,7 @@ var annotationBoxes= new Array('annotations_segmentation',
 				'annotations_segment_type_parent_id', 
 				'annotations_segmentation_schema_version');
 var attributesBoxes= new Array('attributes_segmentation', 
-				'attributes_segmentation_software_list', 
+				'attributes_segmentation_segmentation_software_list_software', 
 				'attributes_segmentation_segmentation_transform_list_transformation_matrix', 
 				'attributes_segmentation_bounding_box', 
 				'attributes_segmentation_segmentation_global_external_references_ref', 
@@ -748,6 +748,7 @@ var attributesBoxes= new Array('attributes_segmentation',
 				'attributes_complexes_and_macromolecules_type_complexes_and_macromolecules_type_complex_list_complex', 
 				'attributes_meshPointType_point', 
 				'attributes_contourType_p', 
+				'attributes_software_type', 
 				'attributes_transformation_matrix_type', 
 				'attributes_bounding_box_type', 
 				'attributes_external_reference_type', 
@@ -1244,10 +1245,10 @@ var modelBoxes= new Array('model_segmentation',
                            <div id="instance_segmentation" style="display:block">
                               <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
                                  <tr>
-                                    <td width="100%"><pre><span class="tEl">&lt;segmentation</span><span class="tT"> </span><span class="tAN">schema_version=</span><span class="tAV">"0.8.0.dev0"</span><span class="tEl">&gt;</span><span class="tI">
+                                    <td width="100%"><pre><span class="tEl">&lt;segmentation</span><span class="tT"> </span><span class="tAN">schema_version=</span><span class="tAV">"0.8.0.dev1"</span><span class="tEl">&gt;</span><span class="tI">
   </span><span class="tEl">&lt;version</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{1,1}</span><span class="tEl">&lt;/version&gt;</span><span class="tI">
   </span><span class="tEl">&lt;name</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{1,1}</span><span class="tEl">&lt;/name&gt;</span><span class="tI">
-  </span><span class="tEl">&lt;software_list</span><span class="tT"> </span><span class="tAN">id=</span><span class="tAV">""</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{0,1}</span><span class="tEl">&lt;/software_list&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;software_list</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{0,1}</span><span class="tEl">&lt;/software_list&gt;</span><span class="tI">
   </span><span class="tEl">&lt;transform_list</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{1,1}</span><span class="tEl">&lt;/transform_list&gt;</span><span class="tI">
   </span><span class="tEl">&lt;primary_descriptor</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{1,1}</span><span class="tEl">&lt;/primary_descriptor&gt;</span><span class="tI">
   </span><span class="tEl">&lt;bounding_box</span><span class="tT"> </span><span class="tAN">xmax=</span><span class="tAV">""</span><span class="tT"> </span><span class="tAN">xmin=</span><span class="tAV">"0"</span><span class="tT"> </span><span class="tAN">ymax=</span><span class="tAV">""</span><span class="tT"> </span><span class="tAN">ymin=</span><span class="tAV">"0"</span><span class="tT"> </span><span class="tAN">zmax=</span><span class="tAV">""</span><span class="tT"> </span><span class="tAN">zmin=</span><span class="tAV">"0"</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{0,1}</span><span class="tEl">&lt;/bounding_box&gt;</span><span class="tI">
@@ -1281,7 +1282,7 @@ var modelBoxes= new Array('model_segmentation',
                                  <tr>
                                     <td class="firstColumn"><b><a href="segmentation_da_xsd.html#segmentation_schema_version" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for segmentation_da.xsd')">schema_version</a></b></td>
                                     <td><b>xs:string</b></td>
-                                    <td>0.8.0.dev0</td>
+                                    <td>0.8.0.dev1</td>
                                     <td>optional</td>
                                     <td>
                                        <div class="annotation">
@@ -1423,7 +1424,10 @@ var modelBoxes= new Array('model_segmentation',
 </span><span class="tT">9) changed 'software' to be a 'software_list' of zero or more 'software' items; software 'version' now required if 'software' is defined</span><span class="tI">
 </span><span class="tT">10) 'complexes_and_macromolecules' are deprecated (were for annotation; 'external_references' are sufficient)</span><span class="tI">
 </span><span class="tT">11) overhaul of 'mesh' field to have 'vertices', 'normals' (optional) and 'triangles' which are base64-encoded strings of actual data</span><span class="tI">
-</span><span class="tT">12) 'xmax', 'ymax' and 'zmax' of 'bounding_box' are mandatory</span><span class="tI">
+</span><span class="tT">12) 'xmax', 'ymax' and 'zmax' of 'bounding_box' are mandatory </span><span class="tI">
+</span><span class="tT"></span><span class="tI">
+</span><span class="tT">0.8.0.dev1, 2020/01/29, Paul Korir:</span><span class="tI">
+</span><span class="tT">Bugfix: 'software' elements should have an 'id' attribute; 'id' attribute erroneously placed in 'software_list' and should be a list of 0 or more 'software' elements</span><span class="tI">
 </span></pre></td>
                                              </tr>
                                           </table>
@@ -1454,9 +1458,8 @@ var modelBoxes= new Array('model_segmentation',
       </span><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"software_list"</span><span class="tAN"> minOccurs=</span><span class="tAV">"0"</span><span class="tEl">&gt;</span><span class="tI">
         </span><span class="tEl">&lt;xs:complexType</span><span class="tEl">&gt;</span><span class="tI">
           </span><span class="tEl">&lt;xs:sequence</span><span class="tEl">&gt;</span><span class="tI">
-            </span><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"software"</span><span class="tAN"> type=</span><span class="tAV">"software_type"</span><span class="tAN"> minOccurs=</span><span class="tAV">"0"</span><span class="tEl">/&gt;</span><span class="tI">
+            </span><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"software"</span><span class="tAN"> type=</span><span class="tAV">"software_type"</span><span class="tAN"> minOccurs=</span><span class="tAV">"0"</span><span class="tAN"> maxOccurs=</span><span class="tAV">"unbounded"</span><span class="tEl">/&gt;</span><span class="tI">
           </span><span class="tEl">&lt;/xs:sequence&gt;</span><span class="tI">
-          </span><span class="tEl">&lt;xs:attribute</span><span class="tAN"> name=</span><span class="tAV">"id"</span><span class="tAN"> type=</span><span class="tAV">"xs:nonNegativeInteger"</span><span class="tEl">/&gt;</span><span class="tI">
         </span><span class="tEl">&lt;/xs:complexType&gt;</span><span class="tI">
       </span><span class="tEl">&lt;/xs:element&gt;</span><span class="tI">
       </span><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"transform_list"</span><span class="tAN"> minOccurs=</span><span class="tAV">"1"</span><span class="tEl">&gt;</span><span class="tI">
@@ -1505,7 +1508,7 @@ var modelBoxes= new Array('model_segmentation',
       </span><span class="tEl">&lt;/xs:element&gt;</span><span class="tI">
       </span><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"details"</span><span class="tAN"> type=</span><span class="tAV">"xs:string"</span><span class="tAN"> minOccurs=</span><span class="tAV">"0"</span><span class="tEl">/&gt;</span><span class="tI">
     </span><span class="tEl">&lt;/xs:sequence&gt;</span><span class="tI">
-    </span><span class="tEl">&lt;xs:attribute</span><span class="tAN"> name=</span><span class="tAV">"schema_version"</span><span class="tAN"> type=</span><span class="tAV">"xs:string"</span><span class="tAN"> default=</span><span class="tAV">"0.8.0.dev0"</span><span class="tEl">&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:attribute</span><span class="tAN"> name=</span><span class="tAV">"schema_version"</span><span class="tAN"> type=</span><span class="tAV">"xs:string"</span><span class="tAN"> default=</span><span class="tAV">"0.8.0.dev1"</span><span class="tEl">&gt;</span><span class="tI">
       </span><span class="tEl">&lt;xs:annotation</span><span class="tEl">&gt;</span><span class="tI">
         </span><span class="tEl">&lt;xs:documentation</span><span class="tEl">&gt;</span><span class="tI">
           </span><span class="tCD">&lt;![CDATA[</span><span class="tCD">
@@ -1647,6 +1650,9 @@ Version History
 11) overhaul of 'mesh' field to have 'vertices', 'normals' (optional) and 'triangles' which are base64-encoded strings of actual data
 12) 'xmax', 'ymax' and 'zmax' of 'bounding_box' are mandatory 
 
+0.8.0.dev1, 2020/01/29, Paul Korir:
+Bugfix: 'software' elements should have an 'id' attribute; 'id' attribute erroneously placed in 'software_list' and should be a list of 0 or more 'software' elements
+
 </span><span class="tCD">]]</span><span class="tCD">&gt;</span><span class="tI">
         </span><span class="tEl">&lt;/xs:documentation&gt;</span><span class="tI">
       </span><span class="tEl">&lt;/xs:annotation&gt;</span><span class="tI">
@@ -1690,7 +1696,7 @@ Version History
                            <div class="floatRight"><input id="button_diagram_segmentation_version" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_segmentation_version');" class="control" /></div>
                         </td>
                         <td class="diagram">
-                           <div id="diagram_segmentation_version" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_version.jpeg" /></div>
+                           <div id="diagram_segmentation_version" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_version_1.jpeg" /></div>
                         </td>
                      </tr>
                      <tr>
@@ -1831,8 +1837,7 @@ Version History
                         </td>
                         <td class="diagram">
                            <div id="diagram_segmentation_software_list" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_software_list.jpeg" usemap="#segmentation_da_xsd_Element_software_list" /><map name="segmentation_da_xsd_Element_software_list" id="segmentation_da_xsd_Element_software_list">
-                                 <area alt="segmentation_da_xsd.tmp#segmentation_segmentation_software_list_id" href="segmentation_da_xsd.html#segmentation_segmentation_software_list_id" coords="141,40,327,82" />
-                                 <area alt="segmentation_da_xsd.tmp#segmentation_segmentation_software_list_software" href="segmentation_da_xsd.html#segmentation_segmentation_software_list_software" coords="198,99,338,141" /></map></div>
+                                 <area alt="segmentation_da_xsd.tmp#segmentation_segmentation_software_list_software" href="segmentation_da_xsd.html#segmentation_segmentation_software_list_software" coords="219,2,359,44" /></map></div>
                         </td>
                      </tr>
                      <tr>
@@ -1859,7 +1864,7 @@ Version History
                         <td class="firstColumn"><b>Model</b><div class="floatRight"><input id="button_model_segmentation_software_list" type="image" src="img/btM.gif" value="-" onclick="switchState('model_segmentation_software_list');" class="control" /></div>
                         </td>
                         <td>
-                           <div id="model_segmentation_software_list" style="display:block"><b><a href="segmentation_da_xsd.html#segmentation_segmentation_software_list_software" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for segmentation_da.xsd')">software{0,1}</a></b></div>
+                           <div id="model_segmentation_software_list" style="display:block"><b><a href="segmentation_da_xsd.html#segmentation_segmentation_software_list_software" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for segmentation_da.xsd')">software*</a></b></div>
                         </td>
                      </tr>
                      <tr>
@@ -1875,37 +1880,9 @@ Version History
                            <div id="instance_segmentation_software_list" style="display:block">
                               <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
                                  <tr>
-                                    <td width="100%"><pre><span class="tEl">&lt;software_list</span><span class="tT"> </span><span class="tAN">id=</span><span class="tAV">""</span><span class="tEl">&gt;</span><span class="tI">
-  </span><span class="tEl">&lt;software</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{0,1}</span><span class="tEl">&lt;/software&gt;</span><span class="tI">
+                                    <td width="100%"><pre><span class="tEl">&lt;software_list</span><span class="tEl">&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;software</span><span class="tT"> </span><span class="tAN">id=</span><span class="tAV">""</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{0,unbounded}</span><span class="tEl">&lt;/software&gt;</span><span class="tI">
 </span><span class="tEl">&lt;/software_list&gt;</span></pre></td>
-                                 </tr>
-                              </table>
-                           </div>
-                        </td>
-                     </tr>
-                     <tr>
-                        <td class="firstColumn">
-                           <div class="floatLeft"><b>Attributes</b></div>
-                           <div class="floatRight"><input id="button_attributes_segmentation_software_list" type="image" src="img/btM.gif" value="-" onclick="switchState('attributes_segmentation_software_list');" class="control" /></div>
-                        </td>
-                        <td>
-                           <div id="attributes_segmentation_software_list" style="display:block">
-                              <table class="attributesTable">
-                                 <thead>
-                                    <tr>
-                                       <th>QName</th>
-                                       <th width="10%">Type</th>
-                                       <th width="5%">Use</th>
-                                       <th></th>
-                                    </tr>
-                                 </thead>
-                                 <tr>
-                                    <td class="firstColumn"><b><a href="segmentation_da_xsd.html#segmentation_segmentation_software_list_id" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for segmentation_da.xsd')">id</a></b></td>
-                                    <td><b>xs:nonNegativeInteger</b></td>
-                                    <td>optional</td>
-                                    <td>
-                                       <div class="annotation"></div>
-                                    </td>
                                  </tr>
                               </table>
                            </div>
@@ -1923,9 +1900,8 @@ Version History
                                     <td width="100%"><pre><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"software_list"</span><span class="tAN"> minOccurs=</span><span class="tAV">"0"</span><span class="tEl">&gt;</span><span class="tI">
   </span><span class="tEl">&lt;xs:complexType</span><span class="tEl">&gt;</span><span class="tI">
     </span><span class="tEl">&lt;xs:sequence</span><span class="tEl">&gt;</span><span class="tI">
-      </span><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"software"</span><span class="tAN"> type=</span><span class="tAV">"software_type"</span><span class="tAN"> minOccurs=</span><span class="tAV">"0"</span><span class="tEl">/&gt;</span><span class="tI">
+      </span><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"software"</span><span class="tAN"> type=</span><span class="tAV">"software_type"</span><span class="tAN"> minOccurs=</span><span class="tAV">"0"</span><span class="tAN"> maxOccurs=</span><span class="tAV">"unbounded"</span><span class="tEl">/&gt;</span><span class="tI">
     </span><span class="tEl">&lt;/xs:sequence&gt;</span><span class="tI">
-    </span><span class="tEl">&lt;xs:attribute</span><span class="tAN"> name=</span><span class="tAV">"id"</span><span class="tAN"> type=</span><span class="tAV">"xs:nonNegativeInteger"</span><span class="tEl">/&gt;</span><span class="tI">
   </span><span class="tEl">&lt;/xs:complexType&gt;</span><span class="tI">
 </span><span class="tEl">&lt;/xs:element&gt;</span></pre></td>
                                  </tr>
@@ -1966,9 +1942,10 @@ Version History
                         </td>
                         <td class="diagram">
                            <div id="diagram_segmentation_segmentation_software_list_software" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_software.jpeg" usemap="#segmentation_da_xsd_Element_software" /><map name="segmentation_da_xsd_Element_software" id="segmentation_da_xsd_Element_software">
-                                 <area alt="segmentation_da_xsd.tmp#software_type_name" href="segmentation_da_xsd.html#software_type_name" coords="253,40,366,82" />
-                                 <area alt="segmentation_da_xsd.tmp#software_type_version" href="segmentation_da_xsd.html#software_type_version" coords="253,92,366,134" />
-                                 <area alt="segmentation_da_xsd.tmp#software_type_processing_details" href="segmentation_da_xsd.html#software_type_processing_details" coords="253,144,385,186" />
+                                 <area alt="segmentation_da_xsd.tmp#software_type_id" href="segmentation_da_xsd.html#software_type_id" coords="196,78,382,120" />
+                                 <area alt="segmentation_da_xsd.tmp#software_type_name" href="segmentation_da_xsd.html#software_type_name" coords="253,137,366,179" />
+                                 <area alt="segmentation_da_xsd.tmp#software_type_version" href="segmentation_da_xsd.html#software_type_version" coords="253,189,366,231" />
+                                 <area alt="segmentation_da_xsd.tmp#software_type_processing_details" href="segmentation_da_xsd.html#software_type_processing_details" coords="253,241,385,283" />
                                  <area alt="segmentation_da_xsd.tmp#software_type" href="segmentation_da_xsd.html#software_type" coords="171,3,297,25" /></map></div>
                         </td>
                      </tr>
@@ -1991,6 +1968,10 @@ Version History
                                  <tr>
                                     <td class="firstColumn" style="white-space: nowrap;">minOccurs</td>
                                     <td><b>0</b></td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">maxOccurs</td>
+                                    <td><b>unbounded</b></td>
                                  </tr>
                               </table>
                            </div>
@@ -2016,11 +1997,39 @@ Version History
                            <div id="instance_segmentation_segmentation_software_list_software" style="display:block">
                               <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
                                  <tr>
-                                    <td width="100%"><pre><span class="tEl">&lt;software</span><span class="tEl">&gt;</span><span class="tI">
+                                    <td width="100%"><pre><span class="tEl">&lt;software</span><span class="tT"> </span><span class="tAN">id=</span><span class="tAV">""</span><span class="tEl">&gt;</span><span class="tI">
   </span><span class="tEl">&lt;name</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{1,1}</span><span class="tEl">&lt;/name&gt;</span><span class="tI">
   </span><span class="tEl">&lt;version</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{1,1}</span><span class="tEl">&lt;/version&gt;</span><span class="tI">
   </span><span class="tEl">&lt;processing_details</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{0,1}</span><span class="tEl">&lt;/processing_details&gt;</span><span class="tI">
 </span><span class="tEl">&lt;/software&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Attributes</b></div>
+                           <div class="floatRight"><input id="button_attributes_segmentation_segmentation_software_list_software" type="image" src="img/btM.gif" value="-" onclick="switchState('attributes_segmentation_segmentation_software_list_software');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="attributes_segmentation_segmentation_software_list_software" style="display:block">
+                              <table class="attributesTable">
+                                 <thead>
+                                    <tr>
+                                       <th>QName</th>
+                                       <th width="10%">Type</th>
+                                       <th width="5%">Use</th>
+                                       <th></th>
+                                    </tr>
+                                 </thead>
+                                 <tr>
+                                    <td class="firstColumn"><b><a href="segmentation_da_xsd.html#software_type_id" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for segmentation_da.xsd')">id</a></b></td>
+                                    <td><b>xs:nonNegativeInteger</b></td>
+                                    <td>optional</td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
                                  </tr>
                               </table>
                            </div>
@@ -2035,7 +2044,7 @@ Version History
                            <div id="source_segmentation_segmentation_software_list_software" style="display:block">
                               <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
                                  <tr>
-                                    <td width="100%"><pre><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"software"</span><span class="tAN"> type=</span><span class="tAV">"software_type"</span><span class="tAN"> minOccurs=</span><span class="tAV">"0"</span><span class="tEl">/&gt;</span></pre></td>
+                                    <td width="100%"><pre><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"software"</span><span class="tAN"> type=</span><span class="tAV">"software_type"</span><span class="tAN"> minOccurs=</span><span class="tAV">"0"</span><span class="tAN"> maxOccurs=</span><span class="tAV">"unbounded"</span><span class="tEl">/&gt;</span></pre></td>
                                  </tr>
                               </table>
                            </div>
@@ -2073,7 +2082,7 @@ Version History
                            <div class="floatRight"><input id="button_diagram_software_type_name" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_software_type_name');" class="control" /></div>
                         </td>
                         <td class="diagram">
-                           <div id="diagram_software_type_name" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_name_1.jpeg" /></div>
+                           <div id="diagram_software_type_name" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_name.jpeg" /></div>
                         </td>
                      </tr>
                      <tr>
@@ -2143,7 +2152,7 @@ Version History
                            <div class="floatRight"><input id="button_diagram_software_type_version" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_software_type_version');" class="control" /></div>
                         </td>
                         <td class="diagram">
-                           <div id="diagram_software_type_version" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_version_1.jpeg" /></div>
+                           <div id="diagram_software_type_version" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_version.jpeg" /></div>
                         </td>
                      </tr>
                      <tr>
@@ -2558,7 +2567,7 @@ Version History
                            <div class="floatRight"><input id="button_diagram_transformation_matrix_type_rows" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_transformation_matrix_type_rows');" class="control" /></div>
                         </td>
                         <td class="diagram">
-                           <div id="diagram_transformation_matrix_type_rows" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_rows_1.jpeg" /></div>
+                           <div id="diagram_transformation_matrix_type_rows" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_rows_2.jpeg" /></div>
                         </td>
                      </tr>
                      <tr>
@@ -2628,7 +2637,7 @@ Version History
                            <div class="floatRight"><input id="button_diagram_transformation_matrix_type_cols" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_transformation_matrix_type_cols');" class="control" /></div>
                         </td>
                         <td class="diagram">
-                           <div id="diagram_transformation_matrix_type_cols" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_cols_1.jpeg" /></div>
+                           <div id="diagram_transformation_matrix_type_cols" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_cols.jpeg" /></div>
                         </td>
                      </tr>
                      <tr>
@@ -4925,7 +4934,7 @@ Version History
                            <div class="floatRight"><input id="button_diagram_three_d_volume_type_value" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_three_d_volume_type_value');" class="control" /></div>
                         </td>
                         <td class="diagram">
-                           <div id="diagram_three_d_volume_type_value" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_value.jpeg" /></div>
+                           <div id="diagram_three_d_volume_type_value" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_value_1.jpeg" /></div>
                         </td>
                      </tr>
                      <tr>
@@ -4999,7 +5008,7 @@ Version History
                            <div class="floatRight"><input id="button_diagram_three_d_volume_type_transform_id" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_three_d_volume_type_transform_id');" class="control" /></div>
                         </td>
                         <td class="diagram">
-                           <div id="diagram_three_d_volume_type_transform_id" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_transform_id_3.jpeg" /></div>
+                           <div id="diagram_three_d_volume_type_transform_id" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_transform_id_2.jpeg" /></div>
                         </td>
                      </tr>
                      <tr>
@@ -5913,7 +5922,7 @@ Version History
                            <div class="floatRight"><input id="button_diagram_mesh_type_transform_id" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_mesh_type_transform_id');" class="control" /></div>
                         </td>
                         <td class="diagram">
-                           <div id="diagram_mesh_type_transform_id" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_transform_id_1.jpeg" /></div>
+                           <div id="diagram_mesh_type_transform_id" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_transform_id_5.jpeg" /></div>
                         </td>
                      </tr>
                      <tr>
@@ -6654,7 +6663,7 @@ Version History
                            <div class="floatRight"><input id="button_diagram_volume_structure_type_cols" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_volume_structure_type_cols');" class="control" /></div>
                         </td>
                         <td class="diagram">
-                           <div id="diagram_volume_structure_type_cols" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_cols.jpeg" /></div>
+                           <div id="diagram_volume_structure_type_cols" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_cols_1.jpeg" /></div>
                         </td>
                      </tr>
                      <tr>
@@ -6724,7 +6733,7 @@ Version History
                            <div class="floatRight"><input id="button_diagram_volume_structure_type_rows" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_volume_structure_type_rows');" class="control" /></div>
                         </td>
                         <td class="diagram">
-                           <div id="diagram_volume_structure_type_rows" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_rows_2.jpeg" /></div>
+                           <div id="diagram_volume_structure_type_rows" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_rows_1.jpeg" /></div>
                         </td>
                      </tr>
                      <tr>
@@ -6794,7 +6803,7 @@ Version History
                            <div class="floatRight"><input id="button_diagram_volume_structure_type_sections" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_volume_structure_type_sections');" class="control" /></div>
                         </td>
                         <td class="diagram">
-                           <div id="diagram_volume_structure_type_sections" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_sections.jpeg" /></div>
+                           <div id="diagram_volume_structure_type_sections" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_sections_1.jpeg" /></div>
                         </td>
                      </tr>
                      <tr>
@@ -7129,7 +7138,7 @@ Version History
                            <div class="floatRight"><input id="button_diagram_volume_index_type_sections" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_volume_index_type_sections');" class="control" /></div>
                         </td>
                         <td class="diagram">
-                           <div id="diagram_volume_index_type_sections" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_sections_1.jpeg" /></div>
+                           <div id="diagram_volume_index_type_sections" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_sections.jpeg" /></div>
                         </td>
                      </tr>
                      <tr>
@@ -7545,7 +7554,7 @@ Version History
                            <div class="floatRight"><input id="button_diagram_cuboid_x" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_cuboid_x');" class="control" /></div>
                         </td>
                         <td class="diagram">
-                           <div id="diagram_cuboid_x" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_x_3.jpeg" usemap="#segmentation_da_xsd_Element_x_3" /><map name="segmentation_da_xsd_Element_x_3" id="segmentation_da_xsd_Element_x_3">
+                           <div id="diagram_cuboid_x" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_x_4.jpeg" usemap="#segmentation_da_xsd_Element_x_4" /><map name="segmentation_da_xsd_Element_x_4" id="segmentation_da_xsd_Element_x_4">
                                  <area alt="segmentation_da_xsd.tmp#dimension_type" href="segmentation_da_xsd.html#dimension_type" coords="178,8,318,34" /></map></div>
                         </td>
                      </tr>
@@ -7635,7 +7644,7 @@ Version History
                            <div class="floatRight"><input id="button_diagram_cuboid_y" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_cuboid_y');" class="control" /></div>
                         </td>
                         <td class="diagram">
-                           <div id="diagram_cuboid_y" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_y_4.jpeg" usemap="#segmentation_da_xsd_Element_y_4" /><map name="segmentation_da_xsd_Element_y_4" id="segmentation_da_xsd_Element_y_4">
+                           <div id="diagram_cuboid_y" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_y_1.jpeg" usemap="#segmentation_da_xsd_Element_y_1" /><map name="segmentation_da_xsd_Element_y_1" id="segmentation_da_xsd_Element_y_1">
                                  <area alt="segmentation_da_xsd.tmp#dimension_type" href="segmentation_da_xsd.html#dimension_type" coords="178,8,318,34" /></map></div>
                         </td>
                      </tr>
@@ -7725,7 +7734,7 @@ Version History
                            <div class="floatRight"><input id="button_diagram_cuboid_z" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_cuboid_z');" class="control" /></div>
                         </td>
                         <td class="diagram">
-                           <div id="diagram_cuboid_z" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_z.jpeg" usemap="#segmentation_da_xsd_Element_z" /><map name="segmentation_da_xsd_Element_z" id="segmentation_da_xsd_Element_z">
+                           <div id="diagram_cuboid_z" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_z_2.jpeg" usemap="#segmentation_da_xsd_Element_z_2" /><map name="segmentation_da_xsd_Element_z_2" id="segmentation_da_xsd_Element_z_2">
                                  <area alt="segmentation_da_xsd.tmp#dimension_type" href="segmentation_da_xsd.html#dimension_type" coords="178,8,318,34" /></map></div>
                         </td>
                      </tr>
@@ -7815,7 +7824,7 @@ Version History
                            <div class="floatRight"><input id="button_diagram_cuboid_transform_id" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_cuboid_transform_id');" class="control" /></div>
                         </td>
                         <td class="diagram">
-                           <div id="diagram_cuboid_transform_id" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_transform_id_5.jpeg" /></div>
+                           <div id="diagram_cuboid_transform_id" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_transform_id_4.jpeg" /></div>
                         </td>
                      </tr>
                      <tr>
@@ -7885,7 +7894,7 @@ Version History
                            <div class="floatRight"><input id="button_diagram_cuboid_attribute" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_cuboid_attribute');" class="control" /></div>
                         </td>
                         <td class="diagram">
-                           <div id="diagram_cuboid_attribute" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_attribute_2.jpeg" /></div>
+                           <div id="diagram_cuboid_attribute" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_attribute.jpeg" /></div>
                         </td>
                      </tr>
                      <tr>
@@ -8131,7 +8140,7 @@ Version History
                            <div class="floatRight"><input id="button_diagram_ellipsoid_x" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_ellipsoid_x');" class="control" /></div>
                         </td>
                         <td class="diagram">
-                           <div id="diagram_ellipsoid_x" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_x_5.jpeg" usemap="#segmentation_da_xsd_Element_x_5" /><map name="segmentation_da_xsd_Element_x_5" id="segmentation_da_xsd_Element_x_5">
+                           <div id="diagram_ellipsoid_x" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_x_1.jpeg" usemap="#segmentation_da_xsd_Element_x_1" /><map name="segmentation_da_xsd_Element_x_1" id="segmentation_da_xsd_Element_x_1">
                                  <area alt="segmentation_da_xsd.tmp#dimension_type" href="segmentation_da_xsd.html#dimension_type" coords="178,8,318,34" /></map></div>
                         </td>
                      </tr>
@@ -8311,7 +8320,7 @@ Version History
                            <div class="floatRight"><input id="button_diagram_ellipsoid_z" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_ellipsoid_z');" class="control" /></div>
                         </td>
                         <td class="diagram">
-                           <div id="diagram_ellipsoid_z" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_z_5.jpeg" usemap="#segmentation_da_xsd_Element_z_5" /><map name="segmentation_da_xsd_Element_z_5" id="segmentation_da_xsd_Element_z_5">
+                           <div id="diagram_ellipsoid_z" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_z_1.jpeg" usemap="#segmentation_da_xsd_Element_z_1" /><map name="segmentation_da_xsd_Element_z_1" id="segmentation_da_xsd_Element_z_1">
                                  <area alt="segmentation_da_xsd.tmp#dimension_type" href="segmentation_da_xsd.html#dimension_type" coords="178,8,318,34" /></map></div>
                         </td>
                      </tr>
@@ -8401,7 +8410,7 @@ Version History
                            <div class="floatRight"><input id="button_diagram_ellipsoid_transform_id" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_ellipsoid_transform_id');" class="control" /></div>
                         </td>
                         <td class="diagram">
-                           <div id="diagram_ellipsoid_transform_id" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_transform_id_2.jpeg" /></div>
+                           <div id="diagram_ellipsoid_transform_id" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_transform_id_1.jpeg" /></div>
                         </td>
                      </tr>
                      <tr>
@@ -8471,7 +8480,7 @@ Version History
                            <div class="floatRight"><input id="button_diagram_ellipsoid_attribute" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_ellipsoid_attribute');" class="control" /></div>
                         </td>
                         <td class="diagram">
-                           <div id="diagram_ellipsoid_attribute" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_attribute_3.jpeg" /></div>
+                           <div id="diagram_ellipsoid_attribute" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_attribute_1.jpeg" /></div>
                         </td>
                      </tr>
                      <tr>
@@ -8694,7 +8703,7 @@ Version History
                            <div class="floatRight"><input id="button_diagram_cylinder_height" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_cylinder_height');" class="control" /></div>
                         </td>
                         <td class="diagram">
-                           <div id="diagram_cylinder_height" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_height.jpeg" usemap="#segmentation_da_xsd_Element_height" /><map name="segmentation_da_xsd_Element_height" id="segmentation_da_xsd_Element_height">
+                           <div id="diagram_cylinder_height" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_height_1.jpeg" usemap="#segmentation_da_xsd_Element_height_1" /><map name="segmentation_da_xsd_Element_height_1" id="segmentation_da_xsd_Element_height_1">
                                  <area alt="segmentation_da_xsd.tmp#dimension_type" href="segmentation_da_xsd.html#dimension_type" coords="178,8,318,34" /></map></div>
                         </td>
                      </tr>
@@ -8944,7 +8953,7 @@ Version History
                            <div class="floatRight"><input id="button_diagram_cylinder_attribute" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_cylinder_attribute');" class="control" /></div>
                         </td>
                         <td class="diagram">
-                           <div id="diagram_cylinder_attribute" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_attribute_1.jpeg" /></div>
+                           <div id="diagram_cylinder_attribute" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_attribute_3.jpeg" /></div>
                         </td>
                      </tr>
                      <tr>
@@ -9167,7 +9176,7 @@ Version History
                            <div class="floatRight"><input id="button_diagram_cone_height" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_cone_height');" class="control" /></div>
                         </td>
                         <td class="diagram">
-                           <div id="diagram_cone_height" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_height_1.jpeg" usemap="#segmentation_da_xsd_Element_height_1" /><map name="segmentation_da_xsd_Element_height_1" id="segmentation_da_xsd_Element_height_1">
+                           <div id="diagram_cone_height" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_height.jpeg" usemap="#segmentation_da_xsd_Element_height" /><map name="segmentation_da_xsd_Element_height" id="segmentation_da_xsd_Element_height">
                                  <area alt="segmentation_da_xsd.tmp#dimension_type" href="segmentation_da_xsd.html#dimension_type" coords="178,8,318,34" /></map></div>
                         </td>
                      </tr>
@@ -9347,7 +9356,7 @@ Version History
                            <div class="floatRight"><input id="button_diagram_cone_transform_id" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_cone_transform_id');" class="control" /></div>
                         </td>
                         <td class="diagram">
-                           <div id="diagram_cone_transform_id" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_transform_id_4.jpeg" /></div>
+                           <div id="diagram_cone_transform_id" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_transform_id_3.jpeg" /></div>
                         </td>
                      </tr>
                      <tr>
@@ -9417,7 +9426,7 @@ Version History
                            <div class="floatRight"><input id="button_diagram_cone_attribute" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_cone_attribute');" class="control" /></div>
                         </td>
                         <td class="diagram">
-                           <div id="diagram_cone_attribute" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_attribute.jpeg" /></div>
+                           <div id="diagram_cone_attribute" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_attribute_2.jpeg" /></div>
                         </td>
                      </tr>
                      <tr>
@@ -10434,7 +10443,7 @@ Version History
                            <div class="floatRight"><input id="button_diagram_viewVectorRotationType_y" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_viewVectorRotationType_y');" class="control" /></div>
                         </td>
                         <td class="diagram">
-                           <div id="diagram_viewVectorRotationType_y" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_y_2.jpeg" /></div>
+                           <div id="diagram_viewVectorRotationType_y" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_y_4.jpeg" /></div>
                         </td>
                      </tr>
                      <tr>
@@ -10504,7 +10513,7 @@ Version History
                            <div class="floatRight"><input id="button_diagram_viewVectorRotationType_z" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_viewVectorRotationType_z');" class="control" /></div>
                         </td>
                         <td class="diagram">
-                           <div id="diagram_viewVectorRotationType_z" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_z_4.jpeg" /></div>
+                           <div id="diagram_viewVectorRotationType_z" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_z_5.jpeg" /></div>
                         </td>
                      </tr>
                      <tr>
@@ -10824,7 +10833,7 @@ Version History
                            <div class="floatRight"><input id="button_diagram_vertex_type_x" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_vertex_type_x');" class="control" /></div>
                         </td>
                         <td class="diagram">
-                           <div id="diagram_vertex_type_x" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_x_4.jpeg" /></div>
+                           <div id="diagram_vertex_type_x" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_x_3.jpeg" /></div>
                         </td>
                      </tr>
                      <tr>
@@ -10894,7 +10903,7 @@ Version History
                            <div class="floatRight"><input id="button_diagram_vertex_type_y" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_vertex_type_y');" class="control" /></div>
                         </td>
                         <td class="diagram">
-                           <div id="diagram_vertex_type_y" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_y.jpeg" /></div>
+                           <div id="diagram_vertex_type_y" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_y_2.jpeg" /></div>
                         </td>
                      </tr>
                      <tr>
@@ -10964,7 +10973,7 @@ Version History
                            <div class="floatRight"><input id="button_diagram_vertex_type_z" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_vertex_type_z');" class="control" /></div>
                         </td>
                         <td class="diagram">
-                           <div id="diagram_vertex_type_z" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_z_3.jpeg" /></div>
+                           <div id="diagram_vertex_type_z" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_z_4.jpeg" /></div>
                         </td>
                      </tr>
                      <tr>
@@ -11034,7 +11043,7 @@ Version History
                            <div class="floatRight"><input id="button_diagram_triangle_list_type_P" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_triangle_list_type_P');" class="control" /></div>
                         </td>
                         <td class="diagram">
-                           <div id="diagram_triangle_list_type_P" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_P_1.jpeg" usemap="#segmentation_da_xsd_Element_P_1" /><map name="segmentation_da_xsd_Element_P_1" id="segmentation_da_xsd_Element_P_1">
+                           <div id="diagram_triangle_list_type_P" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_P.jpeg" usemap="#segmentation_da_xsd_Element_P" /><map name="segmentation_da_xsd_Element_P" id="segmentation_da_xsd_Element_P">
                                  <area alt="segmentation_da_xsd.tmp#triangle_type_id" href="segmentation_da_xsd.html#triangle_type_id" coords="191,78,377,120" />
                                  <area alt="segmentation_da_xsd.tmp#triangle_type_v" href="segmentation_da_xsd.html#triangle_type_v" coords="269,137,455,179" />
                                  <area alt="segmentation_da_xsd.tmp#triangle_type" href="segmentation_da_xsd.html#triangle_type" coords="166,3,287,25" /></map></div>
@@ -12379,7 +12388,7 @@ Version History
                            <div class="floatRight"><input id="button_diagram_hsvType_value" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_hsvType_value');" class="control" /></div>
                         </td>
                         <td class="diagram">
-                           <div id="diagram_hsvType_value" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_value_1.jpeg" /></div>
+                           <div id="diagram_hsvType_value" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_value.jpeg" /></div>
                         </td>
                      </tr>
                      <tr>
@@ -12669,7 +12678,7 @@ Version History
                            <div class="floatRight"><input id="button_diagram_integerVectorType_x" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_integerVectorType_x');" class="control" /></div>
                         </td>
                         <td class="diagram">
-                           <div id="diagram_integerVectorType_x" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_x_1.jpeg" /></div>
+                           <div id="diagram_integerVectorType_x" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_x_5.jpeg" /></div>
                         </td>
                      </tr>
                      <tr>
@@ -12739,7 +12748,7 @@ Version History
                            <div class="floatRight"><input id="button_diagram_integerVectorType_y" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_integerVectorType_y');" class="control" /></div>
                         </td>
                         <td class="diagram">
-                           <div id="diagram_integerVectorType_y" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_y_1.jpeg" /></div>
+                           <div id="diagram_integerVectorType_y" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_y_5.jpeg" /></div>
                         </td>
                      </tr>
                      <tr>
@@ -12809,7 +12818,7 @@ Version History
                            <div class="floatRight"><input id="button_diagram_integerVectorType_z" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_integerVectorType_z');" class="control" /></div>
                         </td>
                         <td class="diagram">
-                           <div id="diagram_integerVectorType_z" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_z_1.jpeg" /></div>
+                           <div id="diagram_integerVectorType_z" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_z.jpeg" /></div>
                         </td>
                      </tr>
                      <tr>
@@ -13053,7 +13062,7 @@ Version History
                            <div class="floatRight"><input id="button_diagram_positiveIntegerVectorType_y" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_positiveIntegerVectorType_y');" class="control" /></div>
                         </td>
                         <td class="diagram">
-                           <div id="diagram_positiveIntegerVectorType_y" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_y_5.jpeg" /></div>
+                           <div id="diagram_positiveIntegerVectorType_y" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_y.jpeg" /></div>
                         </td>
                      </tr>
                      <tr>
@@ -13123,7 +13132,7 @@ Version History
                            <div class="floatRight"><input id="button_diagram_positiveIntegerVectorType_z" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_positiveIntegerVectorType_z');" class="control" /></div>
                         </td>
                         <td class="diagram">
-                           <div id="diagram_positiveIntegerVectorType_z" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_z_2.jpeg" /></div>
+                           <div id="diagram_positiveIntegerVectorType_z" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_z_3.jpeg" /></div>
                         </td>
                      </tr>
                      <tr>
@@ -13193,7 +13202,7 @@ Version History
                            <div class="floatRight"><input id="button_diagram_colourType_name" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_colourType_name');" class="control" /></div>
                         </td>
                         <td class="diagram">
-                           <div id="diagram_colourType_name" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_name.jpeg" /></div>
+                           <div id="diagram_colourType_name" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_name_1.jpeg" /></div>
                         </td>
                      </tr>
                      <tr>
@@ -13369,7 +13378,7 @@ Version History
                            <div class="floatRight"><input id="button_diagram_contourType_p" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_contourType_p');" class="control" /></div>
                         </td>
                         <td class="diagram">
-                           <div id="diagram_contourType_p" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_p.jpeg" usemap="#segmentation_da_xsd_Element_p" /><map name="segmentation_da_xsd_Element_p" id="segmentation_da_xsd_Element_p">
+                           <div id="diagram_contourType_p" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Element_p_1.jpeg" usemap="#segmentation_da_xsd_Element_p_1" /><map name="segmentation_da_xsd_Element_p_1" id="segmentation_da_xsd_Element_p_1">
                                  <area alt="segmentation_da_xsd.tmp#float_vector_type_x" href="segmentation_da_xsd.html#float_vector_type_x" coords="214,78,319,120" />
                                  <area alt="segmentation_da_xsd.tmp#float_vector_type_y" href="segmentation_da_xsd.html#float_vector_type_y" coords="214,130,319,172" />
                                  <area alt="segmentation_da_xsd.tmp#float_vector_type_z" href="segmentation_da_xsd.html#float_vector_type_z" coords="214,182,319,224" />
@@ -13492,9 +13501,10 @@ Version History
                         </td>
                         <td class="diagram">
                            <div id="diagram_software_type" style="display:block"><img alt="Diagram" border="0" src="img/segmentation_da_xsd_Complex_Type_software_type.jpeg" usemap="#segmentation_da_xsd_Complex_Type_software_type" /><map name="segmentation_da_xsd_Complex_Type_software_type" id="segmentation_da_xsd_Complex_Type_software_type">
-                                 <area alt="segmentation_da_xsd.tmp#software_type_name" href="segmentation_da_xsd.html#software_type_name" coords="229,0,342,42" />
-                                 <area alt="segmentation_da_xsd.tmp#software_type_version" href="segmentation_da_xsd.html#software_type_version" coords="229,52,342,94" />
-                                 <area alt="segmentation_da_xsd.tmp#software_type_processing_details" href="segmentation_da_xsd.html#software_type_processing_details" coords="229,104,361,146" /></map></div>
+                                 <area alt="segmentation_da_xsd.tmp#software_type_id" href="segmentation_da_xsd.html#software_type_id" coords="172,38,358,80" />
+                                 <area alt="segmentation_da_xsd.tmp#software_type_name" href="segmentation_da_xsd.html#software_type_name" coords="229,97,342,139" />
+                                 <area alt="segmentation_da_xsd.tmp#software_type_version" href="segmentation_da_xsd.html#software_type_version" coords="229,149,342,191" />
+                                 <area alt="segmentation_da_xsd.tmp#software_type_processing_details" href="segmentation_da_xsd.html#software_type_processing_details" coords="229,201,361,243" /></map></div>
                         </td>
                      </tr>
                      <tr>
@@ -13526,6 +13536,34 @@ Version History
                      </tr>
                      <tr>
                         <td class="firstColumn">
+                           <div class="floatLeft"><b>Attributes</b></div>
+                           <div class="floatRight"><input id="button_attributes_software_type" type="image" src="img/btM.gif" value="-" onclick="switchState('attributes_software_type');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="attributes_software_type" style="display:block">
+                              <table class="attributesTable">
+                                 <thead>
+                                    <tr>
+                                       <th>QName</th>
+                                       <th width="10%">Type</th>
+                                       <th width="5%">Use</th>
+                                       <th></th>
+                                    </tr>
+                                 </thead>
+                                 <tr>
+                                    <td class="firstColumn"><b><a href="segmentation_da_xsd.html#software_type_id" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for segmentation_da.xsd')">id</a></b></td>
+                                    <td><b>xs:nonNegativeInteger</b></td>
+                                    <td>optional</td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
                            <div class="floatLeft"><b>Source</b></div>
                            <div class="floatRight"><input id="button_source_software_type" type="image" src="img/btM.gif" value="-" onclick="switchState('source_software_type');" class="control" /></div>
                         </td>
@@ -13539,6 +13577,7 @@ Version History
     </span><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"version"</span><span class="tAN"> type=</span><span class="tAV">"xs:string"</span><span class="tAN"> minOccurs=</span><span class="tAV">"1"</span><span class="tEl">/&gt;</span><span class="tI">
     </span><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"processing_details"</span><span class="tAN"> type=</span><span class="tAV">"xs:string"</span><span class="tAN"> minOccurs=</span><span class="tAV">"0"</span><span class="tEl">/&gt;</span><span class="tI">
   </span><span class="tEl">&lt;/xs:sequence&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;xs:attribute</span><span class="tAN"> name=</span><span class="tAV">"id"</span><span class="tAN"> type=</span><span class="tAV">"xs:nonNegativeInteger"</span><span class="tEl">/&gt;</span><span class="tI">
 </span><span class="tEl">&lt;/xs:complexType&gt;</span></pre></td>
                                  </tr>
                               </table>
@@ -17676,7 +17715,7 @@ Version History
             <td class="rt_lineBottom"></td>
             <td class="rt_cornerBottomRight"></td>
          </tr>
-      </table><a id="segmentation_segmentation_software_list_id"></a><div class="componentTitle">Attribute <span class="qname"><b><a href="segmentation_da_xsd.html#segmentation" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for segmentation_da.xsd')">segmentation</a></b> / <b><a href="segmentation_da_xsd.html#segmentation_software_list" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for segmentation_da.xsd')">software_list</a></b> / @id</span></div>
+      </table><a id="software_type_id"></a><div class="componentTitle">Attribute <span class="qname"><b><a href="segmentation_da_xsd.html#software_type" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for segmentation_da.xsd')">software_type</a></b> / @id</span></div>
       <table class="rt">
          <tr>
             <td class="rt_cornerTopLeft"></td>
@@ -17699,10 +17738,10 @@ Version History
                      <tr>
                         <td class="firstColumn">
                            <div class="floatLeft"><b>Properties</b></div>
-                           <div class="floatRight"><input id="button_properties_segmentation_segmentation_software_list_id" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_segmentation_segmentation_software_list_id');" class="control" /></div>
+                           <div class="floatRight"><input id="button_properties_software_type_id" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_software_type_id');" class="control" /></div>
                         </td>
                         <td>
-                           <div id="properties_segmentation_segmentation_software_list_id" style="display:block">
+                           <div id="properties_software_type_id" style="display:block">
                               <table class="propertiesTable">
                                  <tr>
                                     <td class="firstColumn" style="white-space: nowrap;">content</td>
@@ -17715,14 +17754,14 @@ Version History
                      <tr>
                         <td class="firstColumn">
                            <div class="floatLeft"><b>Used by</b></div>
-                           <div class="floatRight"><input id="button_usedBy_segmentation_segmentation_software_list_id" type="image" src="img/btM.gif" value="-" onclick="switchState('usedBy_segmentation_segmentation_software_list_id');" class="control" /></div>
+                           <div class="floatRight"><input id="button_usedBy_software_type_id" type="image" src="img/btM.gif" value="-" onclick="switchState('usedBy_software_type_id');" class="control" /></div>
                         </td>
                         <td>
-                           <div id="usedBy_segmentation_segmentation_software_list_id" style="display:block">
+                           <div id="usedBy_software_type_id" style="display:block">
                               <table class="usedByTable">
                                  <tr>
-                                    <td class="firstColumn">Element </td>
-                                    <td><b><a href="segmentation_da_xsd.html#segmentation_software_list" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for segmentation_da.xsd')">segmentation/software_list</a></b></td>
+                                    <td class="firstColumn">Complex Type </td>
+                                    <td><b><a href="segmentation_da_xsd.html#software_type" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for segmentation_da.xsd')">software_type</a></b></td>
                                  </tr>
                               </table>
                            </div>
@@ -17731,10 +17770,10 @@ Version History
                      <tr>
                         <td class="firstColumn">
                            <div class="floatLeft"><b>Source</b></div>
-                           <div class="floatRight"><input id="button_source_segmentation_segmentation_software_list_id" type="image" src="img/btM.gif" value="-" onclick="switchState('source_segmentation_segmentation_software_list_id');" class="control" /></div>
+                           <div class="floatRight"><input id="button_source_software_type_id" type="image" src="img/btM.gif" value="-" onclick="switchState('source_software_type_id');" class="control" /></div>
                         </td>
                         <td>
-                           <div id="source_segmentation_segmentation_software_list_id" style="display:block">
+                           <div id="source_software_type_id" style="display:block">
                               <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
                                  <tr>
                                     <td width="100%"><pre><span class="tEl">&lt;xs:attribute</span><span class="tAN"> name=</span><span class="tAV">"id"</span><span class="tAN"> type=</span><span class="tAV">"xs:nonNegativeInteger"</span><span class="tEl">/&gt;</span></pre></td>
@@ -20607,7 +20646,10 @@ Version History
 </span><span class="tT">9) changed 'software' to be a 'software_list' of zero or more 'software' items; software 'version' now required if 'software' is defined</span><span class="tI">
 </span><span class="tT">10) 'complexes_and_macromolecules' are deprecated (were for annotation; 'external_references' are sufficient)</span><span class="tI">
 </span><span class="tT">11) overhaul of 'mesh' field to have 'vertices', 'normals' (optional) and 'triangles' which are base64-encoded strings of actual data</span><span class="tI">
-</span><span class="tT">12) 'xmax', 'ymax' and 'zmax' of 'bounding_box' are mandatory</span><span class="tI">
+</span><span class="tT">12) 'xmax', 'ymax' and 'zmax' of 'bounding_box' are mandatory </span><span class="tI">
+</span><span class="tT"></span><span class="tI">
+</span><span class="tT">0.8.0.dev1, 2020/01/29, Paul Korir:</span><span class="tI">
+</span><span class="tT">Bugfix: 'software' elements should have an 'id' attribute; 'id' attribute erroneously placed in 'software_list' and should be a list of 0 or more 'software' elements</span><span class="tI">
 </span></pre></td>
                                     </tr>
                                  </table>
@@ -20629,7 +20671,7 @@ Version History
                               <table class="propertiesTable">
                                  <tr>
                                     <td class="firstColumn" style="white-space: nowrap;">default</td>
-                                    <td><b>0.8.0.dev0</b></td>
+                                    <td><b>0.8.0.dev1</b></td>
                                  </tr>
                               </table>
                            </div>
@@ -20660,7 +20702,7 @@ Version History
                            <div id="source_segmentation_schema_version" style="display:block">
                               <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
                                  <tr>
-                                    <td width="100%"><pre><span class="tEl">&lt;xs:attribute</span><span class="tAN"> name=</span><span class="tAV">"schema_version"</span><span class="tAN"> type=</span><span class="tAV">"xs:string"</span><span class="tAN"> default=</span><span class="tAV">"0.8.0.dev0"</span><span class="tEl">&gt;</span><span class="tI">
+                                    <td width="100%"><pre><span class="tEl">&lt;xs:attribute</span><span class="tAN"> name=</span><span class="tAV">"schema_version"</span><span class="tAN"> type=</span><span class="tAV">"xs:string"</span><span class="tAN"> default=</span><span class="tAV">"0.8.0.dev1"</span><span class="tEl">&gt;</span><span class="tI">
   </span><span class="tEl">&lt;xs:annotation</span><span class="tEl">&gt;</span><span class="tI">
     </span><span class="tEl">&lt;xs:documentation</span><span class="tEl">&gt;</span><span class="tI">
       </span><span class="tCD">&lt;![CDATA[</span><span class="tCD">
@@ -20801,6 +20843,9 @@ Version History
 10) 'complexes_and_macromolecules' are deprecated (were for annotation; 'external_references' are sufficient)
 11) overhaul of 'mesh' field to have 'vertices', 'normals' (optional) and 'triangles' which are base64-encoded strings of actual data
 12) 'xmax', 'ymax' and 'zmax' of 'bounding_box' are mandatory 
+
+0.8.0.dev1, 2020/01/29, Paul Korir:
+Bugfix: 'software' elements should have an 'id' attribute; 'id' attribute erroneously placed in 'software_list' and should be a list of 0 or more 'software' elements
 
 </span><span class="tCD">]]</span><span class="tCD">&gt;</span><span class="tI">
     </span><span class="tEl">&lt;/xs:documentation&gt;</span><span class="tI">
