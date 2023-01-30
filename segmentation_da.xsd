@@ -20,23 +20,27 @@
                 </xs:element>
                 <xs:element name="transform_list" minOccurs="1">
                     <xs:annotation>
-                        <xs:documentation> Mandatory field. The first 'transformation_matrix' must
-                            be the image-to-physical transform. </xs:documentation>
+                        <xs:documentation>Mandatory field. The first 'transformation_matrix' must be the
+                            image-to-physical transform with scale parameters (diagonal elements) in angstroms (Å). The
+                            right-most column consists of the translation applied and is
+                            the physical distance from the physical origin in anstroms (Å).
+                        </xs:documentation>
                     </xs:annotation>
                     <xs:complexType>
                         <xs:sequence>
                             <xs:element name="transformation_matrix"
-                                type="transformation_matrix_type" minOccurs="1"
-                                maxOccurs="unbounded"/>
+                                        type="transformation_matrix_type" minOccurs="1"
+                                        maxOccurs="unbounded"/>
                         </xs:sequence>
                     </xs:complexType>
                 </xs:element>
                 <xs:element name="primary_descriptor">
                     <xs:annotation>
-                        <xs:documentation> Mandatory field. Designates the element type within
+                        <xs:documentation>Mandatory field. Designates the element type within
                             'segment_list' that contains the primary description of the segments.
                             Constrained to be either 'three_d_volume', 'shape_primitive_list', or
-                            'mesh_list'. </xs:documentation>
+                            'mesh_list'.
+                        </xs:documentation>
                     </xs:annotation>
                     <xs:simpleType>
                         <xs:restriction base="xs:string">
@@ -51,7 +55,7 @@
                     <xs:complexType>
                         <xs:sequence>
                             <xs:element name="ref" type="external_reference_type" minOccurs="0"
-                                maxOccurs="unbounded"/>
+                                        maxOccurs="unbounded"/>
                         </xs:sequence>
                     </xs:complexType>
                 </xs:element>
@@ -216,6 +220,8 @@ Version History
 0.8.0.dev1, 2020/01/29, Paul Korir:
 Bugfix: 'software' elements should have an 'id' attribute; 'id' attribute erroneously placed in 'software_list' and should be a list of 0 or more 'software' elements
 
+0.8.0.dev1, 2023/01/30, Paul Korir:
+Clarified that transform units are in angstroms (Å).
 ]]>
                     </xs:documentation>
                 </xs:annotation>
@@ -243,7 +249,8 @@ Bugfix: 'software' elements should have an 'id' attribute; 'id' attribute errone
         <xs:annotation>
             <xs:documentation>data is a space-separated sequence of numbers to be converted to
                 floats. The number of items in 'data' is equivalent to the product of 'rows' and
-                'cols'. </xs:documentation>
+                'cols'.
+            </xs:documentation>
         </xs:annotation>
         <xs:sequence>
             <xs:element name="rows" type="xs:positiveInteger"/>
@@ -275,16 +282,17 @@ Bugfix: 'software' elements should have an 'id' attribute; 'id' attribute errone
                             <xs:complexType>
                                 <xs:sequence>
                                     <xs:element name="ref" type="external_reference_type"
-                                        minOccurs="0" maxOccurs="unbounded"/>
+                                                minOccurs="0" maxOccurs="unbounded"/>
                                 </xs:sequence>
                             </xs:complexType>
                         </xs:element>
                         <xs:element name="number_of_instances" type="xs:positiveInteger"
-                            minOccurs="0">
+                                    minOccurs="0">
                             <xs:annotation>
                                 <xs:documentation>Number of instances present of the basic structure
                                     (complex or macromolecule). For example it could be '7' for the
-                                    upper ring of GroEL </xs:documentation>
+                                    upper ring of GroEL
+                                </xs:documentation>
                             </xs:annotation>
                         </xs:element>
                     </xs:sequence>
@@ -331,15 +339,17 @@ Bugfix: 'software' elements should have an 'id' attribute; 'id' attribute errone
         <xs:sequence>
             <xs:element name="lattice_id" type="xs:nonNegativeInteger">
                 <xs:annotation>
-                    <xs:documentation> The ID of the lattice in 'latticeList' that contains the data
-                        referred to by this 3D volume. </xs:documentation>
+                    <xs:documentation>The ID of the lattice in 'latticeList' that contains the data
+                        referred to by this 3D volume.
+                    </xs:documentation>
                 </xs:annotation>
             </xs:element>
             <xs:element name="value" type="xs:float">
                 <xs:annotation>
-                    <xs:documentation> The 'value' can either be a contour level used to denote a
+                    <xs:documentation>The 'value' can either be a contour level used to denote a
                         boundary or the voxel value for this segmentation. The value of 'mode' will
-                        be used to cast this elements value. </xs:documentation>
+                        be used to cast this elements value.
+                    </xs:documentation>
                 </xs:annotation>
             </xs:element>
             <xs:element name="transform_id" type="xs:nonNegativeInteger" minOccurs="0"/>
@@ -351,30 +361,31 @@ Bugfix: 'software' elements should have an 'id' attribute; 'id' attribute errone
         <xs:sequence>
             <xs:element name="mode" type="mode_type">
                 <xs:annotation>
-                    <xs:documentation> Mode specifies the datatype of each voxel in the 3D volume
+                    <xs:documentation>Mode specifies the datatype of each voxel in the 3D volume
                     </xs:documentation>
                 </xs:annotation>
             </xs:element>
             <xs:element name="endianness" type="endian_type" default="little">
                 <xs:annotation>
-                    <xs:documentation> The manner in which the binary data is read.
+                    <xs:documentation>The manner in which the binary data is read.
                     </xs:documentation>
                 </xs:annotation>
             </xs:element>
             <xs:element name="size" type="volume_structure_type">
                 <xs:annotation>
-                    <xs:documentation> The 3D volume size in voxels. </xs:documentation>
+                    <xs:documentation>The 3D volume size in voxels.</xs:documentation>
                 </xs:annotation>
             </xs:element>
             <xs:element name="start" type="volume_index_type">
                 <xs:annotation>
-                    <xs:documentation> The index values for the start voxel. </xs:documentation>
+                    <xs:documentation>The index values for the start voxel.</xs:documentation>
                 </xs:annotation>
             </xs:element>
             <xs:element name="data" type="xs:string">
                 <xs:annotation>
                     <xs:documentation>Data is a base64 encoded string of zlib-compressed binary
-                        data.</xs:documentation>
+                        data.
+                    </xs:documentation>
                 </xs:annotation>
             </xs:element>
         </xs:sequence>
@@ -421,9 +432,10 @@ Bugfix: 'software' elements should have an 'id' attribute; 'id' attribute errone
     <!-- vertices_type -->
     <xs:complexType name="vertices_type">
         <xs:annotation>
-            <xs:documentation> The 'data' attribute is a base64-encoded binary sequence of float
+            <xs:documentation>The 'data' attribute is a base64-encoded binary sequence of float
                 (default: float32) triples. The 0-based position is the index used when constructing
-                triangles (see 'triangles_type' definition). </xs:documentation>
+                triangles (see 'triangles_type' definition).
+            </xs:documentation>
         </xs:annotation>
         <xs:attribute name="num_vertices" type="xs:nonNegativeInteger"/>
         <xs:attribute name="mode" type="mode_type" default="float32"/>
@@ -434,9 +446,10 @@ Bugfix: 'software' elements should have an 'id' attribute; 'id' attribute errone
     <!-- normals_type -->
     <xs:complexType name="normals_type">
         <xs:annotation>
-            <xs:documentation> The 'data' attribute is a base64-encoded binary sequence of float
+            <xs:documentation>The 'data' attribute is a base64-encoded binary sequence of float
                 (default: float32) triples. The 0-based position is the index used when constructing
-                triangles (see 'triangles_type' definition). </xs:documentation>
+                triangles (see 'triangles_type' definition).
+            </xs:documentation>
         </xs:annotation>
         <xs:attribute name="num_normals" type="xs:nonNegativeInteger"/>
         <xs:attribute name="mode" type="mode_type" default="float32"/>
@@ -447,9 +460,10 @@ Bugfix: 'software' elements should have an 'id' attribute; 'id' attribute errone
     <!-- triangles_type -->
     <xs:complexType name="triangles_type">
         <xs:annotation>
-            <xs:documentation> The 'data' attribute is a base64-encoded binary sequence of int
+            <xs:documentation>The 'data' attribute is a base64-encoded binary sequence of int
                 (default: uint32) triples. The values are 0-based indices of the vertices in the
-                'vertices' mesh attribute. </xs:documentation>
+                'vertices' mesh attribute.
+            </xs:documentation>
         </xs:annotation>
         <xs:attribute name="num_triangles" type="xs:nonNegativeInteger"/>
         <xs:attribute name="mode" type="mode_type" default="uint32"/>
@@ -581,7 +595,7 @@ Bugfix: 'software' elements should have an 'id' attribute; 'id' attribute errone
     </xs:element>
     <!-- subTomogramAverage -->
     <xs:element name="subtomogram_average" type="three_d_volume_type"
-        substitutionGroup="shape_primitive"/>
+                substitutionGroup="shape_primitive"/>
 
 
     <!-- END REFERENCED ELEMENTS -->
@@ -591,7 +605,7 @@ Bugfix: 'software' elements should have an 'id' attribute; 'id' attribute errone
     <!-- transform -->
     <xs:element name="transform"/>
     <xs:element name="transformation_matrix" type="transformation_matrix_type"
-        substitutionGroup="transform"/>
+                substitutionGroup="transform"/>
 
 
     <!--<xs:element name="file_path" type="xs:string">
@@ -658,14 +672,15 @@ Bugfix: 'software' elements should have an 'id' attribute; 'id' attribute errone
     <xs:complexType name="complexes_and_macromolecules_type">
         <xs:annotation>
             <xs:documentation>Depending on the problem, one can either reference the sample on the
-                macromolecule level or the complex level. </xs:documentation>
+                macromolecule level or the complex level.
+            </xs:documentation>
         </xs:annotation>
         <xs:sequence>
             <xs:element name="macromolecule_list" minOccurs="0">
                 <xs:complexType>
                     <xs:sequence>
                         <xs:element name="macromolecule" type="biomolecule_type"
-                            maxOccurs="unbounded"/>
+                                    maxOccurs="unbounded"/>
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
@@ -686,7 +701,8 @@ Bugfix: 'software' elements should have an 'id' attribute; 'id' attribute errone
             <xs:element name="objectPath" type="xs:string" minOccurs="0">
                 <xs:annotation>
                     <xs:documentation>This is particularly relevant if all the segments are stored
-                        in one file, like in HDF5. </xs:documentation>
+                        in one file, like in HDF5.
+                    </xs:documentation>
                 </xs:annotation>
             </xs:element>
             <xs:element name="contourLevel" type="xs:float" minOccurs="0">
@@ -822,7 +838,8 @@ Bugfix: 'software' elements should have an 'id' attribute; 'id' attribute errone
     <xs:complexType name="canonicalEulerAnglesType">
         <xs:annotation>
             <xs:documentation>Euler angler according to Heymann et al. 2005
-                (doi:10.1016/j.jsb.2005.06.001) </xs:documentation>
+                (doi:10.1016/j.jsb.2005.06.001)
+            </xs:documentation>
             <xs:documentation>Angles are specified in degrees together with their bounds.
             </xs:documentation>
         </xs:annotation>
